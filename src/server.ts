@@ -1,5 +1,7 @@
 import express from 'express';
 import payload from 'payload';
+import { resetDatabase } from './cron/resetDatabase';
+import { resetDbJob } from './cron/jobs';
 
 require('dotenv').config();
 const app = express();
@@ -9,15 +11,13 @@ payload.init({
   secret: process.env.PAYLOAD_SECRET_KEY,
   mongoURL: process.env.MONGO_URL,
   express: app,
-  onInit: () => {
+  onInit: async () => {
     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+    await resetDatabase(); // Reset on start
   },
 });
 
-// Add your own express routes here
-
-app.get('/health', (_, res) => {
-  res.sendStatus(200);
-});
+// Cron jobs
+resetDbJob.start();
 
 app.listen(3000);
