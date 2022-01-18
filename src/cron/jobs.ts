@@ -6,4 +6,4 @@ const cronOptions: cron.ScheduleOptions = {
   scheduled: false,
 };
 
-export const resetDbJob = cron.schedule('* * * * *', resetDatabase, cronOptions);
+export const resetDbJob = cron.schedule('0 * * * *', resetDatabase, cronOptions);

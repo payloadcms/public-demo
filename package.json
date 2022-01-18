@@ -10,12 +10,12 @@
     "build:server": "tsc",
     "build": "yarn build:payload && yarn build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
-    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
-    "reset": "cross-env DISABLE_LOGGING=true PAYLOAD_CONFIG_PATH=src/payload.config.ts ts-node scripts/resetPayload.ts"
+    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongodb": "^4.3.0",
     "node-cron": "^3.0.0",
     "payload": "^0.14.0"
   },
@@ -23,7 +23,6 @@
     "@types/express": "^4.17.9",
     "@types/node-cron": "^3.0.1",
     "cross-env": "^7.0.3",
-    "mongodb": "^4.3.0",
     "nodemon": "^2.0.6",
     "prettier": "^2.5.1",
     "ts-node": "^9.1.1",
