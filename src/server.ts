@@ -1,7 +1,7 @@
-import express from "express";
-import payload from "payload";
+import express from 'express';
+import payload from 'payload';
 
-require("dotenv").config();
+require('dotenv').config();
 const app = express();
 
 // Initialize Payload
@@ -15,5 +15,9 @@ payload.init({
 });
 
 // Add your own express routes here
+
+app.get('/health', (_, res) => {
+  res.sendStatus(200);
+});
 
 app.listen(3000);
