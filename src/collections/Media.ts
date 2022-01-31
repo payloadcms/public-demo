@@ -12,7 +12,7 @@ const Media: CollectionConfig = {
   },
   upload: {
     adminThumbnail: 'thumbnail',
-    staticDir: path.resolve(__dirname, '../../../media'),
+    staticDir: path.resolve(__dirname, '../../media'),
     imageSizes: [		
 			{
 				name: 'thumbnail',
@@ -34,6 +34,7 @@ const Media: CollectionConfig = {
   fields: [
     {
       name: 'alt',
+			localized: true,
       label: 'Alt Text',
       type: 'text',
       required: true,

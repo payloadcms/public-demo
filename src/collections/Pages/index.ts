@@ -7,7 +7,6 @@ import MediaContent from '../../blocks/MediaContent';
 import populateFullTitle from './hooks/populateFullTitle';
 import MediaSlider from '../../blocks/MediaSlider';
 import { Accordion } from '../../blocks/Accordion';
-import Breadcrumbs from './fields/Breadcrumbs';
 import { populateAuthor } from './hooks/populateAuthor';
 import { hero } from '../../fields/hero';
 
@@ -20,9 +19,7 @@ export const Pages: CollectionConfig = {
       'author',
       'createdAt',
       'status',
-      'appUrl',
     ],
-    preview: ({ appUrl }) => (appUrl ? `${process.env.PAYLOAD_PUBLIC_APP_URL}/api/preview?url=${appUrl}` : null),
   },
   access: {
     read: () => true,
@@ -33,6 +30,7 @@ export const Pages: CollectionConfig = {
       label: 'Page Title',
       type: 'text',
       required: true,
+			localized: true,
     },
     hero,
     {
@@ -40,6 +38,7 @@ export const Pages: CollectionConfig = {
       label: 'Page Layout',
       type: 'blocks',
       minRows: 1,
+			localized: true,
       blocks: [
         Accordion,
         Content,
@@ -52,6 +51,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'fullTitle',
       type: 'text',
+			localized: true,
       hooks: {
         beforeChange: [
           populateFullTitle,
@@ -98,10 +98,7 @@ export const Pages: CollectionConfig = {
         },
       ],
       admin: {
-        readOnly: true,
-        components: {
-          Field: Breadcrumbs,
-        },
+				disabled: true,
       },
     },
     // sidebar

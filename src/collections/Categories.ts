@@ -12,6 +12,7 @@ const Categories: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+			localized: true,
     },
   ],
 }

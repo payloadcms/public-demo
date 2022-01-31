@@ -9,6 +9,7 @@ const slug: Slug = (fieldToUse = 'title', overrides) => deepMerge<Field, Partial
     name: 'slug',
     label: 'Slug',
     type: 'text',
+		localized: true,
     admin: {
       position: 'sidebar',
     },

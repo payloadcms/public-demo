@@ -39,6 +39,7 @@ const seo = (options: Options) => (config: Config): Config => ({
               name: 'title',
               label: 'Meta Title',
               type: 'text',
+							localized: true,
               admin: {
                 components: {
                   Field: MetaTitle,
@@ -49,6 +50,7 @@ const seo = (options: Options) => (config: Config): Config => ({
               name: 'description',
               label: 'Meta Description',
               type: 'textarea',
+							localized: true,
               admin: {
                 components: {
                   Field: MetaDescription,

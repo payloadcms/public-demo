@@ -22,6 +22,7 @@ const richTextHeroField = (args?: Args): RichTextField => {
   return ({
     type: 'richText',
     name: name || 'richText',
+		localized: true,
     admin: {
       hideGutter,
       elements: [

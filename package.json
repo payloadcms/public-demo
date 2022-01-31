@@ -1,10 +1,12 @@
 {
-  "name": "payload-blog-typescript",
-  "description": "Blog template",
+  "name": "payload-public-demo",
+  "description": "Payload Demo",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
+    "copyfiles": "copyfiles -u 1 src/**/*.{svg,jpg,png} dist/",
+    "pre:debug": "yarn copyfiles && yarn build:server",
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
@@ -13,6 +15,7 @@
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types"
   },
   "dependencies": {
+    "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^4.3.0",

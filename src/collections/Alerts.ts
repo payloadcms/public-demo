@@ -83,6 +83,7 @@ export const Alerts: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
+			localized: true,
       admin: {
         elements: [
           'link',

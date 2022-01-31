@@ -6,7 +6,9 @@ export const generateMetaDescription = (fields: Fields): string => {
   const {
     excerpt: {
       value: excerpt,
-    },
+    } = {
+			value: ''
+		},
   } = fields;
 
   let description = excerpt as string || '';

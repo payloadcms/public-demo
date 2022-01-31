@@ -13,6 +13,7 @@ const Posts: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+			localized: true,
     },
     {
       name: 'author',
@@ -28,10 +29,6 @@ const Posts: CollectionConfig = {
       type: 'relationship',
       relationTo: 'categories',
 			hasMany: true,
-    },
-    {
-      name: 'content',
-      type: 'richText'
     },
     {
       name: 'status',
