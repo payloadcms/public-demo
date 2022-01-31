@@ -10,6 +10,10 @@ require('dotenv').config({
 
 const app = express();
 
+app.get('/', function(_, res){
+	res.redirect('/admin');
+});
+
 // Initialize Payload
 payload.init({
   secret: process.env.PAYLOAD_SECRET_KEY,
