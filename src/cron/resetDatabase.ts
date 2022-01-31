@@ -11,7 +11,7 @@ const homeES = require('./homeES.json');
 export async function resetDatabase() {
   try {
     payload.logger.info(`Resetting database...`);
-		fs.rmdirSync(path.resolve(__dirname, '../../media'), { recursive: true });
+		fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
     await dropDB();
     await createFirstUser();
     payload.logger.info(`Reset Complete.`);
