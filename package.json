@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
-    "copyfiles": "copyfiles -u 1 src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png} dist/",
+    "copyfiles": "copyfiles -u 1 src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json} dist/",
     "pre:debug": "yarn copyfiles && yarn build:server",
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
