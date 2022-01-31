@@ -15,6 +15,7 @@ payload.init({
   secret: process.env.PAYLOAD_SECRET_KEY,
   mongoURL: process.env.MONGO_URL,
   express: app,
+	license: process.env.PAYLOAD_LICENSE_KEY,
   onInit: async () => {
     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
     await resetDatabase(); // Reset on start
