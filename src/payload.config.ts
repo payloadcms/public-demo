@@ -1,5 +1,6 @@
 import { buildConfig } from 'payload/config';
 import path from 'path';
+import dotenv from 'dotenv';
 import Categories from './collections/Categories';
 import Media from './collections/Media';
 import Posts from './collections/Posts';
@@ -9,6 +10,10 @@ import MainMenu from './globals/MainMenu';
 import FormBuilder from './plugins/formBuilder';
 import breadcrumbs from './plugins/breadcrumbs';
 import seo from './plugins/seo';
+
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+});
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,

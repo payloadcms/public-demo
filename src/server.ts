@@ -1,9 +1,13 @@
 import express from 'express';
 import payload from 'payload';
+import path from 'path';
 import { resetDatabase } from './cron/resetDatabase';
 import { resetDbJob } from './cron/jobs';
 
-require('dotenv').config();
+require('dotenv').config({
+  path: path.resolve(__dirname, '../.env'),
+});
+
 const app = express();
 
 // Initialize Payload
