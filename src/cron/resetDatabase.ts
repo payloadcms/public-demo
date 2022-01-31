@@ -62,17 +62,22 @@ async function createFirstUser() {
     data: JSON.parse(homeString),
   });
 
-	await payload.update({
-		collection: 'pages',
-		id: homeDoc.id,
-		locale: 'de',
-		data: JSON.parse(homeStringDE),
-	})
+	// TEMPORARY - bug with breadcrumbs plugin. Home page resaves automatically after creation.
+	// I'm thinking that `de` simply got fired too early and overwritten.
 
-	await payload.update({
-		collection: 'pages',
-		id: homeDoc.id,
-		locale: 'es',
-		data: JSON.parse(homeStringES),
-	})
+	setTimeout(async () => {
+		await payload.update({
+			collection: 'pages',
+			id: homeDoc.id,
+			locale: 'de',
+			data: JSON.parse(homeStringDE),
+		})
+	
+		await payload.update({
+			collection: 'pages',
+			id: homeDoc.id,
+			locale: 'es',
+			data: JSON.parse(homeStringES),
+		})
+	}, 3000);
 }
