@@ -7645,10 +7645,10 @@ pause@0.0.1:
   resolved "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=
 
-payload@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.npmjs.org/payload/-/payload-0.14.0.tgz#a6b87d27c2b7b2ced0e69e085e383b3c62d1b6e4"
-  integrity sha512-Mq0POUrUnJQv0KooDAWr6/yCoFT2KdK72Y49m2z95t503UcAR5fjZMXTF7QML+LWyTFoLDKHSfjV54kcNlC+Lg==
+payload@0.14.15-beta.0:
+  version "0.14.15-beta.0"
+  resolved "https://registry.npmjs.org/payload/-/payload-0.14.15-beta.0.tgz#8f6cf53866ad663265061891de861445b1cf7a4f"
+  integrity sha512-nTDDKbGX+p8Hin6daSdrKKsWXex/xANCtR/k0eUR90cEEajl56Z8sQUt6QzkRwsq6ZOHiSIGwHC52/PlRKwHNg==
   dependencies:
     "@babel/cli" "^7.12.8"
     "@babel/core" "^7.11.6"
@@ -7745,10 +7745,10 @@ payload@^0.14.0:
     sass "^1.42.0"
     sass-loader "^10.1.0"
     sharp "^0.29.3"
-    slate "^0.66.2"
+    slate "0.72.3"
     slate-history "^0.66.0"
     slate-hyperscript "^0.66.0"
-    slate-react "^0.66.4"
+    slate-react "^0.72.1"
     style-loader "^2.0.0"
     terser-webpack-plugin "^5.0.3"
     ts-essentials "^7.0.1"
@@ -9547,10 +9547,10 @@ slate-hyperscript@^0.66.0:
   dependencies:
     is-plain-object "^5.0.0"
 
-slate-react@^0.66.4:
-  version "0.66.7"
-  resolved "https://registry.npmjs.org/slate-react/-/slate-react-0.66.7.tgz#033823dac8612e040094e7b8d942de6639b2e7de"
-  integrity sha512-M0MGCnANdjRZCKGY9cvqHBR/WJ+/4SMIvBvEx4UJ5ycx9uNkDVPdpsyvwDKOpmsJuzZ1DH+34YrpxT7RnQyp1Q==
+slate-react@^0.72.1:
+  version "0.72.7"
+  resolved "https://registry.npmjs.org/slate-react/-/slate-react-0.72.7.tgz#89121f07029bb4d3b624ed8e285571c2d09dc036"
+  integrity sha512-W7GG2Smoq4VLSMNfxhepA0eyBpiIxCZneBhz4gJSyrIsk5y0GE2vXPCg1TLbZrsN0qNxx+R0Dk/JPl8E+5XJkA==
   dependencies:
     "@types/is-hotkey" "^0.1.1"
     "@types/lodash" "^4.14.149"
@@ -9561,10 +9561,10 @@ slate-react@^0.66.4:
     scroll-into-view-if-needed "^2.2.20"
     tiny-invariant "1.0.6"
 
-slate@^0.66.2:
-  version "0.66.5"
-  resolved "https://registry.npmjs.org/slate/-/slate-0.66.5.tgz#bdd93a4422891341dd18a31ff7810f5cae60e40a"
-  integrity sha512-bG03uEKIm/gS6jQarKSNbHn2anemOON2vnSI3VGRd7MJJU5Yiwmutze0yHNO9uZwDLTB+LeDQYZeGu1ACWT0VA==
+slate@0.72.3:
+  version "0.72.3"
+  resolved "https://registry.npmjs.org/slate/-/slate-0.72.3.tgz#c74eb85133b975b2d44d219462c127cdb992e76b"
+  integrity sha512-ALsYQHKTN4rC+iHnOJzV+aC4AHdhoPkBWrfEK3W/LbXOzPrR+wL80a66OZiYg9Xb0QeGzlLSGdOOFQd2ix9Wmg==
   dependencies:
     immer "^9.0.6"
     is-plain-object "^5.0.0"

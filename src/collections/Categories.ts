@@ -14,7 +14,6 @@ const Categories: CollectionConfig = {
       type: 'text',
     },
   ],
-  timestamps: false,
 }
 
 export default Categories;

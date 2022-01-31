@@ -23,9 +23,9 @@ async function createFirstUser() {
   await payload.create<User>({
     collection: 'users',
     data: {
-      name: 'Dev',
-      email: 'test@test.com',
-      password: 'test123',
+      name: 'Demo',
+      email: 'demo@payloadcms.com',
+      password: 'demo',
     },
   });
 }
