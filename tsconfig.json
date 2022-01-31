@@ -15,9 +15,6 @@
     "sourceMap": true,
     "resolveJsonModule": true,
   },
-  "include": [
-    "./src/cron/*.json"
-  ],
   "ts-node": {
     "transpileOnly": true
   }
