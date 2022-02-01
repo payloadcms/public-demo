@@ -10,6 +10,7 @@ import MainMenu from './globals/MainMenu';
 import FormBuilder from './plugins/formBuilder';
 import breadcrumbs from './plugins/breadcrumbs';
 import seo from './plugins/seo';
+import BeforeLogin from './components/BeforeLogin';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -19,6 +20,11 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: {
     user: Users.slug,
+		components: {
+			beforeLogin: [
+				BeforeLogin,
+			],
+		},
   },
   collections: [
     Categories,
