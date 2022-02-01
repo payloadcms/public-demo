@@ -19,6 +19,7 @@ dotenv.config({
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: {
+    indexHTML: path.resolve(__dirname, './index.html'),
     user: Users.slug,
 		components: {
 			beforeLogin: [
