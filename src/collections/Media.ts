@@ -4,11 +4,14 @@ import path from 'path';
 const Media: CollectionConfig = {
   slug: 'media',
   access: {
-    read: (): boolean => true, // Everyone can read Media
+    read: () => true,
+    create: () => false,
+    update: () => false,
+    delete: () => false,
   },
   admin: {
     useAsTitle: 'filename',
-    description: 'Maximum upload file size: 2MB. Recommended file size for images is <500KB.',
+    description: 'Uploads are set to read-only for this demo.',
   },
   upload: {
     adminThumbnail: 'thumbnail',
