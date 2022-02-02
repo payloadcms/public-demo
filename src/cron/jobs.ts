@@ -1,9 +1,9 @@
 import cron from 'node-cron';
-import { resetDatabase } from './resetDatabase';
+import { reset } from './reset';
 
 const cronOptions: cron.ScheduleOptions = {
   timezone: 'America/Detroit',
   scheduled: false,
 };
 
-export const resetDbJob = cron.schedule('0 * * * *', resetDatabase, cronOptions);
+export const resetScheduledJob = cron.schedule('0 * * * *', reset, cronOptions);

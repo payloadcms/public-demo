@@ -1,8 +1,8 @@
 import express from 'express';
 import payload from 'payload';
 import path from 'path';
-import { resetDatabase } from './cron/resetDatabase';
-import { resetDbJob } from './cron/jobs';
+import { reset } from './cron/reset';
+import { resetScheduledJob } from './cron/jobs';
 
 require('dotenv').config({
   path: path.resolve(__dirname, '../.env'),
@@ -22,11 +22,11 @@ payload.init({
 	license: process.env.PAYLOAD_LICENSE_KEY,
   onInit: async () => {
     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-    await resetDatabase(); // Reset on start
+    await reset(); // Reset on start
   },
 });
 
 // Cron jobs
-resetDbJob.start();
+resetScheduledJob.start();
 
 app.listen(3000);
