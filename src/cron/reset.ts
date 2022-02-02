@@ -3,14 +3,15 @@ import path from 'path';
 import fs from 'fs';
 import { User } from '../payload-types';
 import { MongoClient } from 'mongodb';
+import { generateContactFormSubmission, generateMailingListSubmission } from '../data/forms/submissionGenerator';
 
 const home = require('../data/home.json');
 const homeDE = require('../data/homeDE.json');
 const homeES = require('../data/homeES.json');
 const videoSeriesPage = require('../data/video-series.json');
 const caseStudiesPage = require('../data/case-studies.json');
-const contactForm = require('../data/forms/contact-form.json');
-const mailingListForm = require('../data/forms/mailing-list-form.json');
+const contactFormData = require('../data/forms/contact-form.json');
+const mailingListFormData = require('../data/forms/mailing-list-form.json');
 
 export async function reset() {
   try {
@@ -107,13 +108,29 @@ async function seedData() {
   }, 3000);
 
   // Forms - Contact
-  await payload.create<any>({
+  const contactForm = await payload.create<any>({
     collection: 'forms',
-    data: contactForm
+    data: contactFormData
   });
   // Forms - Mailing List
-  await payload.create<any>({
+  const mailingListForm = await payload.create<any>({
     collection: 'forms',
-    data: mailingListForm
+    data: mailingListFormData
   });
+
+  const contactFormSubmissions = [...Array(5)].map(_ => {
+    return payload.create<any>({
+      collection: 'form-submissions',
+      data: generateContactFormSubmission(contactForm.id)
+    });
+  })
+  await Promise.all(contactFormSubmissions);
+
+  const mailingListSubmissions = [...Array(5)].map(_ => {
+    return payload.create<any>({
+      collection: 'form-submissions',
+      data: generateMailingListSubmission(mailingListForm.id)
+    });
+  })
+  await Promise.all(mailingListSubmissions);
 }

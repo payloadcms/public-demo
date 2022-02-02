@@ -1179,6 +1179,11 @@
   resolved "https://registry.npmjs.org/@faceless-ui/window-info/-/window-info-1.2.9.tgz#313c36c7180e6d15d2e49269f04a90b9192ac2ab"
   integrity sha512-wGJk77HP2hJ9gsV/Pgqx7bK4FnGrmrmQyBgSB6s7yPPG9/iaPuDugl2kaE4Fi26EX9FdSIumyyveI4CSSgghkg==
 
+"@faker-js/faker@^6.0.0-alpha.5":
+  version "6.0.0-alpha.5"
+  resolved "https://registry.npmjs.org/@faker-js/faker/-/faker-6.0.0-alpha.5.tgz#2c1ab022b3aed76d563b1510ba2b797ce141d25e"
+  integrity sha512-8Is/xFxNgricqmhQR/AJ4Vi0cKzSR7FcpE0ImG9dWciuSxUkyCiK+B5/hTQP8jrVbtgTjpFC1AaTCnALJOBDmw==
+
 "@gar/promisify@^1.0.1":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"

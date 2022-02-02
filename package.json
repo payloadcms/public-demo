@@ -15,6 +15,7 @@
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types"
   },
   "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.5",
     "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
