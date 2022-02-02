@@ -9,6 +9,8 @@ const homeDE = require('../data/homeDE.json');
 const homeES = require('../data/homeES.json');
 const videoSeriesPage = require('../data/video-series.json');
 const caseStudiesPage = require('../data/case-studies.json');
+const contactForm = require('../data/forms/contact-form.json');
+const mailingListForm = require('../data/forms/mailing-list-form.json');
 
 export async function reset() {
   try {
@@ -103,4 +105,15 @@ async function seedData() {
       data: JSON.parse(homeStringES),
     })
   }, 3000);
+
+  // Forms - Contact
+  await payload.create<any>({
+    collection: 'forms',
+    data: contactForm
+  });
+  // Forms - Mailing List
+  await payload.create<any>({
+    collection: 'forms',
+    data: mailingListForm
+  });
 }
