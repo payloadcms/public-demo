@@ -5,13 +5,15 @@ import { User } from '../payload-types';
 import { MongoClient } from 'mongodb';
 import { generateContactFormSubmission, generateMailingListSubmission } from '../data/forms/submissionGenerator';
 
-const home = require('../data/home.json');
-const homeDE = require('../data/homeDE.json');
-const homeES = require('../data/homeES.json');
-const videoSeriesPage = require('../data/video-series.json');
-const caseStudiesPage = require('../data/case-studies.json');
-const contactFormData = require('../data/forms/contact-form.json');
-const mailingListFormData = require('../data/forms/mailing-list-form.json');
+import { pages, forms } from '../data'
+
+// const home = require('../data/home.json');
+// const homeDE = require('../data/homeDE.json');
+// const homeES = require('../data/homeES.json');
+// const videoSeriesPage = require('../data/video-series.json');
+// const caseStudiesPage = require('../data/case-studies.json');
+// const contactFormData = require('../data/forms/contact-form.json');
+// const mailingListFormData = require('../data/forms/mailing-list-form.json');
 
 export async function reset() {
   try {
@@ -51,15 +53,15 @@ async function seedData() {
   });
 
   // Page - Home
-  const homeString = JSON.stringify(home)
+  const homeString = JSON.stringify(pages.home)
     .replace(/{{IMAGE_ID}}/g, createdMedia.id)
     .replace(/{{USER_ID}}/g, demoUser.id);
 
-  const homeStringDE = JSON.stringify(homeDE)
+  const homeStringDE = JSON.stringify(pages.homeDE)
     .replace(/{{IMAGE_ID}}/g, createdMedia.id)
     .replace(/{{USER_ID}}/g, demoUser.id);
 
-  const homeStringES = JSON.stringify(homeES)
+  const homeStringES = JSON.stringify(pages.homeES)
     .replace(/{{IMAGE_ID}}/g, createdMedia.id)
     .replace(/{{USER_ID}}/g, demoUser.id);
 
@@ -71,7 +73,7 @@ async function seedData() {
   // Page - Video Series
   await payload.create<any>({
     collection: 'pages',
-    data: JSON.parse(JSON.stringify(videoSeriesPage)
+    data: JSON.parse(JSON.stringify(pages.videoSeriesPage)
       .replace(/{{IMAGE_ID}}/g, createdMedia.id)
       .replace(/{{USER_ID}}/g, demoUser.id)
       .replace(/{{PARENT_ID}}/g, homeDoc.id)
@@ -81,7 +83,7 @@ async function seedData() {
   // Page - Case Studies
   await payload.create<any>({
     collection: 'pages',
-    data: JSON.parse(JSON.stringify(caseStudiesPage)
+    data: JSON.parse(JSON.stringify(pages.caseStudiesPage)
       .replace(/{{IMAGE_ID}}/g, createdMedia.id)
       .replace(/{{USER_ID}}/g, demoUser.id)
       .replace(/{{PARENT_ID}}/g, homeDoc.id)
@@ -110,12 +112,12 @@ async function seedData() {
   // Forms - Contact
   const contactForm = await payload.create<any>({
     collection: 'forms',
-    data: contactFormData
+    data: forms.contactFormData,
   });
   // Forms - Mailing List
   const mailingListForm = await payload.create<any>({
     collection: 'forms',
-    data: mailingListFormData
+    data: forms.mailingListFormData,
   });
 
   const contactFormSubmissions = [...Array(5)].map(_ => {
