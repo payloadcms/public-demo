@@ -11,6 +11,10 @@ import { videoSeriesData } from '../data/pages/videoSeriesData';
 import { caseStudiesData } from '../data/pages/caseStudiesData';
 import { contactFormData } from '../data/forms/contactFormData';
 import { mailingListFormData } from '../data/forms/mailingListFormData';
+import { generateTsInterfacesData } from '../data/posts/generateTsInterfacesData';
+import { whiteLabelAdminUIData } from '../data/posts/whiteLabelAdminUIData';
+import { buildWebsiteData } from '../data/posts/buildWebsiteData';
+import { introducingPayloadData } from '../data/posts/introducingPayloadData';
 
 export async function reset() {
   try {
@@ -32,7 +36,7 @@ async function dropDB() {
 }
 
 async function seedData() {
-  const demoUser = await payload.create<User>({
+  const { id: demoUserId } = await payload.create<User>({
     collection: 'users',
     data: {
       name: 'Demo User',
@@ -41,7 +45,7 @@ async function seedData() {
     },
   });
 
-  const createdMedia = await payload.create<any>({
+  const { id: imageId } = await payload.create<any>({
     collection: 'media',
     data: {
       alt: 'Payload',
@@ -50,11 +54,11 @@ async function seedData() {
   });
 
   // Page - Home
-  const homeString = homeData(createdMedia.id, demoUser.id);
-  const homeStringDE = homeDataDE(createdMedia.id, demoUser.id);
-  const homeStringES = homeDataES(createdMedia.id, demoUser.id);
+  const homeString = homeData(imageId, demoUserId);
+  const homeStringDE = homeDataDE(imageId, demoUserId);
+  const homeStringES = homeDataES(imageId, demoUserId);
 
-  const homeDoc = await payload.create<any>({
+  const { id: homeDocId } = await payload.create<any>({
     collection: 'pages',
     data: homeString,
   });
@@ -62,13 +66,13 @@ async function seedData() {
   // Page - Video Series
   await payload.create<any>({
     collection: 'pages',
-    data: videoSeriesData(createdMedia.id, demoUser.id, homeDoc.id),
+    data: videoSeriesData(imageId, demoUserId, homeDocId),
   });
 
   // Page - Case Studies
   await payload.create<any>({
     collection: 'pages',
-    data: caseStudiesData(createdMedia.id, demoUser.id, homeDoc.id),
+    data: caseStudiesData(imageId, demoUserId, homeDocId),
   });
 
   // TEMPORARY - bug with breadcrumbs plugin. Home page resaves automatically after creation.
@@ -77,14 +81,14 @@ async function seedData() {
   setTimeout(async () => {
     await payload.update({
       collection: 'pages',
-      id: homeDoc.id,
+      id: homeDocId,
       locale: 'de',
       data: homeStringDE,
     })
 
     await payload.update({
       collection: 'pages',
-      id: homeDoc.id,
+      id: homeDocId,
       locale: 'es',
       data: homeStringES,
     })
@@ -117,4 +121,43 @@ async function seedData() {
     });
   })
   await Promise.all(mailingListSubmissions);
+
+  // Create Categories
+  const [newsCategory, featureCategory, tutorialCategory] = await Promise.all([
+    payload.create<any>({
+      collection: 'categories',
+      data: {
+        name: 'news'
+      }
+    }),
+    payload.create<any>({
+      collection: 'categories',
+      data: {
+        name: 'feature'
+      }
+    }),
+    payload.create<any>({
+      collection: 'categories',
+      data: {
+        name: 'tutorial'
+      }
+    }),
+  ])
+
+  await payload.create<any>({
+    collection: 'posts',
+    data: generateTsInterfacesData(demoUserId, featureCategory.id, imageId),
+  })
+  await payload.create<any>({
+    collection: 'posts',
+    data: whiteLabelAdminUIData(demoUserId, tutorialCategory.id, imageId),
+  })
+  await payload.create<any>({
+    collection: 'posts',
+    data: buildWebsiteData(demoUserId, tutorialCategory.id, imageId),
+  })
+  await payload.create<any>({
+    collection: 'posts',
+    data: introducingPayloadData(demoUserId, newsCategory.id, imageId),
+  })
 }

@@ -1,4 +1,4 @@
-export function caseStudiesData(imageId: string, userId: string, parentId: string) {
+export function caseStudiesData(imageId: string, authorId: string, parentId: string) {
   return {
     title: 'Case Studies',
     hero: {
@@ -107,7 +107,7 @@ export function caseStudiesData(imageId: string, userId: string, parentId: strin
     slug: 'case-studies',
     status: 'published',
     parent: parentId,
-    author: userId,
+    author: authorId,
     meta: {
       title: 'Payload CMS Demo - Case Studies',
       description: 'Case Study 1',
