@@ -7680,10 +7680,10 @@ pause@0.0.1:
   resolved "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=
 
-payload@0.14.17-beta.0:
-  version "0.14.17-beta.0"
-  resolved "https://registry.npmjs.org/payload/-/payload-0.14.17-beta.0.tgz#e68213bbde997da1043c38bc27cab51c15a0359c"
-  integrity sha512-t4qHhR0h6sDpVDohg7uwRfKjM+A8jtxDsPm7BJaeK0IdtiBI6M3fiWwKKhN1etaKDMfSCj7e9qZCUmbZiUBr4Q==
+payload@0.14.22-beta.0:
+  version "0.14.22-beta.0"
+  resolved "https://registry.npmjs.org/payload/-/payload-0.14.22-beta.0.tgz#a6601bdf0fa4dee85ee61742bbdb481630f0966e"
+  integrity sha512-BEIjOygCBOdkickCsxhxp2I7/uuyKWnyjAT82P9bPB3DN74EqLHTrBu/faVDUAKrkQjX/OWUrCMeT2VPdy0MjA==
   dependencies:
     "@babel/cli" "^7.12.8"
     "@babel/core" "^7.11.6"
