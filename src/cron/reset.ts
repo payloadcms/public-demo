@@ -4,16 +4,13 @@ import fs from 'fs';
 import { User } from '../payload-types';
 import { MongoClient } from 'mongodb';
 import { generateContactFormSubmission, generateMailingListSubmission } from '../data/forms/submissionGenerator';
-
-import { pages, forms } from '../data'
-
-// const home = require('../data/home.json');
-// const homeDE = require('../data/homeDE.json');
-// const homeES = require('../data/homeES.json');
-// const videoSeriesPage = require('../data/video-series.json');
-// const caseStudiesPage = require('../data/case-studies.json');
-// const contactFormData = require('../data/forms/contact-form.json');
-// const mailingListFormData = require('../data/forms/mailing-list-form.json');
+import { homeData } from '../data/pages/homeData';
+import { homeDataDE } from '../data/pages/homeDataDE';
+import { homeDataES } from '../data/pages/homeDataES';
+import { videoSeriesData } from '../data/pages/videoSeriesData';
+import { caseStudiesData } from '../data/pages/caseStudiesData';
+import { contactFormData } from '../data/forms/contactFormData';
+import { mailingListFormData } from '../data/forms/mailingListFormData';
 
 export async function reset() {
   try {
@@ -53,41 +50,25 @@ async function seedData() {
   });
 
   // Page - Home
-  const homeString = JSON.stringify(pages.home)
-    .replace(/{{IMAGE_ID}}/g, createdMedia.id)
-    .replace(/{{USER_ID}}/g, demoUser.id);
-
-  const homeStringDE = JSON.stringify(pages.homeDE)
-    .replace(/{{IMAGE_ID}}/g, createdMedia.id)
-    .replace(/{{USER_ID}}/g, demoUser.id);
-
-  const homeStringES = JSON.stringify(pages.homeES)
-    .replace(/{{IMAGE_ID}}/g, createdMedia.id)
-    .replace(/{{USER_ID}}/g, demoUser.id);
+  const homeString = homeData(createdMedia.id, demoUser.id);
+  const homeStringDE = homeDataDE(createdMedia.id, demoUser.id);
+  const homeStringES = homeDataES(createdMedia.id, demoUser.id);
 
   const homeDoc = await payload.create<any>({
     collection: 'pages',
-    data: JSON.parse(homeString),
+    data: homeString,
   });
 
   // Page - Video Series
   await payload.create<any>({
     collection: 'pages',
-    data: JSON.parse(JSON.stringify(pages.videoSeriesPage)
-      .replace(/{{IMAGE_ID}}/g, createdMedia.id)
-      .replace(/{{USER_ID}}/g, demoUser.id)
-      .replace(/{{PARENT_ID}}/g, homeDoc.id)
-    )
+    data: videoSeriesData(createdMedia.id, demoUser.id, homeDoc.id),
   });
 
   // Page - Case Studies
   await payload.create<any>({
     collection: 'pages',
-    data: JSON.parse(JSON.stringify(pages.caseStudiesPage)
-      .replace(/{{IMAGE_ID}}/g, createdMedia.id)
-      .replace(/{{USER_ID}}/g, demoUser.id)
-      .replace(/{{PARENT_ID}}/g, homeDoc.id)
-    )
+    data: caseStudiesData(createdMedia.id, demoUser.id, homeDoc.id),
   });
 
   // TEMPORARY - bug with breadcrumbs plugin. Home page resaves automatically after creation.
@@ -98,28 +79,29 @@ async function seedData() {
       collection: 'pages',
       id: homeDoc.id,
       locale: 'de',
-      data: JSON.parse(homeStringDE),
+      data: homeStringDE,
     })
 
     await payload.update({
       collection: 'pages',
       id: homeDoc.id,
       locale: 'es',
-      data: JSON.parse(homeStringES),
+      data: homeStringES,
     })
   }, 3000);
 
   // Forms - Contact
   const contactForm = await payload.create<any>({
     collection: 'forms',
-    data: forms.contactFormData,
+    data: contactFormData(),
   });
   // Forms - Mailing List
   const mailingListForm = await payload.create<any>({
     collection: 'forms',
-    data: forms.mailingListFormData,
+    data: mailingListFormData(),
   });
 
+  // Generate form submissions
   const contactFormSubmissions = [...Array(5)].map(_ => {
     return payload.create<any>({
       collection: 'form-submissions',
