@@ -11,6 +11,7 @@ import FormBuilder from './plugins/formBuilder';
 import breadcrumbs from './plugins/breadcrumbs';
 import seo from './plugins/seo';
 import BeforeLogin from './components/BeforeLogin';
+import AfterDashboard from "./components/AfterDashboard";
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -24,6 +25,9 @@ export default buildConfig({
 			beforeLogin: [
 				BeforeLogin,
 			],
+      afterDashboard: [
+        AfterDashboard,
+      ],
 		},
   },
   collections: [
@@ -40,6 +44,9 @@ export default buildConfig({
     trustProxy: true,
     window: 2 * 60 * 1000, // 2 minutes
     max: 2400, // limit each IP per windowMs
+  },
+  graphQL: {
+    disablePlaygroundInProduction: false,
   },
   plugins: [
     FormBuilder({}),

@@ -17,5 +17,5 @@
   },
   "ts-node": {
     "transpileOnly": true
-  }
+  },
 }
