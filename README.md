@@ -13,7 +13,7 @@ This demo showcases many of the powerful features that Payload is capable, inclu
 1. [Versions](https://payloadcms.com/docs/versions/overview) and [Drafts](https://payloadcms.com/docs/versions/drafts) functionality
 1. A great pattern for how to create [reusable fields](https://github.com/payloadcms/public-demo/tree/master/src/fields) that can be used and re-used easily
 1. Field-based [localization](https://payloadcms.com/docs/configuration/localization)
-1. Many advanced field types, including the [relationship](), [blocks](), [array](), 
+1. Many advanced field types, including the [relationship](https://payloadcms.com/docs/fields/relationship), [blocks](https://payloadcms.com/docs/fields/blocks), [array](https://payloadcms.com/docs/fields/array), and many more 
 1. The official [Payload SEO plugin](https://github.com/payloadcms/plugin-seo)
 1. The official [Payload Form Builder plugin](https://github.com/payloadcms/plugin-form-builder)
 1. The official [Payload Nested Docs plugin](https://github.com/payloadcms/plugin-nested-docs)
