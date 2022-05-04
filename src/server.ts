@@ -10,6 +10,7 @@ require('dotenv').config({
 
 const app = express();
 
+// Redirect all traffic at root to admin UI
 app.get('/', function(_, res){
 	res.redirect('/admin');
 });
@@ -22,11 +23,15 @@ payload.init({
 	license: process.env.PAYLOAD_LICENSE_KEY,
   onInit: async () => {
     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-    await reset(); // Reset on start
+
+		// Clear and reset database on server start
+		// NOTE - this is only for demo purposes and should not be used 
+		// for production sites with real data
+    await reset(); 
   },
 });
 
-// Cron jobs
+// Seed database with startup data
 resetScheduledJob.start();
 
 app.listen(3000);

@@ -1,4 +1,7 @@
 import { buildConfig } from 'payload/config';
+import formBuilder from '@payloadcms/plugin-form-builder';
+import nestedDocs from '@payloadcms/plugin-nested-docs';
+import seo from '@payloadcms/plugin-seo';
 import path from 'path';
 import dotenv from 'dotenv';
 import Categories from './collections/Categories';
@@ -7,9 +10,6 @@ import Posts from './collections/Posts';
 import Users from './collections/Users';
 import Pages from './collections/Pages';
 import MainMenu from './globals/MainMenu';
-import FormBuilder from './plugins/formBuilder';
-import breadcrumbs from './plugins/breadcrumbs';
-import seo from './plugins/seo';
 import BeforeLogin from './components/BeforeLogin';
 import AfterDashboard from "./components/AfterDashboard";
 
@@ -49,8 +49,8 @@ export default buildConfig({
     disablePlaygroundInProduction: false,
   },
   plugins: [
-    FormBuilder({}),
-    breadcrumbs({
+    formBuilder({}),
+    nestedDocs({
       collections: ['pages'],
       parentFieldSlug: 'parent',
       breadcrumbsFieldSlug: 'breadcrumbs',
