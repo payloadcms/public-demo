@@ -10,6 +10,7 @@ This demo showcases many of the powerful features that Payload is capable, inclu
 
 1. [Collections](https://payloadcms.com/docs/configuration/collections) and [Globals](https://payloadcms.com/docs/configuration/globals)
 1. Use of Payload's [Local Node API](https://payloadcms.com/docs/local-api/overview) to [seed and reset initial demo data](https://github.com/payloadcms/public-demo/blob/master/src/cron/reset.ts) each time the app starts
+1. [Access Control](https://payloadcms.com/docs/access-control/overview) to restrict who can do what to the public demo's data
 1. [Versions](https://payloadcms.com/docs/versions/overview) and [Drafts](https://payloadcms.com/docs/versions/drafts) functionality
 1. A great pattern for how to create [reusable fields](https://github.com/payloadcms/public-demo/tree/master/src/fields) that can be used and re-used easily
 1. Field-based [localization](https://payloadcms.com/docs/configuration/localization)
