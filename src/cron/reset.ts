@@ -19,7 +19,12 @@ import { introducingPayloadData } from '../data/posts/introducingPayloadData';
 export async function reset() {
   try {
     payload.logger.info(`Resetting database...`);
-    fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
+		
+		const mediaDir = path.resolve(__dirname, '../../media');
+		if (fs.existsSync(mediaDir)) {
+			fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
+		}
+
     await dropDB();
     await seedData();
     payload.logger.info(`Reset Complete.`);
