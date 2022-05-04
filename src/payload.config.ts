@@ -49,7 +49,9 @@ export default buildConfig({
     disablePlaygroundInProduction: false,
   },
   plugins: [
-    formBuilder({}),
+    formBuilder({
+			redirectRelationships: ['pages', 'posts'],
+		}),
     nestedDocs({
       collections: ['pages'],
       parentFieldSlug: 'parent',

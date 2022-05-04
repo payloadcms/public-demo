@@ -96,6 +96,7 @@ export interface MainMenu {
  */
 export interface Page {
   id: string;
+  _status?: 'draft' | 'published';
   title: string;
   hero?: {
     type:
@@ -482,13 +483,11 @@ export interface Page {
     id?: string;
   }[];
   slug?: string;
-  status?: 'draft' | 'published';
   parent?: string | Page;
   author?: string | User;
   meta?: {
     title?: string;
     description?: string;
-    image?: string | Media;
   };
 }
 /**
@@ -497,15 +496,108 @@ export interface Page {
  */
 export interface Post {
   id: string;
+  _status?: 'draft' | 'published';
   title?: string;
   author?: string | User;
   publishedDate?: string;
   category?: (string | Category)[];
-  status?: 'draft' | 'published';
+  layout?: (
+    | {
+        columns?: {
+          width: 'oneThird' | 'half' | 'twoThirds' | 'full';
+          alignment: 'left' | 'center' | 'right';
+          richText?: {
+            [k: string]: unknown;
+          }[];
+          links?: {
+            link?: {
+              type?: 'reference' | 'custom';
+              label: string;
+              reference:
+                | {
+                    value: string | Page;
+                    relationTo: 'pages';
+                  }
+                | {
+                    value: string | Post;
+                    relationTo: 'posts';
+                  };
+              url: string;
+              newTab?: boolean;
+            };
+            id?: string;
+          }[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'content';
+      }
+    | {
+        media: string | Media;
+        useVimeo?: boolean;
+        vimeoID: string;
+        aspectRatio?: '56.25' | '75';
+        size?: 'normal' | 'wide' | 'fullscreen';
+        caption?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'media';
+      }
+    | {
+        alignment: 'contentOnLeft' | 'contentOnRight';
+        richText: {
+          [k: string]: unknown;
+        }[];
+        media: string | Media;
+        embeddedVideo?: {
+          embed?: boolean;
+          poster?: string | Media;
+          platform?: 'youtube' | 'vimeo';
+          videoID: string;
+          aspectRatio?: '56.25' | '75';
+        };
+        links?: {
+          link?: {
+            appearance?: 'text' | 'primaryButton' | 'secondaryButton';
+            type?: 'reference' | 'custom';
+            label: string;
+            reference:
+              | {
+                  value: string | Page;
+                  relationTo: 'pages';
+                }
+              | {
+                  value: string | Post;
+                  relationTo: 'posts';
+                };
+            url: string;
+            newTab?: boolean;
+          };
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'mediaContent';
+      }
+    | {
+        introContent?: {
+          [k: string]: unknown;
+        }[];
+        slides?: {
+          media: string | Media;
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'mediaSlider';
+      }
+  )[];
   meta?: {
     title?: string;
     description?: string;
-    image?: string | Media;
   };
 }
 /**
@@ -628,6 +720,16 @@ export interface Form {
         id?: string;
         blockName?: string;
         blockType: 'country';
+      }
+    | {
+        name: string;
+        label: string;
+        width?: number;
+        defaultValue?: number;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'number';
       }
     | {
         name: string;

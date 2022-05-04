@@ -6,6 +6,7 @@ const BeforeLogin: React.FC = () => {
 			<p>
 				To log in, use the email <strong>demo@payloadcms.com</strong> with the password <strong>demo</strong>. This demo CMS will reset every hour.
 			</p>
+			<p>The code for this demo is open source and can be found <a href="https://github.com/payloadcms/public-demo" target="_blank" rel="noopener noreferrer">here</a>.</p>
 		</div>
 	);
 };

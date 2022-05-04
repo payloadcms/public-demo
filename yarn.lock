@@ -1479,10 +1479,10 @@
   dependencies:
     jwt-decode "^3.1.2"
 
-"@payloadcms/plugin-form-builder@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@payloadcms/plugin-form-builder/-/plugin-form-builder-1.0.0.tgz#5532db729229b7788415c15b55e55f9d00300e5a"
-  integrity sha512-PqAb+vzKFJI2d+7w6Yr6PgzDIN3gd01mrQ9Mzhhy46NploPzXdHL0dvzSIhnY1XcVo8fmpl6hrX24XhUnXGrtQ==
+"@payloadcms/plugin-form-builder@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@payloadcms/plugin-form-builder/-/plugin-form-builder-1.0.2.tgz#44c20d5cdad926c7323f05f406b0f89b2c7380ea"
+  integrity sha512-ufDpFXoXs90ygsCKKJrehvZiqzDs1ljG0WVJqD7Bac/HMI2+c69Sp+hagLNxuaahAUtDa/ppFTX+9eXcWe8znA==
   dependencies:
     escape-html "^1.0.3"
 
@@ -1491,10 +1491,10 @@
   resolved "https://registry.npmjs.org/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.0.tgz#acd900f22ce8306a29dbccb7d73a12ff4f2f14aa"
   integrity sha512-MvtZx6PXNKxpKUDrPE65KvmZg6hKpjyah9RxbwvDDMLZl3loAuiv6ypb0pURyvDeSXgUJVlPkrRYHUs2XydJyg==
 
-"@payloadcms/plugin-seo@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@payloadcms/plugin-seo/-/plugin-seo-1.0.0.tgz#b217ef26258e6e8afc7b638c21b98d57661e76c1"
-  integrity sha512-7hWj7hAvA8WAz/CszD7Hq64dnUiH5VOBkm5CD0/Ldr9igd/hi5/rQ85Ad/1IcaNrf3dE+D2SKs5vROpSGN14MA==
+"@payloadcms/plugin-seo@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@payloadcms/plugin-seo/-/plugin-seo-1.0.1.tgz#103755fc65c6c9a4235ba63eea67f43cf2b840d9"
+  integrity sha512-Y5vkP5RjjVzsjbIiIQc/BcHbuQJ9v2y/4TVPZq/92OgOY/N6WNJoz9RCbfQWhhtvj0XSCRJx5e7F3sR0zHYX0w==
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
@@ -7397,10 +7397,10 @@ pause@0.0.1:
   resolved "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=
 
-payload@^0.16.2:
-  version "0.16.2"
-  resolved "https://registry.npmjs.org/payload/-/payload-0.16.2.tgz#870e16cd4574c1c840711124d2503ad862156daf"
-  integrity sha512-XFlBhXn9MkTwV+oc0UX/wJKKoBibKIwA+PUb59TYVmwrjOMxPy8UuiacNm1CbLYpP5zJL8i3H6njYHOm5p/bGQ==
+payload@^0.16.3:
+  version "0.16.3"
+  resolved "https://registry.npmjs.org/payload/-/payload-0.16.3.tgz#cab4ce821039fb1bd4ac9a5a977b080a150225e2"
+  integrity sha512-0GzmwutW/YRhpJz5m9AxiUmXZm6k09Vmzp1ej2SwjmWClQMHoTUJzRLG5jU0srzg5JYhpDB6J1W09cYwnRbSMg==
   dependencies:
     "@babel/cli" "^7.12.8"
     "@babel/core" "^7.11.6"

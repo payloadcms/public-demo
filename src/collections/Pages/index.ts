@@ -21,6 +21,9 @@ export const Pages: CollectionConfig = {
       'status',
     ],
   },
+	versions: {
+		drafts: true,
+	},
   access: {
     read: () => true,
   },
@@ -103,24 +106,6 @@ export const Pages: CollectionConfig = {
     },
     // sidebar
     slug(),
-    {
-      name: 'status',
-      type: 'select',
-      options: [
-        {
-          value: 'draft',
-          label: 'Draft',
-        },
-        {
-          value: 'published',
-          label: 'Published',
-        },
-      ],
-      defaultValue: 'draft',
-      admin: {
-        position: 'sidebar',
-      }
-    },
     {
       name: 'parent',
       label: 'Parent Page',

@@ -1,12 +1,8 @@
 import { CollectionConfig } from 'payload/types';
-import { Accordion } from '../blocks/Accordion';
 import Content from '../blocks/Content';
-import { Form } from '../blocks/Form';
 import { Media } from '../blocks/Media';
 import MediaContent from '../blocks/MediaContent';
 import MediaSlider from '../blocks/MediaSlider';
-import embeddedVideo from '../fields/embeddedVideo';
-import { hero } from '../fields/hero';
 
 const Posts: CollectionConfig = {
   slug: 'posts',
@@ -17,6 +13,9 @@ const Posts: CollectionConfig = {
   access: {
     read: () => true,
   },
+	versions: {
+		drafts: true,
+	},
   fields: [
     {
       name: 'title',
@@ -37,24 +36,6 @@ const Posts: CollectionConfig = {
       type: 'relationship',
       relationTo: 'categories',
 			hasMany: true,
-    },
-    {
-      name: 'status',
-      type: 'select',
-      options: [
-        {
-          value: 'draft',
-          label: 'Draft',
-        },
-        {
-          value: 'published',
-          label: 'Published',
-        },
-      ],
-      defaultValue: 'draft',
-      admin: {
-        position: 'sidebar',
-      }
     },
     {
       name: 'layout',
