@@ -71,17 +71,11 @@ const CategorySummary: React.FC = () => {
           </p>
       ) : (
         <p>
-          <a
-            href={`/admin/collections/posts?where[category][in]=${id}`}
-          >
+            {/* collection index filters use url params to allow linking to queries */}
+          <a href={`/admin/collections/posts?where[or][0][and][0][category][in][0]=[${id}]`} >
             {postCount}
             {' '}
             Posts
-          </a>
-          <br />
-          {/* adding the category to the create url will allow us to set the category in a defaultValue field function */}
-          <a href={`/admin/collections/posts/create?category=[${id}]`}>
-            Create Post
           </a>
         </p>
       )}

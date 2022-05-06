@@ -3,7 +3,6 @@ import Content from '../blocks/Content';
 import { Media } from '../blocks/Media';
 import MediaContent from '../blocks/MediaContent';
 import MediaSlider from '../blocks/MediaSlider';
-import getQueryParam from '../utilities/getQueryParam'
 
 const Posts: CollectionConfig = {
   // the slug is used for naming the collection in the database and the APIs that are open. For example: api/posts/${id}
@@ -58,8 +57,6 @@ const Posts: CollectionConfig = {
       filterOptions: {
         archived: { equals: false },
       },
-      // getting a defaultValue from a query param allows links that include preset values
-      defaultValue: getQueryParam('category'),
       // allow selection of one or more categories
 			hasMany: true,
     },

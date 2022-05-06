@@ -32,7 +32,7 @@ const Categories: CollectionConfig = {
         position: 'sidebar',
         components: {
           // this custom component will fetch the posts count for how many posts have this category
-          // Field: CategorySummary,
+          Field: CategorySummary,
         }
       }
     }
