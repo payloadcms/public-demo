@@ -88,6 +88,7 @@ export const Alerts: CollectionConfig = {
         elements: [
           'link',
         ],
+        // leaves manage the toolbar options on the richText editor in the admin UI
         leaves: [
           'bold',
           'italic',

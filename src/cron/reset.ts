@@ -149,6 +149,14 @@ async function seedData() {
     }),
   ])
 
+  const ignorePromise = await payload.create<any>({
+    collection: 'categories',
+    data: {
+      name: 'announcements',
+      archived: true,
+    }
+  });
+
   await payload.create<any>({
     collection: 'posts',
     data: generateTsInterfacesData(demoUserId, featureCategory.id, imageId),
