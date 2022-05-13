@@ -72,7 +72,7 @@ const CategorySummary: React.FC = () => {
       ) : (
         <p>
             {/* collection index filters use url params to allow linking to queries */}
-          <a href={`/admin/collections/posts?where[or][0][and][0][category][in][0]=[${id}]`} >
+          <a href={`/admin/collections/posts?where[or][0][and][0][category][in][0]=${id}`} >
             {postCount}
             {' '}
             Posts
