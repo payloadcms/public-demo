@@ -13,18 +13,34 @@ const Posts: CollectionConfig = {
     // defaultColumns is used on the listing screen in the admin UI for the collection
     defaultColumns: [
       'title',
-      'author',
       'category',
+      'publishDate',
       'tags',
       'status'
     ],
   },
-  // the access is set to allow read for anyone
   access: {
-    // allow guest users to fetch posts
-    read: () => true,
-    // The access for the remaining options use the default which prevents all guest access and is allowed for authenticated users
-    // create, update, delete, readVersions, admin, unlock
+    read: ({ req: { user } }) => {
+
+      // users who are authenticated will see all posts
+      if (user) {
+        return true;
+      }
+
+      // query publishDate to control when posts are visible to guests
+      return {
+        and: [
+          {
+            publishDate: {
+              less_than: new Date().toJSON(),
+            },
+            _status: {
+              equals: 'published',
+            },
+          },
+        ],
+      };
+    },
   },
   // versioning with drafts enabled tells Payload to save documents to a separate collection in the database and allow publishing
 	versions: {
@@ -45,8 +61,12 @@ const Posts: CollectionConfig = {
       defaultValue: ({ user }) => (user.id),
     },
     {
-      name: 'publishedDate',
+      name: 'publishDate',
       type: 'date',
+      admin: {
+        position: 'sidebar',
+        description: 'Posts will not be public until this date',
+      },
       defaultValue: () => (new Date()),
     },
     {

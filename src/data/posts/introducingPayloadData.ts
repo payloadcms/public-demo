@@ -7,9 +7,9 @@ export function introducingPayloadData(
     title:
       "Introducing Payload - 2021's Node + React Headless CMS for JavaScript Developers",
     author: authorId,
-    publishedDate: '2021-01-13T05:00:00.000Z',
+    publishDate: '2021-01-13T05:00:00.000Z',
     category: [categoryId],
-    status: 'published',
+    _status: 'published',
     layout: [
       {
         columns: [

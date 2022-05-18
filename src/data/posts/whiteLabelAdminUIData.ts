@@ -6,9 +6,9 @@ export function whiteLabelAdminUIData(
   return {
     title: 'White Label the Admin UI',
     author: authorId,
-    publishedDate: '2022-02-04T05:00:00.000Z',
+    publishDate: '2022-02-04T05:00:00.000Z',
     category: [categoryId],
-    status: 'published',
+    _status: 'published',
     layout: [
       {
         columns: [
