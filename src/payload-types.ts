@@ -499,7 +499,7 @@ export interface Post {
   _status?: 'draft' | 'published';
   title?: string;
   author?: string | User;
-  publishedDate?: string;
+  publishDate?: string;
   category?: (string | Category)[];
   layout?: (
     | {
@@ -609,6 +609,9 @@ export interface User {
   email?: string;
   resetPasswordToken?: string;
   resetPasswordExpiration?: string;
+  enableAPIKey?: boolean;
+  apiKey?: string;
+  apiKeyIndex?: string;
   loginAttempts?: number;
   lockUntil?: string;
   name?: string;
@@ -620,6 +623,7 @@ export interface User {
 export interface Category {
   id: string;
   name?: string;
+  archived?: boolean;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -777,6 +781,42 @@ export interface Form {
     message?: {
       [k: string]: unknown;
     }[];
+    id?: string;
+  }[];
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "alerts".
+ */
+export interface Alert {
+  id: string;
+  name?: string;
+  placement: 'global' | 'documents';
+  documents: {
+    value: string | Page;
+    relationTo: 'pages';
+  }[];
+  backgroundColor?: 'green' | 'blue' | 'red' | 'purple';
+  content: {
+    [k: string]: unknown;
+  }[];
+  links?: {
+    link?: {
+      appearance?: 'text' | 'primaryButton' | 'secondaryButton';
+      type?: 'reference' | 'custom';
+      label: string;
+      reference:
+        | {
+            value: string | Page;
+            relationTo: 'pages';
+          }
+        | {
+            value: string | Post;
+            relationTo: 'posts';
+          };
+      url: string;
+      newTab?: boolean;
+    };
     id?: string;
   }[];
 }

@@ -15,11 +15,12 @@ import { generateTsInterfacesData } from '../data/posts/generateTsInterfacesData
 import { whiteLabelAdminUIData } from '../data/posts/whiteLabelAdminUIData';
 import { buildWebsiteData } from '../data/posts/buildWebsiteData';
 import { introducingPayloadData } from '../data/posts/introducingPayloadData';
+import { futurePostData } from '../data/posts/futurePostData'
 
 export async function reset() {
   try {
     payload.logger.info(`Resetting database...`);
-		
+
 		const mediaDir = path.resolve(__dirname, '../../media');
 		if (fs.existsSync(mediaDir)) {
 			fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
@@ -172,5 +173,9 @@ async function seedData() {
   await payload.create<any>({
     collection: 'posts',
     data: introducingPayloadData(demoUserId, newsCategory.id, imageId),
+  })
+  await payload.create<any>({
+    collection: 'posts',
+    data: futurePostData(demoUserId, newsCategory.id, imageId),
   })
 }

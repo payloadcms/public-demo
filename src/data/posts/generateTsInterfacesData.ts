@@ -3,14 +3,14 @@ export function generateTsInterfacesData(authorId: string, categoryId: string, i
     id: '62007c57d0dee299037cda6f',
     title: 'New Feature - Auto-generate TypeScript Interfaces',
     author: authorId,
-    publishedDate: '2022-02-01T05:00:00.000Z',
+    publishDate: '2022-02-01T05:00:00.000Z',
     category: [
       categoryId,
       // {
       //   id: categoryId,
       // },
     ],
-    status: 'published',
+    _status: 'published',
     layout: [
       {
         columns: [

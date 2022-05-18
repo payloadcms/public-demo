@@ -7,9 +7,9 @@ export function buildWebsiteData(
     title:
       'Building a Professionally Designed Website with NextJS & TypeScript - Ep. 1',
     author: authorId,
-    publishedDate: '2021-03-23T05:00:00.000Z',
+    publishDate: '2021-03-23T05:00:00.000Z',
     category: [categoryId],
-    status: 'published',
+    _status: 'published',
     layout: [
       {
         columns: [
