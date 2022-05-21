@@ -16,15 +16,16 @@ import { whiteLabelAdminUIData } from '../data/posts/whiteLabelAdminUIData';
 import { buildWebsiteData } from '../data/posts/buildWebsiteData';
 import { introducingPayloadData } from '../data/posts/introducingPayloadData';
 import { futurePostData } from '../data/posts/futurePostData'
+import { mainMenuData } from '../data/mainMenu/mainMenuData';
 
 export async function reset() {
   try {
     payload.logger.info(`Resetting database...`);
 
-		const mediaDir = path.resolve(__dirname, '../../media');
-		if (fs.existsSync(mediaDir)) {
-			fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
-		}
+    const mediaDir = path.resolve(__dirname, '../../media');
+    if (fs.existsSync(mediaDir)) {
+      fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
+    }
 
     await dropDB();
     await seedData();
@@ -76,9 +77,15 @@ async function seedData() {
   });
 
   // Page - Case Studies
-  await payload.create<any>({
+  const { id: caseStudiesDocId } = await payload.create<any>({
     collection: 'pages',
     data: caseStudiesData(imageId, demoUserId, homeDocId),
+  });
+
+  // Main Menu
+  await payload.updateGlobal<any>({
+    slug: 'mainMenu',
+    data: mainMenuData(homeDocId, caseStudiesDocId),
   });
 
   // TEMPORARY - bug with breadcrumbs plugin. Home page resaves automatically after creation.
@@ -90,14 +97,14 @@ async function seedData() {
       id: homeDocId,
       locale: 'de',
       data: homeStringDE,
-    })
+    });
 
     await payload.update({
       collection: 'pages',
       id: homeDocId,
       locale: 'es',
       data: homeStringES,
-    })
+    });
   }, 3000);
 
   // Forms - Contact
@@ -115,17 +122,17 @@ async function seedData() {
   const contactFormSubmissions = [...Array(5)].map(_ => {
     return payload.create<any>({
       collection: 'form-submissions',
-      data: generateContactFormSubmission(contactForm.id)
+      data: generateContactFormSubmission(contactForm.id),
     });
-  })
+  });
   await Promise.all(contactFormSubmissions);
 
   const mailingListSubmissions = [...Array(5)].map(_ => {
     return payload.create<any>({
       collection: 'form-submissions',
-      data: generateMailingListSubmission(mailingListForm.id)
+      data: generateMailingListSubmission(mailingListForm.id),
     });
-  })
+  });
   await Promise.all(mailingListSubmissions);
 
   // Create Categories
@@ -133,49 +140,49 @@ async function seedData() {
     payload.create<any>({
       collection: 'categories',
       data: {
-        name: 'news'
-      }
+        name: 'news',
+      },
     }),
     payload.create<any>({
       collection: 'categories',
       data: {
-        name: 'feature'
-      }
+        name: 'feature',
+      },
     }),
     payload.create<any>({
       collection: 'categories',
       data: {
-        name: 'tutorial'
-      }
+        name: 'tutorial',
+      },
     }),
-  ])
+  ]);
 
   const ignorePromise = await payload.create<any>({
     collection: 'categories',
     data: {
       name: 'announcements',
       archived: true,
-    }
+    },
   });
 
   await payload.create<any>({
     collection: 'posts',
     data: generateTsInterfacesData(demoUserId, featureCategory.id, imageId),
-  })
+  });
   await payload.create<any>({
     collection: 'posts',
     data: whiteLabelAdminUIData(demoUserId, tutorialCategory.id, imageId),
-  })
+  });
   await payload.create<any>({
     collection: 'posts',
     data: buildWebsiteData(demoUserId, tutorialCategory.id, imageId),
-  })
+  });
   await payload.create<any>({
     collection: 'posts',
     data: introducingPayloadData(demoUserId, newsCategory.id, imageId),
-  })
+  });
   await payload.create<any>({
     collection: 'posts',
     data: futurePostData(demoUserId, newsCategory.id, imageId),
-  })
+  });
 }
