@@ -11,7 +11,7 @@ import VideoIcon from '../Icon';
 import './index.scss';
 
 const initialFormData = {
-  source: 'vimeo',
+  source: 'youtube',
 };
 
 const sources = [
