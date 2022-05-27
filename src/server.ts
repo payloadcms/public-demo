@@ -11,8 +11,8 @@ require('dotenv').config({
 const app = express();
 
 // Redirect all traffic at root to admin UI
-app.get('/', function(_, res){
-	res.redirect('/admin');
+app.get('/', function (_, res) {
+  res.redirect('/admin');
 });
 
 // Initialize Payload
@@ -20,13 +20,12 @@ payload.init({
   secret: process.env.PAYLOAD_SECRET_KEY,
   mongoURL: process.env.MONGO_URL,
   express: app,
-	license: process.env.PAYLOAD_LICENSE_KEY,
   onInit: async () => {
     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
 
-		// Clear and reset database on server start
-		// NOTE - this is only for demo purposes and should not be used
-		// for production sites with real data
+    // Clear and reset database on server start
+    // NOTE - this is only for demo purposes and should not be used
+    // for production sites with real data
     await reset();
   },
 });
