@@ -4,7 +4,7 @@ import './index.scss';
 
 const baseClass = 'rich-text-hr';
 
-const ButtonElement: React.FC<{ attributes: any, element: any }> = ({ attributes, children, element }) => {
+const ButtonElement: React.FC<{ children: React.ReactNode, attributes: any, element: any }> = ({ attributes, children, element }) => {
   return (
     <div
       contentEditable={false}
