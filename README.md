@@ -1,6 +1,6 @@
 # Payload Public Demo
 
-This is the code that powers the official public demo of Payload CMS.
+This is the code that powers the official public demo of [Payload CMS](https://github.com/payloadcms/payload).
 
 It's deployed at [https://demo.payloadcms.com](https://demo.payloadcms.com). Go check it out!
 
