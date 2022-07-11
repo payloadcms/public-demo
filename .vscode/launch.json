@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Payload Demo Seed",
+      "name": "Debug Payload Public Demo",
       "program": "${workspaceFolder}/src/server.ts",
       "preLaunchTask": "npm: pre:debug",
     },
