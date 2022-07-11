@@ -17,7 +17,7 @@
   "dependencies": {
     "@faker-js/faker": "^6.0.0-alpha.5",
     "@payloadcms/plugin-form-builder": "^1.0.2",
-    "@payloadcms/plugin-nested-docs": "^1.0.2",
+    "@payloadcms/plugin-nested-docs": "^1.0.3",
     "@payloadcms/plugin-seo": "^1.0.2",
     "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",

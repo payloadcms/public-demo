@@ -1558,10 +1558,10 @@
     deepmerge "^4.2.2"
     escape-html "^1.0.3"
 
-"@payloadcms/plugin-nested-docs@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.2.tgz#173123b76c414f25ad70668ec3be66dca38634cc"
-  integrity sha512-cYMlLAqje0r+Ahl5+AH5NQs9GqQiIyOnieqTuq/TO+gjvR5Dzu0I1D/b6k2nx3NoKY+pRUDQ6DrwtH7MB33ViQ==
+"@payloadcms/plugin-nested-docs@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.3.tgz#c77669fd14fedb7bea7a0695d8d6e1a38099b5bd"
+  integrity sha512-ggA+XSKoWTZr2mRwhU7WryZrufBxfkNbyObm5sioT/Osv7eUbRot1DmJkSsrb5uklTRKPfuyNEIlFUXiY8EfiA==
 
 "@payloadcms/plugin-seo@^1.0.2":
   version "1.0.4"
