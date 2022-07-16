@@ -45,22 +45,37 @@ export const Pages: CollectionConfig = {
       required: true,
 			localized: true,
     },
-    hero,
-    {
-      name: 'layout',
-      label: 'Page Layout',
-      type: 'blocks',
-      minRows: 1,
-			localized: true,
-      blocks: [
-        Accordion,
-        Content,
-        Form,
-        Media,
-        MediaContent,
-        MediaSlider,
-      ],
-    },
+		{
+			type: 'tabs',
+			tabs: [
+				{
+					label: 'Hero',
+					fields: [
+						hero,
+					],
+				},
+				{
+					label: 'Page Layout',
+					fields: [
+						{
+							name: 'layout',
+							label: false,
+							type: 'blocks',
+							minRows: 1,
+							localized: true,
+							blocks: [
+								Accordion,
+								Content,
+								Form,
+								Media,
+								MediaContent,
+								MediaSlider,
+							],
+						},
+					]
+				}
+			]
+		},
     {
       name: 'fullTitle',
       type: 'text',

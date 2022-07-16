@@ -13,6 +13,7 @@ import MainMenu from './globals/MainMenu';
 import BeforeLogin from './components/BeforeLogin';
 import AfterDashboard from "./components/AfterDashboard";
 import { Alerts } from './collections/Alerts'
+import BeforeDashboard from './components/BeforeDashboard';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -34,6 +35,9 @@ export default buildConfig({
 		components: {
 			beforeLogin: [
 				BeforeLogin,
+			],
+			beforeDashboard: [
+				BeforeDashboard,
 			],
       afterDashboard: [
         AfterDashboard,

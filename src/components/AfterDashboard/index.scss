@@ -1,0 +1,11 @@
+@import '~payload/scss';
+
+.after-dashboard {
+	margin: base(2) calc(var(--gutter-h) * -1) 0;
+	padding: base(2) var(--gutter-h) 0;
+	border-top: 1px solid var(--theme-elevation-100);
+
+	h4 {
+		margin-bottom: base(.5);
+	}
+}

@@ -48,7 +48,6 @@ const link: LinkType = ({
       defaultValue: 'reference',
       admin: {
         layout: 'horizontal',
-        width: '50%',
       },
     },
     ],
@@ -95,6 +94,7 @@ const link: LinkType = ({
 
     linkOptions.fields[1].admin.width = '50%';
     linkOptions.fields[2].admin.width = '50%';
+		generatedLink.fields[0].admin.width = '50%';
     generatedLink.fields.push(linkOptions);
   } else {
     generatedLink.fields.push(linkOptions);

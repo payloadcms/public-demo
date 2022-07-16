@@ -15,8 +15,15 @@
 	}
 
 	&__label {
+		@extend %body;
+		font-family: var(--font-body);
 		padding-top: base(0.25);
 		line-height: base(0.75);
+		display: flex;
+
+		svg {
+			flex-shrink: 0;
+		}
 	}
 
 	&--selected {
