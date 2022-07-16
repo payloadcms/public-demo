@@ -43,6 +43,7 @@ const richTextHeroField = (args?: Args): RichTextField => {
 
 export const hero: Field = {
   name: 'hero',
+	label: false,
   type: 'group',
   fields: [
     {

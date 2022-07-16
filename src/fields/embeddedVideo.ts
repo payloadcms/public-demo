@@ -5,6 +5,9 @@ const embeddedVideo: Field = {
   name: 'embeddedVideo',
   label: 'Embedded Video',
   type: 'group',
+	admin: {
+		hideGutter: true,
+	},
   fields: [
     {
       name: 'embed',
