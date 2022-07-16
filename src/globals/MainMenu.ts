@@ -50,7 +50,6 @@ const MainMenu: GlobalConfig = {
           label: false,
           type: 'group',
           admin: {
-            hideGutter: true,
             condition: (_, { type } = {}) => type === 'subMenu',
           },
           fields: [

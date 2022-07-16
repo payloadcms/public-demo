@@ -31,12 +31,7 @@ export const MediaContent: Block = {
       },
     },
     richText(
-      {
-        required: true,
-        admin: {
-          hideGutter: true,
-        },
-      },
+      {},
       {
         elements: [
           'ol',

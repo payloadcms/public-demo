@@ -29,7 +29,6 @@ export default buildConfig({
 
     // override existing payload styles with custom look
     css: path.resolve(__dirname, './styles/custom.scss'),
-    scss: path.resolve(__dirname, './styles/variables.scss'),
 
     // custom components added to show demo info
 		components: {
@@ -76,6 +75,7 @@ export default buildConfig({
     formBuilder({
 			redirectRelationships: ['pages', 'posts'],
 		}),
+		// @ts-ignore
     nestedDocs({
       collections: ['pages'],
       parentFieldSlug: 'parent',

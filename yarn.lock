@@ -1248,14 +1248,6 @@
   resolved "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@faceless-ui/collapsibles@^1.0.0":
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/@faceless-ui/collapsibles/-/collapsibles-1.1.1.tgz#89b86e11eceae55ed87caa4de9d395f7b082a938"
-  integrity sha512-7tU5CjXUnW7bKthpMgNKs5TirTb+DQVFASnstqlpe+gXl8W76Rq4Z9m6nS3PnnG2B5h9aqtUVaNgroLc1J+i/w==
-  dependencies:
-    react-animate-height "^2.0.16"
-    react-transition-group "^4.4.2"
-
 "@faceless-ui/modal@^1.1.7":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@faceless-ui/modal/-/modal-1.2.0.tgz#0ca43e480f83d307dcd84c033fbc82c0619f5d8c"
@@ -1563,10 +1555,10 @@
   resolved "https://registry.npmjs.org/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.3.tgz#c77669fd14fedb7bea7a0695d8d6e1a38099b5bd"
   integrity sha512-ggA+XSKoWTZr2mRwhU7WryZrufBxfkNbyObm5sioT/Osv7eUbRot1DmJkSsrb5uklTRKPfuyNEIlFUXiY8EfiA==
 
-"@payloadcms/plugin-seo@^1.0.2":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@payloadcms/plugin-seo/-/plugin-seo-1.0.4.tgz#aaef879578324ae9161e21eddd79c24ecd1816ee"
-  integrity sha512-+3hcBwbfufjBLJIPewTe0yJ1F4vVHAT7brnv2pp/MUPcJN/p3X8tp5w5mUUCh2CpTTOgX4CTEelR9LUGBs9HRg==
+"@payloadcms/plugin-seo@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@payloadcms/plugin-seo/-/plugin-seo-1.0.6.tgz#dd75d224e7fdde356971688fe1fa539d905f220b"
+  integrity sha512-7f/ZChMELcpJ9z+uaC1iVsV6zSYxUWD7oS75jt0uyiqZ6p8uE1k8yQLVaq5IxdBTWrTIGkGHj710IWfjnLOxYg==
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
@@ -6687,10 +6679,10 @@ pause@0.0.1:
   resolved "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
 
-payload@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.npmjs.org/payload/-/payload-0.19.2.tgz#8c387e741fbbb0b1301f4f810c3de235543f483c"
-  integrity sha512-6Q4IWmRK5KEP0Y9hMSpybIhfPv1gaOdtMKJixTKasxr+lcKE2Nx+fUqrUpJYlkWqQGXmmW15d/FyUdjLXLlzYQ==
+payload@0.20.7-beta.0:
+  version "0.20.7-beta.0"
+  resolved "https://registry.npmjs.org/payload/-/payload-0.20.7-beta.0.tgz#fb66b15b227fa0b886eeb97e18fee5f7d6ca8c80"
+  integrity sha512-gf53Vs0CbCO9Mpt9HYcEG6KChA1Dsc9anLebjTCB0+vSj5AHNSDVbfZOUZ7xAEIZ2JTg0g+K/0Mr/Tvef8aoWQ==
   dependencies:
     "@babel/cli" "^7.12.8"
     "@babel/core" "^7.11.6"
@@ -6703,7 +6695,6 @@ payload@^0.19.2:
     "@babel/preset-typescript" "^7.12.1"
     "@babel/register" "^7.11.5"
     "@date-io/date-fns" "^2.10.6"
-    "@faceless-ui/collapsibles" "^1.0.0"
     "@faceless-ui/modal" "^1.1.7"
     "@faceless-ui/scroll-info" "^1.2.3"
     "@faceless-ui/window-info" "^2.0.2"
@@ -7584,7 +7575,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-animate-height@^2.0.16, react-animate-height@^2.0.20:
+react-animate-height@^2.0.20:
   version "2.1.2"
   resolved "https://registry.npmjs.org/react-animate-height/-/react-animate-height-2.1.2.tgz#9b450fc64d46f10f5e07da8d0d5e2c47b9f15030"
   integrity sha512-A9jfz/4CTdsIsE7WCQtO9UkOpMBcBRh8LxyHl2eoZz1ki02jpyUL5xt58gabd0CyeLQ8fRyQ+s2lyV2Ufu8Owg==

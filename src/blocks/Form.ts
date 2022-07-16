@@ -4,11 +4,7 @@ import richText from '../fields/richText';
 export const Form: Block = {
   slug: 'embeddedForm',
   fields: [
-    richText({
-      admin: {
-        hideGutter: true,
-      },
-    }),
+    richText({}),
     {
       name: 'form',
       type: 'relationship',

@@ -18,6 +18,23 @@ import { introducingPayloadData } from '../data/posts/introducingPayloadData';
 import { futurePostData } from '../data/posts/futurePostData'
 import { mainMenuData } from '../data/mainMenu/mainMenuData';
 
+export async function seed() {
+  try {
+    payload.logger.info(`Seeding database...`);
+
+    const mediaDir = path.resolve(__dirname, '../../media');
+    if (fs.existsSync(mediaDir)) {
+      fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true });
+    }
+
+    await seedData();
+    payload.logger.info(`Seed Complete.`);
+  } catch (error) {
+    console.error(error);
+    payload.logger.error('Error seeding database.');
+  }
+}
+
 export async function reset() {
   try {
     payload.logger.info(`Resetting database...`);

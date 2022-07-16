@@ -1,7 +1,7 @@
 import express from 'express';
 import payload from 'payload';
 import path from 'path';
-import { reset } from './cron/reset';
+import { seed } from './cron/reset';
 import { resetScheduledJob } from './cron/jobs';
 
 require('dotenv').config({
@@ -26,7 +26,7 @@ payload.init({
     // Clear and reset database on server start
     // NOTE - this is only for demo purposes and should not be used
     // for production sites with real data
-    await reset();
+    await seed();
   },
 });
 

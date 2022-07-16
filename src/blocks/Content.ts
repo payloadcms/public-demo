@@ -78,11 +78,7 @@ export const Content: Block = {
           ],
         },
         richText(
-          {
-            admin: {
-              hideGutter: true,
-            },
-          },
+          {},
           {
             elements: [
               'ol',

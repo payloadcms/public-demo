@@ -32,9 +32,6 @@ const link: LinkType = ({
   const generatedLink: Field = {
     name: 'link',
     type: 'group',
-    admin: {
-      hideGutter: true,
-    },
     fields: [{
       name: 'type',
       type: 'radio',

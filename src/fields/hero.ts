@@ -8,14 +8,12 @@ import embeddedVideo from './embeddedVideo';
 
 type Args = {
   name?: string,
-  hideGutter?: boolean,
   condition?: (data: any, sibling: any) => boolean,
 }
 
 const richTextHeroField = (args?: Args): RichTextField => {
   const {
     name,
-    hideGutter,
     condition,
   } = args || {};
 
@@ -24,7 +22,6 @@ const richTextHeroField = (args?: Args): RichTextField => {
     name: name || 'richText',
 		localized: true,
     admin: {
-      hideGutter,
       elements: [
         'h1',
         'h2',
@@ -34,6 +31,7 @@ const richTextHeroField = (args?: Args): RichTextField => {
         'h6',
         largeBody,
         'link',
+				'upload',
       ],
       leaves: [
         'underline',
@@ -46,9 +44,6 @@ const richTextHeroField = (args?: Args): RichTextField => {
 export const hero: Field = {
   name: 'hero',
   type: 'group',
-  admin: {
-    hideGutter: true,
-  },
   fields: [
     {
       type: 'select',
@@ -92,7 +87,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'basic',
       },
       fields: [
@@ -105,7 +99,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'content',
       },
       fields: [
@@ -118,7 +111,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'contentMedia',
       },
       fields: [
@@ -142,7 +134,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'contentSidebar',
       },
       fields: [
@@ -158,7 +149,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'fullscreenBackground',
       },
       fields: [
@@ -180,7 +170,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'quickNav',
       },
       fields: [
@@ -230,7 +219,6 @@ export const hero: Field = {
       label: false,
       type: 'group',
       admin: {
-        hideGutter: true,
         condition: (_, { type } = {}) => type === 'fullscreenSlider',
       },
       fields: [
@@ -271,7 +259,6 @@ export const hero: Field = {
               },
             },
             richTextHeroField({
-              hideGutter: true,
               condition: (data) => {
                 const dataRef = data as any;
                 const useStaticContent = dataRef?.hero?.fullscreenSlider?.useStaticContent;

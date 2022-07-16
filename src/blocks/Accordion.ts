@@ -114,11 +114,7 @@ export const Accordion: Block = {
                 },
               ],
             },
-            richText({
-              admin: {
-                hideGutter: true,
-              },
-            }, {
+            richText({}, {
               elements: [
                 'relationship',
                 'ol',
