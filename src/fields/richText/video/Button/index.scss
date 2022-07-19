@@ -30,4 +30,9 @@
       height: base(1.5);
     }
   }
+
+	&__template {
+		position: relative;
+    z-index: 1;
+	}
 }

@@ -81,7 +81,7 @@ const VideoButton: React.FC<{path: string}> = ({ path }) => {
           slug={modalSlug}
           className={`${baseClass}__modal`}
         >
-          <MinimalTemplate>
+          <MinimalTemplate className={`${baseClass}__template`}>
             <header className={`${baseClass}__header`}>
               <h3>Add Video</h3>
               <Button
