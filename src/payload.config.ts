@@ -32,23 +32,23 @@ export default buildConfig({
     css: path.resolve(__dirname, './styles/custom.scss'),
 
     // custom components added to show demo info
-		components: {
-			beforeLogin: [
-				BeforeLogin,
-			],
-			beforeDashboard: [
-				BeforeDashboard,
-			],
+    components: {
+      beforeLogin: [
+        BeforeLogin,
+      ],
+      beforeDashboard: [
+        BeforeDashboard,
+      ],
       afterDashboard: [
         AfterDashboard,
       ],
-		},
+    },
   },
 
   // collections in Payload are synonymous with database tables, models or entities from other frameworks and systems
   collections: [
     Categories,
-		Media,
+    Media,
     Posts,
     Pages,
     Users,
@@ -56,9 +56,9 @@ export default buildConfig({
   ],
 
   // globals are a single-instance collection, often used for navigation or site settings that live in one place
-	globals: [
-		MainMenu,
-	],
+  globals: [
+    MainMenu,
+  ],
 
   // rateLimits provide basic API DDOS (Denial-of-service) protection and can limit accidental server load from scripts
   rateLimit: {
@@ -77,9 +77,9 @@ export default buildConfig({
 
   plugins: [
     formBuilder({
-			redirectRelationships: ['pages', 'posts'],
-		}),
-		// @ts-ignore
+      redirectRelationships: ['pages', 'posts'],
+    }),
+    // @ts-ignore
     nestedDocs({
       collections: ['pages'],
       parentFieldSlug: 'parent',
@@ -94,14 +94,24 @@ export default buildConfig({
       ],
     }),
   ],
-	localization: {
-		defaultLocale: 'en',
-		locales: [
-			'en',
-			'es',
-			'de'
-		],
-	},
+
+  // optional customization of routes
+  routes: {
+    api: '/api',
+    admin: '/admin',
+    graphQL: '/graphql',
+    graphQLPlayground: '/graphql-playground',
+  },
+
+  localization: {
+    defaultLocale: 'en',
+    locales: [
+      'en',
+      'es',
+      'de'
+    ],
+  },
+
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
   },
