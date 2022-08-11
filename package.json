@@ -12,7 +12,8 @@
     "build:server": "tsc",
     "build": "yarn copyfiles && yarn build:payload && yarn build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
-    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types"
+    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
+    "generate:graphql-schema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphqlSchema"
   },
   "dependencies": {
     "@faker-js/faker": "^6.0.0-alpha.5",
@@ -24,7 +25,7 @@
     "express": "^4.17.1",
     "mongodb": "^4.3.0",
     "node-cron": "^3.0.0",
-    "payload": "^1.0.13",
+    "payload": "^1.0.20",
     "qs": "^6.10.3"
   },
   "devDependencies": {
