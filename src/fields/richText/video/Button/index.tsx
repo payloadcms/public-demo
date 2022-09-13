@@ -49,17 +49,17 @@ const insertVideo = (editor, { id, source }) => {
   ReactEditor.focus(editor);
 };
 
-const VideoButton: React.FC<{path: string}> = ({ path }) => {
-  const { open, closeAll } = useModal();
+const VideoButton: React.FC<{ path: string }> = ({ path }) => {
+  const { toggleModal } = useModal();
   const editor = useSlate();
   const [renderModal, setRenderModal] = useState(false);
   const modalSlug = `${path}-add-video`;
 
   const handleAddVideo = useCallback((_, { id, source }) => {
     insertVideo(editor, { id, source });
-    closeAll();
+    toggleModal(modalSlug);
     setRenderModal(false);
-  }, [editor, closeAll]);
+  }, [editor, toggleModal]);
 
   useEffect(() => {
     if (renderModal) {
@@ -87,7 +87,7 @@ const VideoButton: React.FC<{path: string}> = ({ path }) => {
               <Button
                 buttonStyle="none"
                 onClick={() => {
-                  closeAll();
+                  toggleModal(modalSlug);
                   setRenderModal(false);
                 }}
               >
