@@ -15,6 +15,7 @@ export const Alerts: CollectionConfig = {
       'backgroundColor',
     ],
     enableRichTextRelationship: false,
+    group: 'Admin'
   },
   fields: [
     {
@@ -83,7 +84,7 @@ export const Alerts: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
-			localized: true,
+      localized: true,
       admin: {
         elements: [
           'link',

@@ -30,6 +30,7 @@ const Users: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'email',
+    group: 'Admin',
   },
   access: {
 

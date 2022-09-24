@@ -5,7 +5,8 @@ const Categories: CollectionConfig = {
   slug: 'categories',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'id', 'archived']
+    defaultColumns: ['name', 'id', 'archived'],
+    group: 'Content',
   },
   access: {
     read: () => true,

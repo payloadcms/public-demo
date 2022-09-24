@@ -18,6 +18,7 @@ const Posts: CollectionConfig = {
       'tags',
       'status'
     ],
+    group: 'Content'
   },
   access: {
     read: ({ req: { user } }) => {
@@ -43,15 +44,15 @@ const Posts: CollectionConfig = {
     },
   },
   // versioning with drafts enabled tells Payload to save documents to a separate collection in the database and allow publishing
-	versions: {
-		drafts: true,
-	},
+  versions: {
+    drafts: true,
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
       // localized fields are stored as keyed objects to represent each locale listed in the payload.config.ts. For example: { en: 'English', es: 'Espanol', ...etc }
-			localized: true,
+      localized: true,
     },
     {
       name: 'author',
@@ -78,7 +79,7 @@ const Posts: CollectionConfig = {
         archived: { equals: false },
       },
       // allow selection of one or more categories
-			hasMany: true,
+      hasMany: true,
     },
     {
       name: 'layout',

@@ -16,6 +16,7 @@ const Media: CollectionConfig = {
   admin: {
     useAsTitle: 'filename',
     description: 'Uploads are set to read-only for this demo.',
+    group: 'Content'
   },
 
   // file uploads are stored on the server by default, plugins are available for cloud storage
@@ -33,22 +34,22 @@ const Media: CollectionConfig = {
 
     // in addition to the original file, Payload saves resized images automatically
     imageSizes: [
-			{
-				name: 'thumbnail',
-				width: 480,
-				height: 320,
-			},
-			{
-				name: 'portrait',
-				width: 768,
-				height: 1024,
-			},
-			{
-				name: 'hero',
-				width: 1920,
-				height: 1080,
-			}
-		],
+      {
+        name: 'thumbnail',
+        width: 480,
+        height: 320,
+      },
+      {
+        name: 'portrait',
+        width: 768,
+        height: 1024,
+      },
+      {
+        name: 'hero',
+        width: 1920,
+        height: 1080,
+      }
+    ],
   },
 
   // upload collections inherit base fields for file information and imageSizes, then add your own for users to change
@@ -56,7 +57,7 @@ const Media: CollectionConfig = {
     {
       name: 'alt',
       label: 'Alt Text',
-			localized: true,
+      localized: true,
       type: 'text',
       required: true,
     },

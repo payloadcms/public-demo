@@ -77,6 +77,16 @@ export default buildConfig({
 
   plugins: [
     formBuilder({
+      formOverrides: {
+        admin: {
+          group: 'Content',
+        },
+      },
+      formSubmissionOverrides: {
+        admin: {
+          group: 'Admin',
+        },
+      },
       redirectRelationships: ['pages', 'posts'],
     }),
     // @ts-ignore

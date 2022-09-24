@@ -17,6 +17,9 @@ const MainMenu: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: 'Admin'
+  },
   fields: [
     {
       name: 'items',

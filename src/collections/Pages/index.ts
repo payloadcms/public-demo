@@ -23,6 +23,7 @@ export const Pages: CollectionConfig = {
       'createdAt',
       'status',
     ],
+    group: 'Content',
   },
   // the access is set to allow read for anyone
   access: {
@@ -34,52 +35,52 @@ export const Pages: CollectionConfig = {
     // delete,
   },
   // versioning with drafts enabled tells Payload to save documents to a separate collection in the database and allow publishing
-	versions: {
-		drafts: true,
-	},
+  versions: {
+    drafts: true,
+  },
   fields: [
     {
       name: 'title',
       label: 'Page Title',
       type: 'text',
       required: true,
-			localized: true,
+      localized: true,
     },
-		{
-			type: 'tabs',
-			tabs: [
-				{
-					label: 'Hero',
-					fields: [
-						hero,
-					],
-				},
-				{
-					label: 'Page Layout',
-					fields: [
-						{
-							name: 'layout',
-							label: false,
-							type: 'blocks',
-							minRows: 1,
-							localized: true,
-							blocks: [
-								Accordion,
-								Content,
-								Form,
-								Media,
-								MediaContent,
-								MediaSlider,
-							],
-						},
-					]
-				}
-			]
-		},
+    {
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Hero',
+          fields: [
+            hero,
+          ],
+        },
+        {
+          label: 'Page Layout',
+          fields: [
+            {
+              name: 'layout',
+              label: false,
+              type: 'blocks',
+              minRows: 1,
+              localized: true,
+              blocks: [
+                Accordion,
+                Content,
+                Form,
+                Media,
+                MediaContent,
+                MediaSlider,
+              ],
+            },
+          ]
+        }
+      ]
+    },
     {
       name: 'fullTitle',
       type: 'text',
-			localized: true,
+      localized: true,
       hooks: {
         beforeChange: [
           // custom hook function to save the title using breadcrumbs field data
@@ -132,7 +133,7 @@ export const Pages: CollectionConfig = {
         },
       ],
       admin: {
-				disabled: true,
+        disabled: true,
       },
     },
     // since configuration is in code we can call functions to define data structures dynamically in a reusable way

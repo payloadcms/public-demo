@@ -50,7 +50,7 @@ const insertVideo = (editor, { id, source }) => {
 };
 
 const VideoButton: React.FC<{ path: string }> = ({ path }) => {
-  const { toggleModal } = useModal();
+  const { openModal, toggleModal } = useModal();
   const editor = useSlate();
   const [renderModal, setRenderModal] = useState(false);
   const modalSlug = `${path}-add-video`;
@@ -63,16 +63,19 @@ const VideoButton: React.FC<{ path: string }> = ({ path }) => {
 
   useEffect(() => {
     if (renderModal) {
-      open(modalSlug);
+      openModal(modalSlug);
     }
-  }, [renderModal, open, modalSlug]);
+  }, [renderModal, openModal, modalSlug]);
 
   return (
     <Fragment>
       <ElementButton
         className={baseClass}
         format="video"
-        onClick={() => setRenderModal(true)}
+        onClick={(e) => {
+          e.preventDefault();
+          setRenderModal(true)
+        }}
       >
         <VideoIcon />
       </ElementButton>
