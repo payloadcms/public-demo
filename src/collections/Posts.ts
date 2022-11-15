@@ -55,6 +55,17 @@ const Posts: CollectionConfig = {
       localized: true,
     },
     {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+      // limit the options using the below query which uses the "archive" field set in the categories collection
+      filterOptions: {
+        archived: { equals: false },
+      },
+      // allow selection of one or more categories
+      hasMany: true,
+    },
+    {
       name: 'layout',
       label: 'Page Layout',
       type: 'blocks',
@@ -85,20 +96,6 @@ const Posts: CollectionConfig = {
         description: 'Posts will not be public until this date',
       },
       defaultValue: () => (new Date()),
-    },
-    {
-      name: 'category',
-      type: 'relationship',
-      relationTo: 'categories',
-      // limit the options using the below query which uses the "archive" field set in the categories collection
-      filterOptions: {
-        archived: { equals: false },
-      },
-      // allow selection of one or more categories
-      hasMany: true,
-      admin: {
-        position: 'sidebar',
-      },
     },
   ],
 }
