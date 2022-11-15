@@ -25,7 +25,7 @@
     "express": "^4.17.1",
     "mongodb": "^4.3.0",
     "node-cron": "^3.0.0",
-    "payload": "^1.1.11",
+    "payload": "^1.1.26",
     "qs": "^6.10.3"
   },
   "devDependencies": {
