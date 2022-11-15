@@ -55,11 +55,27 @@ const Posts: CollectionConfig = {
       localized: true,
     },
     {
+      name: 'layout',
+      label: 'Page Layout',
+      type: 'blocks',
+      minRows: 1,
+      // the blocks are reusable objects that will be added in array to the document, these are especially useful for structuring content purpose built for frontend componentry
+      blocks: [
+        Content,
+        Media,
+        MediaContent,
+        MediaSlider,
+      ],
+    },
+    {
       name: 'author',
       type: 'relationship',
       relationTo: 'users',
       // defaultValues can use functions to return data to populate the create form and also when making POST requests the server will use the value or function to fill in any undefined fields before validation occurs
       defaultValue: ({ user }) => (user.id),
+      admin: {
+        position: 'sidebar',
+      },
     },
     {
       name: 'publishDate',
@@ -80,21 +96,10 @@ const Posts: CollectionConfig = {
       },
       // allow selection of one or more categories
       hasMany: true,
+      admin: {
+        position: 'sidebar',
+      },
     },
-    {
-      name: 'layout',
-      label: 'Page Layout',
-      type: 'blocks',
-      minRows: 1,
-      // the blocks are reusable objects that will be added in array to the document, these are especially useful for structuring content purpose built for frontend componentry
-      blocks: [
-        Content,
-        Media,
-        MediaContent,
-        MediaSlider,
-      ],
-    },
-
   ],
 }
 
