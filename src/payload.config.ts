@@ -14,10 +14,14 @@ import BeforeLogin from './components/BeforeLogin';
 import AfterDashboard from "./components/AfterDashboard";
 import { Alerts } from './collections/Alerts'
 import BeforeDashboard from './components/BeforeDashboard';
+import { readPayloadVersion } from './endpoints/readPayloadVersion';
+import { Icon } from './components/IconGraphic';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 });
+
+const mockModulePath = path.resolve(__dirname, './mocks/serverModule.js');
 
 // the payload config is the entrypoint for configuring the entire application
 // all the API REST, GraphQL, authentication, file uploads, data layer and admin UI is built from the config
@@ -33,6 +37,9 @@ export default buildConfig({
 
     // custom components added to show demo info
     components: {
+      graphics: {
+        Icon: Icon,
+      },
       beforeLogin: [
         BeforeLogin,
       ],
@@ -43,6 +50,18 @@ export default buildConfig({
         AfterDashboard,
       ],
     },
+
+    // alias modules that should **only** be used in server context, not within the frontend code
+    webpack: (config) => ({
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: [path.resolve(__dirname, 'endpoints/readPayloadVersion')].reduce((alias, aliasPath) => ({
+          ...alias,
+          [aliasPath]: mockModulePath,
+        }), config.resolve.alias),
+      },
+    }),
   },
 
   // collections in Payload are synonymous with database tables, models or entities from other frameworks and systems
@@ -121,6 +140,14 @@ export default buildConfig({
       'de'
     ],
   },
+
+  endpoints: [
+    {
+      method: 'get',
+      path: '/payload-version',
+      handler: readPayloadVersion
+    }
+  ],
 
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
