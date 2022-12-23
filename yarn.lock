@@ -1570,10 +1570,10 @@
   resolved "https://registry.npmjs.org/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.3.tgz#323d72dd25103d0c4fbdce89dadf574a787b1f9b"
   integrity sha512-s88O1aVtXftvp5bCPB7WnmXc5IwOZZ7YPuwNPt+GtOOXpPvad1LfbmjYv+qII7zP6RU2QGnqve27dnLycEnyEQ==
 
-"@payloadcms/plugin-form-builder@^1.0.2":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@payloadcms/plugin-form-builder/-/plugin-form-builder-1.0.7.tgz#6fd40f716c4e0682a219bca5b53ecd405a916aac"
-  integrity sha512-Y/3MpoUSyzE6WXhGPo3pGbg1UD6hMYRQrRgFVAiwOBnZsxmzilW2Irs95rpiVA98u9ET3YbVQAZFgcEV0ZLjnQ==
+"@payloadcms/plugin-form-builder@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-form-builder/-/plugin-form-builder-1.0.10.tgz#eb76876c52b40f75d5313b94df1b8ee748f4a75f"
+  integrity sha512-douIbyOGYRlptziQ6cp/Vt29DmhryyRAI8wvMrU9QDEpK55TVsDQlTvWryWK9yzdG+e0FZskvzCThW4sCxhFuQ==
   dependencies:
     deepmerge "^4.2.2"
     escape-html "^1.0.3"
