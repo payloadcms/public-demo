@@ -33,32 +33,17 @@ export default buildConfig({
 
     // custom components added to show demo info
     components: {
-      beforeLogin: [
-        BeforeLogin,
-      ],
-      beforeDashboard: [
-        BeforeDashboard,
-      ],
-      afterDashboard: [
-        AfterDashboard,
-      ],
+      beforeLogin: [BeforeLogin],
+      beforeDashboard: [BeforeDashboard],
+      afterDashboard: [AfterDashboard],
     },
   },
 
   // collections in Payload are synonymous with database tables, models or entities from other frameworks and systems
-  collections: [
-    Categories,
-    Media,
-    Posts,
-    Pages,
-    Users,
-    Alerts,
-  ],
+  collections: [Categories, Media, Posts, Pages, Users, Alerts],
 
   // globals are a single-instance collection, often used for navigation or site settings that live in one place
-  globals: [
-    MainMenu,
-  ],
+  globals: [MainMenu],
 
   // rateLimits provide basic API DDOS (Denial-of-service) protection and can limit accidental server load from scripts
   rateLimit: {
@@ -70,6 +55,7 @@ export default buildConfig({
   // GraphQL is included by default at /api/graphql
   graphQL: {
     disablePlaygroundInProduction: false,
+    disable: true,
   },
 
   // if not using graphQL it should be disabled for security and performance reasons
@@ -95,13 +81,10 @@ export default buildConfig({
       parentFieldSlug: 'parent',
       breadcrumbsFieldSlug: 'breadcrumbs',
       generateLabel: (_, doc) => doc.title as string,
-      generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
+      generateURL: docs => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
     }),
     seo({
-      collections: [
-        'pages',
-        'posts',
-      ],
+      collections: ['pages', 'posts'],
     }),
   ],
 
@@ -115,14 +98,10 @@ export default buildConfig({
 
   localization: {
     defaultLocale: 'en',
-    locales: [
-      'en',
-      'es',
-      'de'
-    ],
+    locales: ['en', 'es', 'de'],
   },
 
   typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts')
+    outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
 });
