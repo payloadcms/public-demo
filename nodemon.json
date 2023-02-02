@@ -1,4 +1,0 @@
-{
-  "ext": "ts",
-  "exec": "node -r @swc-node/register src/server.ts"
-}
