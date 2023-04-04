@@ -3912,10 +3912,10 @@ pause@0.0.1:
   resolved "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
 
-payload@^1.6.29:
-  version "1.6.29"
-  resolved "https://registry.yarnpkg.com/payload/-/payload-1.6.29.tgz#71629c790c121390737e88a90b46555e8deb58b0"
-  integrity sha512-2hpAAGhTgRwT1DMONoGYRFMO0CYrHnw8xKF457W3BuzPih/Ffmpq1uxFUCWjVUbattoRLsHjF+4Aa0Nsh2T3Ew==
+payload@^1.6.31:
+  version "1.6.31"
+  resolved "https://registry.yarnpkg.com/payload/-/payload-1.6.31.tgz#9b0d6687b998a562064b1f661a29dbe2fe7d8d8f"
+  integrity sha512-EEnzOaR786l1tPul1RlFEl1Cp1NrAMUoHvIv3Aigu997co4g7XoPu10v5MKu/jSq84JekJn84vt2AfGiLtIBfw==
   dependencies:
     "@date-io/date-fns" "^2.16.0"
     "@dnd-kit/core" "^6.0.7"
@@ -5841,10 +5841,10 @@ type@^2.7.2:
   resolved "https://registry.npmjs.org/type/-/type-2.7.2.tgz#2376a15a3a28b1efa0f5350dcf72d24df6ef98d0"
   integrity sha512-dzlvlNlt6AXU7EBSfpAscydQ7gXB+pPGsPnfJnZpiNJBDj7IaJzQlBZYGdEi4R9HmPdBv2XmWJ6YUtoTa7lmCw==
 
-typescript@4.1.3:
-  version "4.1.3"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
-  integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
+typescript@^4.8.4:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 undefsafe@^2.0.5:
   version "2.0.5"

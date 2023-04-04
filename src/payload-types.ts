@@ -5,27 +5,80 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
-export interface Config {}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mainMenu".
- */
-export interface MainMenu {
+export interface Config {
+  collections: {
+    categories: Category;
+    media: Media;
+    posts: Post;
+    pages: Page;
+    users: User;
+    alerts: Alert;
+    forms: Form;
+    'form-submissions': FormSubmission;
+  };
+  globals: {
+    mainMenu: MainMenu;
+  };
+}
+export interface Category {
   id: string;
-  items?: {
-    type?: 'link' | 'subMenu';
-    label: string;
-    subMenu?: {
-      blocks?: (
-        | {
-            title: string;
-            id?: string;
-            blockName?: string;
-            blockType: 'menuTitle';
-          }
-        | {
-            appearance?: 'primary' | 'secondary' | 'arrow';
-            link?: {
+  name?: string;
+  archived?: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Media {
+  id: string;
+  alt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes?: {
+    thumbnail?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    portrait?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    hero?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Post {
+  id: string;
+  title?: string;
+  category?: string[] | Category[];
+  layout?: (
+    | {
+        columns: {
+          width: 'oneThird' | 'half' | 'twoThirds' | 'full';
+          alignment: 'left' | 'center' | 'right';
+          richText?: {
+            [k: string]: unknown;
+          }[];
+          links: {
+            link: {
               type?: 'reference' | 'custom';
               label: string;
               reference:
@@ -41,64 +94,89 @@ export interface MainMenu {
               newTab?: boolean;
             };
             id?: string;
-            blockName?: string;
-            blockType: 'menuLink';
-          }
-        | {
-            content: string;
-            id?: string;
-            blockName?: string;
-            blockType: 'menuDescription';
-          }
-        | {
-            media: string | Media;
-            headline: string;
-            link?: {
-              type?: 'reference' | 'custom';
-              reference:
-                | {
-                    value: string | Page;
-                    relationTo: 'pages';
-                  }
-                | {
-                    value: string | Post;
-                    relationTo: 'posts';
-                  };
-              url: string;
-              newTab?: boolean;
-            };
-            id?: string;
-            blockName?: string;
-            blockType: 'menuFeature';
-          }
-      )[];
-    };
-    link?: {
-      type?: 'reference' | 'custom';
-      reference:
-        | {
-            value: string | Page;
-            relationTo: 'pages';
-          }
-        | {
-            value: string | Post;
-            relationTo: 'posts';
+          }[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'content';
+      }
+    | {
+        media: string | Media;
+        useVimeo?: boolean;
+        vimeoID: string;
+        aspectRatio?: '56.25' | '75';
+        size?: 'normal' | 'wide' | 'fullscreen';
+        caption?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'media';
+      }
+    | {
+        alignment: 'contentOnLeft' | 'contentOnRight';
+        richText?: {
+          [k: string]: unknown;
+        }[];
+        media: string | Media;
+        embeddedVideo: {
+          embed?: boolean;
+          poster?: string | Media;
+          platform?: 'youtube' | 'vimeo';
+          videoID: string;
+          aspectRatio?: '56.25' | '75';
+        };
+        links: {
+          link: {
+            appearance?: 'text' | 'primaryButton' | 'secondaryButton';
+            type?: 'reference' | 'custom';
+            label: string;
+            reference:
+              | {
+                  value: string | Page;
+                  relationTo: 'pages';
+                }
+              | {
+                  value: string | Post;
+                  relationTo: 'posts';
+                };
+            url: string;
+            newTab?: boolean;
           };
-      url: string;
-      newTab?: boolean;
-    };
-    id?: string;
-  }[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'mediaContent';
+      }
+    | {
+        introContent?: {
+          [k: string]: unknown;
+        }[];
+        slides: {
+          media: string | Media;
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'mediaSlider';
+      }
+  )[];
+  author?: string | User;
+  publishDate?: string;
+  meta?: {
+    title?: string;
+    description?: string;
+  };
+  _status?: 'draft' | 'published';
+  createdAt: string;
+  updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
- */
 export interface Page {
   id: string;
-  _status?: 'draft' | 'published';
   title: string;
-  hero?: {
+  hero: {
     type:
       | 'basic'
       | 'content'
@@ -111,8 +189,8 @@ export interface Page {
       richText?: {
         [k: string]: unknown;
       }[];
-      links?: {
-        link?: {
+      links: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -135,8 +213,8 @@ export interface Page {
       richText?: {
         [k: string]: unknown;
       }[];
-      links?: {
-        link?: {
+      links: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -159,8 +237,8 @@ export interface Page {
       richText?: {
         [k: string]: unknown;
       }[];
-      links?: {
-        link?: {
+      links: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -179,7 +257,7 @@ export interface Page {
         id?: string;
       }[];
       media?: string | Media;
-      embeddedVideo?: {
+      embeddedVideo: {
         embed?: boolean;
         poster?: string | Media;
         platform?: 'youtube' | 'vimeo';
@@ -191,8 +269,8 @@ export interface Page {
       mainContent?: {
         [k: string]: unknown;
       }[];
-      links?: {
-        link?: {
+      links: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -219,8 +297,8 @@ export interface Page {
       richText?: {
         [k: string]: unknown;
       }[];
-      links?: {
-        link?: {
+      links: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -244,8 +322,8 @@ export interface Page {
       richText?: {
         [k: string]: unknown;
       }[];
-      links?: {
-        link?: {
+      links: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -263,10 +341,10 @@ export interface Page {
         };
         id?: string;
       }[];
-      columns?: {
+      columns: {
         heading: string;
         description: string;
-        link?: {
+        link: {
           type?: 'reference' | 'custom';
           reference:
             | {
@@ -289,7 +367,7 @@ export interface Page {
         [k: string]: unknown;
       }[];
       links?: {
-        link?: {
+        link: {
           appearance?: 'text' | 'primaryButton' | 'secondaryButton';
           type?: 'reference' | 'custom';
           label: string;
@@ -307,13 +385,13 @@ export interface Page {
         };
         id?: string;
       }[];
-      slides?: {
+      slides: {
         backgroundMedia: string | Media;
         richText?: {
           [k: string]: unknown;
         }[];
         links?: {
-          link?: {
+          link: {
             appearance?: 'text' | 'primaryButton' | 'secondaryButton';
             type?: 'reference' | 'custom';
             label: string;
@@ -338,17 +416,17 @@ export interface Page {
   layout?: (
     | {
         appearance?: 'default' | 'condensed';
-        sections?: {
+        sections: {
           label: string;
           openOnInit?: boolean;
-          columns?: {
+          columns: {
             width: 'oneThird' | 'half' | 'twoThirds' | 'full';
             alignment: 'left' | 'center' | 'right';
             richText?: {
               [k: string]: unknown;
             }[];
-            links?: {
-              link?: {
+            links: {
+              link: {
                 type?: 'reference' | 'custom';
                 label: string;
                 reference:
@@ -374,14 +452,14 @@ export interface Page {
         blockType: 'accordion';
       }
     | {
-        columns?: {
+        columns: {
           width: 'oneThird' | 'half' | 'twoThirds' | 'full';
           alignment: 'left' | 'center' | 'right';
           richText?: {
             [k: string]: unknown;
           }[];
-          links?: {
-            link?: {
+          links: {
+            link: {
               type?: 'reference' | 'custom';
               label: string;
               reference:
@@ -428,19 +506,19 @@ export interface Page {
       }
     | {
         alignment: 'contentOnLeft' | 'contentOnRight';
-        richText: {
+        richText?: {
           [k: string]: unknown;
         }[];
         media: string | Media;
-        embeddedVideo?: {
+        embeddedVideo: {
           embed?: boolean;
           poster?: string | Media;
           platform?: 'youtube' | 'vimeo';
           videoID: string;
           aspectRatio?: '56.25' | '75';
         };
-        links?: {
-          link?: {
+        links: {
+          link: {
             appearance?: 'text' | 'primaryButton' | 'secondaryButton';
             type?: 'reference' | 'custom';
             label: string;
@@ -466,7 +544,7 @@ export interface Page {
         introContent?: {
           [k: string]: unknown;
         }[];
-        slides?: {
+        slides: {
           media: string | Media;
           id?: string;
         }[];
@@ -489,193 +567,17 @@ export interface Page {
     title?: string;
     description?: string;
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: string;
   _status?: 'draft' | 'published';
-  title?: string;
-  author?: string | User;
-  publishDate?: string;
-  category?: (string | Category)[];
-  layout?: (
-    | {
-        columns?: {
-          width: 'oneThird' | 'half' | 'twoThirds' | 'full';
-          alignment: 'left' | 'center' | 'right';
-          richText?: {
-            [k: string]: unknown;
-          }[];
-          links?: {
-            link?: {
-              type?: 'reference' | 'custom';
-              label: string;
-              reference:
-                | {
-                    value: string | Page;
-                    relationTo: 'pages';
-                  }
-                | {
-                    value: string | Post;
-                    relationTo: 'posts';
-                  };
-              url: string;
-              newTab?: boolean;
-            };
-            id?: string;
-          }[];
-          id?: string;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'content';
-      }
-    | {
-        media: string | Media;
-        useVimeo?: boolean;
-        vimeoID: string;
-        aspectRatio?: '56.25' | '75';
-        size?: 'normal' | 'wide' | 'fullscreen';
-        caption?: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'media';
-      }
-    | {
-        alignment: 'contentOnLeft' | 'contentOnRight';
-        richText: {
-          [k: string]: unknown;
-        }[];
-        media: string | Media;
-        embeddedVideo?: {
-          embed?: boolean;
-          poster?: string | Media;
-          platform?: 'youtube' | 'vimeo';
-          videoID: string;
-          aspectRatio?: '56.25' | '75';
-        };
-        links?: {
-          link?: {
-            appearance?: 'text' | 'primaryButton' | 'secondaryButton';
-            type?: 'reference' | 'custom';
-            label: string;
-            reference:
-              | {
-                  value: string | Page;
-                  relationTo: 'pages';
-                }
-              | {
-                  value: string | Post;
-                  relationTo: 'posts';
-                };
-            url: string;
-            newTab?: boolean;
-          };
-          id?: string;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'mediaContent';
-      }
-    | {
-        introContent?: {
-          [k: string]: unknown;
-        }[];
-        slides?: {
-          media: string | Media;
-          id?: string;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'mediaSlider';
-      }
-  )[];
-  meta?: {
-    title?: string;
-    description?: string;
-  };
+  createdAt: string;
+  updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: string;
-  email?: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  enableAPIKey?: boolean;
-  apiKey?: string;
-  apiKeyIndex?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  name?: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  name?: string;
-  archived?: boolean;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-  sizes?: {
-    thumbnail?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    portrait?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    hero?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-  };
-  alt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "forms".
- */
 export interface Form {
   id: string;
   title: string;
   fields?: (
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         defaultValue?: string;
         required?: boolean;
@@ -685,10 +587,20 @@ export interface Form {
       }
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         defaultValue?: string;
-        options?: {
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'textarea';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        defaultValue?: string;
+        options: {
           label: string;
           value: string;
           id?: string;
@@ -700,7 +612,7 @@ export interface Form {
       }
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         required?: boolean;
         id?: string;
@@ -709,7 +621,7 @@ export interface Form {
       }
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         required?: boolean;
         id?: string;
@@ -718,7 +630,7 @@ export interface Form {
       }
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         required?: boolean;
         id?: string;
@@ -727,7 +639,7 @@ export interface Form {
       }
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         defaultValue?: number;
         required?: boolean;
@@ -737,7 +649,7 @@ export interface Form {
       }
     | {
         name: string;
-        label: string;
+        label?: string;
         width?: number;
         required?: boolean;
         defaultValue?: boolean;
@@ -772,36 +684,55 @@ export interface Form {
         };
     url: string;
   };
-  emails?: {
+  emails: {
     emailTo: string;
-    emailFrom?: string;
-    replyTo?: string;
+    cc?: string;
     bcc?: string;
+    replyTo?: string;
+    emailFrom?: string;
     subject: string;
     message?: {
       [k: string]: unknown;
     }[];
     id?: string;
   }[];
+  createdAt: string;
+  updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "alerts".
- */
+export interface User {
+  id: string;
+  name?: string;
+  enableAPIKey?: boolean;
+  apiKey?: string;
+  apiKeyIndex?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
+  createdAt: string;
+  updatedAt: string;
+  password?: string;
+}
 export interface Alert {
   id: string;
   name?: string;
   placement: 'global' | 'documents';
-  documents: {
-    value: string | Page;
-    relationTo: 'pages';
-  }[];
-  backgroundColor?: 'green' | 'blue' | 'red' | 'purple';
+  documents:
+    | {
+        value: string;
+        relationTo: 'pages';
+      }[]
+    | {
+        value: Page;
+        relationTo: 'pages';
+      }[];
+  backgroundColor?: 'matchTheme' | 'green' | 'blue' | 'red' | 'purple';
   content: {
     [k: string]: unknown;
   }[];
-  links?: {
-    link?: {
+  links: {
+    link: {
       appearance?: 'text' | 'primaryButton' | 'secondaryButton';
       type?: 'reference' | 'custom';
       label: string;
@@ -819,17 +750,97 @@ export interface Alert {
     };
     id?: string;
   }[];
+  createdAt: string;
+  updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "form-submissions".
- */
 export interface FormSubmission {
   id: string;
   form: string | Form;
-  submissionData?: {
+  submissionData: {
     field: string;
     value: string;
+    id?: string;
+  }[];
+  createdAt: string;
+  updatedAt: string;
+}
+export interface MainMenu {
+  id: string;
+  items: {
+    type?: 'link' | 'subMenu';
+    label: string;
+    subMenu?: {
+      blocks?: (
+        | {
+            title: string;
+            id?: string;
+            blockName?: string;
+            blockType: 'menuTitle';
+          }
+        | {
+            appearance?: 'primary' | 'secondary' | 'arrow';
+            link: {
+              type?: 'reference' | 'custom';
+              label: string;
+              reference:
+                | {
+                    value: string | Page;
+                    relationTo: 'pages';
+                  }
+                | {
+                    value: string | Post;
+                    relationTo: 'posts';
+                  };
+              url: string;
+              newTab?: boolean;
+            };
+            id?: string;
+            blockName?: string;
+            blockType: 'menuLink';
+          }
+        | {
+            content: string;
+            id?: string;
+            blockName?: string;
+            blockType: 'menuDescription';
+          }
+        | {
+            menuFeatureMedia: string | Media;
+            headline: string;
+            link: {
+              type?: 'reference' | 'custom';
+              reference:
+                | {
+                    value: string | Page;
+                    relationTo: 'pages';
+                  }
+                | {
+                    value: string | Post;
+                    relationTo: 'posts';
+                  };
+              url: string;
+              newTab?: boolean;
+            };
+            id?: string;
+            blockName?: string;
+            blockType: 'menuFeature';
+          }
+      )[];
+    };
+    link?: {
+      type?: 'reference' | 'custom';
+      reference:
+        | {
+            value: string | Page;
+            relationTo: 'pages';
+          }
+        | {
+            value: string | Post;
+            relationTo: 'posts';
+          };
+      url: string;
+      newTab?: boolean;
+    };
     id?: string;
   }[];
 }
