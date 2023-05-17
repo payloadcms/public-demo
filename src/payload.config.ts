@@ -55,7 +55,7 @@ export default buildConfig({
   // GraphQL is included by default at /api/graphql
   graphQL: {
     disablePlaygroundInProduction: false,
-    disable: true,
+    disable: false,
   },
 
   // if not using graphQL it should be disabled for security and performance reasons
