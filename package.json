@@ -10,7 +10,7 @@
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
-    "build": "yarn copyfiles && yarn build:payload && yarn build:server",
+    "build": "yarn generate:types && yarn generate:graphql-schema && yarn copyfiles && yarn build:payload && yarn build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
     "generate:graphql-schema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphqlSchema"
@@ -25,7 +25,7 @@
     "express": "^4.17.1",
     "mongodb": "^4.3.0",
     "node-cron": "^3.0.0",
-    "payload": "^1.6.31",
+    "payload": "^1.8.3",
     "qs": "^6.10.3"
   },
   "devDependencies": {

@@ -24,12 +24,14 @@ export interface Category {
   id: string;
   name?: string;
   archived?: boolean;
-  createdAt: string;
   updatedAt: string;
+  createdAt: string;
 }
 export interface Media {
   id: string;
   alt: string;
+  updatedAt: string;
+  createdAt: string;
   url?: string;
   filename?: string;
   mimeType?: string;
@@ -62,8 +64,6 @@ export interface Media {
       filename?: string;
     };
   };
-  createdAt: string;
-  updatedAt: string;
 }
 export interface Post {
   id: string;
@@ -169,9 +169,9 @@ export interface Post {
     title?: string;
     description?: string;
   };
-  _status?: 'draft' | 'published';
-  createdAt: string;
   updatedAt: string;
+  createdAt: string;
+  _status?: 'draft' | 'published';
 }
 export interface Page {
   id: string;
@@ -567,9 +567,9 @@ export interface Page {
     title?: string;
     description?: string;
   };
-  _status?: 'draft' | 'published';
-  createdAt: string;
   updatedAt: string;
+  createdAt: string;
+  _status?: 'draft' | 'published';
 }
 export interface Form {
   id: string;
@@ -696,12 +696,14 @@ export interface Form {
     }[];
     id?: string;
   }[];
-  createdAt: string;
   updatedAt: string;
+  createdAt: string;
 }
 export interface User {
   id: string;
   name?: string;
+  updatedAt: string;
+  createdAt: string;
   enableAPIKey?: boolean;
   apiKey?: string;
   apiKeyIndex?: string;
@@ -710,8 +712,6 @@ export interface User {
   resetPasswordExpiration?: string;
   loginAttempts?: number;
   lockUntil?: string;
-  createdAt: string;
-  updatedAt: string;
   password?: string;
 }
 export interface Alert {
@@ -750,8 +750,8 @@ export interface Alert {
     };
     id?: string;
   }[];
-  createdAt: string;
   updatedAt: string;
+  createdAt: string;
 }
 export interface FormSubmission {
   id: string;
@@ -761,8 +761,8 @@ export interface FormSubmission {
     value: string;
     id?: string;
   }[];
-  createdAt: string;
   updatedAt: string;
+  createdAt: string;
 }
 export interface MainMenu {
   id: string;
