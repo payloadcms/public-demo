@@ -481,10 +481,10 @@
     deepmerge "^4.2.2"
     escape-html "^1.0.3"
 
-"@payloadcms/plugin-nested-docs@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.4.tgz#8a9933bbf0813839804be4fa20f9ddf401ed9bec"
-  integrity sha512-vjhk3fE/uRkUSNg0UuAv/NIEvDDMRcbEHSgxOo/MbmXOT2LFsh3fPq+Gq4+cL1H9s+FStiIkygigv7J5fgOZwA==
+"@payloadcms/plugin-nested-docs@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.5.tgz#a4e63cf904c0923e02252c52765c1a5af38c08c6"
+  integrity sha512-FXNIr0xVO5uSmwLjckBTSA0t5UzgQBCWZVcAMAE+wzjelX3C29y0iUqBYsNPQK3DBua7ko92btV2cWuZVRMIqA==
 
 "@payloadcms/plugin-seo@^1.0.6":
   version "1.0.8"
