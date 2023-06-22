@@ -169,6 +169,7 @@ export interface Post {
   meta?: {
     title?: string;
     description?: string;
+    image?: string | Media;
   };
   updatedAt: string;
   createdAt: string;
@@ -555,18 +556,19 @@ export interface Page {
       }
   )[];
   fullTitle?: string;
+  slug?: string;
+  author?: string | User;
+  parent?: string | Page;
   breadcrumbs?: {
     doc?: string | Page;
     url?: string;
     label?: string;
     id?: string;
   }[];
-  slug?: string;
-  parent?: string | Page;
-  author?: string | User;
   meta?: {
     title?: string;
     description?: string;
+    image?: string | Media;
   };
   updatedAt: string;
   createdAt: string;

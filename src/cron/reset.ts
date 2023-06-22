@@ -3,11 +3,11 @@ import path from 'path';
 import fs from 'fs';
 import { MongoClient } from 'mongodb';
 import { generateContactFormSubmission, generateMailingListSubmission } from '../data/forms/submissionGenerator';
-import { homeData } from '../data/pages/homeData';
-import { homeDataDE } from '../data/pages/homeDataDE';
-import { homeDataES } from '../data/pages/homeDataES';
-import { videoSeriesData } from '../data/pages/videoSeriesData';
-import { caseStudiesData } from '../data/pages/caseStudiesData';
+import { getHomeData } from '../data/pages/homeData';
+import { getHomeDataDE } from '../data/pages/homeDataDE';
+import { getHomeDataES } from '../data/pages/homeDataES';
+import { getVideoSeriesData } from '../data/pages/videoSeriesData';
+import { getCaseStudiesData } from '../data/pages/caseStudiesData';
 import { contactFormData } from '../data/forms/contactFormData';
 import { mailingListFormData } from '../data/forms/mailingListFormData';
 import { generateTsInterfacesData } from '../data/posts/generateTsInterfacesData';
@@ -17,6 +17,7 @@ import { introducingPayloadData } from '../data/posts/introducingPayloadData';
 import { futurePostData } from '../data/posts/futurePostData'
 import { mainMenuData } from '../data/mainMenu/mainMenuData';
 import type { Form, MainMenu, Page, Post } from 'payload/generated-types'
+
 export async function seed() {
   try {
     payload.logger.info(`Seeding database...`);
@@ -77,25 +78,28 @@ async function seedData() {
   });
 
   // Page - Home
-  const homeString: any = homeData(imageId, demoUserId);
-  const homeStringDE = homeDataDE(imageId, demoUserId);
-  const homeStringES = homeDataES(imageId, demoUserId);
+  const homeData = getHomeData(imageId, demoUserId);
+  const homeDataDE = getHomeDataDE(imageId, demoUserId);
+  const homeDataES = getHomeDataES(imageId, demoUserId);
 
   const { id: homeDocId } = await payload.create({
     collection: 'pages',
-    data: homeString,
+    // @ts-expect-error
+    data: homeData,
   });
 
   // Page - Video Series
-  await payload.create<any>({
+  await payload.create({
     collection: 'pages',
-    data: videoSeriesData(imageId, demoUserId, homeDocId),
+    // @ts-expect-error
+    data: getVideoSeriesData(imageId, demoUserId, homeDocId),
   });
 
   // Page - Case Studies
   const { id: caseStudiesDocId } = await payload.create({
     collection: 'pages',
-    data: caseStudiesData(imageId, demoUserId, homeDocId) as unknown as Page,
+    // @ts-expect-error
+    data: getCaseStudiesData(imageId, demoUserId, homeDocId),
   });
 
   // Main Menu
@@ -104,30 +108,26 @@ async function seedData() {
     data: mainMenuData(homeDocId, caseStudiesDocId) as unknown as MainMenu,
   });
 
-  // TEMPORARY - bug with breadcrumbs plugin. Home page resaves automatically after creation.
-  // I'm thinking that `de` simply got fired too early and overwritten.
+  await payload.update({
+    collection: 'pages',
+    id: homeDocId,
+    locale: 'de',
+    data: homeDataDE
+  });
 
-  setTimeout(async () => {
-    await payload.update({
-      collection: 'pages',
-      id: homeDocId,
-      locale: 'de',
-      data: homeStringDE as unknown as Page,
-    });
-
-    await payload.update({
-      collection: 'pages',
-      id: homeDocId,
-      locale: 'es',
-      data: homeStringES as unknown as Page,
-    });
-  }, 3000);
+  await payload.update({
+    collection: 'pages',
+    id: homeDocId,
+    locale: 'es',
+    data: homeDataES
+  });
 
   // Forms - Contact
   const contactForm = await payload.create({
     collection: 'forms',
     data: contactFormData() as unknown as Form,
   });
+  
   // Forms - Mailing List
   const mailingListForm = await payload.create({
     collection: 'forms',
@@ -141,6 +141,7 @@ async function seedData() {
       data: generateContactFormSubmission(contactForm.id),
     });
   });
+
   await Promise.all(contactFormSubmissions);
 
   const mailingListSubmissions = [...Array(5)].map(_ => {
@@ -149,6 +150,7 @@ async function seedData() {
       data: generateMailingListSubmission(mailingListForm.id),
     });
   });
+
   await Promise.all(mailingListSubmissions);
 
   // Create Categories
@@ -185,18 +187,22 @@ async function seedData() {
     collection: 'posts',
     data: generateTsInterfacesData(demoUserId, featureCategory.id, imageId) as unknown as Post,
   });
+
   await payload.create({
     collection: 'posts',
     data: whiteLabelAdminUIData(demoUserId, tutorialCategory.id, imageId) as unknown as Post,
   });
+
   await payload.create({
     collection: 'posts',
     data: buildWebsiteData(demoUserId, tutorialCategory.id, imageId) as unknown as Post,
   });
+
   await payload.create({
     collection: 'posts',
     data: introducingPayloadData(demoUserId, newsCategory.id, imageId) as unknown as Post,
   });
+
   await payload.create({
     collection: 'posts',
     data: futurePostData(demoUserId, newsCategory.id, imageId) as unknown as Post,

@@ -1,6 +1,17 @@
-export function homeDataDE(imageId: string, userId: string) {
+import { Page } from "payload/generated-types";
+
+export const getHomeDataDE = (imageId: string, userId: string): Partial<Page> => {
   return {
     title: 'Heimat',
+    slug: 'heimat',
+    _status: 'published',
+    author: userId,
+    meta: {
+      title: 'Payload CMS Demo - Heimat',
+      description:
+        'Hier ist eine Inhaltsspalte mit einem eingebetteten Medienelement. Dieser Inhalt wird verwendet, um eine Meta-Beschreibung zu generieren.',
+      image: imageId,
+    },
     hero: {
       type: 'contentMedia',
       contentMedia: {
@@ -45,6 +56,7 @@ export function homeDataDE(imageId: string, userId: string) {
         ],
         links: [],
         media: imageId,
+        // @ts-expect-error
         embeddedVideo: {
           aspectRatio: '56.25',
         },
@@ -158,16 +170,5 @@ export function homeDataDE(imageId: string, userId: string) {
         blockType: 'content',
       },
     ],
-    slug: 'heimat',
-    status: 'published',
-    author: userId,
-    meta: {
-      title: 'Payload CMS Demo - Heimat',
-      description:
-        'Hier ist eine Inhaltsspalte mit einem eingebetteten Medienelement. Dieser Inhalt wird verwendet, um eine Meta-Beschreibung zu generieren.',
-      image: imageId,
-    },
-    createdAt: '2022-01-31T20:26:12.877Z',
-    updatedAt: '2022-01-31T20:26:52.179Z',
   };
 }

@@ -1,6 +1,17 @@
-export function caseStudiesData(imageId: string, authorId: string, parentId: string) {
+import { Page } from "payload/generated-types";
+
+export const getCaseStudiesData = (imageId: string, authorId: string, parentId: string): Partial<Page> => {
   return {
     title: 'Case Studies',
+    slug: 'case-studies',
+    _status: 'published',
+    parent: parentId,
+    author: authorId,
+    meta: {
+      title: 'Payload CMS Demo - Case Studies',
+      description: 'Case Study 1',
+      image: imageId,
+    },
     hero: {
       type: 'basic',
       basic: {
@@ -20,14 +31,11 @@ export function caseStudiesData(imageId: string, authorId: string, parentId: str
         links: [],
       },
       contentMedia: {
+        // @ts-expect-error
         embeddedVideo: {
           aspectRatio: '56.25',
         },
       },
-      contentSidebar: {},
-      fullscreenBackground: {},
-      quickNav: {},
-      fullscreenSlider: {},
     },
     layout: [
       {
@@ -55,7 +63,6 @@ export function caseStudiesData(imageId: string, authorId: string, parentId: str
             id: '61f9d62849d83a1191f22745',
           },
         ],
-        id: '61f9d56b02b305e3c9e0b9d4',
         blockName: 'Case Study 1',
         blockType: 'mediaSlider',
       },
@@ -73,47 +80,17 @@ export function caseStudiesData(imageId: string, authorId: string, parentId: str
         slides: [
           {
             media: imageId,
-            id: '61f9d62849d83a1191f22746',
           },
           {
             media: imageId,
-            id: '61f9d62849d83a1191f22747',
           },
           {
             media: imageId,
-            id: '61f9d62849d83a1191f22748',
           },
         ],
-        id: '61f9d5ca02b305e3c9e0b9d8',
         blockName: 'Case Study 2',
         blockType: 'mediaSlider',
       },
     ],
-    fullTitle: 'Home > Case Studies',
-    breadcrumbs: [
-      {
-        doc: parentId,
-        url: '/home',
-        label: 'Home',
-        id: '61f9d62849d83a1191f2274b',
-      },
-      {
-        doc: '61f9d628cf5600ada745e55a',
-        url: '/home/case-studies',
-        label: 'Case Studies',
-        id: '61f9d62849d83a1191f2274c',
-      },
-    ],
-    slug: 'case-studies',
-    status: 'published',
-    parent: parentId,
-    author: authorId,
-    meta: {
-      title: 'Payload CMS Demo - Case Studies',
-      description: 'Case Study 1',
-      image: imageId,
-    },
-    createdAt: '2022-02-02T00:54:00.461Z',
-    updatedAt: '2022-02-02T00:54:00.511Z',
   };
 }

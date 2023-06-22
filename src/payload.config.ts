@@ -75,16 +75,14 @@ export default buildConfig({
       },
       redirectRelationships: ['pages', 'posts'],
     }),
-    // @ts-ignore
     nestedDocs({
       collections: ['pages'],
-      parentFieldSlug: 'parent',
-      breadcrumbsFieldSlug: 'breadcrumbs',
       generateLabel: (_, doc) => doc.title as string,
       generateURL: docs => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
     }),
     seo({
       collections: ['pages', 'posts'],
+      uploadsCollection: 'media',
     }),
   ],
 
