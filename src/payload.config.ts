@@ -15,7 +15,7 @@ import AfterDashboard from "./components/AfterDashboard";
 import { Alerts } from './collections/Alerts'
 import BeforeDashboard from './components/BeforeDashboard';
 import { readPayloadVersion } from './endpoints/readPayloadVersion';
-import { Icon } from './components/IconGraphic';
+import { Version } from './components/IconGraphic';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -37,9 +37,7 @@ export default buildConfig({
 
     // custom components added to show demo info
     components: {
-      graphics: {
-        Icon: Icon,
-      },
+      afterNavLinks: [Version],
       beforeLogin: [BeforeLogin],
       beforeDashboard: [BeforeDashboard],
       afterDashboard: [AfterDashboard],

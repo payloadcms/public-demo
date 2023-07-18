@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import * as lockfile from '@yarnpkg/lockfile';
 import { PayloadHandler } from 'payload/config';
 import { Forbidden } from 'payload/errors';
 
@@ -7,10 +8,18 @@ export const readPayloadVersion: PayloadHandler = (req, res, next) => {
   if (!req.user) throw new Forbidden
 
   try {
-    const data: any = fs.readFileSync(path.resolve(__dirname, '../../package.json'));
-    const packageJson = JSON.parse(data);
+    let file = fs.readFileSync(path.resolve(__dirname, '../../yarn.lock'), 'utf8');
+    let { object } = lockfile.parse(file);
+
+    let version = '';
+    for (const key in object) {
+      if (key.startsWith('payload@')) {
+        version = object[key].version;
+      }
+    }
+
     res.status(200).json({
-      version: packageJson.dependencies.payload
+      version: version
     });
   } catch (err) {
     console.error(err)
