@@ -27,7 +27,8 @@ export const MediaSlider: Block = {
           relationTo: 'media',
           required: true,
           admin: {
-            description: 'Maximum upload file size: 12MB. Recommended file size for images is <500KB.',
+            description:
+              'Maximum upload file size: 12MB. Recommended file size for images is <500KB.',
           },
         },
       ],

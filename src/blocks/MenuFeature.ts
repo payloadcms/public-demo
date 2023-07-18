@@ -9,12 +9,13 @@ export const MenuFeature: Block = {
   },
   fields: [
     {
-      name: 'media',
+      name: 'menuFeatureMedia',
       type: 'upload',
       relationTo: 'media',
       required: true,
       admin: {
-        description: 'Maximum upload file size: 2MB. Recommended file size for images is <500KB.',
+        description:
+          'Maximum upload file size: 2MB. Recommended file size for images is <500KB.',
       },
     },
     {

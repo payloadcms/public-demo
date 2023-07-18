@@ -63,6 +63,10 @@ export const Alerts: CollectionConfig = {
       },
       options: [
         {
+          label: 'Match Theme',
+          value: 'matchTheme',
+        },
+        {
           label: 'Green',
           value: 'green',
         },

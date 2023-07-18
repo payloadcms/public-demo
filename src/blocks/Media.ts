@@ -3,6 +3,9 @@ import aspectRatio from '../fields/aspectRatio';
 
 export const Media: Block = {
   slug: 'media',
+  graphQL: {
+    singularName: 'MediaBlock',
+  },
   labels: {
     singular: 'Media Block',
     plural: 'Media Blocks',

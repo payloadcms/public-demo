@@ -5,6 +5,9 @@ import embeddedVideo from '../fields/embeddedVideo';
 
 export const MediaContent: Block = {
   slug: 'mediaContent',
+    graphQL: {
+    singularName: 'MediaContent',
+  },
   labels: {
     singular: 'Media + Content',
     plural: 'Media + Content Blocks',

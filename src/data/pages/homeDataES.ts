@@ -1,6 +1,17 @@
-export function homeDataES(imageId: string, userId: string) {
+import { Page } from "payload/generated-types";
+
+export const getHomeDataES = (imageId: string, userId: string): Partial<Page> => {
   return {
     title: 'Página de Inicio',
+    slug: 'home',
+    _status: 'published',
+    author: userId,
+    meta: {
+      title: 'Payload CMS Demo - Página de Inicio',
+      description:
+        'Aquí hay una columna de contenido y tiene un elemento multimedia incrustado dentro. Este contenido se utilizará para generar una meta descripción.',
+      image: imageId,
+    },
     hero: {
       type: 'contentMedia',
       contentMedia: {
@@ -45,6 +56,7 @@ export function homeDataES(imageId: string, userId: string) {
         ],
         links: [],
         media: imageId,
+        // @ts-expect-error
         embeddedVideo: {
           aspectRatio: '56.25',
         },
@@ -158,16 +170,5 @@ export function homeDataES(imageId: string, userId: string) {
         blockType: 'content',
       },
     ],
-    slug: 'home',
-    status: 'published',
-    author: userId,
-    meta: {
-      title: 'Payload CMS Demo - Página de Inicio',
-      description:
-        'Aquí hay una columna de contenido y tiene un elemento multimedia incrustado dentro. Este contenido se utilizará para generar una meta descripción.',
-      image: imageId,
-    },
-    createdAt: '2022-01-31T20:26:12.877Z',
-    updatedAt: '2022-01-31T20:26:52.179Z',
   };
 }

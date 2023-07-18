@@ -96,60 +96,8 @@ export const Pages: CollectionConfig = {
         // hidden: true
       },
     },
-    {
-      name: 'breadcrumbs',
-      type: 'array',
-      fields: [
-        {
-          name: 'doc',
-          type: 'relationship',
-          relationTo: 'pages',
-          // maxDepth is 0 to avoid extra database queries on breadcrumbs by not populating extra relationship data
-          maxDepth: 0,
-          admin: {
-            disabled: true,
-          },
-        },
-        {
-          type: 'row',
-          fields: [
-            {
-              name: 'url',
-              label: 'URL',
-              type: 'text',
-              admin: {
-                // assign the field widths using percents or pixels using "px"
-                width: '50%',
-              },
-            },
-            {
-              name: 'label',
-              type: 'text',
-              admin: {
-                width: '50%',
-              },
-            },
-          ],
-        },
-      ],
-      admin: {
-        disabled: true,
-      },
-    },
     // since configuration is in code we can call functions to define data structures dynamically in a reusable way
     slug(),
-    {
-      name: 'parent',
-      label: 'Parent Page',
-      type: 'relationship',
-      relationTo: 'pages',
-      maxDepth: 0,
-      // telling Payload to add an index to a field instructs the database to create it for enhanced query performance
-      index: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
     {
       name: 'author',
       relationTo: 'users',
