@@ -15,7 +15,7 @@ import AfterDashboard from "./components/AfterDashboard";
 import { Alerts } from './collections/Alerts'
 import BeforeDashboard from './components/BeforeDashboard';
 import { readPayloadVersion } from './endpoints/readPayloadVersion';
-import { Version } from './components/IconGraphic';
+import { Version } from './components/DisplayVersion';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
