@@ -13,7 +13,7 @@ services:
       PAYLOAD_PUBLIC_SERVER_URL: http://localhost:3000
       PAYLOAD_SECRET_KEY: SECRET-HERE
       PAYLOAD_CONFIG_PATH: src/payload.config.ts
-      PAYLOAD_DROP_DATABASE: true
+      PAYLOAD_DROP_DATABASE: "true"
 
 
     # Overrides default command so things don't shut down after the process ends.
