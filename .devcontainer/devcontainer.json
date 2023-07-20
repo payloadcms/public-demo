@@ -6,6 +6,13 @@
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
+	//Potentail memory contraints at 4gb of RAM, with Mongo
+	"hostRequirements": {
+		"cpus": 8,
+		"memory": "8gb",
+		"storage": "32gb"
+	 },
+
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
