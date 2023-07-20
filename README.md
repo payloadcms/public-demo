@@ -55,3 +55,10 @@ Typically, the only line that you'll need to change within your new `.env` for l
 
 Finally, type `yarn dev` to start up the server and see it in action!
 
+### Github Codespace
+
+```sh
+export PAYLOAD_PORT=3000
+export PAYLOAD_PUBLIC_SERVER_URL="https://${GITHUB_USER}-${CODESPACE_NAME}-${PAYLOAD_PORT}.preview.app.github.dev:${PAYLOAD_PORT}"
+
+```
