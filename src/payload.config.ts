@@ -28,6 +28,8 @@ const mockModulePath = path.resolve(__dirname, './mocks/serverModule.js');
 export default buildConfig({
   // the serverURL can be localhost:, a public domain or simply left undefined to work with relative
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+  // WARING: Only for dev purposes (Github Codespaces)
+  cors: '*',
   admin: {
     // the user collection slug to use for authenticating to the admin panel, one per express app
     user: Users.slug,
