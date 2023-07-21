@@ -25,8 +25,6 @@ const start = async () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
 
       // Clear and reset database on server start
-      // NOTE - this is only for demo purposes and should not be used
-      // for production sites with real data
       await seed();
     },
   });
