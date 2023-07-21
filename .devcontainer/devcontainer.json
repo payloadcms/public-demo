@@ -30,7 +30,7 @@
 		},
 		"codespaces": {
 			"openFiles": [
-			  "README.md"
+			  "README-devcontainer.md"
 			]
 		  },
 		"portsAttributes": {
