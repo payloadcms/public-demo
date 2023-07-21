@@ -27,7 +27,19 @@
 				"mongodb.mongodb-vscode",
 				"ms-azuretools.vscode-docker"
 			]
-		}
+		},
+		"codespaces": {
+			"openFiles": [
+			  "README.md"
+			]
+		  },
+		"portsAttributes": {
+			"3000": {
+			  "label": "Application",
+			  "onAutoForward": "openPreview"
+			}
+		  }
+	
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
