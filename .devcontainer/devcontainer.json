@@ -6,10 +6,10 @@
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
-	//Potentail memory contraints at 4gb of RAM, with Mongo
+	//Potential memory constraints at 4gb of RAM, with Mongo
 	"hostRequirements": {
-		"cpus": 8,
-		"memory": "8gb",
+		"cpus": 4,
+		"memory": "3gb",
 		"storage": "32gb"
 	 },
 
