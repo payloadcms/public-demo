@@ -27,9 +27,8 @@ const mockModulePath = path.resolve(__dirname, './mocks/serverModule.js');
 // all the API REST, GraphQL, authentication, file uploads, data layer and admin UI is built from the config
 export default buildConfig({
   // the serverURL can be localhost:, a public domain or simply left undefined to work with relative
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  // WARING: Only for dev purposes (Github Codespaces)
-  cors: '*',
+  // SSM: Leaving undefined due to comment in https://github.com/payloadcms/payload/issues/2068#issuecomment-1427114348
+  //serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   
   admin: {
     // the user collection slug to use for authenticating to the admin panel, one per express app
