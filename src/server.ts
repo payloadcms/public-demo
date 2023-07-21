@@ -34,6 +34,10 @@ const start = async () => {
 	// Seed database with startup data
 	resetScheduledJob.start();
 
+  // Setup cors to allow all origins..ONLY as this is in demo, and to work in codespaces  
+  // . See https://github.com/payloadcms/payload/discussions/2554
+
+
 	app.listen(3000);
 }
 
