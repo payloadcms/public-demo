@@ -4,6 +4,13 @@ This is the code that powers the official public demo of [Payload CMS](https://g
 
 It's deployed at [https://demo.payloadcms.com](https://demo.payloadcms.com). Go check it out!
 
+Also launch a copy in [Github Codespaces](#github-codespace).
+
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/payloadcms/public-demo) 
+
+ [See Github Codespace Below]
+
 ### Features shown
 
 This demo showcases many of the powerful features that Payload is capable, including:
@@ -57,8 +64,9 @@ Finally, type `yarn dev` to start up the server and see it in action!
 
 ### Github Codespace
 
-```sh
-export PAYLOAD_PORT=3000
-export PAYLOAD_PUBLIC_SERVER_URL="https://${GITHUB_USER}-${CODESPACE_NAME}-${PAYLOAD_PORT}.preview.app.github.dev:${PAYLOAD_PORT}"
+ Codespaces should be configured to wrok on first launch without any evironment setup.  Environment varables are setup in `.devcontainer/docker-compose.yml` for local development work
 
-```
+- Admin URL: The full URL will be determined by the Codespaces itself.  Usually under the "Ports" tab in VScode you will see a port 3000 exposed, then copy the URL provided by Github (protected by Github authentication)
+- Mongo can be managed by the MongoDB VSCode Plugin
+  - Connection String: `mongodb://localhost/payload-public-demo`
+

@@ -5,6 +5,7 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"postStartCommand": "./.devcontainer/devcontainer-startup.sh",
 
 	//Potential memory constraints at 4gb of RAM, with Mongo
 	"hostRequirements": {
