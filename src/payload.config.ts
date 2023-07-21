@@ -30,12 +30,14 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   // WARING: Only for dev purposes (Github Codespaces)
   cors: '*',
+  
   admin: {
     // the user collection slug to use for authenticating to the admin panel, one per express app
     user: Users.slug,
 
     // override existing payload styles with custom look
     css: path.resolve(__dirname, './styles/custom.scss'),
+
 
     // custom components added to show demo info
     components: {
