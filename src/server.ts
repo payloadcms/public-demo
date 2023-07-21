@@ -34,9 +34,17 @@ const start = async () => {
 	// Seed database with startup data
 	resetScheduledJob.start();
 
-  // Setup cors to allow all origins..ONLY as this is in demo, and to work in codespaces  
-  // . See https://github.com/payloadcms/payload/discussions/2554
+  // Setup cors to allow all origins..ONLY as this is in demoto work in Github codespaces  
+  // See https://github.com/payloadcms/payload/discussions/2554
 
+  var cors = require('cors');
+  var corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionsSuccessStatus: 200
+  }
+
+  app.use(cors(corsOptions));
 
 	app.listen(3000);
 }
