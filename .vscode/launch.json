@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "command": "yarn run dev",
+      "name": "Run Dev",
       "request": "launch",
-      "name": "Debug Payload Public Demo",
-      "program": "${workspaceFolder}/src/server.ts",
-      "preLaunchTask": "npm: pre:debug",
-    },
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}"
+    }
   ]
 }
