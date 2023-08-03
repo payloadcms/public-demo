@@ -67,7 +67,7 @@ const link: LinkType = ({
           condition: (_, siblingData) => siblingData?.type === 'reference',
         },
 				hooks: {
-	        beforeChange: [
+					beforeChange: [
 	          ({ siblingData, value }) => (siblingData?.type !== "reference" ? null : value),
 	        ],
       	},
