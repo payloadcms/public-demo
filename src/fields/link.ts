@@ -66,6 +66,11 @@ const link: LinkType = ({
         admin: {
           condition: (_, siblingData) => siblingData?.type === 'reference',
         },
+        hooks: {
+          beforeChange: [
+            ({ siblingData, value }) => (siblingData?.type !== "reference" ? null : value),
+          ],
+        },
       },
       {
         name: 'url',
