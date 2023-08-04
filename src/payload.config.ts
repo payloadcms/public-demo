@@ -29,6 +29,11 @@ export default buildConfig({
   // the serverURL can be localhost:, a public domain or simply left undefined to work with relative
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: {
+    autoLogin: {
+      email: 'demo@payloadcms.com',
+      password: 'demo',
+      prefillOnly: true,
+    },
     // the user collection slug to use for authenticating to the admin panel, one per express app
     user: Users.slug,
 
