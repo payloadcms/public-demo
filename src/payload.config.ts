@@ -68,7 +68,7 @@ export default buildConfig({
         }), config.resolve.alias)
       }
 
-      console.log('Webpack config resolve:', JSON.stringify(config.resolve, null, 2));
+      console.log('Webpack config resolve:', JSON.stringify(config.module.rules, null, 2));
 
       return config;
     },
