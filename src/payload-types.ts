@@ -14,8 +14,8 @@ export interface Config {
     pages: Page;
     users: User;
     alerts: Alert;
-    forms: Form;
-    'form-submissions': FormSubmission;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {
     mainMenu: MainMenu;
@@ -84,12 +84,12 @@ export interface Post {
               label: string;
               reference:
                 | {
-                    value: string | Page;
                     relationTo: 'pages';
+                    value: string | Page;
                   }
                 | {
-                    value: string | Post;
                     relationTo: 'posts';
+                    value: string | Post;
                   };
               url: string;
               newTab?: boolean;
@@ -135,12 +135,12 @@ export interface Post {
             label: string;
             reference:
               | {
-                  value: string | Page;
                   relationTo: 'pages';
+                  value: string | Page;
                 }
               | {
-                  value: string | Post;
                   relationTo: 'posts';
+                  value: string | Post;
                 };
             url: string;
             newTab?: boolean;
@@ -166,11 +166,6 @@ export interface Post {
   )[];
   author?: string | User;
   publishDate?: string;
-  meta?: {
-    title?: string;
-    description?: string;
-    image?: string | Media;
-  };
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
@@ -178,8 +173,8 @@ export interface Post {
 export interface Page {
   id: string;
   title: string;
-  hero: {
-    type:
+  hero?: {
+    type?:
       | 'basic'
       | 'content'
       | 'contentMedia'
@@ -198,12 +193,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -222,12 +217,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -246,12 +241,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -278,12 +273,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -306,12 +301,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -331,12 +326,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -350,12 +345,12 @@ export interface Page {
           type?: 'reference' | 'custom';
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -375,12 +370,12 @@ export interface Page {
           label: string;
           reference:
             | {
-                value: string | Page;
                 relationTo: 'pages';
+                value: string | Page;
               }
             | {
-                value: string | Post;
                 relationTo: 'posts';
+                value: string | Post;
               };
           url: string;
           newTab?: boolean;
@@ -399,12 +394,12 @@ export interface Page {
             label: string;
             reference:
               | {
-                  value: string | Page;
                   relationTo: 'pages';
+                  value: string | Page;
                 }
               | {
-                  value: string | Post;
                   relationTo: 'posts';
+                  value: string | Post;
                 };
             url: string;
             newTab?: boolean;
@@ -433,12 +428,12 @@ export interface Page {
                 label: string;
                 reference:
                   | {
-                      value: string | Page;
                       relationTo: 'pages';
+                      value: string | Page;
                     }
                   | {
-                      value: string | Post;
                       relationTo: 'posts';
+                      value: string | Post;
                     };
                 url: string;
                 newTab?: boolean;
@@ -466,12 +461,12 @@ export interface Page {
               label: string;
               reference:
                 | {
-                    value: string | Page;
                     relationTo: 'pages';
+                    value: string | Page;
                   }
                 | {
-                    value: string | Post;
                     relationTo: 'posts';
+                    value: string | Post;
                   };
               url: string;
               newTab?: boolean;
@@ -488,7 +483,6 @@ export interface Page {
         richText?: {
           [k: string]: unknown;
         }[];
-        form: string | Form;
         id?: string;
         blockName?: string;
         blockType: 'embeddedForm';
@@ -526,12 +520,12 @@ export interface Page {
             label: string;
             reference:
               | {
-                  value: string | Page;
                   relationTo: 'pages';
+                  value: string | Page;
                 }
               | {
-                  value: string | Post;
                   relationTo: 'posts';
+                  value: string | Post;
                 };
             url: string;
             newTab?: boolean;
@@ -558,149 +552,9 @@ export interface Page {
   fullTitle?: string;
   slug?: string;
   author?: string | User;
-  parent?: string | Page;
-  breadcrumbs?: {
-    doc?: string | Page;
-    url?: string;
-    label?: string;
-    id?: string;
-  }[];
-  meta?: {
-    title?: string;
-    description?: string;
-    image?: string | Media;
-  };
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
-}
-export interface Form {
-  id: string;
-  title: string;
-  fields?: (
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        defaultValue?: string;
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'text';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        defaultValue?: string;
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'textarea';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        defaultValue?: string;
-        options?: {
-          label: string;
-          value: string;
-          id?: string;
-        }[];
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'select';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'email';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'state';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'country';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        defaultValue?: number;
-        required?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'number';
-      }
-    | {
-        name: string;
-        label?: string;
-        width?: number;
-        required?: boolean;
-        defaultValue?: boolean;
-        id?: string;
-        blockName?: string;
-        blockType: 'checkbox';
-      }
-    | {
-        message?: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'message';
-      }
-  )[];
-  submitButtonLabel?: string;
-  confirmationType?: 'message' | 'redirect';
-  confirmationMessage: {
-    [k: string]: unknown;
-  }[];
-  redirect?: {
-    type?: 'reference' | 'custom';
-    reference:
-      | {
-          value: string | Page;
-          relationTo: 'pages';
-        }
-      | {
-          value: string | Post;
-          relationTo: 'posts';
-        };
-    url: string;
-  };
-  emails?: {
-    emailTo: string;
-    cc?: string;
-    bcc?: string;
-    replyTo?: string;
-    emailFrom?: string;
-    subject: string;
-    message?: {
-      [k: string]: unknown;
-    }[];
-    id?: string;
-  }[];
-  updatedAt: string;
-  createdAt: string;
 }
 export interface User {
   id: string;
@@ -725,12 +579,12 @@ export interface Alert {
   placement: 'global' | 'documents';
   documents:
     | {
-        value: string;
         relationTo: 'pages';
+        value: string;
       }[]
     | {
-        value: Page;
         relationTo: 'pages';
+        value: Page;
       }[];
   backgroundColor?: 'matchTheme' | 'green' | 'blue' | 'red' | 'purple';
   content: {
@@ -743,12 +597,12 @@ export interface Alert {
       label: string;
       reference:
         | {
-            value: string | Page;
             relationTo: 'pages';
+            value: string | Page;
           }
         | {
-            value: string | Post;
             relationTo: 'posts';
+            value: string | Post;
           };
       url: string;
       newTab?: boolean;
@@ -758,14 +612,38 @@ export interface Alert {
   updatedAt: string;
   createdAt: string;
 }
-export interface FormSubmission {
+export interface PayloadPreference {
   id: string;
-  form: string | Form;
-  submissionData?: {
-    field: string;
-    value: string;
-    id?: string;
-  }[];
+  user: {
+    relationTo: 'users';
+    value: string | User;
+  };
+  key?: string;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface PayloadMigration {
+  id: string;
+  name?: string;
+  batch?: number;
+  schema?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -789,12 +667,12 @@ export interface MainMenu {
               label: string;
               reference:
                 | {
-                    value: string | Page;
                     relationTo: 'pages';
+                    value: string | Page;
                   }
                 | {
-                    value: string | Post;
                     relationTo: 'posts';
+                    value: string | Post;
                   };
               url: string;
               newTab?: boolean;
@@ -816,12 +694,12 @@ export interface MainMenu {
               type?: 'reference' | 'custom';
               reference:
                 | {
-                    value: string | Page;
                     relationTo: 'pages';
+                    value: string | Page;
                   }
                 | {
-                    value: string | Post;
                     relationTo: 'posts';
+                    value: string | Post;
                   };
               url: string;
               newTab?: boolean;
@@ -836,12 +714,12 @@ export interface MainMenu {
       type?: 'reference' | 'custom';
       reference:
         | {
-            value: string | Page;
             relationTo: 'pages';
+            value: string | Page;
           }
         | {
-            value: string | Post;
             relationTo: 'posts';
+            value: string | Post;
           };
       url: string;
       newTab?: boolean;

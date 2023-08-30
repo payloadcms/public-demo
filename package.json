@@ -6,14 +6,15 @@
   "license": "MIT",
   "scripts": {
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
-    "pre:debug": "yarn copyfiles && yarn build:server",
+    "pre:debug": "pnpm copyfiles && pnpm build:server",
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
-    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
+    "build:payloadold": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
+    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload-cjs build --cjs",
     "build:server": "tsc",
-    "build": "yarn generate:types && yarn generate:graphql-schema && yarn copyfiles && yarn build:payload && yarn build:server",
+    "build": "pnpm generate:types && pnpm generate:graphql-schema && pnpm copyfiles && pnpm build:payload && pnpm build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
-    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
-    "generate:graphql-schema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphqlSchema"
+    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload-cjs generate:types -cjs",
+    "generate:graphql-schema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload-cjs generate:graphqlSchema -cjs"
   },
   "dependencies": {
     "@faker-js/faker": "^6.3.1",
