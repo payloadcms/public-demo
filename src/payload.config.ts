@@ -13,7 +13,7 @@ import { Alerts } from './collections/Alerts'
 import BeforeDashboard from './components/BeforeDashboard';
 import { readPayloadVersion } from './endpoints/readPayloadVersion';
 import { Version } from './components/DisplayVersion';
-import { adapter } from './adapter';
+import { adapter } from './adapter.js';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -58,10 +58,10 @@ export default buildConfig({
         ...config.resolve.alias,
         /*'/Users/alessio/Documents/GitHub/payload-v2-test/node_modules/@alessiogr/payloadtestdb-mongodb/dist/index.js': '/Users/alessio/Documents/GitHub/payload-v2-test/node_modules/@alessiogr/payloadtestdb-mongodb/dist/cjs/mock.js',*/
         [path.resolve(__dirname, './adapter.js')]: path.resolve(__dirname, './mock.js'),
-        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/webpack/bundler.ts": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/mocks/emptyModule.js",
-        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/webpack/bundler.js": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/mocks/emptyModule.js",
-        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/webpack/bundler.ts": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/mocks/emptyModule.js",
-        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/webpack/bundler.js": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/cjs/bundlers/webpack/bundler.ts": "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/cjs/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/cjs/bundlers/webpack/bundler.js": "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/cjs/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/esm/bundlers/webpack/bundler.ts": "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/esm/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/esm/bundlers/webpack/bundler.js": "/Users/alessio/Documents/GitHub/public-demo/node_modules/payload/dist/esm/bundlers/mocks/emptyModule.js",
         ...[path.resolve(__dirname, 'endpoints/readPayloadVersion')].reduce((alias, aliasPath) => ({
           ...alias,
           [aliasPath]: mockModulePath,
