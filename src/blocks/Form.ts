@@ -5,11 +5,6 @@ export const Form: Block = {
   slug: 'embeddedForm',
   fields: [
     richText({}),
-    {
-      name: 'form',
-      type: 'relationship',
-      relationTo: 'forms',
-      required: true,
-    },
+
   ],
 };

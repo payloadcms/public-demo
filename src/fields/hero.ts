@@ -20,7 +20,7 @@ const richTextHeroField = (args?: Args): RichTextField => {
   return ({
     type: 'richText',
     name: name || 'richText',
-		localized: true,
+    localized: true,
     admin: {
       elements: [
         'h1',
@@ -31,7 +31,7 @@ const richTextHeroField = (args?: Args): RichTextField => {
         'h6',
         largeBody,
         'link',
-				'upload',
+        'upload',
       ],
       leaves: [
         'underline',
@@ -43,14 +43,14 @@ const richTextHeroField = (args?: Args): RichTextField => {
 
 export const hero: Field = {
   name: 'hero',
-	label: false,
+  label: false,
   type: 'group',
   fields: [
     {
       type: 'select',
       name: 'type',
       label: 'Type',
-      required: true,
+      required: false,
       defaultValue: 'basic',
       options: [
         {

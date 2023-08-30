@@ -122,36 +122,7 @@ async function seedData() {
     data: homeDataES
   });
 
-  // Forms - Contact
-  const contactForm = await payload.create({
-    collection: 'forms',
-    data: contactFormData() as unknown as Form,
-  });
-  
-  // Forms - Mailing List
-  const mailingListForm = await payload.create({
-    collection: 'forms',
-    data: mailingListFormData() as unknown as Form,
-  });
 
-  // Generate form submissions
-  const contactFormSubmissions = [...Array(5)].map(_ => {
-    return payload.create({
-      collection: 'form-submissions',
-      data: generateContactFormSubmission(contactForm.id),
-    });
-  });
-
-  await Promise.all(contactFormSubmissions);
-
-  const mailingListSubmissions = [...Array(5)].map(_ => {
-    return payload.create({
-      collection: 'form-submissions',
-      data: generateMailingListSubmission(mailingListForm.id),
-    });
-  });
-
-  await Promise.all(mailingListSubmissions);
 
   // Create Categories
   const [newsCategory, featureCategory, tutorialCategory] = await Promise.all([

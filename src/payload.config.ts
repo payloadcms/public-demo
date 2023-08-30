@@ -1,7 +1,4 @@
 import { buildConfig } from 'payload/config';
-import formBuilder from '@payloadcms/plugin-form-builder';
-import nestedDocs from '@payloadcms/plugin-nested-docs';
-import seo from '@payloadcms/plugin-seo';
 import path from 'path';
 import dotenv from 'dotenv';
 import Categories from './collections/Categories';
@@ -84,28 +81,6 @@ export default buildConfig({
   // graphQL: false
 
   plugins: [
-    formBuilder({
-      formOverrides: {
-        admin: {
-          group: 'Content',
-        },
-      },
-      formSubmissionOverrides: {
-        admin: {
-          group: 'Admin',
-        },
-      },
-      redirectRelationships: ['pages', 'posts'],
-    }),
-    nestedDocs({
-      collections: ['pages'],
-      generateLabel: (_, doc) => doc.title as string,
-      generateURL: docs => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
-    }),
-    seo({
-      collections: ['pages', 'posts'],
-      uploadsCollection: 'media',
-    }),
   ],
 
   // optional customization of routes
