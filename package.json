@@ -16,15 +16,19 @@
     "generate:graphql-schema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphqlSchema"
   },
   "dependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5",
+    "@faker-js/faker": "^6.3.1",
+    "@payloadcms/db-mongodb": "file:/Users/alessio/Documents/GitHub/payload/packages/db-mongodb/",
     "@yarnpkg/lockfile": "^1.1.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^4.3.0",
+    "mongodb-memory-server": "^8.15.1",
     "node-cron": "^3.0.0",
-    "payload": "^1.15.2",
-    "qs": "^6.10.3"
+    "payload": "file:/Users/alessio/Documents/GitHub/payload/packages/payload/",
+    "qs": "^6.10.3",
+    "slate": "^0.94.1",
+    "slate-react": "^0.98.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",

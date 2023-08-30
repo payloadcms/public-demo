@@ -1,4 +1,4 @@
-import { RichTextLeaf } from 'payload/dist/fields/config/types';
+import { RichTextLeaf } from 'payload/types';
 
 const defaultLeaves: RichTextLeaf[] = [
   'bold',

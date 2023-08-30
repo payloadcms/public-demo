@@ -1,4 +1,4 @@
-import { RichTextField } from 'payload/dist/fields/config/types';
+import { RichTextField } from 'payload/types';
 import { Field } from 'payload/types';
 import link from './link';
 import linkGroup from './linkGroup';

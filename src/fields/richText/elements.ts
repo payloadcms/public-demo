@@ -1,4 +1,4 @@
-import { RichTextElement } from 'payload/dist/fields/config/types';
+import { RichTextElement } from 'payload/types';
 import largeBody from './largeBody';
 
 const elements: RichTextElement[] = [

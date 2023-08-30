@@ -13,6 +13,7 @@ import { Alerts } from './collections/Alerts'
 import BeforeDashboard from './components/BeforeDashboard';
 import { readPayloadVersion } from './endpoints/readPayloadVersion';
 import { Version } from './components/DisplayVersion';
+import { adapter } from './adapter';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -46,17 +47,33 @@ export default buildConfig({
     },
 
     // alias modules that should **only** be used in server context, not within the frontend code
-    webpack: (config) => ({
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: [path.resolve(__dirname, 'endpoints/readPayloadVersion')].reduce((alias, aliasPath) => ({
+
+    webpack(config) {
+
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+      }
+
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        /*'/Users/alessio/Documents/GitHub/payload-v2-test/node_modules/@alessiogr/payloadtestdb-mongodb/dist/index.js': '/Users/alessio/Documents/GitHub/payload-v2-test/node_modules/@alessiogr/payloadtestdb-mongodb/dist/cjs/mock.js',*/
+        [path.resolve(__dirname, './adapter.js')]: path.resolve(__dirname, './mock.js'),
+        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/webpack/bundler.ts": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/webpack/bundler.js": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/cjs/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/webpack/bundler.ts": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/mocks/emptyModule.js",
+        "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/webpack/bundler.js": "/Users/alessio/Documents/GitHub/payload-v2-test-cjs/node_modules/payload/dist/esm/bundlers/mocks/emptyModule.js",
+        ...[path.resolve(__dirname, 'endpoints/readPayloadVersion')].reduce((alias, aliasPath) => ({
           ...alias,
           [aliasPath]: mockModulePath,
-        }), config.resolve.alias),
-      },
-    }),
+        }), config.resolve.alias)
+      }
+
+      console.log('Webpack config resolve:', JSON.stringify(config.resolve, null, 2));
+
+      return config;
+    },
   },
+  db: adapter,
 
   // collections in Payload are synonymous with database tables, models or entities from other frameworks and systems
   collections: [Categories, Media, Posts, Pages, Users, Alerts],

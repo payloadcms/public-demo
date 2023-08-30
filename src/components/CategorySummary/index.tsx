@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import qs from 'qs';
-import { useDocumentInfo } from 'payload/dist/admin/components/utilities/DocumentInfo';
+import { useDocumentInfo } from 'payload/components/utilities';
 
 const get = (url: string, params: unknown = {}): Promise<Response> => {
   const query = qs.stringify(params, { addQueryPrefix: true });
