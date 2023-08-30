@@ -6,12 +6,6 @@ export const getHomeData = (imageId: string, userId: string): Partial<Page> => {
     slug: 'home',
     _status: 'published',
     author: userId,
-    meta: {
-      title: 'Payload CMS Demo - Home',
-      description:
-        'Here is a column of content and it has an embedded Media element within it. This content will be used to generate a Meta Description.',
-      image: imageId,
-    },
     layout: [
       {
         columns: [

@@ -16,7 +16,7 @@ import { buildWebsiteData } from '../data/posts/buildWebsiteData';
 import { introducingPayloadData } from '../data/posts/introducingPayloadData';
 import { futurePostData } from '../data/posts/futurePostData'
 import { mainMenuData } from '../data/mainMenu/mainMenuData';
-import type { Form, MainMenu, Page, Post } from 'payload/generated-types'
+import type { MainMenu, Page, Post } from 'payload/generated-types'
 
 export async function seed() {
   try {

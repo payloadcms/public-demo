@@ -4,13 +4,6 @@ export const getVideoSeriesData = (imageId: string, userId: string, parentId: st
   slug: 'video-series',
   _status: 'published',
   author: userId,
-  meta: {
-    title: 'Payload CMS Demo - Video Series',
-    description:
-      'Here is a column of content and it has an embedded Media element within it. This content will be used to generate a Meta Description.',
-    image: imageId,
-  },
-  parent: parentId,
   fullTitle: 'Home > Video Series',
   title: 'Video Series',
   hero: {
