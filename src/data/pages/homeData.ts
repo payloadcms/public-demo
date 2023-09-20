@@ -12,6 +12,56 @@ export const getHomeData = (imageId: string, userId: string): Partial<Page> => {
         'Here is a column of content and it has an embedded Media element within it. This content will be used to generate a Meta Description.',
       image: imageId,
     },
+    hero: {
+      type: 'contentMedia',
+      contentMedia: {
+        richText: [
+          {
+            type: 'h1',
+            children: [
+              {
+                text: 'Payload Manifest',
+              },
+            ],
+          },
+          {
+            type: 'large-body',
+            children: [
+              {
+                text: 'This is a snippet of introductory text set in a custom rich-text element called "large body". ',
+              },
+            ],
+          },
+          {
+            type: 'p',
+            children: [
+              {
+                text: 'Here is a regular paragraph with a ',
+              },
+              {
+                type: 'link',
+                url: 'https://payloadcms.com',
+                newTab: false,
+                children: [
+                  {
+                    text: 'link',
+                  },
+                ],
+              },
+              {
+                text: '.',
+              },
+            ],
+          },
+        ],
+        links: [],
+        media: imageId,
+        // @ts-expect-error
+        embeddedVideo: {
+          aspectRatio: '56.25',
+        },
+      },
+    },
     layout: [
       {
         columns: [
