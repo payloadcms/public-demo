@@ -4,6 +4,7 @@ import linkGroup from './linkGroup'
 import richText from './richText'
 import label from './richText/label'
 import largeBody from './richText/largeBody'
+import { slateEditor } from '@payloadcms/richtext-slate'
 
 export const hero: Field = {
   name: 'hero',
@@ -36,10 +37,12 @@ export const hero: Field = {
       ],
     },
     richText({
-      admin: {
-        elements: ['h1', largeBody, label, 'link'],
-        leaves: [],
-      },
+      editor: slateEditor({
+        admin: {
+          elements: ['h1', largeBody, label, 'link'],
+          leaves: [],
+        },
+      }),
     }),
     linkGroup({
       overrides: {
