@@ -3,6 +3,7 @@
   // All ESLint rules to 'warn' to differentate from TypeScript's 'error' level
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
@@ -10,4 +11,12 @@
     },
     "editor.formatOnSave": true,
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+    },
+    "editor.formatOnSave": true,
+  },
+  "editor.formatOnSaveMode": "file",
 }
