@@ -1,59 +1,100 @@
 import fs from 'fs'
+import { MongoClient } from 'mongodb'
 import path from 'path'
-import type { Payload } from 'payload'
+import payload from 'payload'
 
-import { home } from './home'
-import { image1 } from './image-1'
-import { image2 } from './image-2'
-import { post1 } from './post-1'
-import { post2 } from './post-2'
-import { post3 } from './post-3'
-import { postsPage } from './posts-page'
-import { project1 } from './project-1'
-import { project2 } from './project-2'
-import { project3 } from './project-3'
-import { projectsPage } from './projects-page'
+import { home } from '../seed/home'
+import { image1 } from '../seed/image-1'
+import { image2 } from '../seed/image-2'
+import { post1 } from '../seed/post-1'
+import { post2 } from '../seed/post-2'
+import { post3 } from '../seed/post-3'
+import { postsPage } from '../seed/posts-page'
+import { project1 } from '../seed/project-1'
+import { project2 } from '../seed/project-2'
+import { project3 } from '../seed/project-3'
+import { projectsPage } from '../seed/projects-page'
 
 const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments']
 const globals = ['header', 'settings', 'footer']
 
-// Next.js revalidation errors are normal when seeding the database without a server running
-// i.e. running `yarn seed` locally instead of using the admin UI within an active app
-// The app is not running to revalidate the pages and so the API routes are not available
-// These error messages can be ignored: `Error hitting revalidate route for...`
-export const seed = async (payload: Payload): Promise<void> => {
-  payload.logger.info('Seeding database...')
+export async function seed(): Promise<void> {
+  try {
+    payload.logger.info(`Seeding database...`)
 
-  // we need to clear the media directory before seeding
-  // as well as the collections and globals
-  // this is because while `yarn seed` drops the database
-  // the custom `/api/seed` endpoint does not
+    payload.logger.info(`— Clearing media...`)
 
-  payload.logger.info(`— Clearing media...`)
+    const mediaDir = path.resolve(__dirname, '../../media')
+    if (fs.existsSync(mediaDir)) {
+      fs.rmdirSync(mediaDir, { recursive: true })
+    }
 
-  const mediaDir = path.resolve(__dirname, '../../media')
-  if (fs.existsSync(mediaDir)) {
-    fs.rmdirSync(mediaDir, { recursive: true })
+    payload.logger.info(`— Clearing collections and globals...`)
+
+    // clear the database
+    await Promise.all([
+      ...collections.map(async collection =>
+        payload.delete({
+          collection,
+          where: {},
+        }),
+      ), // eslint-disable-line function-paren-newline
+      ...globals.map(async global =>
+        payload.updateGlobal({
+          slug: global,
+          data: {},
+        }),
+      ), // eslint-disable-line function-paren-newline
+    ])
+
+    await seedData()
+    payload.logger.info(`Seed Complete.`)
+  } catch (error: unknown) {
+    console.error(error) // eslint-disable-line no-console
+    payload.logger.error('Error seeding database.')
   }
+}
 
-  payload.logger.info(`— Clearing collections and globals...`)
+export async function reset(): Promise<void> {
+  try {
+    payload.logger.info(`Resetting database...`)
 
-  // clear the database
-  await Promise.all([
-    ...collections.map(async collection =>
-      payload.delete({
-        collection,
-        where: {},
-      }),
-    ), // eslint-disable-line function-paren-newline
-    ...globals.map(async global =>
-      payload.updateGlobal({
-        slug: global,
-        data: {},
-      }),
-    ), // eslint-disable-line function-paren-newline
-  ])
+    const mediaDir = path.resolve(__dirname, '../../media')
+    if (fs.existsSync(mediaDir)) {
+      fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true })
+    }
 
+    await Promise.all([
+      ...collections.map(async collection =>
+        payload.delete({
+          collection,
+          where: {},
+        }),
+      ), // eslint-disable-line function-paren-newline
+      ...globals.map(async global =>
+        payload.updateGlobal({
+          slug: global,
+          data: {},
+        }),
+      ), // eslint-disable-line function-paren-newline
+    ])
+
+    await dropDB()
+    await seedData()
+    payload.logger.info(`Reset Complete.`)
+  } catch (error: unknown) {
+    console.error(error) // eslint-disable-line no-console
+    payload.logger.error('Error resetting database.')
+  }
+}
+
+async function dropDB(): Promise<void> {
+  const client = await MongoClient.connect(process.env.DATABASE_URI)
+  const db = client.db(new URL(process.env.DATABASE_URI).pathname.substring(1))
+  await db.dropDatabase()
+}
+
+async function seedData(): Promise<void> {
   payload.logger.info(`— Seeding demo author and user...`)
 
   await Promise.all(
@@ -73,9 +114,9 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.create({
       collection: 'users',
       data: {
-        email: 'demo-author@payloadcms.com',
+        email: 'demo@payloadcms.com',
         name: 'Demo Author',
-        password: 'password',
+        password: 'demo',
         roles: ['admin'],
       },
     }),

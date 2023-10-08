@@ -1,24 +1,19 @@
 @import '~payload/scss';
 
-.dashboard .before-dashboard {
+.before-dashboard {
 	margin-bottom: base(1.5);
 
-	&__banner {
-		& h4 {
-			margin: 0;
+	.banner {
+		color: var(--color-base-800);
+
+		svg {
+			background-color: var(--color-base-800);
+			border-radius: 100px;
+			margin-right: base(.5);
+
+			path {
+				stroke: var(--color-base-0);
+			}
 		}
-	}
-
-	&__instructions {
-		list-style: decimal;
-		margin-bottom: base(0.5);
-
-		& li {
-			width: 100%;
-		}
-	}
-
-	& a:hover {
-		opacity: 0.85;
 	}
 }

@@ -1,9 +1,8 @@
 import dotenv from 'dotenv'
 import path from 'path'
 
-// This file is used to replace `server.ts` when ejecting i.e. `yarn eject`
-// See `../eject.ts` for exact details on how this file is used
-// See `./README.md#eject` for more information
+import { resetScheduledJob } from './payload/cron/jobs'
+import { seed } from './payload/cron/reset'
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -11,8 +10,6 @@ dotenv.config({
 
 import express from 'express'
 import payload from 'payload'
-
-import { seed } from './payload/seed'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -25,17 +22,19 @@ app.get('/', (_, res) => {
 const start = async (): Promise<void> => {
   await payload.init({
     secret: process.env.PAYLOAD_SECRET || '',
-    mongoURL: process.env.MONGODB_URI || '',
     express: app,
-    onInit: () => {
+    onInit: async () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+
+      // Clear and reset database on server start
+      // NOTE - this is only for demo purposes and should not be used
+      // for production sites with real data
+      await seed()
     },
   })
 
-  if (process.env.PAYLOAD_SEED === 'true') {
-    await seed(payload)
-    process.exit()
-  }
+  // Seed database with startup data
+  resetScheduledJob.start()
 
   app.listen(PORT, async () => {
     payload.logger.info(`App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)

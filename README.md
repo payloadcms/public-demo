@@ -47,7 +47,7 @@ Type `cd ./public-demo` and then `yarn` or `npm install --legacy-peer-deps` to a
 
 Type `cp .env.example .env` in your terminal to make a copy of the example `.env` file, and then edit that file to fill in your own values.
 
-Typically, the only line that you'll need to change within your new `.env` for local development is the `MONGO_URL` value. If you have MongoDB running locally, then you can use the example connection string, but if you are using Mongo Atlas or similar, you'll want to fill this value in with your own connection string.
+Typically, the only line that you'll need to change within your new `.env` for local development is the `DATABASE_URI` value. If you have MongoDB running locally, then you can use the example connection string, but if you are using Mongo Atlas or similar, you'll want to fill this value in with your own connection string.
 
 **Fire up the development server**
 

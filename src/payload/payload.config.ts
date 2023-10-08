@@ -5,8 +5,8 @@ import { payloadCloud } from '@payloadcms/plugin-cloud'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
-import { slateEditor } from '@payloadcms/richtext-slate'
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
+import { slateEditor } from '@payloadcms/richtext-slate'
 import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
@@ -25,8 +25,6 @@ import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
 
-import link from '../payload/fields/link'
-
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
 }
@@ -41,15 +39,15 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(), // bundler-config
+    livePreview: {
+      url: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+      collections: ['pages', 'posts', 'projects'],
+    },
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
       beforeLogin: [BeforeLogin],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: [BeforeDashboard],
     },
-    webpack: (config) => ({
+    webpack: config => ({
       ...config,
       resolve: {
         ...config.resolve,
