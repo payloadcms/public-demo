@@ -33,7 +33,16 @@ dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
 })
 
-const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
+const m = path.resolve(__dirname, './emptyModuleMock.js')
+
+function r(str) {
+  return path.resolve(__dirname, str)
+}
+function generateAliases() {
+  return {
+    [r('seed/index.ts')]: m,
+  }
+}
 
 export default buildConfig({
   admin: {
@@ -53,7 +62,8 @@ export default buildConfig({
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
-          express: mockModulePath,
+          express: m,
+          ...generateAliases(),
         },
       },
     }),

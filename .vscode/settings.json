@@ -1,0 +1,6 @@
+{
+  "npm.packageManager": "pnpm",
+  // All ESLint rules to 'warn' to differentate from TypeScript's 'error' level
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+  "typescript.tsdk": "node_modules/typescript/lib",
+}
