@@ -1,40 +1,61 @@
-import express from 'express';
-import payload from 'payload';
-import path from 'path';
-import { seed } from './cron/reset';
-import { resetScheduledJob } from './cron/jobs';
+import dotenv from 'dotenv'
+import next from 'next'
+import nextBuild from 'next/dist/build'
+import path from 'path'
 
-require('dotenv').config({
+dotenv.config({
   path: path.resolve(__dirname, '../.env'),
-});
+})
 
-const app = express();
+import express from 'express'
+import payload from 'payload'
 
-// Redirect all traffic at root to admin UI
-app.get('/', function (_, res) {
-  res.redirect('/admin');
-});
+import { seed } from './payload/seed'
 
-const start = async () => {
-	// Initialize Payload
-	await payload.init({
-    secret: process.env.PAYLOAD_SECRET_KEY,
-    mongoURL: process.env.MONGO_URL,
+const app = express()
+const PORT = process.env.PORT || 3000
+
+const start = async (): Promise<void> => {
+  await payload.init({
+    secret: process.env.PAYLOAD_SECRET || '',
+    mongoURL: process.env.MONGODB_URI || '',
     express: app,
-    onInit: async () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-
-      // Clear and reset database on server start
-      // NOTE - this is only for demo purposes and should not be used
-      // for production sites with real data
-      await seed();
+    onInit: () => {
+      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
     },
-  });
+  })
 
-	// Seed database with startup data
-	resetScheduledJob.start();
+  if (process.env.PAYLOAD_SEED === 'true') {
+    await seed(payload)
+    process.exit()
+  }
 
-	app.listen(3000);
+  if (process.env.NEXT_BUILD) {
+    app.listen(PORT, async () => {
+      payload.logger.info(`Next.js is now building...`)
+      // @ts-expect-error
+      await nextBuild(path.join(__dirname, '../'))
+      process.exit()
+    })
+
+    return
+  }
+
+  const nextApp = next({
+    dev: process.env.NODE_ENV !== 'production',
+  })
+
+  const nextHandler = nextApp.getRequestHandler()
+
+  app.use((req, res) => nextHandler(req, res))
+
+  nextApp.prepare().then(() => {
+    payload.logger.info('Starting Next.js...')
+
+    app.listen(PORT, async () => {
+      payload.logger.info(`Next.js App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
+    })
+  })
 }
 
-start();
+start()
