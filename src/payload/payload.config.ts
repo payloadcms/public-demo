@@ -7,7 +7,6 @@ import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 import { slateEditor } from '@payloadcms/richtext-slate'
-import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
@@ -20,7 +19,6 @@ import { Projects } from './collections/Projects'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
-import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
@@ -29,20 +27,7 @@ const generateTitle: GenerateTitle = () => {
   return 'My Website'
 }
 
-dotenv.config({
-  path: path.resolve(__dirname, '../../.env'),
-})
-
 const m = path.resolve(__dirname, './emptyModuleMock.js')
-
-function r(str) {
-  return path.resolve(__dirname, str)
-}
-function generateAliases() {
-  return {
-    [r('seed/index.ts')]: m,
-  }
-}
 
 export default buildConfig({
   admin: {
@@ -63,7 +48,6 @@ export default buildConfig({
         alias: {
           ...config.resolve?.alias,
           express: m,
-          ...generateAliases(),
         },
       },
     }),
@@ -84,15 +68,6 @@ export default buildConfig({
   }),
   cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
-  endpoints: [
-    // The seed endpoint is used to populate the database with some example data
-    // You should delete this endpoint before deploying your site to production
-    {
-      path: '/seed',
-      method: 'get',
-      handler: seed,
-    },
-  ],
   plugins: [
     // formBuilder({}),
     redirects({
