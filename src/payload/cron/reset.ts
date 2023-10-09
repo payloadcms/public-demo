@@ -47,6 +47,7 @@ export async function seed(): Promise<void> {
       ), // eslint-disable-line function-paren-newline
     ])
 
+    await dropDB()
     await seedData()
     payload.logger.info(`Seed Complete.`)
   } catch (error: unknown) {
