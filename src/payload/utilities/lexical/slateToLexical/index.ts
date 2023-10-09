@@ -14,7 +14,7 @@ import type {
 
 interface SlateNode {
   children?: SlateNode[]
-  type: string
+  type?: string // doesn't always have type, e.g. for paragraphs
   [key: string]: any
 }
 
@@ -48,6 +48,8 @@ function convertSlateNodesToLexical(
         }
       }
       switch (node.type) {
+        case 'p':
+          return convertParagraphNode(node, parentNode)
         case 'h1':
         case 'h2':
         case 'h3':

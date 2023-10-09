@@ -1,4 +1,5 @@
 import type { Post } from '../payload-types'
+import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 export const post1: Partial<Post> = {
   title: 'Post 1',
   slug: 'post-1',
@@ -12,7 +13,7 @@ export const post1: Partial<Post> = {
   hero: {
     type: 'lowImpact',
     links: null,
-    richText: [
+    richText: convertSlateToLexical([
       {
         children: [
           {
@@ -21,7 +22,7 @@ export const post1: Partial<Post> = {
         ],
         type: 'h1',
       },
-    ],
+    ]) as any,
     media: null,
   },
   layout: [

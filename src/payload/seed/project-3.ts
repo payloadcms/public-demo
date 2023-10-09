@@ -1,4 +1,5 @@
 import type { Project } from '../payload-types'
+import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const project3: Partial<Project> = {
   title: 'Project 3',
@@ -12,7 +13,7 @@ export const project3: Partial<Project> = {
   hero: {
     type: 'lowImpact',
     links: null,
-    richText: [
+    richText: convertSlateToLexical([
       {
         children: [
           {
@@ -21,7 +22,7 @@ export const project3: Partial<Project> = {
         ],
         type: 'h1',
       },
-    ],
+    ]) as any,
     media: null,
   },
   layout: [

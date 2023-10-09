@@ -1,4 +1,5 @@
 import type { Page } from '../payload-types'
+import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const projectsPage: Partial<Page> = {
   title: 'Projects',
@@ -11,7 +12,7 @@ export const projectsPage: Partial<Page> = {
   },
   hero: {
     type: 'lowImpact',
-    richText: [
+    richText: convertSlateToLexical([
       {
         type: 'h1',
         children: [
@@ -28,7 +29,7 @@ export const projectsPage: Partial<Page> = {
           },
         ],
       },
-    ],
+    ]) as any,
     media: undefined,
   },
   layout: [
