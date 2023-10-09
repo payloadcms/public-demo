@@ -1,11 +1,12 @@
 import type { Media } from '../payload-types'
+import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const image2: Media = {
   alt: 'E-Book',
   id: '',
   createdAt: '',
   updatedAt: '',
-  caption: [
+  caption: convertSlateToLexical([
     {
       children: [
         {
@@ -41,5 +42,5 @@ export const image2: Media = {
         },
       ],
     },
-  ],
+  ]) as any,
 }

@@ -1,6 +1,7 @@
 import type { SerializedEditorState } from 'lexical'
 
 import type { Page } from '../payload-types'
+import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const home: Partial<Page> = {
   title: 'Home',
@@ -161,7 +162,7 @@ export const home: Partial<Page> = {
       columns: [
         {
           size: 'full',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -177,11 +178,11 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -210,7 +211,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -223,7 +224,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -265,7 +266,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -279,7 +280,7 @@ export const home: Partial<Page> = {
 
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -295,7 +296,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -308,7 +309,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -337,7 +338,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -350,7 +351,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -379,7 +380,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -392,7 +393,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -408,7 +409,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -421,7 +422,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -437,7 +438,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -450,7 +451,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -479,7 +480,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -492,7 +493,7 @@ export const home: Partial<Page> = {
         },
         {
           size: 'oneThird',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -508,7 +509,7 @@ export const home: Partial<Page> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           enableLink: false,
           link: {
             reference: {
@@ -530,7 +531,7 @@ export const home: Partial<Page> = {
     {
       blockName: 'Archive Block',
       blockType: 'archive',
-      introContent: [
+      introContent: convertSlateToLexical([
         {
           type: 'h4',
           children: [
@@ -547,7 +548,7 @@ export const home: Partial<Page> = {
             },
           ],
         },
-      ],
+      ]) as any,
       populateBy: 'collection',
       relationTo: 'posts',
       categories: [],
@@ -555,7 +556,7 @@ export const home: Partial<Page> = {
     {
       blockName: 'Archive Block',
       blockType: 'archive',
-      introContent: [
+      introContent: convertSlateToLexical([
         {
           type: 'h4',
           children: [
@@ -572,7 +573,7 @@ export const home: Partial<Page> = {
             },
           ],
         },
-      ],
+      ]) as any,
       populateBy: 'collection',
       relationTo: 'projects',
       categories: [],
@@ -580,7 +581,7 @@ export const home: Partial<Page> = {
     {
       blockType: 'cta',
       blockName: 'CTA',
-      richText: [
+      richText: convertSlateToLexical([
         {
           children: [
             {
@@ -609,7 +610,7 @@ export const home: Partial<Page> = {
             },
           ],
         },
-      ],
+      ]) as any,
       links: [
         {
           link: {

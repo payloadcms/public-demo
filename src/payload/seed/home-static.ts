@@ -1,4 +1,5 @@
 import type { Page } from '../payload-types'
+import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const staticHome: Page = {
   id: '',
@@ -176,7 +177,7 @@ export const staticHome: Page = {
   },
   layout: [
     {
-      richText: [
+      richText: convertSlateToLexical([
         {
           children: [
             {
@@ -205,7 +206,7 @@ export const staticHome: Page = {
             },
           ],
         },
-      ],
+      ]) as any,
       links: [
         {
           link: {

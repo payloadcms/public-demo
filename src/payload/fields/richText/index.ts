@@ -1,35 +1,33 @@
-import { slateEditor } from '@payloadcms/richtext-slate'
-import type { RichTextElement, RichTextLeaf } from '@payloadcms/richtext-slate/dist/types'
-import type { RichTextField } from 'payload/dist/fields/config/types'
+import type { FeatureProvider } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, ParagraphFeature, UploadFeature } from '@payloadcms/richtext-lexical'
+import type { RichTextField } from 'payload/types'
 
 import deepMerge from '../../utilities/deepMerge'
 import link from '../link'
-import elements from './elements'
-import leaves from './leaves'
+import { defaultPublicDemoFeatures } from './defaultFeatures'
 
 type RichText = (
   overrides?: Partial<RichTextField>,
   additions?: {
-    elements?: RichTextElement[]
-    leaves?: RichTextLeaf[]
+    features?: FeatureProvider[]
   },
 ) => RichTextField
 
 const richText: RichText = (
   overrides,
   additions = {
-    elements: [],
-    leaves: [],
+    features: [],
   },
 ) =>
   deepMerge<RichTextField, Partial<RichTextField>>(
     {
       name: 'richText',
       type: 'richText',
-      required: true,
-      editor: slateEditor({
-        admin: {
-          upload: {
+      // required: true, // TODO: Required: true does not validate correctly for lexical even if it has a value
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...[...defaultPublicDemoFeatures, ...(additions.features || [])],
+          UploadFeature({
             collections: {
               media: {
                 fields: [
@@ -37,11 +35,11 @@ const richText: RichText = (
                     type: 'richText',
                     name: 'caption',
                     label: 'Caption',
-                    editor: slateEditor({
-                      admin: {
-                        elements: [...elements],
-                        leaves: [...leaves],
-                      },
+                    editor: lexicalEditor({
+                      features: ({ defaultFeatures }) => [
+                        ParagraphFeature(),
+                        ...defaultPublicDemoFeatures,
+                      ],
                     }),
                   },
                   {
@@ -80,10 +78,8 @@ const richText: RichText = (
                 ],
               },
             },
-          },
-          elements: [...elements, ...(additions.elements || [])],
-          leaves: [...leaves, ...(additions.leaves || [])],
-        },
+          }),
+        ],
       }),
     },
     overrides || {},
