@@ -18,7 +18,7 @@ interface SlateNode {
   [key: string]: any
 }
 
-function convertSlateToLexical(slateData: SlateNode[]): SerializedEditorState {
+export function convertSlateToLexical(slateData: SlateNode[]): SerializedEditorState {
   return {
     root: {
       type: 'root',
