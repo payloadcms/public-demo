@@ -9,6 +9,10 @@
       "@swc/core": "1.3.76"
     }
   },
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=8"
+  },
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts nodemon",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload build",
