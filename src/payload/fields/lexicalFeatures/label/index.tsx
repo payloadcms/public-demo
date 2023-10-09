@@ -1,6 +1,9 @@
 import { $setBlocksType } from '@lexical/selection'
-import { FeatureProvider, SlashMenuOption } from '@payloadcms/richtext-lexical'
-import { SectionWithEntries } from '@payloadcms/richtext-lexical/dist/field/features/format/common/floatingSelectToolbarSection'
+import {
+  FeatureProvider,
+  FormatSectionWithEntries,
+  SlashMenuOption,
+} from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { LabelIcon } from './Icon'
@@ -19,7 +22,7 @@ export const LabelFeature = (): FeatureProvider => {
       ],
       floatingSelectToolbar: {
         sections: [
-          SectionWithEntries([
+          FormatSectionWithEntries([
             {
               ChildComponent: LabelIcon,
               isActive: ({ editor, selection }) => false,
