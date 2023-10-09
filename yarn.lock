@@ -1595,10 +1595,10 @@
   resolved "https://registry.yarnpkg.com/@one-ini/wasm/-/wasm-0.1.1.tgz#6013659736c9dbfccc96e8a9c2b3de317df39323"
   integrity sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==
 
-"@payloadcms/bundler-webpack@1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@payloadcms/bundler-webpack/-/bundler-webpack-1.0.0-beta.5.tgz#95f6a04fc68bce92efc8be2edca5622bd3bf40fe"
-  integrity sha512-YQ9tHBKeoK9CD5P6tR5XZUNZzr9uVceoAfcQABuLLeLhDxoqY1ANPGEDa44fT1XHwTHvdcGkFiLtsgrFJEseFA==
+"@payloadcms/bundler-webpack@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@payloadcms/bundler-webpack/-/bundler-webpack-1.0.1.tgz#430ecca183570f50f4c8dd6bfffb766c5af9d3e2"
+  integrity sha512-AnFv1vY3+LoltUIPaj2dI515eEjOaz3WnYLtnKYD8VgKkDLysRbpVKuLTGyrJsYpEaEm7zsYmPeTmt1Ne/BeBg==
   dependencies:
     compression "1.7.4"
     connect-history-api-fallback "1.6.0"
@@ -1609,7 +1609,7 @@
     md5 "2.3.0"
     mini-css-extract-plugin "1.6.2"
     path-browserify "1.0.1"
-    postcss "8.4.27"
+    postcss "8.4.31"
     postcss-loader "6.2.1"
     postcss-preset-env "9.0.0"
     process "0.11.10"
@@ -1625,10 +1625,10 @@
     webpack-dev-middleware "6.0.1"
     webpack-hot-middleware "^2.25.3"
 
-"@payloadcms/db-mongodb@^1.0.0-beta.8":
-  version "1.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@payloadcms/db-mongodb/-/db-mongodb-1.0.0-beta.8.tgz#857457d213e46e3fdf78e7cf32f6587be67b224a"
-  integrity sha512-n1fcw7MWjmhzCU9Cig3w544CiJhqZL03IzPLcrPFMV/towS/M9c59FJGilkG96fHBv/4HJ/BKhB1HZgyBtSLTg==
+"@payloadcms/db-mongodb@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@payloadcms/db-mongodb/-/db-mongodb-1.0.2.tgz#2c801eee0974334677e0a4ebd16fc26b1aa9f839"
+  integrity sha512-SCJfhJg3BeMW36Y10qNdzU6awgOD75zFR9FEhGkmCknr/EO8C51qxURamMntbiEuqxIh/uCl5PS7j2jXkIFL/w==
   dependencies:
     bson-objectid "2.0.4"
     deepmerge "4.3.1"
@@ -1644,18 +1644,18 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/eslint-config/-/eslint-config-0.0.1.tgz#4324702ddef6c773b3f3033795a13e6b50c95a92"
   integrity sha512-Il59+0C4E/bI6uM2hont3I+oABWkJZbfbItubje5SGMrXkymUq8jT/UZRk0eCt918bB7gihxDXx8guFnR/aNIw==
 
-"@payloadcms/live-preview-react@^1.0.0-beta.2":
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview-react/-/live-preview-react-1.0.0-beta.2.tgz#b3d52ea9b6636d13221c84a7f659c7955f342d2f"
-  integrity sha512-WfuGSD5ZYF7Pm3V4u2MQgK5Dbvyh51Rvs0FDu3Sg6x4qYetn+EpxyufSYHEq6j67CStJO/ZSvPjnwN9xkpr+7w==
+"@payloadcms/live-preview-react@^1.0.0-beta.3":
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview-react/-/live-preview-react-1.0.0-beta.3.tgz#267fa2c267017ad38efee8b898f1c56cc85fa766"
+  integrity sha512-OgimIHAHBGk3F0XWOI3MASoqvgsnmYH0vaoj6HQpzI6Dm7hXdeMaGxrDN4ZO0oF6lSFtuDt3bQg3UQGjAivMVQ==
   dependencies:
-    "@payloadcms/live-preview" "1.0.0-beta.2"
+    "@payloadcms/live-preview" "1.0.0-beta.3"
     react "18.2.0"
 
-"@payloadcms/live-preview@1.0.0-beta.2":
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview/-/live-preview-1.0.0-beta.2.tgz#e54ba78c993428381ce6a7b2461a26a0b16a4782"
-  integrity sha512-6Xu1yCCH+6J5eCPCFu5YcqXJjrITKYZfpXroAJs3n44hCg+/QBynjZLeyDeZOmi+ATAepqkCcHeRZ7fI3HxiDg==
+"@payloadcms/live-preview@1.0.0-beta.3":
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview/-/live-preview-1.0.0-beta.3.tgz#cd153b8490e75a59fedd1d1f34987bb01da2fc95"
+  integrity sha512-EBjf9eWOkC+hvaG5G0sTW3PgOot9xwPypyVwLIZPdFUmhcu+ke2WYg8q2Zlt8I5cwyw4TzJbJzBJZ+d2RrW4zQ==
   dependencies:
     react "18.2.0"
 
@@ -1694,10 +1694,10 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-1.0.13.tgz#b1d2f24f5cabf14e8ab7db6815b6fb41ee718557"
   integrity sha512-GPIyGTe6vU8GRFMYhNoUDrGWxm0uiqfIQQSsAuZjEM6YGFozo/AnpnjcT6VS/led/7HRFF8ijOy82l0VaLNC3w==
 
-"@payloadcms/richtext-lexical@^0.1.0-beta.7":
-  version "0.1.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.1.0-beta.7.tgz#b6204bba5195ba69bab8dddb488c62b8938fb6ef"
-  integrity sha512-+Cv/H/Cfqe+v2oNIycUIBVbe16dM0SdGajt8lQkr5Iwvx6HvUzfWj3hVbxbCybJgfhBOYuxVFkt6zJJV5PqQZQ==
+"@payloadcms/richtext-lexical@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.1.2.tgz#ad302387dbf9d36a38e6e5b4db09daac47399679"
+  integrity sha512-eANjmAMTDx0+xz/LGpGOG8ULV2uSPwi4QrkjmRVf6PlzqtxjJrQvIH++tNVyEeHC9gnb38oXJFcw/U9wHJMBlg==
   dependencies:
     "@faceless-ui/modal" "2.0.1"
     "@lexical/clipboard" "0.12.2"
@@ -1730,10 +1730,10 @@
     react-i18next "11.18.6"
     ts-essentials "7.0.3"
 
-"@payloadcms/richtext-slate@^1.0.0-beta.4":
-  version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-slate/-/richtext-slate-1.0.0-beta.4.tgz#307b4db28061a363a09a8b79422fd915b4bc3188"
-  integrity sha512-wDoeSHeLGUUCFqhB5Tcs0qgLjQjEmzpUTjqfKhK28voKZ0NO8/NyfKmKiyMNh03OXb+HXfq72jAHZBWMDaXfVg==
+"@payloadcms/richtext-slate@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-slate/-/richtext-slate-1.0.1.tgz#00dce12e93602c1847e5e9a2dd17f0eb59ebaa3b"
+  integrity sha512-g96/c7Upfzf56x04xw94wPKOqF/UpcEJxi9oWdA0yJHCFA3tSVi5Hkfas2t2h7/PN/NPgS91aiWry5jB+NA5rA==
   dependencies:
     "@faceless-ui/modal" "2.0.1"
     i18next "22.5.1"
@@ -6697,10 +6697,10 @@ payload-admin-bar@^1.0.6:
   resolved "https://registry.yarnpkg.com/payload-admin-bar/-/payload-admin-bar-1.0.6.tgz#ca25e369a4f319c3d61ff3db4021c1c2fd9d0148"
   integrity sha512-hpQdOiPq4LpWTkbuAnvxDf5wQ2ysMp9kQt+X2U+FfvBwD1U6qoxJfmUymG1OjLlaZzCZ93FlOdTl4u4Z0/m/SA==
 
-payload@^2.0.0-beta.30:
-  version "2.0.0-beta.30"
-  resolved "https://registry.yarnpkg.com/payload/-/payload-2.0.0-beta.30.tgz#56594994d70eef83ca95850a38dadad2c30e6494"
-  integrity sha512-haQ/LCJMNKWgimRlPs5HmNWbT2jP4SHYFxd2ht43hESZ4gE5uFvwsgpqeWwQiO+QCttmgNBkrfmJfNLLDm7hgw==
+payload@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/payload/-/payload-2.0.2.tgz#5068df9130bedd527447ac911fb1b2f09beb469a"
+  integrity sha512-EsbDQJtwVSrX7QTGqtsKhcbaBfIKDmlcHkXiUVVc9gkSEtSSw455FQ7oa4sPgDpgKgpkCVC0LVUGOPIkmDJu9g==
   dependencies:
     "@date-io/date-fns" "2.16.0"
     "@dnd-kit/core" "6.0.8"
@@ -7388,7 +7388,16 @@ postcss@8.4.14:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@8.4.27, postcss@^8.2.15, postcss@^8.4.24:
+postcss@8.4.31:
+  version "8.4.31"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.31.tgz#92b451050a9f914da6755af352bdc0192508656d"
+  integrity sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==
+  dependencies:
+    nanoid "^3.3.6"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
+postcss@^8.2.15, postcss@^8.4.24:
   version "8.4.27"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.27.tgz#234d7e4b72e34ba5a92c29636734349e0d9c3057"
   integrity sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==
