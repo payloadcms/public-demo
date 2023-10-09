@@ -12,11 +12,9 @@ export const PageClient: React.FC<{
 }> = ({ page: initialPage }) => {
   const { data } = useLivePreview<Page>({
     initialData: initialPage,
-    serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-    depth: 2,
+    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+    depth: 1,
   })
-
-  console.log(data)
 
   return (
     <React.Fragment>

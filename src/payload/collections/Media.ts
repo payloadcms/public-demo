@@ -7,8 +7,14 @@ export const Media: CollectionConfig = {
   upload: {
     staticDir: path.resolve(__dirname, '../../../media'),
   },
+  admin: {
+    description: 'Creating, updating, and deleting media is disabled for this demo.',
+  },
   access: {
     read: () => true,
+    create: () => false,
+    update: () => false,
+    delete: () => false,
   },
   fields: [
     {
