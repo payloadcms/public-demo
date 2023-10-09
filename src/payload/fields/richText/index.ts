@@ -23,7 +23,7 @@ const richText: RichText = (
     {
       name: 'richText',
       type: 'richText',
-      // required: true, // TODO: Required: true does not validate correctly for lexical even if it has a value
+      required: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...[...defaultPublicDemoFeatures, ...(additions.features || [])],

@@ -36,7 +36,7 @@ export const projectsPage: Partial<Page> = {
     {
       blockName: 'Archive Block',
       blockType: 'archive',
-      introContent: [
+      introContent: convertSlateToLexical([
         {
           type: 'h4',
           children: [
@@ -53,7 +53,7 @@ export const projectsPage: Partial<Page> = {
             },
           ],
         },
-      ],
+      ]) as any,
       populateBy: 'collection',
       relationTo: 'projects',
       limit: 10,
