@@ -1,3 +1,5 @@
+import type { SerializedEditorState } from 'lexical'
+
 import type { Page } from '../payload-types'
 
 export const home: Partial<Page> = {
@@ -11,51 +13,119 @@ export const home: Partial<Page> = {
   },
   hero: {
     type: 'highImpact',
-    richText: [
-      {
+    richText: {
+      root: {
+        type: 'root',
+        format: '',
+        indent: 0,
+        version: 1,
         children: [
           {
-            text: 'Payload Website Template',
-          },
-        ],
-        type: 'h1',
-      },
-      {
-        children: [
-          {
-            text: 'Welcome to your website! ',
-          },
-          {
-            type: 'link',
-            linkType: 'custom',
-            url: '/admin',
             children: [
               {
-                text: 'Visit the admin dashboard',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Payload Website Template',
+                type: 'text',
+                version: 1,
               },
             ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'heading',
+            version: 1,
+            tag: 'h1',
           },
           {
-            text: " to begin managing this site's content. The code for this template is completely open-source and can be found ",
-          },
-          {
-            type: 'link',
-            linkType: 'custom',
-            url: 'https://github.com/payloadcms/payload/tree/master/templates/website',
-            newTab: true,
             children: [
               {
-                text: 'here',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Welcome to your website! ',
+                type: 'text',
+                version: 1,
+              },
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Visit the admin dashboard ',
+                    type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                type: 'link',
+                version: 1,
+                fields: {
+                  doc: null,
+                  linkType: 'custom',
+                  newTab: false,
+                  url: 'https://',
+                },
+              },
+              {
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: "to begin managing this site's content. The code for this template is completely open-source and can be found ",
+                type: 'text',
+                version: 1,
+              },
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'here',
+                    type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                type: 'link',
+                version: 1,
+                fields: {
+                  url: 'https://github.com/payloadcms/payload/tree/master/templates/website',
+                  newTab: true,
+                  linkType: 'custom',
+                },
+              },
+              {
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: '.',
+                type: 'text',
+                version: 1,
               },
             ],
-          },
-          {
-            text: '.',
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'largeBody',
+            version: 1,
           },
         ],
-        type: 'large-body',
+        direction: 'ltr',
       },
-    ],
+    } as any,
     links: [
       {
         link: {

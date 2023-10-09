@@ -1,10 +1,15 @@
-import { slateEditor } from '@payloadcms/richtext-slate'
+import {
+  HeadingFeature,
+  lexicalEditor,
+  LinkFeature,
+  ParagraphFeature,
+} from '@payloadcms/richtext-lexical'
 import type { Field } from 'payload/types'
 
+import { LabelFeature } from './lexicalFeatures/label'
+import { LargeBodyFeature } from './lexicalFeatures/largeBody'
 import linkGroup from './linkGroup'
 import richText from './richText'
-import label from './richText/label'
-import largeBody from './richText/largeBody'
 
 export const hero: Field = {
   name: 'hero',
@@ -37,13 +42,18 @@ export const hero: Field = {
       ],
     },
     richText({
-      editor: slateEditor({
-        admin: {
-          elements: ['h1', largeBody, label, 'link'],
-          leaves: [],
-        },
+      required: false,
+      editor: lexicalEditor({
+        features: [
+          ParagraphFeature(),
+          HeadingFeature({ enabledHeadingSizes: ['h1'] }),
+          LinkFeature({}),
+          LabelFeature(),
+          LargeBodyFeature(),
+        ],
       }),
     }),
+
     linkGroup({
       overrides: {
         maxRows: 2,
