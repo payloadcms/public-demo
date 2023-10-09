@@ -32,7 +32,7 @@ export const post3: Partial<Post> = {
       columns: [
         {
           size: 'twoThirds',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -40,7 +40,7 @@ export const post3: Partial<Post> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           link: {
             reference: {
               relationTo: 'pages',
@@ -60,7 +60,7 @@ export const post3: Partial<Post> = {
       columns: [
         {
           size: 'twoThirds',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -72,7 +72,7 @@ export const post3: Partial<Post> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           link: {
             reference: {
               relationTo: 'pages',

@@ -30,7 +30,7 @@ export const project1: Partial<Project> = {
       columns: [
         {
           size: 'twoThirds',
-          richText: [
+          richText: convertSlateToLexical([
             {
               children: [
                 {
@@ -38,7 +38,7 @@ export const project1: Partial<Project> = {
                 },
               ],
             },
-          ],
+          ]) as any,
           link: {
             reference: {
               relationTo: 'pages',

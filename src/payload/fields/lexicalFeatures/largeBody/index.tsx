@@ -1,13 +1,15 @@
 import { $setBlocksType } from '@lexical/selection'
+import { $findMatchingParent } from '@lexical/utils'
 import {
   FeatureProvider,
   FormatSectionWithEntries,
+  getSelectedNode,
   SlashMenuOption,
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { LargeBodyIcon } from './Icon'
-import { $createLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
+import { $createLargeBodyNode, $isLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
 
 import './index.scss'
 
@@ -25,7 +27,14 @@ export const LargeBodyFeature = (): FeatureProvider => {
           FormatSectionWithEntries([
             {
               ChildComponent: LargeBodyIcon,
-              isActive: ({ editor, selection }) => false,
+              isActive: ({ editor, selection }) => {
+                if ($isRangeSelection(selection)) {
+                  const selectedNode = getSelectedNode(selection)
+                  const largeBodyParent = $findMatchingParent(selectedNode, $isLargeBodyNode)
+                  return largeBodyParent != null
+                }
+                return false
+              },
               key: 'largeBody',
               label: `Large Body`,
               onClick: ({ editor }) => {

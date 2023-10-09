@@ -1,13 +1,15 @@
 import { $setBlocksType } from '@lexical/selection'
+import { $findMatchingParent } from '@lexical/utils'
 import {
   FeatureProvider,
   FormatSectionWithEntries,
+  getSelectedNode,
   SlashMenuOption,
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { LabelIcon } from './Icon'
-import { $createLabelNode, LabelNode } from './nodes/LabelNode'
+import { $createLabelNode, $isLabelNode, LabelNode } from './nodes/LabelNode'
 
 import './index.scss'
 
@@ -25,7 +27,14 @@ export const LabelFeature = (): FeatureProvider => {
           FormatSectionWithEntries([
             {
               ChildComponent: LabelIcon,
-              isActive: ({ editor, selection }) => false,
+              isActive: ({ editor, selection }) => {
+                if ($isRangeSelection(selection)) {
+                  const selectedNode = getSelectedNode(selection)
+                  const labelParent = $findMatchingParent(selectedNode, $isLabelNode)
+                  return labelParent != null
+                }
+                return false
+              },
               key: 'label',
               label: `Label`,
               onClick: ({ editor }) => {

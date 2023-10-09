@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "yarn run dev",
+      "command": "pnpm run dev",
       "cwd": "${workspaceFolder}",
       "name": "Run Dev",
       "request": "launch",

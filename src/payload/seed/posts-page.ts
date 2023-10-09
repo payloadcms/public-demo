@@ -36,7 +36,7 @@ export const postsPage: Partial<Page> = {
     {
       blockName: 'Archive Block',
       blockType: 'archive',
-      introContent: [
+      introContent: convertSlateToLexical([
         {
           type: 'h4',
           children: [
@@ -53,7 +53,7 @@ export const postsPage: Partial<Page> = {
             },
           ],
         },
-      ],
+      ]) as any,
       populateBy: 'collection',
       relationTo: 'posts',
       limit: 10,

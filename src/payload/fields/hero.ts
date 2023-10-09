@@ -42,7 +42,6 @@ export const hero: Field = {
       ],
     },
     richText({
-      required: false,
       editor: lexicalEditor({
         features: [
           ParagraphFeature(),
