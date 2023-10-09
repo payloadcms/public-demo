@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { serializeLexical } from './lexicalToReact'
-import serialize from './serialize'
+import { serializeLexical } from './serialize'
 
 import classes from './index.module.scss'
 
@@ -12,9 +11,11 @@ const RichText: React.FC<{ className?: string; content: any }> = ({ className, c
 
   return (
     <div className={[classes.richText, className].filter(Boolean).join(' ')}>
-      {content && !Array.isArray(content) && typeof content === 'object' && 'root' in content
-        ? serializeLexical({ nodes: content?.root?.children })
-        : serialize(content)}
+      {content &&
+        !Array.isArray(content) &&
+        typeof content === 'object' &&
+        'root' in content &&
+        serializeLexical({ nodes: content?.root?.children })}
     </div>
   )
 }
