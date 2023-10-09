@@ -1694,10 +1694,10 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-1.0.13.tgz#b1d2f24f5cabf14e8ab7db6815b6fb41ee718557"
   integrity sha512-GPIyGTe6vU8GRFMYhNoUDrGWxm0uiqfIQQSsAuZjEM6YGFozo/AnpnjcT6VS/led/7HRFF8ijOy82l0VaLNC3w==
 
-"@payloadcms/richtext-lexical@^0.1.0-beta.6":
-  version "0.1.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.1.0-beta.6.tgz#ba03fc893ba41c5d6ceb5b1799a525df878e7683"
-  integrity sha512-DrZ/WO7dGMnQK2U9a6sMpLmyL0TB3vLsvWUER69Bf6uV/YNajKpBe7PJPrM6bVAFq9/BTHGC7JUeS3trA/Qxlw==
+"@payloadcms/richtext-lexical@^0.1.0-beta.7":
+  version "0.1.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.1.0-beta.7.tgz#b6204bba5195ba69bab8dddb488c62b8938fb6ef"
+  integrity sha512-+Cv/H/Cfqe+v2oNIycUIBVbe16dM0SdGajt8lQkr5Iwvx6HvUzfWj3hVbxbCybJgfhBOYuxVFkt6zJJV5PqQZQ==
   dependencies:
     "@faceless-ui/modal" "2.0.1"
     "@lexical/clipboard" "0.12.2"

@@ -1,7 +1,6 @@
 import { $setBlocksType } from '@lexical/selection'
-import { FeatureProvider } from '@payloadcms/richtext-lexical'
+import { FeatureProvider, SlashMenuOption } from '@payloadcms/richtext-lexical'
 import { SectionWithEntries } from '@payloadcms/richtext-lexical/dist/field/features/format/common/floatingSelectToolbarSection'
-import { SlashMenuOption } from '@payloadcms/richtext-lexical/dist/field/lexical/plugins/SlashMenu/LexicalTypeaheadMenuPlugin/LexicalMenu'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { LabelIcon } from './Icon'
