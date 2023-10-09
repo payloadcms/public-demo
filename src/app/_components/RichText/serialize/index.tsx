@@ -111,7 +111,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case 'label':
             return <Label key={index}>{serializedChildren}</Label>
 
-          case 'large-body': {
+          case 'largeBody': {
             return <LargeBody key={index}>{serializedChildren}</LargeBody>
           }
           case 'list': {
