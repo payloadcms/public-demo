@@ -9,6 +9,9 @@ import { image2 } from '../seed/image-2'
 import { post1 } from '../seed/post-1'
 import { post2 } from '../seed/post-2'
 import { post3 } from '../seed/post-3'
+import { postFinance3 } from '../seed/post-finance-3'
+import { postNews2 } from '../seed/post-news-2'
+import { postTech1 } from '../seed/post-tech-1'
 import { postsPage } from '../seed/posts-page'
 import { project1 } from '../seed/project-1'
 import { project2 } from '../seed/project-2'
@@ -121,7 +124,7 @@ async function seedData(): Promise<void> {
 
   payload.logger.info(`— Seeding media...`)
 
-  const [image1Doc, image2Doc] = await Promise.all([
+  const [image1Doc, image2Doc, postImage1Doc, postImage2Doc, postImage3Doc] = await Promise.all([
     await payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-1.jpg'),
@@ -131,6 +134,21 @@ async function seedData(): Promise<void> {
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-2.jpg'),
       data: image2,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-tech-1.jpg'),
+      data: postTech1,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-news-2.jpg'),
+      data: postNews2,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-finance-3.jpg'),
+      data: postFinance3,
     }),
   ])
 
@@ -190,7 +208,7 @@ async function seedData(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post1, categories: [technologyCategory.id] })
-        .replace(/{{IMAGE}}/g, image1Doc.id)
+        .replace(/{{IMAGE}}/g, postImage1Doc.id)
         .replace(/{{AUTHOR}}/g, demoAuthorID),
     ),
   })
@@ -199,7 +217,7 @@ async function seedData(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post2, categories: [newsCategory.id] })
-        .replace(/{{IMAGE}}/g, image1Doc.id)
+        .replace(/{{IMAGE}}/g, postImage2Doc.id)
         .replace(/{{AUTHOR}}/g, demoAuthorID),
     ),
   })
@@ -208,7 +226,7 @@ async function seedData(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post3, categories: [financeCategory.id] })
-        .replace(/{{IMAGE}}/g, image1Doc.id)
+        .replace(/{{IMAGE}}/g, postImage3Doc.id)
         .replace(/{{AUTHOR}}/g, demoAuthorID),
     ),
   })

@@ -1,12 +1,13 @@
 import type { Post } from '../payload-types'
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 export const post1: Partial<Post> = {
-  title: 'Post 1',
-  slug: 'post-1',
+  title: 'Digital Horizons: A Glimpse into Tomorrow',
+  slug: 'digital-horizons',
   _status: 'published',
   meta: {
-    title: 'Post 1',
-    description: 'This is the first post.',
+    title: 'Digital Horizons: A Glimpse into Tomorrow',
+    description:
+      'Dive into the marvels of modern innovation, where the only constant is change. A journey where pixels and data converge to craft the future.',
     image: '{{IMAGE}}',
   },
   authors: ['{{AUTHOR}}'],
@@ -17,7 +18,7 @@ export const post1: Partial<Post> = {
       {
         children: [
           {
-            text: 'Post 1',
+            text: 'Digital Horizons: A Glimpse into Tomorrow',
           },
         ],
         type: 'h1',

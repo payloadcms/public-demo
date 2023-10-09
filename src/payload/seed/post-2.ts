@@ -2,12 +2,13 @@ import type { Post } from '../payload-types'
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const post2: Partial<Post> = {
-  title: 'Post 2',
-  slug: 'post-2',
+  title: 'Global Gaze: Beyond the Headlines',
+  slug: 'global-gaze',
   _status: 'published',
   meta: {
-    title: 'Post 2',
-    description: 'This is the second post.',
+    title: 'Global Gaze: Beyond the Headlines',
+    description:
+      'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
     image: '{{IMAGE}}',
   },
   authors: ['{{AUTHOR}}'],
@@ -18,7 +19,7 @@ export const post2: Partial<Post> = {
       {
         children: [
           {
-            text: 'Post 2',
+            text: 'Global Gaze: Beyond the Headlines',
           },
         ],
         type: 'h1',

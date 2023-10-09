@@ -2,12 +2,13 @@ import type { Post } from '../payload-types'
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const post3: Partial<Post> = {
-  title: 'Post 3',
-  slug: 'post-3',
+  title: 'Dollar and Sense: The Financial Forecast',
+  slug: 'dollar-sense',
   _status: 'published',
   meta: {
-    title: 'Post 3',
-    description: 'This is the third post.',
+    title: 'Dollar and Sense: The Financial Forecast',
+    description:
+      "Money isn't just currency; it's a language. Dive deep into its nuances, where strategy meets intuition in the vast sea of finance.",
     image: '{{IMAGE}}',
   },
   authors: ['{{AUTHOR}}'],
@@ -18,7 +19,7 @@ export const post3: Partial<Post> = {
       {
         children: [
           {
-            text: 'Post 3',
+            text: 'Dollar and Sense: The Financial Forecast',
           },
         ],
         type: 'h1',
