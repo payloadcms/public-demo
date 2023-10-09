@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { Footer } from '../../../payload/payload-types'
-import { fetchFooter, fetchGlobals } from '../../_api/fetchGlobals'
+import { fetchFooter } from '../../_api/fetchGlobals'
 import { ThemeSelector } from '../../_providers/Theme/ThemeSelector'
 import { Gutter } from '../Gutter'
 import { CMSLink } from '../Link'
@@ -42,7 +42,7 @@ export async function Footer() {
           })}
           <Link href="/admin">Admin</Link>
           <Link
-            href="https://github.com/payloadcms/payload/tree/master/templates/website"
+            href="https://github.com/payloadcms/public-demo"
             target="_blank"
             rel="noopener noreferrer"
           >
