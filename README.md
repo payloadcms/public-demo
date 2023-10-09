@@ -41,7 +41,7 @@ git clone git@github.com:payloadcms/public-demo.git
 
 **Navigate to folder and install dependencies**
 
-Type `cd ./public-demo` and then `yarn` or `npm install --legacy-peer-deps` to add all required dependencies.
+Type `cd ./public-demo` and then `pnpm install` to add all required dependencies.
 
 **Duplicate the example `.env` file and fill in your own values**
 
@@ -51,7 +51,7 @@ Typically, the only line that you'll need to change within your new `.env` for l
 
 **Fire up the development server**
 
-Finally, type `yarn dev` to start up the server and see it in action!
+Finally, type `pnpm dev` to start up the server and see it in action!
 
 ## How it works
 
