@@ -1,5 +1,3 @@
-import type { SerializedEditorState } from 'lexical'
-
 import type { Page } from '../payload-types'
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
@@ -8,8 +6,8 @@ export const home: Partial<Page> = {
   slug: 'home',
   _status: 'published',
   meta: {
-    title: 'Payload Website Template',
-    description: 'An open-source website built with Payload and Next.js.',
+    title: 'Payload CMS | Public Demo',
+    description: 'An open-source website demo built with Payload and Next.js.',
     image: '{{IMAGE_1}}',
   },
   hero: {
@@ -28,7 +26,7 @@ export const home: Partial<Page> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Payload Website Template',
+                text: 'Finally, a CMS that works the way you do.',
                 type: 'text',
                 version: 1,
               },
@@ -47,7 +45,7 @@ export const home: Partial<Page> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Welcome to your website! ',
+                text: 'No black magic, all TypeScript, and fully open-source. ',
                 type: 'text',
                 version: 1,
               },
@@ -80,7 +78,7 @@ export const home: Partial<Page> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: "to begin managing this site's content. The code for this template is completely open-source and can be found ",
+                text: "to begin managing this site's content. The code for this demo is completely open-source and can be found ",
                 type: 'text',
                 version: 1,
               },
@@ -102,7 +100,7 @@ export const home: Partial<Page> = {
                 type: 'link',
                 version: 1,
                 fields: {
-                  url: 'https://github.com/payloadcms/payload/tree/master/templates/website',
+                  url: 'https://github.com/payloadcms/public-demo',
                   newTab: true,
                   linkType: 'custom',
                 },
