@@ -31,22 +31,6 @@ export async function seed(): Promise<void> {
 
     payload.logger.info(`— Clearing collections and globals...`)
 
-    // clear the database
-    await Promise.all([
-      ...collections.map(async collection =>
-        payload.delete({
-          collection,
-          where: {},
-        }),
-      ), // eslint-disable-line function-paren-newline
-      ...globals.map(async global =>
-        payload.updateGlobal({
-          slug: global,
-          data: {},
-        }),
-      ), // eslint-disable-line function-paren-newline
-    ])
-
     await seedData()
     payload.logger.info(`Seed Complete.`)
   } catch (error: unknown) {
@@ -63,21 +47,6 @@ export async function reset(): Promise<void> {
     if (fs.existsSync(mediaDir)) {
       fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true })
     }
-
-    await Promise.all([
-      ...collections.map(async collection =>
-        payload.delete({
-          collection,
-          where: {},
-        }),
-      ), // eslint-disable-line function-paren-newline
-      ...globals.map(async global =>
-        payload.updateGlobal({
-          slug: global,
-          data: {},
-        }),
-      ), // eslint-disable-line function-paren-newline
-    ])
 
     await dropDB()
     await seedData()
@@ -96,19 +65,6 @@ async function dropDB(): Promise<void> {
 
 async function seedData(): Promise<void> {
   payload.logger.info(`— Seeding demo author and user...`)
-
-  await Promise.all(
-    ['demo-author@payloadcms.com', 'demo-user@payloadcms.com'].map(async email => {
-      await payload.delete({
-        collection: 'users',
-        where: {
-          email: {
-            equals: email,
-          },
-        },
-      })
-    }),
-  )
 
   const [{ id: demoAuthorID }, { id: demoUserID }] = await Promise.all([
     await payload.create({
@@ -262,9 +218,8 @@ async function seedData(): Promise<void> {
           collection: 'comments',
           data: {
             _status: 'published',
-            comment: `This is a comment on post ${
-              index + 1
-            }. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
+            comment: `This is a comment on post ${index + 1
+              }. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
             user: demoUserID,
             doc: post.id,
           },

@@ -1480,6 +1480,21 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/eslint-config/-/eslint-config-0.0.1.tgz#4324702ddef6c773b3f3033795a13e6b50c95a92"
   integrity sha512-Il59+0C4E/bI6uM2hont3I+oABWkJZbfbItubje5SGMrXkymUq8jT/UZRk0eCt918bB7gihxDXx8guFnR/aNIw==
 
+"@payloadcms/live-preview-react@^1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview-react/-/live-preview-react-1.0.0-beta.2.tgz#b3d52ea9b6636d13221c84a7f659c7955f342d2f"
+  integrity sha512-WfuGSD5ZYF7Pm3V4u2MQgK5Dbvyh51Rvs0FDu3Sg6x4qYetn+EpxyufSYHEq6j67CStJO/ZSvPjnwN9xkpr+7w==
+  dependencies:
+    "@payloadcms/live-preview" "1.0.0-beta.2"
+    react "18.2.0"
+
+"@payloadcms/live-preview@1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview/-/live-preview-1.0.0-beta.2.tgz#e54ba78c993428381ce6a7b2461a26a0b16a4782"
+  integrity sha512-6Xu1yCCH+6J5eCPCFu5YcqXJjrITKYZfpXroAJs3n44hCg+/QBynjZLeyDeZOmi+ATAepqkCcHeRZ7fI3HxiDg==
+  dependencies:
+    react "18.2.0"
+
 "@payloadcms/plugin-cloud@^2.2.2":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-cloud/-/plugin-cloud-2.2.2.tgz#63122ed66457163fe1d145482073025ff8301e1f"

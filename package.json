@@ -21,6 +21,7 @@
   "dependencies": {
     "@payloadcms/bundler-webpack": "1.0.0-beta.5",
     "@payloadcms/db-mongodb": "^1.0.0-beta.8",
+    "@payloadcms/live-preview-react": "^1.0.0-beta.2",
     "@payloadcms/plugin-cloud": "^2.2.2",
     "@payloadcms/plugin-form-builder": "^1.0.15",
     "@payloadcms/plugin-nested-docs": "^1.0.4",

@@ -34,8 +34,14 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(), // bundler-config
     livePreview: {
-      url: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-      collections: ['pages', 'posts', 'projects'],
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 375,
+          height: 667,
+        },
+      ],
     },
     components: {
       beforeLogin: [BeforeLogin],
