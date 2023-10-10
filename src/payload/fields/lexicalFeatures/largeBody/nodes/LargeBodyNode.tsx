@@ -7,27 +7,20 @@
  *
  */
 
-import { addClassNamesToElement, isHTMLAnchorElement } from '@lexical/utils'
+import { addClassNamesToElement } from '@lexical/utils'
 import {
   $applyNodeReplacement,
   $createParagraphNode,
-  createCommand,
-  type DOMConversionMap,
-  type DOMConversionOutput,
   DOMExportOutput,
   type EditorConfig,
   ElementNode,
-  type GridSelection,
   isHTMLElement,
-  type LexicalCommand,
   LexicalEditor,
   type LexicalNode,
   type NodeKey,
-  type NodeSelection,
   ParagraphNode,
   type RangeSelection,
   type SerializedElementNode,
-  type Spread,
 } from 'lexical'
 
 export type SerializedLargeBodyNode = SerializedElementNode

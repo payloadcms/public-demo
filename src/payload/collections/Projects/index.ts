@@ -5,25 +5,13 @@ import { adminsOrPublished } from '../../access/adminsOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock'
 import { CallToAction } from '../../blocks/CallToAction'
 import { Content } from '../../blocks/Content'
+import { ContentMedia } from '../../blocks/ContentMedia'
 import { MediaBlock } from '../../blocks/MediaBlock'
-import { hero } from '../../fields/hero'
+import richText from '../../fields/richText'
 import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { populatePublishedDate } from '../../hooks/populatePublishedDate'
 import { revalidateProject } from './hooks/revalidateProject'
-import {
-  HeadingFeature,
-  lexicalEditor,
-  LinkFeature,
-  ParagraphFeature,
-} from '@payloadcms/richtext-lexical'
-import type { Field } from 'payload/types'
-
-import { LabelFeature } from '../../fields/lexicalFeatures/label'
-import { LargeBodyFeature } from '../../fields/lexicalFeatures/largeBody'
-import { ContentMedia } from '../../blocks/ContentMedia'
-
-import richText from '../../fields/richText'
 
 export const Projects: CollectionConfig = {
   slug: 'projects',

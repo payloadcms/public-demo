@@ -15,7 +15,7 @@ import './index.scss'
 
 export const LabelFeature = (): FeatureProvider => {
   return {
-    feature: ({ resolvedFeatures, unsanitizedEditorConfig }) => ({
+    feature: () => ({
       nodes: [
         {
           node: LabelNode,
@@ -27,7 +27,7 @@ export const LabelFeature = (): FeatureProvider => {
           FormatSectionWithEntries([
             {
               ChildComponent: LabelIcon,
-              isActive: ({ editor, selection }) => {
+              isActive: ({ selection }) => {
                 if ($isRangeSelection(selection)) {
                   const selectedNode = getSelectedNode(selection)
                   const labelParent = $findMatchingParent(selectedNode, $isLabelNode)
@@ -58,7 +58,7 @@ export const LabelFeature = (): FeatureProvider => {
               new SlashMenuOption(`Label`, {
                 Icon: LabelIcon,
                 keywords: ['label'],
-                onSelect: ({ editor }) => {
+                onSelect: () => {
                   const selection = $getSelection()
                   if ($isRangeSelection(selection)) {
                     $setBlocksType(selection, () => $createLabelNode())

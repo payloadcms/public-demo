@@ -25,7 +25,7 @@ const richText: RichText = (
       type: 'richText',
       required: true,
       editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
+        features: () => [
           ...[...defaultPublicDemoFeatures, ...(additions.features || [])],
           UploadFeature({
             collections: {
@@ -36,10 +36,7 @@ const richText: RichText = (
                     name: 'caption',
                     label: 'Caption',
                     editor: lexicalEditor({
-                      features: ({ defaultFeatures }) => [
-                        ParagraphFeature(),
-                        ...defaultPublicDemoFeatures,
-                      ],
+                      features: () => [ParagraphFeature(), ...defaultPublicDemoFeatures],
                     }),
                   },
                   {

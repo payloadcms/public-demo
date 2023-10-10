@@ -68,6 +68,7 @@ function convertSlateNodesToLexical(
         case 'upload':
           convertUploadNode(node, parentNode)
         default:
+          // eslint-disable-next-line no-console
           console.warn('slateToLexical > No converter found for node type: ' + node.type)
           return // or some default behavior
       }
