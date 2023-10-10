@@ -70,19 +70,19 @@ dependencies:
     version: 1.0.0-beta.3
   '@payloadcms/plugin-cloud':
     specifier: ^2.2.2
-    version: 2.2.2(nodemailer@6.9.6)(payload@2.0.2)
+    version: 2.2.2(nodemailer@6.9.6)(payload@2.0.3)
   '@payloadcms/plugin-form-builder':
     specifier: ^1.0.15
-    version: 1.0.15(payload@2.0.2)(react@18.2.0)
+    version: 1.0.15(payload@2.0.3)(react@18.2.0)
   '@payloadcms/plugin-nested-docs':
     specifier: ^1.0.4
-    version: 1.0.6(payload@2.0.2)(react@18.2.0)
+    version: 1.0.6(payload@2.0.3)(react@18.2.0)
   '@payloadcms/plugin-redirects':
     specifier: ^1.0.0
-    version: 1.0.0(payload@2.0.2)
+    version: 1.0.0(payload@2.0.3)
   '@payloadcms/plugin-seo':
     specifier: ^1.0.10
-    version: 1.0.13(payload@2.0.2)(react@18.2.0)
+    version: 1.0.13(payload@2.0.3)(react@18.2.0)
   '@payloadcms/richtext-lexical':
     specifier: 0.1.5
     version: 0.1.5(typescript@5.2.2)(yjs@13.6.8)
@@ -105,8 +105,8 @@ dependencies:
     specifier: ^3.0.2
     version: 3.0.2
   payload:
-    specifier: ^2.0.2
-    version: 2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
+    specifier: ^2.0.3
+    version: 2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
   payload-admin-bar:
     specifier: ^1.0.6
     version: 1.0.6(react-dom@18.2.0)(react@18.2.0)
@@ -1975,7 +1975,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@payloadcms/plugin-cloud@2.2.2(nodemailer@6.9.6)(payload@2.0.2):
+  /@payloadcms/plugin-cloud@2.2.2(nodemailer@6.9.6)(payload@2.0.3):
     resolution: {integrity: sha512-D/EsgrFPLVjVAa33bmOMvf6JPDJyD5NNHSWuBO3YZyHmx3Cmu9vm7UKAvNViZGzrI38qKsRq/U5xnlPNMKXfag==}
     peerDependencies:
       nodemailer: ^6.9.0
@@ -1987,7 +1987,7 @@ packages:
       '@aws-sdk/lib-storage': 3.427.0(@aws-sdk/client-s3@3.427.0)
       amazon-cognito-identity-js: 6.3.6
       nodemailer: 6.9.6
-      payload: 2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
+      payload: 2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
       resend: 0.17.2
     transitivePeerDependencies:
       - aws-crt
@@ -1995,7 +1995,7 @@ packages:
       - encoding
     dev: false
 
-  /@payloadcms/plugin-form-builder@1.0.15(payload@2.0.2)(react@18.2.0):
+  /@payloadcms/plugin-form-builder@1.0.15(payload@2.0.3)(react@18.2.0):
     resolution: {integrity: sha512-lr6TnO95rbr3Zcjgc157pEJ5P2OpTdz13QKqSfESjdAGAinhfYtM903jgAfLVCV16o2MyyOjpEMMt9kuwx3LOQ==}
     peerDependencies:
       payload: ^0.18.5 || ^1.0.0
@@ -2003,35 +2003,35 @@ packages:
     dependencies:
       deepmerge: 4.3.1
       escape-html: 1.0.3
-      payload: 2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
+      payload: 2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
       react: 18.2.0
     dev: false
 
-  /@payloadcms/plugin-nested-docs@1.0.6(payload@2.0.2)(react@18.2.0):
+  /@payloadcms/plugin-nested-docs@1.0.6(payload@2.0.3)(react@18.2.0):
     resolution: {integrity: sha512-+rPMWYYjxxIQeCO+MFlfsj4baLaK3S7RzP4dGouWcCtORbZEXbVPUGXgWWNyAP3FolQh4YDEgFVB4PHyIa+O/A==}
     peerDependencies:
       payload: ^0.18.5 || ^1.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      payload: 2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
+      payload: 2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
       react: 18.2.0
     dev: false
 
-  /@payloadcms/plugin-redirects@1.0.0(payload@2.0.2):
+  /@payloadcms/plugin-redirects@1.0.0(payload@2.0.3):
     resolution: {integrity: sha512-BAoNRSw6bT73wnxdKsR8HwaMeRwSshp4d7xfN1EfaW6IMoUYER/lHG/bwN61O2+hapvBd6fOfMuUdzy9sDazxw==}
     peerDependencies:
       payload: ^0.18.5 || ^1.0.0
     dependencies:
-      payload: 2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
+      payload: 2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
     dev: false
 
-  /@payloadcms/plugin-seo@1.0.13(payload@2.0.2)(react@18.2.0):
+  /@payloadcms/plugin-seo@1.0.13(payload@2.0.3)(react@18.2.0):
     resolution: {integrity: sha512-GPIyGTe6vU8GRFMYhNoUDrGWxm0uiqfIQQSsAuZjEM6YGFozo/AnpnjcT6VS/led/7HRFF8ijOy82l0VaLNC3w==}
     peerDependencies:
       payload: ^0.18.5 || ^1.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      payload: 2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
+      payload: 2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2)
       react: 18.2.0
     dev: false
 
@@ -6318,8 +6318,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /payload@2.0.2(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2):
-    resolution: {integrity: sha512-EsbDQJtwVSrX7QTGqtsKhcbaBfIKDmlcHkXiUVVc9gkSEtSSw455FQ7oa4sPgDpgKgpkCVC0LVUGOPIkmDJu9g==}
+  /payload@2.0.3(@types/react@18.0.21)(typescript@5.2.2)(webpack@5.88.2):
+    resolution: {integrity: sha512-+uUx3RUZt9mCHxi/7iWm9etRc7tYQxN6vE64eaPBX+oXsfjo1CrUkuzzxGK4gzR97MiOaacOAedDp03zMsXpWg==}
     engines: {node: '>=14', pnpm: '>=8'}
     hasBin: true
     dependencies:
