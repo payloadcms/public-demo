@@ -10,22 +10,21 @@ import { imageSpheres } from '../seed/image-spheres'
 import { post1 } from '../seed/post-1'
 import { post2 } from '../seed/post-2'
 import { post3 } from '../seed/post-3'
-import { postFinance3 } from '../seed/post-finance-3'
-import { postNews2 } from '../seed/post-news-2'
-import { postTech1 } from '../seed/post-tech-1'
+import { postFinance3, postFinanceBuildings, postFinanceStocks } from '../seed/post-finance-images'
+import { postNews2, postNewsDest, postNewsHope } from '../seed/post-news-images'
+import { postTech1, postTechAi, postTechIot, postTechQuant } from '../seed/post-tech-images'
 import { postsPage } from '../seed/posts-page'
 import { project1 } from '../seed/project-1'
 import { project2 } from '../seed/project-2'
 import { project3 } from '../seed/project-3'
 import { projectDesign, projectDesign2, projectDesign3 } from '../seed/project-design-images'
+import { projectEng, projectEng2, projectEng3, projectEng4 } from '../seed/project-eng-images'
 import {
   projectSoftware,
   projectSoftware2,
   projectSoftware3,
   projectSoftware4,
 } from '../seed/project-software-images'
-
-import { projectEng, projectEng2, projectEng3, projectEng4 } from '../seed/project-eng-images'
 import { projectsPage } from '../seed/projects-page'
 
 const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments']
@@ -139,8 +138,15 @@ async function seedData(): Promise<void> {
     image2Doc,
     imageSpheresDoc,
     postImage1Doc,
+    postTechAi1Doc,
+    postTechIot1Doc,
+    postTechQuant1Doc,
     postImage2Doc,
+    postNewsHope2Doc,
+    postNewsDest2Doc,
     postImage3Doc,
+    postFinanceStocks3Doc,
+    postFinanceBuildings3Doc,
     projectDesignDoc,
     projectDesign2Doc,
     projectDesign3Doc,
@@ -175,13 +181,48 @@ async function seedData(): Promise<void> {
     }),
     await payload.create({
       collection: 'media',
+      filePath: path.resolve(__dirname, 'post-ai-1.jpg'),
+      data: postTechAi,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-iot-1.jpg'),
+      data: postTechIot,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-quant-1.jpg'),
+      data: postTechQuant,
+    }),
+    await payload.create({
+      collection: 'media',
       filePath: path.resolve(__dirname, 'post-news-2.jpg'),
       data: postNews2,
     }),
     await payload.create({
       collection: 'media',
+      filePath: path.resolve(__dirname, 'post-hope-2.jpg'),
+      data: postNewsHope,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-destination-2.jpg'),
+      data: postNewsDest,
+    }),
+    await payload.create({
+      collection: 'media',
       filePath: path.resolve(__dirname, 'post-finance-3.jpg'),
       data: postFinance3,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-stocks-3.jpg'),
+      data: postFinanceStocks,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'post-buildings-3.jpg'),
+      data: postFinanceBuildings,
     }),
     await payload.create({
       collection: 'media',
@@ -296,7 +337,10 @@ async function seedData(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post1, categories: [technologyCategory.id] })
-        .replace(/{{IMAGE}}/g, postImage1Doc.id)
+        .replace(/{{IMAGE-1}}/g, postImage1Doc.id)
+        .replace(/{{IMAGE-2}}/g, postTechAi1Doc.id)
+        .replace(/{{IMAGE-3}}/g, postTechIot1Doc.id)
+        .replace(/{{IMAGE-4}}/g, postTechQuant1Doc.id)
         .replace(/{{AUTHOR}}/g, demoAuthorID),
     ),
   })
@@ -305,7 +349,9 @@ async function seedData(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post2, categories: [newsCategory.id] })
-        .replace(/{{IMAGE}}/g, postImage2Doc.id)
+        .replace(/{{IMAGE-1}}/g, postImage2Doc.id)
+        .replace(/{{IMAGE-2}}/g, postNewsHope2Doc.id)
+        .replace(/{{IMAGE-3}}/g, postNewsDest2Doc.id)
         .replace(/{{AUTHOR}}/g, demoAuthorID),
     ),
   })
@@ -314,7 +360,9 @@ async function seedData(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post3, categories: [financeCategory.id] })
-        .replace(/{{IMAGE}}/g, postImage3Doc.id)
+        .replace(/{{IMAGE-1}}/g, postImage3Doc.id)
+        .replace(/{{IMAGE-2}}/g, postFinanceStocks3Doc.id)
+        .replace(/{{IMAGE-3}}/g, postFinanceBuildings3Doc.id)
         .replace(/{{AUTHOR}}/g, demoAuthorID),
     ),
   })
@@ -351,14 +399,12 @@ async function seedData(): Promise<void> {
 
   await Promise.all(
     posts.map(
-      async (post, index) =>
+      async post =>
         await payload.create({
           collection: 'comments',
           data: {
             _status: 'published',
-            comment: `This is a comment on post ${
-              index + 1
-            }. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
+            comment: `This is a comment on post: ${post.title}. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
             user: demoUserID,
             doc: post.id,
           },

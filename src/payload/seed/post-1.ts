@@ -8,7 +8,7 @@ export const post1: Partial<Post> = {
     title: 'Digital Horizons: A Glimpse into Tomorrow',
     description:
       'Dive into the marvels of modern innovation, where the only constant is change. A journey where pixels and data converge to craft the future.',
-    image: '{{IMAGE}}',
+    image: '{{IMAGE-1}}',
   },
   authors: ['{{AUTHOR}}'],
   hero: {
@@ -28,15 +28,68 @@ export const post1: Partial<Post> = {
   },
   layout: [
     {
+      blockType: 'contentMedia',
+      blockName: 'Rise of AI and Machine Learning',
+      mediaPosition: 'left',
+      richText: convertSlateToLexical([
+        {
+          children: [
+            {
+              text: 'THE RISE OF AI AND MACHINE LEARNING',
+            },
+          ],
+          type: 'h6',
+        },
+        {
+          children: [
+            {
+              text: 'We find ourselves in a transformative era where artificial intelligence (AI) stands at the forefront of technological evolution. The ripple effects of its advancements are reshaping industries at an unprecedented pace. No longer are businesses bound by the limitations of tedious, manual processes. Instead, sophisticated machines, fueled by vast amounts of historical data, are now capable of making decisions previously left to human intuition. These intelligent systems are not only optimizing operations but also pioneering innovative approaches, heralding a new age of business transformation worldwide.',
+            },
+          ],
+        },
+      ]) as any,
+      media: '{{IMAGE-2}}',
+    },
+    {
+      blockType: 'contentMedia',
+      blockName: 'Internet of things',
+      mediaPosition: 'right',
+      richText: convertSlateToLexical([
+        {
+          children: [
+            {
+              text: 'IOT: CONNECTING THE WORLD AROUND US',
+            },
+          ],
+          type: 'h6',
+        },
+        {
+          children: [
+            {
+              text: "In today's rapidly evolving technological landscape, the Internet of Things (IoT) stands out as a revolutionary force. From transforming our residences with smart home systems to redefining transportation through connected cars, IoT's influence is palpable in nearly every facet of our daily lives.",
+            },
+          ],
+        },
+        {
+          children: [
+            {
+              text: "This technology hinges on the seamless integration of devices and systems, allowing them to communicate and collaborate effortlessly. With each connected device, we move a step closer to a world where convenience and efficiency are embedded in the very fabric of our existence. As a result, we're transitioning into an era where our surroundings intuitively respond to our needs, heralding a smarter and more interconnected global community.",
+            },
+          ],
+        },
+      ]) as any,
+      media: '{{IMAGE-3}}',
+    },
+    {
       blockType: 'content',
       columns: [
         {
-          size: 'twoThirds',
+          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
                 {
-                  text: "This content is completely dynamic using custom layout building blocks configured in the CMS. This can be anything you'd like from rich text and images, to highly designed, complex components.",
+                  text: "This content above is completely dynamic using custom layout building blocks configured in the CMS. This can be anything you'd like from rich text and images, to highly designed, complex components.",
                 },
               ],
             },
@@ -56,10 +109,16 @@ export const post1: Partial<Post> = {
   enablePremiumContent: true,
   premiumContent: [
     {
+      position: 'default',
+      media: '{{IMAGE-4}}',
+      blockType: 'mediaBlock',
+      blockName: 'Feature Image',
+    },
+    {
       blockType: 'content',
       columns: [
         {
-          size: 'twoThirds',
+          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
