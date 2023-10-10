@@ -28,7 +28,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src"
   },
   "dependencies": {
-    "@payloadcms/bundler-webpack": "1.0.1",
+    "@payloadcms/bundler-webpack": "1.0.2",
     "@payloadcms/db-mongodb": "1.0.2",
     "@payloadcms/live-preview-react": "^1.0.0-beta.3",
     "@payloadcms/plugin-cloud": "^2.2.2",
@@ -36,7 +36,7 @@
     "@payloadcms/plugin-nested-docs": "^1.0.4",
     "@payloadcms/plugin-redirects": "^1.0.0",
     "@payloadcms/plugin-seo": "^1.0.10",
-    "@payloadcms/richtext-lexical": "0.1.4",
+    "@payloadcms/richtext-lexical": "0.1.5",
     "cross-env": "^7.0.3",
     "dotenv": "16.3.1",
     "express": "^4.17.1",
