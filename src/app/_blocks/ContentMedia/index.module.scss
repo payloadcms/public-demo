@@ -1,0 +1,22 @@
+.contentMediaBlock {
+  position: relative;
+  display: flex;
+  width: 100%;
+  gap: calc(var(--base)* 6);
+  align-items: center;
+}
+
+.invert {
+  flex-direction: row-reverse;
+}
+
+.media {
+  max-width: 35%;
+}
+
+
+.caption {
+  color: var(--theme-elevation-500);
+  margin-top: var(--base);
+  height: 0;
+}

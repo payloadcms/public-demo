@@ -1,42 +1,47 @@
 type Query {
   Page(id: String!, draft: Boolean): Page
-  Pages(where: Page_where, draft: Boolean, page: Int, limit: Int, sort: String): Pages
+  Pages(draft: Boolean, where: Page_where, limit: Int, page: Int, sort: String): Pages
   docAccessPage(id: String!): pagesDocAccess
   versionPage(id: String): PageVersion
-  versionsPages(where: versionsPage_where, page: Int, limit: Int, sort: String): versionsPages
+  versionsPages(where: versionsPage_where, limit: Int, page: Int, sort: String): versionsPages
   Post(id: String!, draft: Boolean): Post
-  Posts(where: Post_where, draft: Boolean, page: Int, limit: Int, sort: String): Posts
+  Posts(draft: Boolean, where: Post_where, limit: Int, page: Int, sort: String): Posts
   docAccessPost(id: String!): postsDocAccess
   versionPost(id: String): PostVersion
-  versionsPosts(where: versionsPost_where, page: Int, limit: Int, sort: String): versionsPosts
+  versionsPosts(where: versionsPost_where, limit: Int, page: Int, sort: String): versionsPosts
   Project(id: String!, draft: Boolean): Project
-  Projects(where: Project_where, draft: Boolean, page: Int, limit: Int, sort: String): Projects
+  Projects(draft: Boolean, where: Project_where, limit: Int, page: Int, sort: String): Projects
   docAccessProject(id: String!): projectsDocAccess
   versionProject(id: String): ProjectVersion
-  versionsProjects(where: versionsProject_where, page: Int, limit: Int, sort: String): versionsProjects
+  versionsProjects(where: versionsProject_where, limit: Int, page: Int, sort: String): versionsProjects
   Media(id: String!, draft: Boolean): Media
-  allMedia(where: Media_where, draft: Boolean, page: Int, limit: Int, sort: String): allMedia
+  allMedia(draft: Boolean, where: Media_where, limit: Int, page: Int, sort: String): allMedia
   docAccessMedia(id: String!): mediaDocAccess
   Category(id: String!, draft: Boolean): Category
-  Categories(where: Category_where, draft: Boolean, page: Int, limit: Int, sort: String): Categories
+  Categories(draft: Boolean, where: Category_where, limit: Int, page: Int, sort: String): Categories
   docAccessCategory(id: String!): categoriesDocAccess
   User(id: String!, draft: Boolean): User
-  Users(where: User_where, draft: Boolean, page: Int, limit: Int, sort: String): Users
+  Users(draft: Boolean, where: User_where, limit: Int, page: Int, sort: String): Users
   docAccessUser(id: String!): usersDocAccess
   meUser: usersMe
   initializedUser: Boolean
   Comment(id: String!, draft: Boolean): Comment
-  Comments(where: Comment_where, draft: Boolean, page: Int, limit: Int, sort: String): Comments
+  Comments(draft: Boolean, where: Comment_where, limit: Int, page: Int, sort: String): Comments
   docAccessComment(id: String!): commentsDocAccess
   versionComment(id: String): CommentVersion
-  versionsComments(where: versionsComment_where, page: Int, limit: Int, sort: String): versionsComments
+  versionsComments(where: versionsComment_where, limit: Int, page: Int, sort: String): versionsComments
+  Redirect(id: String!, draft: Boolean): Redirect
+  Redirects(draft: Boolean, where: Redirect_where, limit: Int, page: Int, sort: String): Redirects
+  docAccessRedirect(id: String!): redirectsDocAccess
+  PayloadPreference(id: String!, draft: Boolean): PayloadPreference
+  PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
+  docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
   Settings(draft: Boolean): Settings
   docAccessSettings: settingsDocAccess
   Header(draft: Boolean): Header
   docAccessHeader: headerDocAccess
   Footer(draft: Boolean): Footer
   docAccessFooter: footerDocAccess
-  Preference(key: String): Preference
   Access: Access
 }
 
@@ -139,8 +144,8 @@ input Page_Hero_Media_where {
   width: Page_Hero_Media_width_operator
   height: Page_Hero_Media_height_operator
   id: Page_Hero_Media_id_operator
-  OR: [Page_Hero_Media_where_or]
   AND: [Page_Hero_Media_where_and]
+  OR: [Page_Hero_Media_where_or]
 }
 
 input Page_Hero_Media_alt_operator {
@@ -257,7 +262,7 @@ input Page_Hero_Media_id_operator {
   exists: Boolean
 }
 
-input Page_Hero_Media_where_or {
+input Page_Hero_Media_where_and {
   alt: Page_Hero_Media_alt_operator
   caption: Page_Hero_Media_caption_operator
   updatedAt: Page_Hero_Media_updatedAt_operator
@@ -271,7 +276,7 @@ input Page_Hero_Media_where_or {
   id: Page_Hero_Media_id_operator
 }
 
-input Page_Hero_Media_where_and {
+input Page_Hero_Media_where_or {
   alt: Page_Hero_Media_alt_operator
   caption: Page_Hero_Media_caption_operator
   updatedAt: Page_Hero_Media_updatedAt_operator
@@ -411,8 +416,8 @@ input MediaBlock_Media_where {
   width: MediaBlock_Media_width_operator
   height: MediaBlock_Media_height_operator
   id: MediaBlock_Media_id_operator
-  OR: [MediaBlock_Media_where_or]
   AND: [MediaBlock_Media_where_and]
+  OR: [MediaBlock_Media_where_or]
 }
 
 input MediaBlock_Media_alt_operator {
@@ -529,7 +534,7 @@ input MediaBlock_Media_id_operator {
   exists: Boolean
 }
 
-input MediaBlock_Media_where_or {
+input MediaBlock_Media_where_and {
   alt: MediaBlock_Media_alt_operator
   caption: MediaBlock_Media_caption_operator
   updatedAt: MediaBlock_Media_updatedAt_operator
@@ -543,7 +548,7 @@ input MediaBlock_Media_where_or {
   id: MediaBlock_Media_id_operator
 }
 
-input MediaBlock_Media_where_and {
+input MediaBlock_Media_where_or {
   alt: MediaBlock_Media_alt_operator
   caption: MediaBlock_Media_caption_operator
   updatedAt: MediaBlock_Media_updatedAt_operator
@@ -721,8 +726,8 @@ input Post_Hero_Media_where {
   width: Post_Hero_Media_width_operator
   height: Post_Hero_Media_height_operator
   id: Post_Hero_Media_id_operator
-  OR: [Post_Hero_Media_where_or]
   AND: [Post_Hero_Media_where_and]
+  OR: [Post_Hero_Media_where_or]
 }
 
 input Post_Hero_Media_alt_operator {
@@ -839,7 +844,7 @@ input Post_Hero_Media_id_operator {
   exists: Boolean
 }
 
-input Post_Hero_Media_where_or {
+input Post_Hero_Media_where_and {
   alt: Post_Hero_Media_alt_operator
   caption: Post_Hero_Media_caption_operator
   updatedAt: Post_Hero_Media_updatedAt_operator
@@ -853,7 +858,7 @@ input Post_Hero_Media_where_or {
   id: Post_Hero_Media_id_operator
 }
 
-input Post_Hero_Media_where_and {
+input Post_Hero_Media_where_or {
   alt: Post_Hero_Media_alt_operator
   caption: Post_Hero_Media_caption_operator
   updatedAt: Post_Hero_Media_updatedAt_operator
@@ -889,8 +894,8 @@ input Post_Meta_Image_where {
   width: Post_Meta_Image_width_operator
   height: Post_Meta_Image_height_operator
   id: Post_Meta_Image_id_operator
-  OR: [Post_Meta_Image_where_or]
   AND: [Post_Meta_Image_where_and]
+  OR: [Post_Meta_Image_where_or]
 }
 
 input Post_Meta_Image_alt_operator {
@@ -1007,7 +1012,7 @@ input Post_Meta_Image_id_operator {
   exists: Boolean
 }
 
-input Post_Meta_Image_where_or {
+input Post_Meta_Image_where_and {
   alt: Post_Meta_Image_alt_operator
   caption: Post_Meta_Image_caption_operator
   updatedAt: Post_Meta_Image_updatedAt_operator
@@ -1021,7 +1026,7 @@ input Post_Meta_Image_where_or {
   id: Post_Meta_Image_id_operator
 }
 
-input Post_Meta_Image_where_and {
+input Post_Meta_Image_where_or {
   alt: Post_Meta_Image_alt_operator
   caption: Post_Meta_Image_caption_operator
   updatedAt: Post_Meta_Image_updatedAt_operator
@@ -1056,53 +1061,8 @@ type Project {
 }
 
 type Project_Hero {
-  type: Project_Hero_type
   richText(depth: Int): JSON
-  links: [Project_Hero_Links!]
   media(where: Project_Hero_Media_where): Media
-}
-
-enum Project_Hero_type {
-  none
-  highImpact
-  mediumImpact
-  lowImpact
-}
-
-type Project_Hero_Links {
-  link: Project_Hero_Links_Link
-  id: String
-}
-
-type Project_Hero_Links_Link {
-  type: Project_Hero_Links_Link_type
-  newTab: Boolean
-  reference: Project_Hero_Links_Link_Reference_Relationship
-  url: String
-  label: String
-  appearance: Project_Hero_Links_Link_appearance
-}
-
-enum Project_Hero_Links_Link_type {
-  reference
-  custom
-}
-
-type Project_Hero_Links_Link_Reference_Relationship {
-  relationTo: Project_Hero_Links_Link_Reference_RelationTo
-  value: Project_Hero_Links_Link_Reference
-}
-
-enum Project_Hero_Links_Link_Reference_RelationTo {
-  pages
-}
-
-union Project_Hero_Links_Link_Reference = Page
-
-enum Project_Hero_Links_Link_appearance {
-  default
-  primary
-  secondary
 }
 
 input Project_Hero_Media_where {
@@ -1117,8 +1077,8 @@ input Project_Hero_Media_where {
   width: Project_Hero_Media_width_operator
   height: Project_Hero_Media_height_operator
   id: Project_Hero_Media_id_operator
-  OR: [Project_Hero_Media_where_or]
   AND: [Project_Hero_Media_where_and]
+  OR: [Project_Hero_Media_where_or]
 }
 
 input Project_Hero_Media_alt_operator {
@@ -1235,20 +1195,6 @@ input Project_Hero_Media_id_operator {
   exists: Boolean
 }
 
-input Project_Hero_Media_where_or {
-  alt: Project_Hero_Media_alt_operator
-  caption: Project_Hero_Media_caption_operator
-  updatedAt: Project_Hero_Media_updatedAt_operator
-  createdAt: Project_Hero_Media_createdAt_operator
-  url: Project_Hero_Media_url_operator
-  filename: Project_Hero_Media_filename_operator
-  mimeType: Project_Hero_Media_mimeType_operator
-  filesize: Project_Hero_Media_filesize_operator
-  width: Project_Hero_Media_width_operator
-  height: Project_Hero_Media_height_operator
-  id: Project_Hero_Media_id_operator
-}
-
 input Project_Hero_Media_where_and {
   alt: Project_Hero_Media_alt_operator
   caption: Project_Hero_Media_caption_operator
@@ -1263,7 +1209,194 @@ input Project_Hero_Media_where_and {
   id: Project_Hero_Media_id_operator
 }
 
-union Project_Layout = Cta | Content | MediaBlock | Archive
+input Project_Hero_Media_where_or {
+  alt: Project_Hero_Media_alt_operator
+  caption: Project_Hero_Media_caption_operator
+  updatedAt: Project_Hero_Media_updatedAt_operator
+  createdAt: Project_Hero_Media_createdAt_operator
+  url: Project_Hero_Media_url_operator
+  filename: Project_Hero_Media_filename_operator
+  mimeType: Project_Hero_Media_mimeType_operator
+  filesize: Project_Hero_Media_filesize_operator
+  width: Project_Hero_Media_width_operator
+  height: Project_Hero_Media_height_operator
+  id: Project_Hero_Media_id_operator
+}
+
+union Project_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
+
+type ContentMedia {
+  invertBackground: Boolean
+  mediaPosition: ContentMedia_mediaPosition
+  richText(depth: Int): JSON
+  media(where: ContentMedia_Media_where): Media
+  id: String
+  blockName: String
+  blockType: String
+}
+
+enum ContentMedia_mediaPosition {
+  left
+  right
+}
+
+input ContentMedia_Media_where {
+  alt: ContentMedia_Media_alt_operator
+  caption: ContentMedia_Media_caption_operator
+  updatedAt: ContentMedia_Media_updatedAt_operator
+  createdAt: ContentMedia_Media_createdAt_operator
+  url: ContentMedia_Media_url_operator
+  filename: ContentMedia_Media_filename_operator
+  mimeType: ContentMedia_Media_mimeType_operator
+  filesize: ContentMedia_Media_filesize_operator
+  width: ContentMedia_Media_width_operator
+  height: ContentMedia_Media_height_operator
+  id: ContentMedia_Media_id_operator
+  AND: [ContentMedia_Media_where_and]
+  OR: [ContentMedia_Media_where_or]
+}
+
+input ContentMedia_Media_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input ContentMedia_Media_caption_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+  exists: Boolean
+}
+
+input ContentMedia_Media_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input ContentMedia_Media_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input ContentMedia_Media_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input ContentMedia_Media_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input ContentMedia_Media_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input ContentMedia_Media_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_where_and {
+  alt: ContentMedia_Media_alt_operator
+  caption: ContentMedia_Media_caption_operator
+  updatedAt: ContentMedia_Media_updatedAt_operator
+  createdAt: ContentMedia_Media_createdAt_operator
+  url: ContentMedia_Media_url_operator
+  filename: ContentMedia_Media_filename_operator
+  mimeType: ContentMedia_Media_mimeType_operator
+  filesize: ContentMedia_Media_filesize_operator
+  width: ContentMedia_Media_width_operator
+  height: ContentMedia_Media_height_operator
+  id: ContentMedia_Media_id_operator
+}
+
+input ContentMedia_Media_where_or {
+  alt: ContentMedia_Media_alt_operator
+  caption: ContentMedia_Media_caption_operator
+  updatedAt: ContentMedia_Media_updatedAt_operator
+  createdAt: ContentMedia_Media_createdAt_operator
+  url: ContentMedia_Media_url_operator
+  filename: ContentMedia_Media_filename_operator
+  mimeType: ContentMedia_Media_mimeType_operator
+  filesize: ContentMedia_Media_filesize_operator
+  width: ContentMedia_Media_width_operator
+  height: ContentMedia_Media_height_operator
+  id: ContentMedia_Media_id_operator
+}
 
 type Project_Meta {
   title: String
@@ -1283,8 +1416,8 @@ input Project_Meta_Image_where {
   width: Project_Meta_Image_width_operator
   height: Project_Meta_Image_height_operator
   id: Project_Meta_Image_id_operator
-  OR: [Project_Meta_Image_where_or]
   AND: [Project_Meta_Image_where_and]
+  OR: [Project_Meta_Image_where_or]
 }
 
 input Project_Meta_Image_alt_operator {
@@ -1401,7 +1534,7 @@ input Project_Meta_Image_id_operator {
   exists: Boolean
 }
 
-input Project_Meta_Image_where_or {
+input Project_Meta_Image_where_and {
   alt: Project_Meta_Image_alt_operator
   caption: Project_Meta_Image_caption_operator
   updatedAt: Project_Meta_Image_updatedAt_operator
@@ -1415,7 +1548,7 @@ input Project_Meta_Image_where_or {
   id: Project_Meta_Image_id_operator
 }
 
-input Project_Meta_Image_where_and {
+input Project_Meta_Image_where_or {
   alt: Project_Meta_Image_alt_operator
   caption: Project_Meta_Image_caption_operator
   updatedAt: Project_Meta_Image_updatedAt_operator
@@ -1464,8 +1597,8 @@ input Page_Meta_Image_where {
   width: Page_Meta_Image_width_operator
   height: Page_Meta_Image_height_operator
   id: Page_Meta_Image_id_operator
-  OR: [Page_Meta_Image_where_or]
   AND: [Page_Meta_Image_where_and]
+  OR: [Page_Meta_Image_where_or]
 }
 
 input Page_Meta_Image_alt_operator {
@@ -1582,7 +1715,7 @@ input Page_Meta_Image_id_operator {
   exists: Boolean
 }
 
-input Page_Meta_Image_where_or {
+input Page_Meta_Image_where_and {
   alt: Page_Meta_Image_alt_operator
   caption: Page_Meta_Image_caption_operator
   updatedAt: Page_Meta_Image_updatedAt_operator
@@ -1596,7 +1729,7 @@ input Page_Meta_Image_where_or {
   id: Page_Meta_Image_id_operator
 }
 
-input Page_Meta_Image_where_and {
+input Page_Meta_Image_where_or {
   alt: Page_Meta_Image_alt_operator
   caption: Page_Meta_Image_caption_operator
   updatedAt: Page_Meta_Image_updatedAt_operator
@@ -1617,16 +1750,16 @@ enum Page__status {
 
 type Pages {
   docs: [Page]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input Page_where {
@@ -1650,8 +1783,8 @@ input Page_where {
   createdAt: Page_createdAt_operator
   _status: Page__status_operator
   id: Page_id_operator
-  OR: [Page_where_or]
   AND: [Page_where_and]
+  OR: [Page_where_or]
 }
 
 input Page_title_operator {
@@ -1700,9 +1833,8 @@ input Page_hero__richText_operator {
 input Page_hero__links__link__type_operator {
   equals: Page_hero__links__link__type_Input
   not_equals: Page_hero__links__link__type_Input
-  in: [Page_hero__links__link__type_Input]
-  not_in: [Page_hero__links__link__type_Input]
-  all: [Page_hero__links__link__type_Input]
+  like: Page_hero__links__link__type_Input
+  contains: Page_hero__links__link__type_Input
   exists: Boolean
 }
 
@@ -1719,7 +1851,7 @@ input Page_hero__links__link__newTab_operator {
 
 input Page_hero__links__link__reference_Relation {
   relationTo: Page_hero__links__link__reference_Relation_RelationTo
-  value: String
+  value: JSON
 }
 
 enum Page_hero__links__link__reference_Relation_RelationTo {
@@ -1860,7 +1992,7 @@ input Page_id_operator {
   exists: Boolean
 }
 
-input Page_where_or {
+input Page_where_and {
   title: Page_title_operator
   publishedDate: Page_publishedDate_operator
   hero__type: Page_hero__type_operator
@@ -1883,7 +2015,7 @@ input Page_where_or {
   id: Page_id_operator
 }
 
-input Page_where_and {
+input Page_where_or {
   title: Page_title_operator
   publishedDate: Page_publishedDate_operator
   hero__type: Page_hero__type_operator
@@ -2593,6 +2725,7 @@ type PageVersion {
   version: PageVersion_Version
   createdAt: DateTime
   updatedAt: DateTime
+  latest: Boolean
   id: String
 }
 
@@ -2670,8 +2803,8 @@ input PageVersion_Version_Hero_Media_where {
   width: PageVersion_Version_Hero_Media_width_operator
   height: PageVersion_Version_Hero_Media_height_operator
   id: PageVersion_Version_Hero_Media_id_operator
-  OR: [PageVersion_Version_Hero_Media_where_or]
   AND: [PageVersion_Version_Hero_Media_where_and]
+  OR: [PageVersion_Version_Hero_Media_where_or]
 }
 
 input PageVersion_Version_Hero_Media_alt_operator {
@@ -2788,7 +2921,7 @@ input PageVersion_Version_Hero_Media_id_operator {
   exists: Boolean
 }
 
-input PageVersion_Version_Hero_Media_where_or {
+input PageVersion_Version_Hero_Media_where_and {
   alt: PageVersion_Version_Hero_Media_alt_operator
   caption: PageVersion_Version_Hero_Media_caption_operator
   updatedAt: PageVersion_Version_Hero_Media_updatedAt_operator
@@ -2802,7 +2935,7 @@ input PageVersion_Version_Hero_Media_where_or {
   id: PageVersion_Version_Hero_Media_id_operator
 }
 
-input PageVersion_Version_Hero_Media_where_and {
+input PageVersion_Version_Hero_Media_where_or {
   alt: PageVersion_Version_Hero_Media_alt_operator
   caption: PageVersion_Version_Hero_Media_caption_operator
   updatedAt: PageVersion_Version_Hero_Media_updatedAt_operator
@@ -2836,8 +2969,8 @@ input PageVersion_Version_Meta_Image_where {
   width: PageVersion_Version_Meta_Image_width_operator
   height: PageVersion_Version_Meta_Image_height_operator
   id: PageVersion_Version_Meta_Image_id_operator
-  OR: [PageVersion_Version_Meta_Image_where_or]
   AND: [PageVersion_Version_Meta_Image_where_and]
+  OR: [PageVersion_Version_Meta_Image_where_or]
 }
 
 input PageVersion_Version_Meta_Image_alt_operator {
@@ -2954,7 +3087,7 @@ input PageVersion_Version_Meta_Image_id_operator {
   exists: Boolean
 }
 
-input PageVersion_Version_Meta_Image_where_or {
+input PageVersion_Version_Meta_Image_where_and {
   alt: PageVersion_Version_Meta_Image_alt_operator
   caption: PageVersion_Version_Meta_Image_caption_operator
   updatedAt: PageVersion_Version_Meta_Image_updatedAt_operator
@@ -2968,7 +3101,7 @@ input PageVersion_Version_Meta_Image_where_or {
   id: PageVersion_Version_Meta_Image_id_operator
 }
 
-input PageVersion_Version_Meta_Image_where_and {
+input PageVersion_Version_Meta_Image_where_or {
   alt: PageVersion_Version_Meta_Image_alt_operator
   caption: PageVersion_Version_Meta_Image_caption_operator
   updatedAt: PageVersion_Version_Meta_Image_updatedAt_operator
@@ -2989,16 +3122,16 @@ enum PageVersion_Version__status {
 
 type versionsPages {
   docs: [PageVersion]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input versionsPage_where {
@@ -3024,17 +3157,18 @@ input versionsPage_where {
   version___status: versionsPage_version___status_operator
   createdAt: versionsPage_createdAt_operator
   updatedAt: versionsPage_updatedAt_operator
+  latest: versionsPage_latest_operator
   id: versionsPage_id_operator
-  OR: [versionsPage_where_or]
   AND: [versionsPage_where_and]
+  OR: [versionsPage_where_or]
 }
 
 input versionsPage_parent_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -3084,9 +3218,8 @@ input versionsPage_version__hero__richText_operator {
 input versionsPage_version__hero__links__link__type_operator {
   equals: versionsPage_version__hero__links__link__type_Input
   not_equals: versionsPage_version__hero__links__link__type_Input
-  in: [versionsPage_version__hero__links__link__type_Input]
-  not_in: [versionsPage_version__hero__links__link__type_Input]
-  all: [versionsPage_version__hero__links__link__type_Input]
+  like: versionsPage_version__hero__links__link__type_Input
+  contains: versionsPage_version__hero__links__link__type_Input
   exists: Boolean
 }
 
@@ -3103,7 +3236,7 @@ input versionsPage_version__hero__links__link__newTab_operator {
 
 input versionsPage_version__hero__links__link__reference_Relation {
   relationTo: versionsPage_version__hero__links__link__reference_Relation_RelationTo
-  value: String
+  value: JSON
 }
 
 enum versionsPage_version__hero__links__link__reference_Relation_RelationTo {
@@ -3255,6 +3388,12 @@ input versionsPage_updatedAt_operator {
   exists: Boolean
 }
 
+input versionsPage_latest_operator {
+  equals: Boolean
+  not_equals: Boolean
+  exists: Boolean
+}
+
 input versionsPage_id_operator {
   equals: String
   not_equals: String
@@ -3264,32 +3403,6 @@ input versionsPage_id_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
-}
-
-input versionsPage_where_or {
-  parent: versionsPage_parent_operator
-  version__title: versionsPage_version__title_operator
-  version__publishedDate: versionsPage_version__publishedDate_operator
-  version__hero__type: versionsPage_version__hero__type_operator
-  version__hero__richText: versionsPage_version__hero__richText_operator
-  version__hero__links__link__type: versionsPage_version__hero__links__link__type_operator
-  version__hero__links__link__newTab: versionsPage_version__hero__links__link__newTab_operator
-  version__hero__links__link__reference: versionsPage_version__hero__links__link__reference_Relation
-  version__hero__links__link__url: versionsPage_version__hero__links__link__url_operator
-  version__hero__links__link__label: versionsPage_version__hero__links__link__label_operator
-  version__hero__links__link__appearance: versionsPage_version__hero__links__link__appearance_operator
-  version__hero__links__id: versionsPage_version__hero__links__id_operator
-  version__hero__media: versionsPage_version__hero__media_operator
-  version__slug: versionsPage_version__slug_operator
-  version__meta__title: versionsPage_version__meta__title_operator
-  version__meta__description: versionsPage_version__meta__description_operator
-  version__meta__image: versionsPage_version__meta__image_operator
-  version__updatedAt: versionsPage_version__updatedAt_operator
-  version__createdAt: versionsPage_version__createdAt_operator
-  version___status: versionsPage_version___status_operator
-  createdAt: versionsPage_createdAt_operator
-  updatedAt: versionsPage_updatedAt_operator
-  id: versionsPage_id_operator
 }
 
 input versionsPage_where_and {
@@ -3315,21 +3428,49 @@ input versionsPage_where_and {
   version___status: versionsPage_version___status_operator
   createdAt: versionsPage_createdAt_operator
   updatedAt: versionsPage_updatedAt_operator
+  latest: versionsPage_latest_operator
+  id: versionsPage_id_operator
+}
+
+input versionsPage_where_or {
+  parent: versionsPage_parent_operator
+  version__title: versionsPage_version__title_operator
+  version__publishedDate: versionsPage_version__publishedDate_operator
+  version__hero__type: versionsPage_version__hero__type_operator
+  version__hero__richText: versionsPage_version__hero__richText_operator
+  version__hero__links__link__type: versionsPage_version__hero__links__link__type_operator
+  version__hero__links__link__newTab: versionsPage_version__hero__links__link__newTab_operator
+  version__hero__links__link__reference: versionsPage_version__hero__links__link__reference_Relation
+  version__hero__links__link__url: versionsPage_version__hero__links__link__url_operator
+  version__hero__links__link__label: versionsPage_version__hero__links__link__label_operator
+  version__hero__links__link__appearance: versionsPage_version__hero__links__link__appearance_operator
+  version__hero__links__id: versionsPage_version__hero__links__id_operator
+  version__hero__media: versionsPage_version__hero__media_operator
+  version__slug: versionsPage_version__slug_operator
+  version__meta__title: versionsPage_version__meta__title_operator
+  version__meta__description: versionsPage_version__meta__description_operator
+  version__meta__image: versionsPage_version__meta__image_operator
+  version__updatedAt: versionsPage_version__updatedAt_operator
+  version__createdAt: versionsPage_version__createdAt_operator
+  version___status: versionsPage_version___status_operator
+  createdAt: versionsPage_createdAt_operator
+  updatedAt: versionsPage_updatedAt_operator
+  latest: versionsPage_latest_operator
   id: versionsPage_id_operator
 }
 
 type Posts {
   docs: [Post]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input Post_where {
@@ -3359,8 +3500,8 @@ input Post_where {
   createdAt: Post_createdAt_operator
   _status: Post__status_operator
   id: Post_id_operator
-  OR: [Post_where_or]
   AND: [Post_where_and]
+  OR: [Post_where_or]
 }
 
 input Post_title_operator {
@@ -3374,11 +3515,11 @@ input Post_title_operator {
 }
 
 input Post_categories_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -3394,11 +3535,11 @@ input Post_publishedOn_operator {
 }
 
 input Post_authors_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -3449,9 +3590,8 @@ input Post_hero__richText_operator {
 input Post_hero__links__link__type_operator {
   equals: Post_hero__links__link__type_Input
   not_equals: Post_hero__links__link__type_Input
-  in: [Post_hero__links__link__type_Input]
-  not_in: [Post_hero__links__link__type_Input]
-  all: [Post_hero__links__link__type_Input]
+  like: Post_hero__links__link__type_Input
+  contains: Post_hero__links__link__type_Input
   exists: Boolean
 }
 
@@ -3468,7 +3608,7 @@ input Post_hero__links__link__newTab_operator {
 
 input Post_hero__links__link__reference_Relation {
   relationTo: Post_hero__links__link__reference_Relation_RelationTo
-  value: String
+  value: JSON
 }
 
 enum Post_hero__links__link__reference_Relation_RelationTo {
@@ -3533,11 +3673,11 @@ input Post_enablePremiumContent_operator {
 }
 
 input Post_relatedPosts_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -3624,7 +3764,7 @@ input Post_id_operator {
   exists: Boolean
 }
 
-input Post_where_or {
+input Post_where_and {
   title: Post_title_operator
   categories: Post_categories_operator
   publishedOn: Post_publishedOn_operator
@@ -3653,7 +3793,7 @@ input Post_where_or {
   id: Post_id_operator
 }
 
-input Post_where_and {
+input Post_where_or {
   title: Post_title_operator
   categories: Post_categories_operator
   publishedOn: Post_publishedOn_operator
@@ -4560,6 +4700,7 @@ type PostVersion {
   version: PostVersion_Version
   createdAt: DateTime
   updatedAt: DateTime
+  latest: Boolean
   id: String
 }
 
@@ -4648,8 +4789,8 @@ input PostVersion_Version_Hero_Media_where {
   width: PostVersion_Version_Hero_Media_width_operator
   height: PostVersion_Version_Hero_Media_height_operator
   id: PostVersion_Version_Hero_Media_id_operator
-  OR: [PostVersion_Version_Hero_Media_where_or]
   AND: [PostVersion_Version_Hero_Media_where_and]
+  OR: [PostVersion_Version_Hero_Media_where_or]
 }
 
 input PostVersion_Version_Hero_Media_alt_operator {
@@ -4766,7 +4907,7 @@ input PostVersion_Version_Hero_Media_id_operator {
   exists: Boolean
 }
 
-input PostVersion_Version_Hero_Media_where_or {
+input PostVersion_Version_Hero_Media_where_and {
   alt: PostVersion_Version_Hero_Media_alt_operator
   caption: PostVersion_Version_Hero_Media_caption_operator
   updatedAt: PostVersion_Version_Hero_Media_updatedAt_operator
@@ -4780,7 +4921,7 @@ input PostVersion_Version_Hero_Media_where_or {
   id: PostVersion_Version_Hero_Media_id_operator
 }
 
-input PostVersion_Version_Hero_Media_where_and {
+input PostVersion_Version_Hero_Media_where_or {
   alt: PostVersion_Version_Hero_Media_alt_operator
   caption: PostVersion_Version_Hero_Media_caption_operator
   updatedAt: PostVersion_Version_Hero_Media_updatedAt_operator
@@ -4816,8 +4957,8 @@ input PostVersion_Version_Meta_Image_where {
   width: PostVersion_Version_Meta_Image_width_operator
   height: PostVersion_Version_Meta_Image_height_operator
   id: PostVersion_Version_Meta_Image_id_operator
-  OR: [PostVersion_Version_Meta_Image_where_or]
   AND: [PostVersion_Version_Meta_Image_where_and]
+  OR: [PostVersion_Version_Meta_Image_where_or]
 }
 
 input PostVersion_Version_Meta_Image_alt_operator {
@@ -4934,7 +5075,7 @@ input PostVersion_Version_Meta_Image_id_operator {
   exists: Boolean
 }
 
-input PostVersion_Version_Meta_Image_where_or {
+input PostVersion_Version_Meta_Image_where_and {
   alt: PostVersion_Version_Meta_Image_alt_operator
   caption: PostVersion_Version_Meta_Image_caption_operator
   updatedAt: PostVersion_Version_Meta_Image_updatedAt_operator
@@ -4948,7 +5089,7 @@ input PostVersion_Version_Meta_Image_where_or {
   id: PostVersion_Version_Meta_Image_id_operator
 }
 
-input PostVersion_Version_Meta_Image_where_and {
+input PostVersion_Version_Meta_Image_where_or {
   alt: PostVersion_Version_Meta_Image_alt_operator
   caption: PostVersion_Version_Meta_Image_caption_operator
   updatedAt: PostVersion_Version_Meta_Image_updatedAt_operator
@@ -4969,16 +5110,16 @@ enum PostVersion_Version__status {
 
 type versionsPosts {
   docs: [PostVersion]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input versionsPost_where {
@@ -5010,17 +5151,18 @@ input versionsPost_where {
   version___status: versionsPost_version___status_operator
   createdAt: versionsPost_createdAt_operator
   updatedAt: versionsPost_updatedAt_operator
+  latest: versionsPost_latest_operator
   id: versionsPost_id_operator
-  OR: [versionsPost_where_or]
   AND: [versionsPost_where_and]
+  OR: [versionsPost_where_or]
 }
 
 input versionsPost_parent_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -5035,11 +5177,11 @@ input versionsPost_version__title_operator {
 }
 
 input versionsPost_version__categories_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -5055,11 +5197,11 @@ input versionsPost_version__publishedOn_operator {
 }
 
 input versionsPost_version__authors_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -5110,9 +5252,8 @@ input versionsPost_version__hero__richText_operator {
 input versionsPost_version__hero__links__link__type_operator {
   equals: versionsPost_version__hero__links__link__type_Input
   not_equals: versionsPost_version__hero__links__link__type_Input
-  in: [versionsPost_version__hero__links__link__type_Input]
-  not_in: [versionsPost_version__hero__links__link__type_Input]
-  all: [versionsPost_version__hero__links__link__type_Input]
+  like: versionsPost_version__hero__links__link__type_Input
+  contains: versionsPost_version__hero__links__link__type_Input
   exists: Boolean
 }
 
@@ -5129,7 +5270,7 @@ input versionsPost_version__hero__links__link__newTab_operator {
 
 input versionsPost_version__hero__links__link__reference_Relation {
   relationTo: versionsPost_version__hero__links__link__reference_Relation_RelationTo
-  value: String
+  value: JSON
 }
 
 enum versionsPost_version__hero__links__link__reference_Relation_RelationTo {
@@ -5194,11 +5335,11 @@ input versionsPost_version__enablePremiumContent_operator {
 }
 
 input versionsPost_version__relatedPosts_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -5296,6 +5437,12 @@ input versionsPost_updatedAt_operator {
   exists: Boolean
 }
 
+input versionsPost_latest_operator {
+  equals: Boolean
+  not_equals: Boolean
+  exists: Boolean
+}
+
 input versionsPost_id_operator {
   equals: String
   not_equals: String
@@ -5305,38 +5452,6 @@ input versionsPost_id_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
-}
-
-input versionsPost_where_or {
-  parent: versionsPost_parent_operator
-  version__title: versionsPost_version__title_operator
-  version__categories: versionsPost_version__categories_operator
-  version__publishedOn: versionsPost_version__publishedOn_operator
-  version__authors: versionsPost_version__authors_operator
-  version__populatedAuthors__id: versionsPost_version__populatedAuthors__id_operator
-  version__populatedAuthors__name: versionsPost_version__populatedAuthors__name_operator
-  version__hero__type: versionsPost_version__hero__type_operator
-  version__hero__richText: versionsPost_version__hero__richText_operator
-  version__hero__links__link__type: versionsPost_version__hero__links__link__type_operator
-  version__hero__links__link__newTab: versionsPost_version__hero__links__link__newTab_operator
-  version__hero__links__link__reference: versionsPost_version__hero__links__link__reference_Relation
-  version__hero__links__link__url: versionsPost_version__hero__links__link__url_operator
-  version__hero__links__link__label: versionsPost_version__hero__links__link__label_operator
-  version__hero__links__link__appearance: versionsPost_version__hero__links__link__appearance_operator
-  version__hero__links__id: versionsPost_version__hero__links__id_operator
-  version__hero__media: versionsPost_version__hero__media_operator
-  version__enablePremiumContent: versionsPost_version__enablePremiumContent_operator
-  version__relatedPosts: versionsPost_version__relatedPosts_operator
-  version__slug: versionsPost_version__slug_operator
-  version__meta__title: versionsPost_version__meta__title_operator
-  version__meta__description: versionsPost_version__meta__description_operator
-  version__meta__image: versionsPost_version__meta__image_operator
-  version__updatedAt: versionsPost_version__updatedAt_operator
-  version__createdAt: versionsPost_version__createdAt_operator
-  version___status: versionsPost_version___status_operator
-  createdAt: versionsPost_createdAt_operator
-  updatedAt: versionsPost_updatedAt_operator
-  id: versionsPost_id_operator
 }
 
 input versionsPost_where_and {
@@ -5368,36 +5483,62 @@ input versionsPost_where_and {
   version___status: versionsPost_version___status_operator
   createdAt: versionsPost_createdAt_operator
   updatedAt: versionsPost_updatedAt_operator
+  latest: versionsPost_latest_operator
+  id: versionsPost_id_operator
+}
+
+input versionsPost_where_or {
+  parent: versionsPost_parent_operator
+  version__title: versionsPost_version__title_operator
+  version__categories: versionsPost_version__categories_operator
+  version__publishedOn: versionsPost_version__publishedOn_operator
+  version__authors: versionsPost_version__authors_operator
+  version__populatedAuthors__id: versionsPost_version__populatedAuthors__id_operator
+  version__populatedAuthors__name: versionsPost_version__populatedAuthors__name_operator
+  version__hero__type: versionsPost_version__hero__type_operator
+  version__hero__richText: versionsPost_version__hero__richText_operator
+  version__hero__links__link__type: versionsPost_version__hero__links__link__type_operator
+  version__hero__links__link__newTab: versionsPost_version__hero__links__link__newTab_operator
+  version__hero__links__link__reference: versionsPost_version__hero__links__link__reference_Relation
+  version__hero__links__link__url: versionsPost_version__hero__links__link__url_operator
+  version__hero__links__link__label: versionsPost_version__hero__links__link__label_operator
+  version__hero__links__link__appearance: versionsPost_version__hero__links__link__appearance_operator
+  version__hero__links__id: versionsPost_version__hero__links__id_operator
+  version__hero__media: versionsPost_version__hero__media_operator
+  version__enablePremiumContent: versionsPost_version__enablePremiumContent_operator
+  version__relatedPosts: versionsPost_version__relatedPosts_operator
+  version__slug: versionsPost_version__slug_operator
+  version__meta__title: versionsPost_version__meta__title_operator
+  version__meta__description: versionsPost_version__meta__description_operator
+  version__meta__image: versionsPost_version__meta__image_operator
+  version__updatedAt: versionsPost_version__updatedAt_operator
+  version__createdAt: versionsPost_version__createdAt_operator
+  version___status: versionsPost_version___status_operator
+  createdAt: versionsPost_createdAt_operator
+  updatedAt: versionsPost_updatedAt_operator
+  latest: versionsPost_latest_operator
   id: versionsPost_id_operator
 }
 
 type Projects {
   docs: [Project]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input Project_where {
   title: Project_title_operator
   categories: Project_categories_operator
   publishedDate: Project_publishedDate_operator
-  hero__type: Project_hero__type_operator
   hero__richText: Project_hero__richText_operator
-  hero__links__link__type: Project_hero__links__link__type_operator
-  hero__links__link__newTab: Project_hero__links__link__newTab_operator
-  hero__links__link__reference: Project_hero__links__link__reference_Relation
-  hero__links__link__url: Project_hero__links__link__url_operator
-  hero__links__link__label: Project_hero__links__link__label_operator
-  hero__links__link__appearance: Project_hero__links__link__appearance_operator
-  hero__links__id: Project_hero__links__id_operator
   hero__media: Project_hero__media_operator
   relatedProjects: Project_relatedProjects_operator
   slug: Project_slug_operator
@@ -5408,8 +5549,8 @@ input Project_where {
   createdAt: Project_createdAt_operator
   _status: Project__status_operator
   id: Project_id_operator
-  OR: [Project_where_or]
   AND: [Project_where_and]
+  OR: [Project_where_or]
 }
 
 input Project_title_operator {
@@ -5423,11 +5564,11 @@ input Project_title_operator {
 }
 
 input Project_categories_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -5442,21 +5583,6 @@ input Project_publishedDate_operator {
   exists: Boolean
 }
 
-input Project_hero__type_operator {
-  equals: Project_hero__type_Input
-  not_equals: Project_hero__type_Input
-  in: [Project_hero__type_Input]
-  not_in: [Project_hero__type_Input]
-  all: [Project_hero__type_Input]
-}
-
-enum Project_hero__type_Input {
-  none
-  highImpact
-  mediumImpact
-  lowImpact
-}
-
 input Project_hero__richText_operator {
   equals: JSON
   not_equals: JSON
@@ -5464,92 +5590,18 @@ input Project_hero__richText_operator {
   contains: JSON
 }
 
-input Project_hero__links__link__type_operator {
-  equals: Project_hero__links__link__type_Input
-  not_equals: Project_hero__links__link__type_Input
-  in: [Project_hero__links__link__type_Input]
-  not_in: [Project_hero__links__link__type_Input]
-  all: [Project_hero__links__link__type_Input]
-  exists: Boolean
-}
-
-enum Project_hero__links__link__type_Input {
-  reference
-  custom
-}
-
-input Project_hero__links__link__newTab_operator {
-  equals: Boolean
-  not_equals: Boolean
-  exists: Boolean
-}
-
-input Project_hero__links__link__reference_Relation {
-  relationTo: Project_hero__links__link__reference_Relation_RelationTo
-  value: String
-}
-
-enum Project_hero__links__link__reference_Relation_RelationTo {
-  pages
-}
-
-input Project_hero__links__link__url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input Project_hero__links__link__label_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input Project_hero__links__link__appearance_operator {
-  equals: Project_hero__links__link__appearance_Input
-  not_equals: Project_hero__links__link__appearance_Input
-  in: [Project_hero__links__link__appearance_Input]
-  not_in: [Project_hero__links__link__appearance_Input]
-  all: [Project_hero__links__link__appearance_Input]
-  exists: Boolean
-}
-
-enum Project_hero__links__link__appearance_Input {
-  default
-  primary
-  secondary
-}
-
-input Project_hero__links__id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
 input Project_hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input Project_relatedProjects_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -5636,19 +5688,11 @@ input Project_id_operator {
   exists: Boolean
 }
 
-input Project_where_or {
+input Project_where_and {
   title: Project_title_operator
   categories: Project_categories_operator
   publishedDate: Project_publishedDate_operator
-  hero__type: Project_hero__type_operator
   hero__richText: Project_hero__richText_operator
-  hero__links__link__type: Project_hero__links__link__type_operator
-  hero__links__link__newTab: Project_hero__links__link__newTab_operator
-  hero__links__link__reference: Project_hero__links__link__reference_Relation
-  hero__links__link__url: Project_hero__links__link__url_operator
-  hero__links__link__label: Project_hero__links__link__label_operator
-  hero__links__link__appearance: Project_hero__links__link__appearance_operator
-  hero__links__id: Project_hero__links__id_operator
   hero__media: Project_hero__media_operator
   relatedProjects: Project_relatedProjects_operator
   slug: Project_slug_operator
@@ -5661,19 +5705,11 @@ input Project_where_or {
   id: Project_id_operator
 }
 
-input Project_where_and {
+input Project_where_or {
   title: Project_title_operator
   categories: Project_categories_operator
   publishedDate: Project_publishedDate_operator
-  hero__type: Project_hero__type_operator
   hero__richText: Project_hero__richText_operator
-  hero__links__link__type: Project_hero__links__link__type_operator
-  hero__links__link__newTab: Project_hero__links__link__newTab_operator
-  hero__links__link__reference: Project_hero__links__link__reference_Relation
-  hero__links__link__url: Project_hero__links__link__url_operator
-  hero__links__link__label: Project_hero__links__link__label_operator
-  hero__links__link__appearance: Project_hero__links__link__appearance_operator
-  hero__links__id: Project_hero__links__id_operator
   hero__media: Project_hero__media_operator
   relatedProjects: Project_relatedProjects_operator
   slug: Project_slug_operator
@@ -5803,33 +5839,8 @@ type ProjectsDocAccessFields_hero_Delete {
 }
 
 type ProjectsDocAccessFields_hero_Fields {
-  type: ProjectsDocAccessFields_hero_type
   richText: ProjectsDocAccessFields_hero_richText
-  links: ProjectsDocAccessFields_hero_links
   media: ProjectsDocAccessFields_hero_media
-}
-
-type ProjectsDocAccessFields_hero_type {
-  create: ProjectsDocAccessFields_hero_type_Create
-  read: ProjectsDocAccessFields_hero_type_Read
-  update: ProjectsDocAccessFields_hero_type_Update
-  delete: ProjectsDocAccessFields_hero_type_Delete
-}
-
-type ProjectsDocAccessFields_hero_type_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_type_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_type_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_type_Delete {
-  permission: Boolean!
 }
 
 type ProjectsDocAccessFields_hero_richText {
@@ -5852,229 +5863,6 @@ type ProjectsDocAccessFields_hero_richText_Update {
 }
 
 type ProjectsDocAccessFields_hero_richText_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links {
-  create: ProjectsDocAccessFields_hero_links_Create
-  read: ProjectsDocAccessFields_hero_links_Read
-  update: ProjectsDocAccessFields_hero_links_Update
-  delete: ProjectsDocAccessFields_hero_links_Delete
-  fields: ProjectsDocAccessFields_hero_links_Fields
-}
-
-type ProjectsDocAccessFields_hero_links_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_Fields {
-  link: ProjectsDocAccessFields_hero_links_link
-  id: ProjectsDocAccessFields_hero_links_id
-}
-
-type ProjectsDocAccessFields_hero_links_link {
-  create: ProjectsDocAccessFields_hero_links_link_Create
-  read: ProjectsDocAccessFields_hero_links_link_Read
-  update: ProjectsDocAccessFields_hero_links_link_Update
-  delete: ProjectsDocAccessFields_hero_links_link_Delete
-  fields: ProjectsDocAccessFields_hero_links_link_Fields
-}
-
-type ProjectsDocAccessFields_hero_links_link_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_Fields {
-  type: ProjectsDocAccessFields_hero_links_link_type
-  newTab: ProjectsDocAccessFields_hero_links_link_newTab
-  reference: ProjectsDocAccessFields_hero_links_link_reference
-  url: ProjectsDocAccessFields_hero_links_link_url
-  label: ProjectsDocAccessFields_hero_links_link_label
-  appearance: ProjectsDocAccessFields_hero_links_link_appearance
-}
-
-type ProjectsDocAccessFields_hero_links_link_type {
-  create: ProjectsDocAccessFields_hero_links_link_type_Create
-  read: ProjectsDocAccessFields_hero_links_link_type_Read
-  update: ProjectsDocAccessFields_hero_links_link_type_Update
-  delete: ProjectsDocAccessFields_hero_links_link_type_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_link_type_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_type_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_type_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_type_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_newTab {
-  create: ProjectsDocAccessFields_hero_links_link_newTab_Create
-  read: ProjectsDocAccessFields_hero_links_link_newTab_Read
-  update: ProjectsDocAccessFields_hero_links_link_newTab_Update
-  delete: ProjectsDocAccessFields_hero_links_link_newTab_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_link_newTab_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_newTab_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_newTab_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_newTab_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_reference {
-  create: ProjectsDocAccessFields_hero_links_link_reference_Create
-  read: ProjectsDocAccessFields_hero_links_link_reference_Read
-  update: ProjectsDocAccessFields_hero_links_link_reference_Update
-  delete: ProjectsDocAccessFields_hero_links_link_reference_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_link_reference_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_reference_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_reference_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_reference_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_url {
-  create: ProjectsDocAccessFields_hero_links_link_url_Create
-  read: ProjectsDocAccessFields_hero_links_link_url_Read
-  update: ProjectsDocAccessFields_hero_links_link_url_Update
-  delete: ProjectsDocAccessFields_hero_links_link_url_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_link_url_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_url_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_url_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_url_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_label {
-  create: ProjectsDocAccessFields_hero_links_link_label_Create
-  read: ProjectsDocAccessFields_hero_links_link_label_Read
-  update: ProjectsDocAccessFields_hero_links_link_label_Update
-  delete: ProjectsDocAccessFields_hero_links_link_label_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_link_label_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_label_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_label_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_label_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_appearance {
-  create: ProjectsDocAccessFields_hero_links_link_appearance_Create
-  read: ProjectsDocAccessFields_hero_links_link_appearance_Read
-  update: ProjectsDocAccessFields_hero_links_link_appearance_Update
-  delete: ProjectsDocAccessFields_hero_links_link_appearance_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_link_appearance_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_appearance_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_appearance_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_link_appearance_Delete {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_id {
-  create: ProjectsDocAccessFields_hero_links_id_Create
-  read: ProjectsDocAccessFields_hero_links_id_Read
-  update: ProjectsDocAccessFields_hero_links_id_Update
-  delete: ProjectsDocAccessFields_hero_links_id_Delete
-}
-
-type ProjectsDocAccessFields_hero_links_id_Create {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_id_Read {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_id_Update {
-  permission: Boolean!
-}
-
-type ProjectsDocAccessFields_hero_links_id_Delete {
   permission: Boolean!
 }
 
@@ -6416,6 +6204,7 @@ type ProjectVersion {
   version: ProjectVersion_Version
   createdAt: DateTime
   updatedAt: DateTime
+  latest: Boolean
   id: String
 }
 
@@ -6434,53 +6223,8 @@ type ProjectVersion_Version {
 }
 
 type ProjectVersion_Version_Hero {
-  type: ProjectVersion_Version_Hero_type
   richText(depth: Int): JSON
-  links: [ProjectVersion_Version_Hero_Links!]
   media(where: ProjectVersion_Version_Hero_Media_where): Media
-}
-
-enum ProjectVersion_Version_Hero_type {
-  none
-  highImpact
-  mediumImpact
-  lowImpact
-}
-
-type ProjectVersion_Version_Hero_Links {
-  link: ProjectVersion_Version_Hero_Links_Link
-  id: String
-}
-
-type ProjectVersion_Version_Hero_Links_Link {
-  type: ProjectVersion_Version_Hero_Links_Link_type
-  newTab: Boolean
-  reference: ProjectVersion_Version_Hero_Links_Link_Reference_Relationship
-  url: String
-  label: String
-  appearance: ProjectVersion_Version_Hero_Links_Link_appearance
-}
-
-enum ProjectVersion_Version_Hero_Links_Link_type {
-  reference
-  custom
-}
-
-type ProjectVersion_Version_Hero_Links_Link_Reference_Relationship {
-  relationTo: ProjectVersion_Version_Hero_Links_Link_Reference_RelationTo
-  value: ProjectVersion_Version_Hero_Links_Link_Reference
-}
-
-enum ProjectVersion_Version_Hero_Links_Link_Reference_RelationTo {
-  pages
-}
-
-union ProjectVersion_Version_Hero_Links_Link_Reference = Page
-
-enum ProjectVersion_Version_Hero_Links_Link_appearance {
-  default
-  primary
-  secondary
 }
 
 input ProjectVersion_Version_Hero_Media_where {
@@ -6495,8 +6239,8 @@ input ProjectVersion_Version_Hero_Media_where {
   width: ProjectVersion_Version_Hero_Media_width_operator
   height: ProjectVersion_Version_Hero_Media_height_operator
   id: ProjectVersion_Version_Hero_Media_id_operator
-  OR: [ProjectVersion_Version_Hero_Media_where_or]
   AND: [ProjectVersion_Version_Hero_Media_where_and]
+  OR: [ProjectVersion_Version_Hero_Media_where_or]
 }
 
 input ProjectVersion_Version_Hero_Media_alt_operator {
@@ -6613,20 +6357,6 @@ input ProjectVersion_Version_Hero_Media_id_operator {
   exists: Boolean
 }
 
-input ProjectVersion_Version_Hero_Media_where_or {
-  alt: ProjectVersion_Version_Hero_Media_alt_operator
-  caption: ProjectVersion_Version_Hero_Media_caption_operator
-  updatedAt: ProjectVersion_Version_Hero_Media_updatedAt_operator
-  createdAt: ProjectVersion_Version_Hero_Media_createdAt_operator
-  url: ProjectVersion_Version_Hero_Media_url_operator
-  filename: ProjectVersion_Version_Hero_Media_filename_operator
-  mimeType: ProjectVersion_Version_Hero_Media_mimeType_operator
-  filesize: ProjectVersion_Version_Hero_Media_filesize_operator
-  width: ProjectVersion_Version_Hero_Media_width_operator
-  height: ProjectVersion_Version_Hero_Media_height_operator
-  id: ProjectVersion_Version_Hero_Media_id_operator
-}
-
 input ProjectVersion_Version_Hero_Media_where_and {
   alt: ProjectVersion_Version_Hero_Media_alt_operator
   caption: ProjectVersion_Version_Hero_Media_caption_operator
@@ -6641,7 +6371,21 @@ input ProjectVersion_Version_Hero_Media_where_and {
   id: ProjectVersion_Version_Hero_Media_id_operator
 }
 
-union ProjectVersion_Version_Layout = Cta | Content | MediaBlock | Archive
+input ProjectVersion_Version_Hero_Media_where_or {
+  alt: ProjectVersion_Version_Hero_Media_alt_operator
+  caption: ProjectVersion_Version_Hero_Media_caption_operator
+  updatedAt: ProjectVersion_Version_Hero_Media_updatedAt_operator
+  createdAt: ProjectVersion_Version_Hero_Media_createdAt_operator
+  url: ProjectVersion_Version_Hero_Media_url_operator
+  filename: ProjectVersion_Version_Hero_Media_filename_operator
+  mimeType: ProjectVersion_Version_Hero_Media_mimeType_operator
+  filesize: ProjectVersion_Version_Hero_Media_filesize_operator
+  width: ProjectVersion_Version_Hero_Media_width_operator
+  height: ProjectVersion_Version_Hero_Media_height_operator
+  id: ProjectVersion_Version_Hero_Media_id_operator
+}
+
+union ProjectVersion_Version_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
 
 type ProjectVersion_Version_Meta {
   title: String
@@ -6661,8 +6405,8 @@ input ProjectVersion_Version_Meta_Image_where {
   width: ProjectVersion_Version_Meta_Image_width_operator
   height: ProjectVersion_Version_Meta_Image_height_operator
   id: ProjectVersion_Version_Meta_Image_id_operator
-  OR: [ProjectVersion_Version_Meta_Image_where_or]
   AND: [ProjectVersion_Version_Meta_Image_where_and]
+  OR: [ProjectVersion_Version_Meta_Image_where_or]
 }
 
 input ProjectVersion_Version_Meta_Image_alt_operator {
@@ -6779,7 +6523,7 @@ input ProjectVersion_Version_Meta_Image_id_operator {
   exists: Boolean
 }
 
-input ProjectVersion_Version_Meta_Image_where_or {
+input ProjectVersion_Version_Meta_Image_where_and {
   alt: ProjectVersion_Version_Meta_Image_alt_operator
   caption: ProjectVersion_Version_Meta_Image_caption_operator
   updatedAt: ProjectVersion_Version_Meta_Image_updatedAt_operator
@@ -6793,7 +6537,7 @@ input ProjectVersion_Version_Meta_Image_where_or {
   id: ProjectVersion_Version_Meta_Image_id_operator
 }
 
-input ProjectVersion_Version_Meta_Image_where_and {
+input ProjectVersion_Version_Meta_Image_where_or {
   alt: ProjectVersion_Version_Meta_Image_alt_operator
   caption: ProjectVersion_Version_Meta_Image_caption_operator
   updatedAt: ProjectVersion_Version_Meta_Image_updatedAt_operator
@@ -6814,16 +6558,16 @@ enum ProjectVersion_Version__status {
 
 type versionsProjects {
   docs: [ProjectVersion]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input versionsProject_where {
@@ -6831,15 +6575,7 @@ input versionsProject_where {
   version__title: versionsProject_version__title_operator
   version__categories: versionsProject_version__categories_operator
   version__publishedDate: versionsProject_version__publishedDate_operator
-  version__hero__type: versionsProject_version__hero__type_operator
   version__hero__richText: versionsProject_version__hero__richText_operator
-  version__hero__links__link__type: versionsProject_version__hero__links__link__type_operator
-  version__hero__links__link__newTab: versionsProject_version__hero__links__link__newTab_operator
-  version__hero__links__link__reference: versionsProject_version__hero__links__link__reference_Relation
-  version__hero__links__link__url: versionsProject_version__hero__links__link__url_operator
-  version__hero__links__link__label: versionsProject_version__hero__links__link__label_operator
-  version__hero__links__link__appearance: versionsProject_version__hero__links__link__appearance_operator
-  version__hero__links__id: versionsProject_version__hero__links__id_operator
   version__hero__media: versionsProject_version__hero__media_operator
   version__relatedProjects: versionsProject_version__relatedProjects_operator
   version__slug: versionsProject_version__slug_operator
@@ -6851,17 +6587,18 @@ input versionsProject_where {
   version___status: versionsProject_version___status_operator
   createdAt: versionsProject_createdAt_operator
   updatedAt: versionsProject_updatedAt_operator
+  latest: versionsProject_latest_operator
   id: versionsProject_id_operator
-  OR: [versionsProject_where_or]
   AND: [versionsProject_where_and]
+  OR: [versionsProject_where_or]
 }
 
 input versionsProject_parent_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -6876,11 +6613,11 @@ input versionsProject_version__title_operator {
 }
 
 input versionsProject_version__categories_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -6895,21 +6632,6 @@ input versionsProject_version__publishedDate_operator {
   exists: Boolean
 }
 
-input versionsProject_version__hero__type_operator {
-  equals: versionsProject_version__hero__type_Input
-  not_equals: versionsProject_version__hero__type_Input
-  in: [versionsProject_version__hero__type_Input]
-  not_in: [versionsProject_version__hero__type_Input]
-  all: [versionsProject_version__hero__type_Input]
-}
-
-enum versionsProject_version__hero__type_Input {
-  none
-  highImpact
-  mediumImpact
-  lowImpact
-}
-
 input versionsProject_version__hero__richText_operator {
   equals: JSON
   not_equals: JSON
@@ -6917,92 +6639,18 @@ input versionsProject_version__hero__richText_operator {
   contains: JSON
 }
 
-input versionsProject_version__hero__links__link__type_operator {
-  equals: versionsProject_version__hero__links__link__type_Input
-  not_equals: versionsProject_version__hero__links__link__type_Input
-  in: [versionsProject_version__hero__links__link__type_Input]
-  not_in: [versionsProject_version__hero__links__link__type_Input]
-  all: [versionsProject_version__hero__links__link__type_Input]
-  exists: Boolean
-}
-
-enum versionsProject_version__hero__links__link__type_Input {
-  reference
-  custom
-}
-
-input versionsProject_version__hero__links__link__newTab_operator {
-  equals: Boolean
-  not_equals: Boolean
-  exists: Boolean
-}
-
-input versionsProject_version__hero__links__link__reference_Relation {
-  relationTo: versionsProject_version__hero__links__link__reference_Relation_RelationTo
-  value: String
-}
-
-enum versionsProject_version__hero__links__link__reference_Relation_RelationTo {
-  pages
-}
-
-input versionsProject_version__hero__links__link__url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input versionsProject_version__hero__links__link__label_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input versionsProject_version__hero__links__link__appearance_operator {
-  equals: versionsProject_version__hero__links__link__appearance_Input
-  not_equals: versionsProject_version__hero__links__link__appearance_Input
-  in: [versionsProject_version__hero__links__link__appearance_Input]
-  not_in: [versionsProject_version__hero__links__link__appearance_Input]
-  all: [versionsProject_version__hero__links__link__appearance_Input]
-  exists: Boolean
-}
-
-enum versionsProject_version__hero__links__link__appearance_Input {
-  default
-  primary
-  secondary
-}
-
-input versionsProject_version__hero__links__id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
 input versionsProject_version__hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input versionsProject_version__relatedProjects_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -7100,6 +6748,12 @@ input versionsProject_updatedAt_operator {
   exists: Boolean
 }
 
+input versionsProject_latest_operator {
+  equals: Boolean
+  not_equals: Boolean
+  exists: Boolean
+}
+
 input versionsProject_id_operator {
   equals: String
   not_equals: String
@@ -7111,48 +6765,12 @@ input versionsProject_id_operator {
   exists: Boolean
 }
 
-input versionsProject_where_or {
-  parent: versionsProject_parent_operator
-  version__title: versionsProject_version__title_operator
-  version__categories: versionsProject_version__categories_operator
-  version__publishedDate: versionsProject_version__publishedDate_operator
-  version__hero__type: versionsProject_version__hero__type_operator
-  version__hero__richText: versionsProject_version__hero__richText_operator
-  version__hero__links__link__type: versionsProject_version__hero__links__link__type_operator
-  version__hero__links__link__newTab: versionsProject_version__hero__links__link__newTab_operator
-  version__hero__links__link__reference: versionsProject_version__hero__links__link__reference_Relation
-  version__hero__links__link__url: versionsProject_version__hero__links__link__url_operator
-  version__hero__links__link__label: versionsProject_version__hero__links__link__label_operator
-  version__hero__links__link__appearance: versionsProject_version__hero__links__link__appearance_operator
-  version__hero__links__id: versionsProject_version__hero__links__id_operator
-  version__hero__media: versionsProject_version__hero__media_operator
-  version__relatedProjects: versionsProject_version__relatedProjects_operator
-  version__slug: versionsProject_version__slug_operator
-  version__meta__title: versionsProject_version__meta__title_operator
-  version__meta__description: versionsProject_version__meta__description_operator
-  version__meta__image: versionsProject_version__meta__image_operator
-  version__updatedAt: versionsProject_version__updatedAt_operator
-  version__createdAt: versionsProject_version__createdAt_operator
-  version___status: versionsProject_version___status_operator
-  createdAt: versionsProject_createdAt_operator
-  updatedAt: versionsProject_updatedAt_operator
-  id: versionsProject_id_operator
-}
-
 input versionsProject_where_and {
   parent: versionsProject_parent_operator
   version__title: versionsProject_version__title_operator
   version__categories: versionsProject_version__categories_operator
   version__publishedDate: versionsProject_version__publishedDate_operator
-  version__hero__type: versionsProject_version__hero__type_operator
   version__hero__richText: versionsProject_version__hero__richText_operator
-  version__hero__links__link__type: versionsProject_version__hero__links__link__type_operator
-  version__hero__links__link__newTab: versionsProject_version__hero__links__link__newTab_operator
-  version__hero__links__link__reference: versionsProject_version__hero__links__link__reference_Relation
-  version__hero__links__link__url: versionsProject_version__hero__links__link__url_operator
-  version__hero__links__link__label: versionsProject_version__hero__links__link__label_operator
-  version__hero__links__link__appearance: versionsProject_version__hero__links__link__appearance_operator
-  version__hero__links__id: versionsProject_version__hero__links__id_operator
   version__hero__media: versionsProject_version__hero__media_operator
   version__relatedProjects: versionsProject_version__relatedProjects_operator
   version__slug: versionsProject_version__slug_operator
@@ -7164,21 +6782,43 @@ input versionsProject_where_and {
   version___status: versionsProject_version___status_operator
   createdAt: versionsProject_createdAt_operator
   updatedAt: versionsProject_updatedAt_operator
+  latest: versionsProject_latest_operator
+  id: versionsProject_id_operator
+}
+
+input versionsProject_where_or {
+  parent: versionsProject_parent_operator
+  version__title: versionsProject_version__title_operator
+  version__categories: versionsProject_version__categories_operator
+  version__publishedDate: versionsProject_version__publishedDate_operator
+  version__hero__richText: versionsProject_version__hero__richText_operator
+  version__hero__media: versionsProject_version__hero__media_operator
+  version__relatedProjects: versionsProject_version__relatedProjects_operator
+  version__slug: versionsProject_version__slug_operator
+  version__meta__title: versionsProject_version__meta__title_operator
+  version__meta__description: versionsProject_version__meta__description_operator
+  version__meta__image: versionsProject_version__meta__image_operator
+  version__updatedAt: versionsProject_version__updatedAt_operator
+  version__createdAt: versionsProject_version__createdAt_operator
+  version___status: versionsProject_version___status_operator
+  createdAt: versionsProject_createdAt_operator
+  updatedAt: versionsProject_updatedAt_operator
+  latest: versionsProject_latest_operator
   id: versionsProject_id_operator
 }
 
 type allMedia {
   docs: [Media]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input Media_where {
@@ -7193,8 +6833,8 @@ input Media_where {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
-  OR: [Media_where_or]
   AND: [Media_where_and]
+  OR: [Media_where_or]
 }
 
 input Media_alt_operator {
@@ -7311,7 +6951,7 @@ input Media_id_operator {
   exists: Boolean
 }
 
-input Media_where_or {
+input Media_where_and {
   alt: Media_alt_operator
   caption: Media_caption_operator
   updatedAt: Media_updatedAt_operator
@@ -7325,7 +6965,7 @@ input Media_where_or {
   id: Media_id_operator
 }
 
-input Media_where_and {
+input Media_where_or {
   alt: Media_alt_operator
   caption: Media_caption_operator
   updatedAt: Media_updatedAt_operator
@@ -7612,16 +7252,16 @@ type MediaDeleteDocAccess {
 
 type Categories {
   docs: [Category]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input Category_where {
@@ -7634,8 +7274,8 @@ input Category_where {
   updatedAt: Category_updatedAt_operator
   createdAt: Category_createdAt_operator
   id: Category_id_operator
-  OR: [Category_where_or]
   AND: [Category_where_and]
+  OR: [Category_where_or]
 }
 
 input Category_title_operator {
@@ -7650,20 +7290,20 @@ input Category_title_operator {
 }
 
 input Category_parent_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
 input Category_breadcrumbs__doc_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -7733,7 +7373,7 @@ input Category_id_operator {
   exists: Boolean
 }
 
-input Category_where_or {
+input Category_where_and {
   title: Category_title_operator
   parent: Category_parent_operator
   breadcrumbs__doc: Category_breadcrumbs__doc_operator
@@ -7745,7 +7385,7 @@ input Category_where_or {
   id: Category_id_operator
 }
 
-input Category_where_and {
+input Category_where_or {
   title: Category_title_operator
   parent: Category_parent_operator
   breadcrumbs__doc: Category_breadcrumbs__doc_operator
@@ -8010,16 +7650,16 @@ type CategoriesDeleteDocAccess {
 
 type Users {
   docs: [User]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input User_where {
@@ -8029,8 +7669,8 @@ input User_where {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
-  OR: [User_where_or]
   AND: [User_where_and]
+  OR: [User_where_or]
 }
 
 input User_name_operator {
@@ -8101,7 +7741,7 @@ input User_id_operator {
   exists: Boolean
 }
 
-input User_where_or {
+input User_where_and {
   name: User_name_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
@@ -8110,7 +7750,7 @@ input User_where_or {
   id: User_id_operator
 }
 
-input User_where_and {
+input User_where_or {
   name: User_name_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
@@ -8301,10 +7941,10 @@ type UsersUnlockDocAccess {
 }
 
 type usersMe {
+  collection: String
+  exp: Int
   token: String
   user: User
-  exp: Int
-  collection: String
 }
 
 type Comment {
@@ -8330,16 +7970,16 @@ enum Comment__status {
 
 type Comments {
   docs: [Comment]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input Comment_where {
@@ -8352,16 +7992,16 @@ input Comment_where {
   createdAt: Comment_createdAt_operator
   _status: Comment__status_operator
   id: Comment_id_operator
-  OR: [Comment_where_or]
   AND: [Comment_where_and]
+  OR: [Comment_where_or]
 }
 
 input Comment_user_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -8388,11 +8028,11 @@ input Comment_populatedUser__name_operator {
 }
 
 input Comment_doc_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -8451,7 +8091,7 @@ input Comment_id_operator {
   exists: Boolean
 }
 
-input Comment_where_or {
+input Comment_where_and {
   user: Comment_user_operator
   populatedUser__id: Comment_populatedUser__id_operator
   populatedUser__name: Comment_populatedUser__name_operator
@@ -8463,7 +8103,7 @@ input Comment_where_or {
   id: Comment_id_operator
 }
 
-input Comment_where_and {
+input Comment_where_or {
   user: Comment_user_operator
   populatedUser__id: Comment_populatedUser__id_operator
   populatedUser__name: Comment_populatedUser__name_operator
@@ -8737,6 +8377,7 @@ type CommentVersion {
   version: CommentVersion_Version
   createdAt: DateTime
   updatedAt: DateTime
+  latest: Boolean
   id: String
 }
 
@@ -8762,16 +8403,16 @@ enum CommentVersion_Version__status {
 
 type versionsComments {
   docs: [CommentVersion]
-  totalDocs: Int
-  offset: Int
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
   limit: Int
-  totalPages: Int
+  nextPage: Int
+  offset: Int
   page: Int
   pagingCounter: Int
-  hasPrevPage: Boolean
-  hasNextPage: Boolean
   prevPage: Int
-  nextPage: Int
+  totalDocs: Int
+  totalPages: Int
 }
 
 input versionsComment_where {
@@ -8786,26 +8427,27 @@ input versionsComment_where {
   version___status: versionsComment_version___status_operator
   createdAt: versionsComment_createdAt_operator
   updatedAt: versionsComment_updatedAt_operator
+  latest: versionsComment_latest_operator
   id: versionsComment_id_operator
-  OR: [versionsComment_where_or]
   AND: [versionsComment_where_and]
+  OR: [versionsComment_where_or]
 }
 
 input versionsComment_parent_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
 input versionsComment_version__user_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -8832,11 +8474,11 @@ input versionsComment_version__populatedUser__name_operator {
 }
 
 input versionsComment_version__doc_operator {
-  equals: String
-  not_equals: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -8906,6 +8548,12 @@ input versionsComment_updatedAt_operator {
   exists: Boolean
 }
 
+input versionsComment_latest_operator {
+  equals: Boolean
+  not_equals: Boolean
+  exists: Boolean
+}
+
 input versionsComment_id_operator {
   equals: String
   not_equals: String
@@ -8915,21 +8563,6 @@ input versionsComment_id_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
-}
-
-input versionsComment_where_or {
-  parent: versionsComment_parent_operator
-  version__user: versionsComment_version__user_operator
-  version__populatedUser__id: versionsComment_version__populatedUser__id_operator
-  version__populatedUser__name: versionsComment_version__populatedUser__name_operator
-  version__doc: versionsComment_version__doc_operator
-  version__comment: versionsComment_version__comment_operator
-  version__updatedAt: versionsComment_version__updatedAt_operator
-  version__createdAt: versionsComment_version__createdAt_operator
-  version___status: versionsComment_version___status_operator
-  createdAt: versionsComment_createdAt_operator
-  updatedAt: versionsComment_updatedAt_operator
-  id: versionsComment_id_operator
 }
 
 input versionsComment_where_and {
@@ -8944,7 +8577,657 @@ input versionsComment_where_and {
   version___status: versionsComment_version___status_operator
   createdAt: versionsComment_createdAt_operator
   updatedAt: versionsComment_updatedAt_operator
+  latest: versionsComment_latest_operator
   id: versionsComment_id_operator
+}
+
+input versionsComment_where_or {
+  parent: versionsComment_parent_operator
+  version__user: versionsComment_version__user_operator
+  version__populatedUser__id: versionsComment_version__populatedUser__id_operator
+  version__populatedUser__name: versionsComment_version__populatedUser__name_operator
+  version__doc: versionsComment_version__doc_operator
+  version__comment: versionsComment_version__comment_operator
+  version__updatedAt: versionsComment_version__updatedAt_operator
+  version__createdAt: versionsComment_version__createdAt_operator
+  version___status: versionsComment_version___status_operator
+  createdAt: versionsComment_createdAt_operator
+  updatedAt: versionsComment_updatedAt_operator
+  latest: versionsComment_latest_operator
+  id: versionsComment_id_operator
+}
+
+type Redirect {
+  id: String
+  from: String!
+  to: Redirect_To
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Redirect_To {
+  type: Redirect_To_type
+  reference: Redirect_To_Reference_Relationship
+  url: String
+}
+
+enum Redirect_To_type {
+  reference
+  custom
+}
+
+type Redirect_To_Reference_Relationship {
+  relationTo: Redirect_To_Reference_RelationTo
+  value: Redirect_To_Reference
+}
+
+enum Redirect_To_Reference_RelationTo {
+  pages
+  posts
+}
+
+union Redirect_To_Reference = Page | Post
+
+type Redirects {
+  docs: [Redirect]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Redirect_where {
+  from: Redirect_from_operator
+  to__type: Redirect_to__type_operator
+  to__reference: Redirect_to__reference_Relation
+  to__url: Redirect_to__url_operator
+  updatedAt: Redirect_updatedAt_operator
+  createdAt: Redirect_createdAt_operator
+  id: Redirect_id_operator
+  AND: [Redirect_where_and]
+  OR: [Redirect_where_or]
+}
+
+input Redirect_from_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Redirect_to__type_operator {
+  equals: Redirect_to__type_Input
+  not_equals: Redirect_to__type_Input
+  like: Redirect_to__type_Input
+  contains: Redirect_to__type_Input
+  exists: Boolean
+}
+
+enum Redirect_to__type_Input {
+  reference
+  custom
+}
+
+input Redirect_to__reference_Relation {
+  relationTo: Redirect_to__reference_Relation_RelationTo
+  value: JSON
+}
+
+enum Redirect_to__reference_Relation_RelationTo {
+  pages
+  posts
+}
+
+input Redirect_to__url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Redirect_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Redirect_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Redirect_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Redirect_where_and {
+  from: Redirect_from_operator
+  to__type: Redirect_to__type_operator
+  to__reference: Redirect_to__reference_Relation
+  to__url: Redirect_to__url_operator
+  updatedAt: Redirect_updatedAt_operator
+  createdAt: Redirect_createdAt_operator
+  id: Redirect_id_operator
+}
+
+input Redirect_where_or {
+  from: Redirect_from_operator
+  to__type: Redirect_to__type_operator
+  to__reference: Redirect_to__reference_Relation
+  to__url: Redirect_to__url_operator
+  updatedAt: Redirect_updatedAt_operator
+  createdAt: Redirect_createdAt_operator
+  id: Redirect_id_operator
+}
+
+type redirectsDocAccess {
+  fields: RedirectsDocAccessFields
+  create: RedirectsCreateDocAccess
+  read: RedirectsReadDocAccess
+  update: RedirectsUpdateDocAccess
+  delete: RedirectsDeleteDocAccess
+}
+
+type RedirectsDocAccessFields {
+  from: RedirectsDocAccessFields_from
+  to: RedirectsDocAccessFields_to
+  updatedAt: RedirectsDocAccessFields_updatedAt
+  createdAt: RedirectsDocAccessFields_createdAt
+}
+
+type RedirectsDocAccessFields_from {
+  create: RedirectsDocAccessFields_from_Create
+  read: RedirectsDocAccessFields_from_Read
+  update: RedirectsDocAccessFields_from_Update
+  delete: RedirectsDocAccessFields_from_Delete
+}
+
+type RedirectsDocAccessFields_from_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_from_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_from_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_from_Delete {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to {
+  create: RedirectsDocAccessFields_to_Create
+  read: RedirectsDocAccessFields_to_Read
+  update: RedirectsDocAccessFields_to_Update
+  delete: RedirectsDocAccessFields_to_Delete
+  fields: RedirectsDocAccessFields_to_Fields
+}
+
+type RedirectsDocAccessFields_to_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_Delete {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_Fields {
+  type: RedirectsDocAccessFields_to_type
+  reference: RedirectsDocAccessFields_to_reference
+  url: RedirectsDocAccessFields_to_url
+}
+
+type RedirectsDocAccessFields_to_type {
+  create: RedirectsDocAccessFields_to_type_Create
+  read: RedirectsDocAccessFields_to_type_Read
+  update: RedirectsDocAccessFields_to_type_Update
+  delete: RedirectsDocAccessFields_to_type_Delete
+}
+
+type RedirectsDocAccessFields_to_type_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_type_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_type_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_type_Delete {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_reference {
+  create: RedirectsDocAccessFields_to_reference_Create
+  read: RedirectsDocAccessFields_to_reference_Read
+  update: RedirectsDocAccessFields_to_reference_Update
+  delete: RedirectsDocAccessFields_to_reference_Delete
+}
+
+type RedirectsDocAccessFields_to_reference_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_reference_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_reference_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_reference_Delete {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_url {
+  create: RedirectsDocAccessFields_to_url_Create
+  read: RedirectsDocAccessFields_to_url_Read
+  update: RedirectsDocAccessFields_to_url_Update
+  delete: RedirectsDocAccessFields_to_url_Delete
+}
+
+type RedirectsDocAccessFields_to_url_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_url_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_url_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_to_url_Delete {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_updatedAt {
+  create: RedirectsDocAccessFields_updatedAt_Create
+  read: RedirectsDocAccessFields_updatedAt_Read
+  update: RedirectsDocAccessFields_updatedAt_Update
+  delete: RedirectsDocAccessFields_updatedAt_Delete
+}
+
+type RedirectsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_createdAt {
+  create: RedirectsDocAccessFields_createdAt_Create
+  read: RedirectsDocAccessFields_createdAt_Read
+  update: RedirectsDocAccessFields_createdAt_Update
+  delete: RedirectsDocAccessFields_createdAt_Delete
+}
+
+type RedirectsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type RedirectsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type RedirectsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RedirectsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RedirectsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RedirectsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreference {
+  id: String
+  user: PayloadPreference_User_Relationship!
+  key: String
+  value: JSON
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type PayloadPreference_User_Relationship {
+  relationTo: PayloadPreference_User_RelationTo
+  value: PayloadPreference_User
+}
+
+enum PayloadPreference_User_RelationTo {
+  users
+}
+
+union PayloadPreference_User = User
+
+type PayloadPreferences {
+  docs: [PayloadPreference]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input PayloadPreference_where {
+  user: PayloadPreference_user_Relation
+  key: PayloadPreference_key_operator
+  value: PayloadPreference_value_operator
+  updatedAt: PayloadPreference_updatedAt_operator
+  createdAt: PayloadPreference_createdAt_operator
+  id: PayloadPreference_id_operator
+  AND: [PayloadPreference_where_and]
+  OR: [PayloadPreference_where_or]
+}
+
+input PayloadPreference_user_Relation {
+  relationTo: PayloadPreference_user_Relation_RelationTo
+  value: JSON
+}
+
+enum PayloadPreference_user_Relation_RelationTo {
+  users
+}
+
+input PayloadPreference_key_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PayloadPreference_value_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+  within: JSON
+  intersects: JSON
+  exists: Boolean
+}
+
+input PayloadPreference_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input PayloadPreference_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input PayloadPreference_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PayloadPreference_where_and {
+  user: PayloadPreference_user_Relation
+  key: PayloadPreference_key_operator
+  value: PayloadPreference_value_operator
+  updatedAt: PayloadPreference_updatedAt_operator
+  createdAt: PayloadPreference_createdAt_operator
+  id: PayloadPreference_id_operator
+}
+
+input PayloadPreference_where_or {
+  user: PayloadPreference_user_Relation
+  key: PayloadPreference_key_operator
+  value: PayloadPreference_value_operator
+  updatedAt: PayloadPreference_updatedAt_operator
+  createdAt: PayloadPreference_createdAt_operator
+  id: PayloadPreference_id_operator
+}
+
+type payload_preferencesDocAccess {
+  fields: PayloadPreferencesDocAccessFields
+  create: PayloadPreferencesCreateDocAccess
+  read: PayloadPreferencesReadDocAccess
+  update: PayloadPreferencesUpdateDocAccess
+  delete: PayloadPreferencesDeleteDocAccess
+}
+
+type PayloadPreferencesDocAccessFields {
+  user: PayloadPreferencesDocAccessFields_user
+  key: PayloadPreferencesDocAccessFields_key
+  value: PayloadPreferencesDocAccessFields_value
+  updatedAt: PayloadPreferencesDocAccessFields_updatedAt
+  createdAt: PayloadPreferencesDocAccessFields_createdAt
+}
+
+type PayloadPreferencesDocAccessFields_user {
+  create: PayloadPreferencesDocAccessFields_user_Create
+  read: PayloadPreferencesDocAccessFields_user_Read
+  update: PayloadPreferencesDocAccessFields_user_Update
+  delete: PayloadPreferencesDocAccessFields_user_Delete
+}
+
+type PayloadPreferencesDocAccessFields_user_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_user_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_user_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_user_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_key {
+  create: PayloadPreferencesDocAccessFields_key_Create
+  read: PayloadPreferencesDocAccessFields_key_Read
+  update: PayloadPreferencesDocAccessFields_key_Update
+  delete: PayloadPreferencesDocAccessFields_key_Delete
+}
+
+type PayloadPreferencesDocAccessFields_key_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_key_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_key_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_key_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_value {
+  create: PayloadPreferencesDocAccessFields_value_Create
+  read: PayloadPreferencesDocAccessFields_value_Read
+  update: PayloadPreferencesDocAccessFields_value_Update
+  delete: PayloadPreferencesDocAccessFields_value_Delete
+}
+
+type PayloadPreferencesDocAccessFields_value_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_value_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_value_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_value_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_updatedAt {
+  create: PayloadPreferencesDocAccessFields_updatedAt_Create
+  read: PayloadPreferencesDocAccessFields_updatedAt_Read
+  update: PayloadPreferencesDocAccessFields_updatedAt_Update
+  delete: PayloadPreferencesDocAccessFields_updatedAt_Delete
+}
+
+type PayloadPreferencesDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_createdAt {
+  create: PayloadPreferencesDocAccessFields_createdAt_Create
+  read: PayloadPreferencesDocAccessFields_createdAt_Read
+  update: PayloadPreferencesDocAccessFields_createdAt_Update
+  delete: PayloadPreferencesDocAccessFields_createdAt_Delete
+}
+
+type PayloadPreferencesDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreferencesReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreferencesUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreferencesDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
 }
 
 type Settings {
@@ -9673,13 +9956,6 @@ type FooterUpdateDocAccess {
   where: JSONObject
 }
 
-type Preference {
-  key: String!
-  value: JSON
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
 type Access {
   canAccessAdmin: Boolean!
   pages: pagesAccess
@@ -9689,6 +9965,8 @@ type Access {
   categories: categoriesAccess
   users: usersAccess
   comments: commentsAccess
+  redirects: redirectsAccess
+  payload_preferences: payload_preferencesAccess
   settings: settingsAccess
   header: headerAccess
   footer: footerAccess
@@ -11361,33 +11639,8 @@ type ProjectsFields_hero_Delete {
 }
 
 type ProjectsFields_hero_Fields {
-  type: ProjectsFields_hero_type
   richText: ProjectsFields_hero_richText
-  links: ProjectsFields_hero_links
   media: ProjectsFields_hero_media
-}
-
-type ProjectsFields_hero_type {
-  create: ProjectsFields_hero_type_Create
-  read: ProjectsFields_hero_type_Read
-  update: ProjectsFields_hero_type_Update
-  delete: ProjectsFields_hero_type_Delete
-}
-
-type ProjectsFields_hero_type_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_type_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_type_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_type_Delete {
-  permission: Boolean!
 }
 
 type ProjectsFields_hero_richText {
@@ -11410,229 +11663,6 @@ type ProjectsFields_hero_richText_Update {
 }
 
 type ProjectsFields_hero_richText_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links {
-  create: ProjectsFields_hero_links_Create
-  read: ProjectsFields_hero_links_Read
-  update: ProjectsFields_hero_links_Update
-  delete: ProjectsFields_hero_links_Delete
-  fields: ProjectsFields_hero_links_Fields
-}
-
-type ProjectsFields_hero_links_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_Fields {
-  link: ProjectsFields_hero_links_link
-  id: ProjectsFields_hero_links_id
-}
-
-type ProjectsFields_hero_links_link {
-  create: ProjectsFields_hero_links_link_Create
-  read: ProjectsFields_hero_links_link_Read
-  update: ProjectsFields_hero_links_link_Update
-  delete: ProjectsFields_hero_links_link_Delete
-  fields: ProjectsFields_hero_links_link_Fields
-}
-
-type ProjectsFields_hero_links_link_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_Fields {
-  type: ProjectsFields_hero_links_link_type
-  newTab: ProjectsFields_hero_links_link_newTab
-  reference: ProjectsFields_hero_links_link_reference
-  url: ProjectsFields_hero_links_link_url
-  label: ProjectsFields_hero_links_link_label
-  appearance: ProjectsFields_hero_links_link_appearance
-}
-
-type ProjectsFields_hero_links_link_type {
-  create: ProjectsFields_hero_links_link_type_Create
-  read: ProjectsFields_hero_links_link_type_Read
-  update: ProjectsFields_hero_links_link_type_Update
-  delete: ProjectsFields_hero_links_link_type_Delete
-}
-
-type ProjectsFields_hero_links_link_type_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_type_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_type_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_type_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_newTab {
-  create: ProjectsFields_hero_links_link_newTab_Create
-  read: ProjectsFields_hero_links_link_newTab_Read
-  update: ProjectsFields_hero_links_link_newTab_Update
-  delete: ProjectsFields_hero_links_link_newTab_Delete
-}
-
-type ProjectsFields_hero_links_link_newTab_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_newTab_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_newTab_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_newTab_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_reference {
-  create: ProjectsFields_hero_links_link_reference_Create
-  read: ProjectsFields_hero_links_link_reference_Read
-  update: ProjectsFields_hero_links_link_reference_Update
-  delete: ProjectsFields_hero_links_link_reference_Delete
-}
-
-type ProjectsFields_hero_links_link_reference_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_reference_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_reference_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_reference_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_url {
-  create: ProjectsFields_hero_links_link_url_Create
-  read: ProjectsFields_hero_links_link_url_Read
-  update: ProjectsFields_hero_links_link_url_Update
-  delete: ProjectsFields_hero_links_link_url_Delete
-}
-
-type ProjectsFields_hero_links_link_url_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_url_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_url_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_url_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_label {
-  create: ProjectsFields_hero_links_link_label_Create
-  read: ProjectsFields_hero_links_link_label_Read
-  update: ProjectsFields_hero_links_link_label_Update
-  delete: ProjectsFields_hero_links_link_label_Delete
-}
-
-type ProjectsFields_hero_links_link_label_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_label_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_label_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_label_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_appearance {
-  create: ProjectsFields_hero_links_link_appearance_Create
-  read: ProjectsFields_hero_links_link_appearance_Read
-  update: ProjectsFields_hero_links_link_appearance_Update
-  delete: ProjectsFields_hero_links_link_appearance_Delete
-}
-
-type ProjectsFields_hero_links_link_appearance_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_appearance_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_appearance_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_link_appearance_Delete {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_id {
-  create: ProjectsFields_hero_links_id_Create
-  read: ProjectsFields_hero_links_id_Read
-  update: ProjectsFields_hero_links_id_Update
-  delete: ProjectsFields_hero_links_id_Delete
-}
-
-type ProjectsFields_hero_links_id_Create {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_id_Read {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_id_Update {
-  permission: Boolean!
-}
-
-type ProjectsFields_hero_links_id_Delete {
   permission: Boolean!
 }
 
@@ -12929,6 +12959,360 @@ type CommentsReadVersionsAccess {
   where: JSONObject
 }
 
+type redirectsAccess {
+  fields: RedirectsFields
+  create: RedirectsCreateAccess
+  read: RedirectsReadAccess
+  update: RedirectsUpdateAccess
+  delete: RedirectsDeleteAccess
+}
+
+type RedirectsFields {
+  from: RedirectsFields_from
+  to: RedirectsFields_to
+  updatedAt: RedirectsFields_updatedAt
+  createdAt: RedirectsFields_createdAt
+}
+
+type RedirectsFields_from {
+  create: RedirectsFields_from_Create
+  read: RedirectsFields_from_Read
+  update: RedirectsFields_from_Update
+  delete: RedirectsFields_from_Delete
+}
+
+type RedirectsFields_from_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_from_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_from_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_from_Delete {
+  permission: Boolean!
+}
+
+type RedirectsFields_to {
+  create: RedirectsFields_to_Create
+  read: RedirectsFields_to_Read
+  update: RedirectsFields_to_Update
+  delete: RedirectsFields_to_Delete
+  fields: RedirectsFields_to_Fields
+}
+
+type RedirectsFields_to_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_Delete {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_Fields {
+  type: RedirectsFields_to_type
+  reference: RedirectsFields_to_reference
+  url: RedirectsFields_to_url
+}
+
+type RedirectsFields_to_type {
+  create: RedirectsFields_to_type_Create
+  read: RedirectsFields_to_type_Read
+  update: RedirectsFields_to_type_Update
+  delete: RedirectsFields_to_type_Delete
+}
+
+type RedirectsFields_to_type_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_type_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_type_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_type_Delete {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_reference {
+  create: RedirectsFields_to_reference_Create
+  read: RedirectsFields_to_reference_Read
+  update: RedirectsFields_to_reference_Update
+  delete: RedirectsFields_to_reference_Delete
+}
+
+type RedirectsFields_to_reference_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_reference_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_reference_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_reference_Delete {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_url {
+  create: RedirectsFields_to_url_Create
+  read: RedirectsFields_to_url_Read
+  update: RedirectsFields_to_url_Update
+  delete: RedirectsFields_to_url_Delete
+}
+
+type RedirectsFields_to_url_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_url_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_url_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_to_url_Delete {
+  permission: Boolean!
+}
+
+type RedirectsFields_updatedAt {
+  create: RedirectsFields_updatedAt_Create
+  read: RedirectsFields_updatedAt_Read
+  update: RedirectsFields_updatedAt_Update
+  delete: RedirectsFields_updatedAt_Delete
+}
+
+type RedirectsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type RedirectsFields_createdAt {
+  create: RedirectsFields_createdAt_Create
+  read: RedirectsFields_createdAt_Read
+  update: RedirectsFields_createdAt_Update
+  delete: RedirectsFields_createdAt_Delete
+}
+
+type RedirectsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type RedirectsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type RedirectsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type RedirectsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type RedirectsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RedirectsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RedirectsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RedirectsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type payload_preferencesAccess {
+  fields: PayloadPreferencesFields
+  create: PayloadPreferencesCreateAccess
+  read: PayloadPreferencesReadAccess
+  update: PayloadPreferencesUpdateAccess
+  delete: PayloadPreferencesDeleteAccess
+}
+
+type PayloadPreferencesFields {
+  user: PayloadPreferencesFields_user
+  key: PayloadPreferencesFields_key
+  value: PayloadPreferencesFields_value
+  updatedAt: PayloadPreferencesFields_updatedAt
+  createdAt: PayloadPreferencesFields_createdAt
+}
+
+type PayloadPreferencesFields_user {
+  create: PayloadPreferencesFields_user_Create
+  read: PayloadPreferencesFields_user_Read
+  update: PayloadPreferencesFields_user_Update
+  delete: PayloadPreferencesFields_user_Delete
+}
+
+type PayloadPreferencesFields_user_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_user_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_user_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_user_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_key {
+  create: PayloadPreferencesFields_key_Create
+  read: PayloadPreferencesFields_key_Read
+  update: PayloadPreferencesFields_key_Update
+  delete: PayloadPreferencesFields_key_Delete
+}
+
+type PayloadPreferencesFields_key_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_key_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_key_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_key_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_value {
+  create: PayloadPreferencesFields_value_Create
+  read: PayloadPreferencesFields_value_Read
+  update: PayloadPreferencesFields_value_Update
+  delete: PayloadPreferencesFields_value_Delete
+}
+
+type PayloadPreferencesFields_value_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_value_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_value_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_value_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_updatedAt {
+  create: PayloadPreferencesFields_updatedAt_Create
+  read: PayloadPreferencesFields_updatedAt_Read
+  update: PayloadPreferencesFields_updatedAt_Update
+  delete: PayloadPreferencesFields_updatedAt_Delete
+}
+
+type PayloadPreferencesFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_createdAt {
+  create: PayloadPreferencesFields_createdAt_Create
+  read: PayloadPreferencesFields_createdAt_Read
+  update: PayloadPreferencesFields_createdAt_Update
+  delete: PayloadPreferencesFields_createdAt_Delete
+}
+
+type PayloadPreferencesFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type PayloadPreferencesFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type PayloadPreferencesCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreferencesReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreferencesUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadPreferencesDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type settingsAccess {
   fields: SettingsFields
   read: SettingsReadAccess
@@ -13580,42 +13964,46 @@ type FooterUpdateAccess {
 
 type Mutation {
   createPage(data: mutationPageInput!, draft: Boolean): Page
-  updatePage(id: String!, data: mutationPageUpdateInput!, draft: Boolean, autosave: Boolean): Page
+  updatePage(id: String!, autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean): Page
   deletePage(id: String!): Page
   restoreVersionPage(id: String): Page
   createPost(data: mutationPostInput!, draft: Boolean): Post
-  updatePost(id: String!, data: mutationPostUpdateInput!, draft: Boolean, autosave: Boolean): Post
+  updatePost(id: String!, autosave: Boolean, data: mutationPostUpdateInput!, draft: Boolean): Post
   deletePost(id: String!): Post
   restoreVersionPost(id: String): Post
   createProject(data: mutationProjectInput!, draft: Boolean): Project
-  updateProject(id: String!, data: mutationProjectUpdateInput!, draft: Boolean, autosave: Boolean): Project
+  updateProject(id: String!, autosave: Boolean, data: mutationProjectUpdateInput!, draft: Boolean): Project
   deleteProject(id: String!): Project
   restoreVersionProject(id: String): Project
   createMedia(data: mutationMediaInput!, draft: Boolean): Media
-  updateMedia(id: String!, data: mutationMediaUpdateInput!, draft: Boolean, autosave: Boolean): Media
+  updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean): Media
   deleteMedia(id: String!): Media
   createCategory(data: mutationCategoryInput!, draft: Boolean): Category
-  updateCategory(id: String!, data: mutationCategoryUpdateInput!, draft: Boolean, autosave: Boolean): Category
+  updateCategory(id: String!, autosave: Boolean, data: mutationCategoryUpdateInput!, draft: Boolean): Category
   deleteCategory(id: String!): Category
   createUser(data: mutationUserInput!, draft: Boolean): User
-  updateUser(id: String!, data: mutationUserUpdateInput!, draft: Boolean, autosave: Boolean): User
+  updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean): User
   deleteUser(id: String!): User
   refreshTokenUser(token: String): usersRefreshedUser
   logoutUser: String
   unlockUser(email: String!): Boolean!
   loginUser(email: String, password: String): usersLoginResult
-  forgotPasswordUser(email: String!, disableEmail: Boolean, expiration: Int): Boolean!
-  resetPasswordUser(token: String, password: String): usersResetPassword
+  forgotPasswordUser(disableEmail: Boolean, email: String!, expiration: Int): Boolean!
+  resetPasswordUser(password: String, token: String): usersResetPassword
   verifyEmailUser(token: String): Boolean
   createComment(data: mutationCommentInput!, draft: Boolean): Comment
-  updateComment(id: String!, data: mutationCommentUpdateInput!, draft: Boolean, autosave: Boolean): Comment
+  updateComment(id: String!, autosave: Boolean, data: mutationCommentUpdateInput!, draft: Boolean): Comment
   deleteComment(id: String!): Comment
   restoreVersionComment(id: String): Comment
+  createRedirect(data: mutationRedirectInput!, draft: Boolean): Redirect
+  updateRedirect(id: String!, autosave: Boolean, data: mutationRedirectUpdateInput!, draft: Boolean): Redirect
+  deleteRedirect(id: String!): Redirect
+  createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
+  updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
+  deletePayloadPreference(id: String!): PayloadPreference
   updateSettings(data: mutationSettingsInput!, draft: Boolean): Settings
   updateHeader(data: mutationHeaderInput!, draft: Boolean): Header
   updateFooter(data: mutationFooterInput!, draft: Boolean): Footer
-  updatePreference(key: String!, value: JSON): Preference
-  deletePreference(key: String!): Preference
 }
 
 input mutationPageInput {
@@ -13919,46 +14307,8 @@ input mutationProjectInput {
 }
 
 input mutationProject_HeroInput {
-  type: Project_Hero_type_MutationInput!
   richText: JSON!
-  links: [mutationProject_Hero_LinksInput]
   media: String
-}
-
-enum Project_Hero_type_MutationInput {
-  none
-  highImpact
-  mediumImpact
-  lowImpact
-}
-
-input mutationProject_Hero_LinksInput {
-  link: mutationProject_Hero_Links_LinkInput
-  id: String
-}
-
-input mutationProject_Hero_Links_LinkInput {
-  type: String
-  newTab: Boolean
-  reference: Project_Hero_Links_Link_ReferenceRelationshipInput
-  url: String
-  label: String!
-  appearance: Project_Hero_Links_Link_appearance_MutationInput
-}
-
-input Project_Hero_Links_Link_ReferenceRelationshipInput {
-  relationTo: Project_Hero_Links_Link_ReferenceRelationshipInputRelationTo
-  value: JSON
-}
-
-enum Project_Hero_Links_Link_ReferenceRelationshipInputRelationTo {
-  pages
-}
-
-enum Project_Hero_Links_Link_appearance_MutationInput {
-  default
-  primary
-  secondary
 }
 
 input mutationProject_MetaInput {
@@ -13987,46 +14337,8 @@ input mutationProjectUpdateInput {
 }
 
 input mutationProjectUpdate_HeroInput {
-  type: ProjectUpdate_Hero_type_MutationInput!
   richText: JSON!
-  links: [mutationProjectUpdate_Hero_LinksInput]
   media: String
-}
-
-enum ProjectUpdate_Hero_type_MutationInput {
-  none
-  highImpact
-  mediumImpact
-  lowImpact
-}
-
-input mutationProjectUpdate_Hero_LinksInput {
-  link: mutationProjectUpdate_Hero_Links_LinkInput
-  id: String
-}
-
-input mutationProjectUpdate_Hero_Links_LinkInput {
-  type: String
-  newTab: Boolean
-  reference: ProjectUpdate_Hero_Links_Link_ReferenceRelationshipInput
-  url: String
-  label: String!
-  appearance: ProjectUpdate_Hero_Links_Link_appearance_MutationInput
-}
-
-input ProjectUpdate_Hero_Links_Link_ReferenceRelationshipInput {
-  relationTo: ProjectUpdate_Hero_Links_Link_ReferenceRelationshipInputRelationTo
-  value: JSON
-}
-
-enum ProjectUpdate_Hero_Links_Link_ReferenceRelationshipInputRelationTo {
-  pages
-}
-
-enum ProjectUpdate_Hero_Links_Link_appearance_MutationInput {
-  default
-  primary
-  secondary
 }
 
 input mutationProjectUpdate_MetaInput {
@@ -14137,9 +14449,9 @@ enum UserUpdate_roles_MutationInput {
 }
 
 type usersRefreshedUser {
-  user: usersJWT
-  refreshedToken: String
   exp: Int
+  refreshedToken: String
+  user: usersJWT
 }
 
 type usersJWT {
@@ -14148,9 +14460,9 @@ type usersJWT {
 }
 
 type usersLoginResult {
+  exp: Int
   token: String
   user: User
-  exp: Int
 }
 
 type usersResetPassword {
@@ -14196,6 +14508,86 @@ input mutationCommentUpdate_PopulatedUserInput {
 enum CommentUpdate__status_MutationInput {
   draft
   published
+}
+
+input mutationRedirectInput {
+  from: String!
+  to: mutationRedirect_ToInput!
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationRedirect_ToInput {
+  type: String
+  reference: Redirect_To_ReferenceRelationshipInput
+  url: String
+}
+
+input Redirect_To_ReferenceRelationshipInput {
+  relationTo: Redirect_To_ReferenceRelationshipInputRelationTo
+  value: JSON
+}
+
+enum Redirect_To_ReferenceRelationshipInputRelationTo {
+  pages
+  posts
+}
+
+input mutationRedirectUpdateInput {
+  from: String
+  to: mutationRedirectUpdate_ToInput!
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationRedirectUpdate_ToInput {
+  type: String
+  reference: RedirectUpdate_To_ReferenceRelationshipInput
+  url: String
+}
+
+input RedirectUpdate_To_ReferenceRelationshipInput {
+  relationTo: RedirectUpdate_To_ReferenceRelationshipInputRelationTo
+  value: JSON
+}
+
+enum RedirectUpdate_To_ReferenceRelationshipInputRelationTo {
+  pages
+  posts
+}
+
+input mutationPayloadPreferenceInput {
+  user: PayloadPreference_UserRelationshipInput
+  key: String
+  value: JSON
+  updatedAt: String
+  createdAt: String
+}
+
+input PayloadPreference_UserRelationshipInput {
+  relationTo: PayloadPreference_UserRelationshipInputRelationTo
+  value: JSON
+}
+
+enum PayloadPreference_UserRelationshipInputRelationTo {
+  users
+}
+
+input mutationPayloadPreferenceUpdateInput {
+  user: PayloadPreferenceUpdate_UserRelationshipInput
+  key: String
+  value: JSON
+  updatedAt: String
+  createdAt: String
+}
+
+input PayloadPreferenceUpdate_UserRelationshipInput {
+  relationTo: PayloadPreferenceUpdate_UserRelationshipInputRelationTo
+  value: JSON
+}
+
+enum PayloadPreferenceUpdate_UserRelationshipInputRelationTo {
+  users
 }
 
 input mutationSettingsInput {

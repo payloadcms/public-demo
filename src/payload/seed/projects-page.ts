@@ -21,14 +21,6 @@ export const projectsPage: Partial<Page> = {
           },
         ],
       },
-      {
-        type: 'p',
-        children: [
-          {
-            text: 'This page displays all or some of the projects of your portfolio. Each project is complete with a dynamic page layout builder for a completely custom user experience that is under your full control.',
-          },
-        ],
-      },
     ]) as any,
     media: undefined,
   },
@@ -37,14 +29,6 @@ export const projectsPage: Partial<Page> = {
       blockName: 'Archive Block',
       blockType: 'archive',
       introContent: convertSlateToLexical([
-        {
-          type: 'h4',
-          children: [
-            {
-              text: 'All projects',
-            },
-          ],
-        },
         {
           type: 'p',
           children: [

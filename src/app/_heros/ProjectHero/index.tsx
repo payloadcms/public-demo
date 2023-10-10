@@ -12,7 +12,7 @@ import classes from './index.module.scss'
 export const ProjectHero: React.FC<{
   project: Project
 }> = ({ project }) => {
-  const { id, title, categories, meta: { image: metaImage, description } = {}, createdAt } = project
+  const { id, title, categories, meta: { image: metaImage } = {}, publishedDate, hero } = project
 
   return (
     <Fragment>
@@ -20,7 +20,7 @@ export const ProjectHero: React.FC<{
         <div className={classes.content}>
           <div className={classes.leader}>
             <div className={classes.categories}>
-              {createdAt && formatDateTime(createdAt)}
+              {publishedDate && formatDateTime(publishedDate)}
               &nbsp; &mdash; &nbsp;
               {categories?.map((category, index) => {
                 const { title: categoryTitle } = category
@@ -39,9 +39,11 @@ export const ProjectHero: React.FC<{
             </div>
           </div>
           <h1 className={classes.title}>{title}</h1>
+          {hero && <RichText content={hero.richText} />}
           <div>
             <p className={classes.description}>
-              {`${description ? `${description} ` : ''}To edit this project, `}
+              Disclaimer: This content is fabricated and for demonstration purposes only. To edit
+              this project,&nbsp;
               <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/projects/${id}`}>
                 navigate to the admin dashboard
               </Link>

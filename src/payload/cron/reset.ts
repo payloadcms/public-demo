@@ -6,6 +6,7 @@ import payload from 'payload'
 import { home } from '../seed/home'
 import { image1 } from '../seed/image-1'
 import { image2 } from '../seed/image-2'
+import { imageSpheres } from '../seed/image-spheres'
 import { post1 } from '../seed/post-1'
 import { post2 } from '../seed/post-2'
 import { post3 } from '../seed/post-3'
@@ -16,6 +17,15 @@ import { postsPage } from '../seed/posts-page'
 import { project1 } from '../seed/project-1'
 import { project2 } from '../seed/project-2'
 import { project3 } from '../seed/project-3'
+import { projectDesign, projectDesign2, projectDesign3 } from '../seed/project-design-images'
+import {
+  projectSoftware,
+  projectSoftware2,
+  projectSoftware3,
+  projectSoftware4,
+} from '../seed/project-software-images'
+
+import { projectEng, projectEng2, projectEng3, projectEng4 } from '../seed/project-eng-images'
 import { projectsPage } from '../seed/projects-page'
 
 const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments']
@@ -124,7 +134,25 @@ async function seedData(): Promise<void> {
 
   payload.logger.info(`— Seeding media...`)
 
-  const [image1Doc, image2Doc, postImage1Doc, postImage2Doc, postImage3Doc] = await Promise.all([
+  const [
+    image1Doc,
+    image2Doc,
+    imageSpheresDoc,
+    postImage1Doc,
+    postImage2Doc,
+    postImage3Doc,
+    projectDesignDoc,
+    projectDesign2Doc,
+    projectDesign3Doc,
+    projectSoftwareDoc,
+    projectSoftware2Doc,
+    projectSoftware3Doc,
+    projectSoftware4Doc,
+    projectEngDoc,
+    projectEng2Doc,
+    projectEng3Doc,
+    projectEng4Doc,
+  ] = await Promise.all([
     await payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-1.jpg'),
@@ -134,6 +162,11 @@ async function seedData(): Promise<void> {
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-2.jpg'),
       data: image2,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'image-spheres.jpg'),
+      data: imageSpheres,
     }),
     await payload.create({
       collection: 'media',
@@ -149,6 +182,61 @@ async function seedData(): Promise<void> {
       collection: 'media',
       filePath: path.resolve(__dirname, 'post-finance-3.jpg'),
       data: postFinance3,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-design.jpg'),
+      data: projectDesign,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-design-2.jpg'),
+      data: projectDesign2,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-design-3.jpg'),
+      data: projectDesign3,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-software-1.jpg'),
+      data: projectSoftware,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-software-2.jpg'),
+      data: projectSoftware2,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-software-3.jpg'),
+      data: projectSoftware3,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-software-4.jpg'),
+      data: projectSoftware4,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-eng-1.jpg'),
+      data: projectEng,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-eng-2.jpg'),
+      data: projectEng2,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-eng-3.jpg'),
+      data: projectEng3,
+    }),
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname, 'project-eng-4.jpg'),
+      data: projectEng4,
     }),
   ])
 
@@ -285,30 +373,33 @@ async function seedData(): Promise<void> {
   const project1Doc = await payload.create({
     collection: 'projects',
     data: JSON.parse(
-      JSON.stringify({ ...project1, categories: [designCat.id] }).replace(
-        /{{IMAGE}}/g,
-        image2Doc.id,
-      ),
+      JSON.stringify({ ...project1, categories: [designCat.id] })
+        .replace(/{{IMAGE}}/g, projectDesignDoc.id)
+        .replace(/{{IMAGE-2}}/g, projectDesign2Doc.id)
+        .replace(/{{IMAGE-3}}/g, projectDesign3Doc.id)
+        .replace(/{{IMAGE-SPHERE}}/g, imageSpheresDoc.id),
     ),
   })
 
   const project2Doc = await payload.create({
     collection: 'projects',
     data: JSON.parse(
-      JSON.stringify({ ...project2, categories: [softwareCat.id] }).replace(
-        /{{IMAGE}}/g,
-        image2Doc.id,
-      ),
+      JSON.stringify({ ...project2, categories: [softwareCat.id] })
+        .replace(/{{IMAGE-1}}/g, projectSoftwareDoc.id)
+        .replace(/{{IMAGE-2}}/g, projectSoftware2Doc.id)
+        .replace(/{{IMAGE-3}}/g, projectSoftware3Doc.id)
+        .replace(/{{IMAGE-4}}/g, projectSoftware4Doc.id),
     ),
   })
 
   const project3Doc = await payload.create({
     collection: 'projects',
     data: JSON.parse(
-      JSON.stringify({ ...project3, categories: [engineeringCat.id] }).replace(
-        /{{IMAGE}}/g,
-        image2Doc.id,
-      ),
+      JSON.stringify({ ...project3, categories: [engineeringCat.id] })
+        .replace(/{{IMAGE-1}}/g, projectEngDoc.id)
+        .replace(/{{IMAGE-2}}/g, projectEng2Doc.id)
+        .replace(/{{IMAGE-3}}/g, projectEng3Doc.id)
+        .replace(/{{IMAGE-4}}/g, projectEng4Doc.id),
     ),
   })
 

@@ -12,6 +12,7 @@ import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { populatePublishedDate } from '../../hooks/populatePublishedDate'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidatePost } from './hooks/revalidatePost'
+import { ContentMedia } from '../../blocks/ContentMedia'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -123,7 +124,7 @@ export const Posts: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               required: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive],
+              blocks: [CallToAction, Content, ContentMedia, MediaBlock, Archive],
             },
             {
               name: 'enablePremiumContent',

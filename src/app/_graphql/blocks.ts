@@ -27,6 +27,16 @@ export const CONTENT = `
 }
 `
 
+export const CONTENT_MEDIA = `
+...on ContentMedia {
+  blockType
+  invertBackground
+  mediaPosition
+  richText
+  ${MEDIA}
+}
+`
+
 export const MEDIA_BLOCK = `
 ...on MediaBlock {
   blockType

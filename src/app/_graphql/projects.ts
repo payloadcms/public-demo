@@ -1,5 +1,4 @@
-import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
-import { LINK_FIELDS } from './link'
+import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK, CONTENT_MEDIA } from './blocks'
 import { MEDIA } from './media'
 import { META } from './meta'
 
@@ -22,19 +21,16 @@ export const PROJECT = `
         categories {
           title
         }
-        createdAt
+        publishedDate,
         hero {
-          type
           richText
-          links {
-            link ${LINK_FIELDS()}
-          }
           ${MEDIA}
         }
         layout {
           ${CONTENT}
           ${CALL_TO_ACTION}
           ${CONTENT}
+          ${CONTENT_MEDIA}
           ${MEDIA_BLOCK}
           ${ARCHIVE_BLOCK}
         }

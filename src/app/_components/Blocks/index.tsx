@@ -10,10 +10,12 @@ import { RelatedPosts, type RelatedPostsProps } from '../../_blocks/RelatedPosts
 import { toKebabCase } from '../../_utilities/toKebabCase'
 import { BackgroundColor } from '../BackgroundColor'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding'
+import { ContentMedia } from '../../_blocks/ContentMedia'
 
 const blockComponents = {
   cta: CallToActionBlock,
   content: ContentBlock,
+  contentMedia: ContentMedia,
   mediaBlock: MediaBlock,
   archive: ArchiveBlock,
   relatedPosts: RelatedPosts,

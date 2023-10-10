@@ -18,7 +18,7 @@ export const ProjectClient: React.FC<{ project: Project }> = ({ project: initial
       <ProjectHero project={data} />
       <Blocks
         blocks={[
-          ...data.layout,
+          ...(data.layout as any),
           {
             blockType: 'relatedPosts',
             blockName: 'Related Projects',

@@ -101,6 +101,17 @@ export interface Page {
       }
     | {
         invertBackground?: boolean;
+        mediaPosition?: 'left' | 'right';
+        richText: {
+          [k: string]: unknown;
+        }[];
+        media: string | Media;
+        id?: string;
+        blockName?: string;
+        blockType: 'contentMedia';
+      }
+    | {
+        invertBackground?: boolean;
         position?: 'default' | 'fullscreen';
         media: string | Media;
         id?: string;
@@ -280,6 +291,17 @@ export interface Post {
         id?: string;
         blockName?: string;
         blockType: 'content';
+      }
+    | {
+        invertBackground?: boolean;
+        mediaPosition?: 'left' | 'right';
+        richText: {
+          [k: string]: unknown;
+        }[];
+        media: string | Media;
+        id?: string;
+        blockName?: string;
+        blockType: 'contentMedia';
       }
     | {
         invertBackground?: boolean;
@@ -491,25 +513,10 @@ export interface Project {
   categories?: string[] | Category[];
   publishedDate?: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText: {
       [k: string]: unknown;
     }[];
-    links?: {
-      link: {
-        type?: 'reference' | 'custom';
-        newTab?: boolean;
-        reference: {
-          relationTo: 'pages';
-          value: string | Page;
-        };
-        url: string;
-        label: string;
-        appearance?: 'default' | 'primary' | 'secondary';
-      };
-      id?: string;
-    }[];
-    media: string | Media;
+    media?: string | Media;
   };
   layout: (
     | {
@@ -559,6 +566,17 @@ export interface Project {
         id?: string;
         blockName?: string;
         blockType: 'content';
+      }
+    | {
+        invertBackground?: boolean;
+        mediaPosition?: 'left' | 'right';
+        richText: {
+          [k: string]: unknown;
+        }[];
+        media: string | Media;
+        id?: string;
+        blockName?: string;
+        blockType: 'contentMedia';
       }
     | {
         invertBackground?: boolean;
