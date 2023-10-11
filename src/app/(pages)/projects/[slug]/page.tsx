@@ -34,8 +34,6 @@ export default async function Project({ params: { slug } }) {
     notFound()
   }
 
-  const { layout, relatedProjects } = project
-
   return <ProjectClient project={project} />
 }
 
