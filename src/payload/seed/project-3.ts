@@ -221,5 +221,5 @@ export const project3: Partial<Project> = {
   publishedDate: '2023-09-30T23:00:00.000Z',
   relatedProjects: [], // this is populated by the seed script
   slug: 'engineering',
-  title: 'Bridging Excellence: The Riverfront Bridge Collaboration',
+  title: 'The Riverfront Bridge Collaboration',
 }

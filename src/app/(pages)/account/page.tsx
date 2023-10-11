@@ -14,6 +14,7 @@ import { getMeUser } from '../../_utilities/getMeUser'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import AccountForm from './AccountForm'
 import classes from './index.module.scss'
+import { Hero } from '../../_components/Hero'
 
 export default async function Account() {
   const { user } = await getMeUser({
@@ -31,38 +32,8 @@ export default async function Account() {
       <Gutter>
         <RenderParams className={classes.params} />
       </Gutter>
-      <LowImpactHero
-        media={null}
-        richText={[
-          {
-            children: [
-              {
-                text: 'Account',
-              },
-            ],
-            type: 'h1',
-          },
-          {
-            children: [
-              {
-                text: 'This is your account dashboard. Here you can update your account information, view your comment history, and more. To manage all users, ',
-              },
-              {
-                children: [
-                  {
-                    text: 'login to the admin dashboard.',
-                  },
-                ],
-                type: 'link',
-                url: '/admin/collections/users',
-              },
-            ],
-            type: 'paragraph',
-          },
-        ]}
-        type="lowImpact"
-      />
       <Gutter className={classes.account}>
+        <h1>Account</h1>
         <AccountForm />
         <HR />
         <h2>Comments</h2>

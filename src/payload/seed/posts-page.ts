@@ -57,7 +57,7 @@ export const postsPage: Partial<Page> = {
   meta: {
     description: 'An open-source website built with Payload and Next.js.',
     image: '{{IMAGE}}',
-    title: 'Payload Website Template',
+    title: 'Posts',
   },
   slug: 'posts',
   title: 'Posts',
