@@ -12,6 +12,16 @@ import type {
   SerializedTextNode,
 } from 'lexical'
 
+import {
+  IS_BOLD,
+  IS_CODE,
+  IS_ITALIC,
+  IS_STRIKETHROUGH,
+  IS_SUBSCRIPT,
+  IS_SUPERSCRIPT,
+  IS_UNDERLINE,
+} from '../lexicalToReact/nodeFormat'
+
 interface SlateNode {
   [key: string]: any
   children?: SlateNode[]
@@ -79,7 +89,7 @@ function convertSlateNodesToLexical(
 function convertTextNode(node: SlateNode, parentNode: string): SerializedTextNode {
   return {
     detail: 0,
-    format: 0,
+    format: convertNodeToFormat(node),
     mode: 'normal',
     style: '',
     text: node.text,
@@ -103,7 +113,7 @@ function convertHeadingNode(node: SlateNode, parentNode: string): SerializedHead
   return {
     children: convertSlateNodesToLexical(node.children || [], false, 'heading'),
     direction: 'ltr',
-    format: node.textAlign || '',
+    format: '',
     indent: 0,
     tag: node.type as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', // Slate puts the tag (h1 / h2 / ...) inside of node.type
     type: 'heading',
@@ -180,4 +190,30 @@ function convertUploadNode(node: SlateNode, parentNode: string): SerializedUploa
     },
     version: 1,
   }
+}
+
+function convertNodeToFormat(node: SlateNode): number {
+  let format = 0
+  if (node.bold) {
+    format = format | IS_BOLD
+  }
+  if (node.italic) {
+    format = format | IS_ITALIC
+  }
+  if (node.strikethrough) {
+    format = format | IS_STRIKETHROUGH
+  }
+  if (node.underline) {
+    format = format | IS_UNDERLINE
+  }
+  if (node.subscript) {
+    format = format | IS_SUBSCRIPT
+  }
+  if (node.superscript) {
+    format = format | IS_SUPERSCRIPT
+  }
+  if (node.code) {
+    format = format | IS_CODE
+  }
+  return format
 }
