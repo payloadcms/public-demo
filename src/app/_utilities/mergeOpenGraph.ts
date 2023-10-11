@@ -7,8 +7,8 @@ const defaultOpenGraph: Metadata['openGraph'] = {
       url: 'https://payloadcms.com/images/og-image.jpg',
     },
   ],
-  siteName: 'Payload Website Template',
-  title: 'Payload Website Template',
+  siteName: 'Payload Public Demo',
+  title: 'Payload Public Demo',
   type: 'website',
 }
 

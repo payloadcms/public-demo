@@ -1,6 +1,6 @@
 {
-  "name": "@payloadcms/template-website",
-  "description": "Website template for Payload",
+  "name": "@payloadcms/public-demo",
+  "description": "Public Demo for Payload",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
