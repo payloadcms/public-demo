@@ -1,10 +1,25 @@
-root = true
-
 [*]
-indent_style = space
-indent_size = 2
+end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-end_of_line = lf
-max_line_length = null
+
+[*.{js,ts,tsx}]
+indent_style = space
+indent_size = 2
+
+[*.html]
+indent_style = space
+indent_size = 2
+
+[*.scss]
+indent_style = space
+indent_size = 2
+
+[*.mdx]
+indent_style = space
+indent_size = 2
+
+[*.json]
+indent_style = space
+indent_size = 2
