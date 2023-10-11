@@ -1,17 +1,10 @@
 import type { Project } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 export const project3: Partial<Project> = {
-  title: 'Bridging Excellence: The Riverfront Bridge Collaboration',
-  slug: 'engineering',
   _status: 'published',
-  publishedDate: '2023-09-30T23:00:00.000Z',
-  meta: {
-    title: 'Reviving efficiency with Spider Software',
-    description:
-      'Explore the collaborative engineering transformation of the Riverfront Bridge, where safety, aesthetics, and economic vitality converged in our journey of excellence.',
-    image: '{{IMAGE-1}}',
-  },
   hero: {
+    media: '{{IMAGE-1}}',
     richText: convertSlateToLexical([
       {
         children: [
@@ -22,15 +15,13 @@ export const project3: Partial<Project> = {
         type: 'p',
       },
     ]) as any,
-    media: '{{IMAGE-1}}',
   },
   layout: [
     {
-      blockType: 'content',
       blockName: 'Overview',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -41,9 +32,14 @@ export const project3: Partial<Project> = {
               type: 'h6',
             },
           ]) as any,
+          size: 'full',
         },
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -54,17 +50,10 @@ export const project3: Partial<Project> = {
               type: 'h3',
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
         {
-          size: 'oneThird',
+          enableLink: false,
           richText: convertSlateToLexical([
             {
               children: [
@@ -91,13 +80,14 @@ export const project3: Partial<Project> = {
               type: 'h6',
             },
           ]) as any,
-          enableLink: false,
+          size: 'oneThird',
         },
       ],
     },
     {
-      blockType: 'contentMedia',
       blockName: 'Challenges',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-3}}',
       mediaPosition: 'left',
       richText: convertSlateToLexical([
         {
@@ -124,11 +114,11 @@ export const project3: Partial<Project> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-3}}',
     },
     {
-      blockType: 'contentMedia',
       blockName: 'Solution',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-4}}',
       mediaPosition: 'right',
       richText: convertSlateToLexical([
         {
@@ -155,14 +145,12 @@ export const project3: Partial<Project> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-4}}',
     },
     {
-      blockType: 'content',
       blockName: 'Feedback',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -181,20 +169,20 @@ export const project3: Partial<Project> = {
               type: 'h5',
             },
           ]) as any,
+          size: 'full',
         },
       ],
     },
     {
-      blockType: 'mediaBlock',
       blockName: 'Outro Image',
+      blockType: 'mediaBlock',
       media: '{{IMAGE-2}}',
     },
     {
-      blockType: 'content',
       blockName: 'Reflection',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -219,9 +207,19 @@ export const project3: Partial<Project> = {
               ],
             },
           ]) as any,
+          size: 'full',
         },
       ],
     },
   ],
+  meta: {
+    description:
+      'Explore the collaborative engineering transformation of the Riverfront Bridge, where safety, aesthetics, and economic vitality converged in our journey of excellence.',
+    image: '{{IMAGE-1}}',
+    title: 'Reviving efficiency with Spider Software',
+  },
+  publishedDate: '2023-09-30T23:00:00.000Z',
   relatedProjects: [], // this is populated by the seed script
+  slug: 'engineering',
+  title: 'Bridging Excellence: The Riverfront Bridge Collaboration',
 }

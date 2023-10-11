@@ -1,19 +1,13 @@
 import type { Post } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 export const post1: Partial<Post> = {
-  title: 'Digital Horizons: A Glimpse into Tomorrow',
-  slug: 'digital-horizons',
   _status: 'published',
-  meta: {
-    title: 'Digital Horizons: A Glimpse into Tomorrow',
-    description:
-      'Dive into the marvels of modern innovation, where the only constant is change. A journey where pixels and data converge to craft the future.',
-    image: '{{IMAGE-1}}',
-  },
   authors: ['{{AUTHOR}}'],
+  enablePremiumContent: true,
   hero: {
-    type: 'lowImpact',
     links: null,
+    media: null,
     richText: convertSlateToLexical([
       {
         children: [
@@ -24,12 +18,13 @@ export const post1: Partial<Post> = {
         type: 'h1',
       },
     ]) as any,
-    media: null,
+    type: 'lowImpact',
   },
   layout: [
     {
-      blockType: 'contentMedia',
       blockName: 'Rise of AI and Machine Learning',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-2}}',
       mediaPosition: 'left',
       richText: convertSlateToLexical([
         {
@@ -48,11 +43,11 @@ export const post1: Partial<Post> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-2}}',
     },
     {
-      blockType: 'contentMedia',
       blockName: 'Internet of things',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-3}}',
       mediaPosition: 'right',
       richText: convertSlateToLexical([
         {
@@ -78,13 +73,16 @@ export const post1: Partial<Post> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-3}}',
     },
     {
       blockType: 'content',
       columns: [
         {
-          size: 'full',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -94,37 +92,39 @@ export const post1: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'full',
         },
       ],
     },
   ],
-  enablePremiumContent: true,
+  meta: {
+    description:
+      'Dive into the marvels of modern innovation, where the only constant is change. A journey where pixels and data converge to craft the future.',
+    image: '{{IMAGE-1}}',
+    title: 'Digital Horizons: A Glimpse into Tomorrow',
+  },
   premiumContent: [
     {
-      position: 'default',
-      media: '{{IMAGE-4}}',
-      blockType: 'mediaBlock',
       blockName: 'Feature Image',
+      blockType: 'mediaBlock',
+      media: '{{IMAGE-4}}',
+      position: 'default',
     },
     {
       blockType: 'content',
       columns: [
         {
-          size: 'full',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
                 {
-                  text: 'This is premium content.',
                   bold: true,
+                  text: 'This is premium content.',
                 },
                 {
                   text: ' It is only available to authenticated users. This content can be anything from additional video, text, and content, to download links and more. These are simply layout building blocks configured in the CMS.',
@@ -132,17 +132,12 @@ export const post1: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'full',
         },
       ],
     },
   ],
   relatedPosts: [], // this is populated by the seed script
+  slug: 'digital-horizons',
+  title: 'Digital Horizons: A Glimpse into Tomorrow',
 }

@@ -1,11 +1,12 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack' // bundler-import
 import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-import
+import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
+
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 // import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
-import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload/config'
@@ -36,23 +37,23 @@ export default buildConfig({
       password: 'demo',
       prefillOnly: true,
     },
-    user: Users.slug,
     bundler: webpackBundler(), // bundler-config
+    components: {
+      beforeDashboard: [BeforeDashboard],
+      beforeLogin: [BeforeLogin],
+    },
     livePreview: {
       breakpoints: [
         {
-          label: 'Mobile',
           name: 'mobile',
-          width: 375,
           height: 667,
+          label: 'Mobile',
+          width: 375,
         },
       ],
     },
-    components: {
-      beforeLogin: [BeforeLogin],
-      beforeDashboard: [BeforeDashboard],
-    },
-    webpack: config => ({
+    user: Users.slug,
+    webpack: (config) => ({
       ...config,
       resolve: {
         ...config.resolve,
@@ -63,22 +64,22 @@ export default buildConfig({
       },
     }),
   },
-  editor: lexicalEditor({}),
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
+  editor: lexicalEditor({}),
   globals: [Settings, Header, Footer],
-  typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts'),
-  },
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+  typescript: {
+    outputFile: path.resolve(__dirname, 'payload-types.ts'),
+  },
   // database-adapter-config-start
+  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
+  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
-  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
-  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   plugins: [
     // formBuilder({}),
     redirects({

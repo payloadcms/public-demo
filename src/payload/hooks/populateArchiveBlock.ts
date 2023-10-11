@@ -7,7 +7,7 @@ export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload 
   // then hydrate it on your front-end
 
   const layoutWithArchive = await Promise.all(
-    doc.layout.map(async block => {
+    doc.layout.map(async (block) => {
       if (block.blockType === 'archive') {
         const archiveBlock = block as Extract<Page['layout'][0], { blockType: 'archive' }> & {
           populatedDocs: Array<{
@@ -20,12 +20,13 @@ export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload 
           const res = await payload.find({
             collection: archiveBlock.relationTo,
             limit: archiveBlock.limit || 10,
+            sort: '-publishedDate',
             where: {
               ...(archiveBlock?.categories?.length > 0
                 ? {
                     categories: {
                       in: archiveBlock.categories
-                        .map(cat => {
+                        .map((cat) => {
                           if (typeof cat === 'string') return cat
                           return cat.id
                         })
@@ -34,16 +35,15 @@ export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload 
                   }
                 : {}),
             },
-            sort: '-publishedDate',
           })
 
           return {
             ...block,
-            populatedDocsTotal: res.totalDocs,
             populatedDocs: res.docs.map((thisDoc: Post) => ({
               relationTo: archiveBlock.relationTo,
               value: thisDoc.id,
             })),
+            populatedDocsTotal: res.totalDocs,
           }
         }
       }

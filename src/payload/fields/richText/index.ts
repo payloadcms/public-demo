@@ -1,6 +1,7 @@
 import type { FeatureProvider } from '@payloadcms/richtext-lexical'
-import { lexicalEditor, ParagraphFeature, UploadFeature } from '@payloadcms/richtext-lexical'
 import type { RichTextField } from 'payload/types'
+
+import { ParagraphFeature, UploadFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import deepMerge from '../../utilities/deepMerge'
 import link from '../link'
@@ -22,8 +23,6 @@ const richText: RichText = (
   deepMerge<RichTextField, Partial<RichTextField>>(
     {
       name: 'richText',
-      type: 'richText',
-      required: true,
       editor: lexicalEditor({
         features: () => [
           ...[...defaultPublicDemoFeatures, ...(additions.features || [])],
@@ -32,15 +31,14 @@ const richText: RichText = (
               media: {
                 fields: [
                   {
-                    type: 'richText',
                     name: 'caption',
-                    label: 'Caption',
                     editor: lexicalEditor({
                       features: () => [ParagraphFeature(), ...defaultPublicDemoFeatures],
                     }),
+                    label: 'Caption',
+                    type: 'richText',
                   },
                   {
-                    type: 'radio',
                     name: 'alignment',
                     label: 'Alignment',
                     options: [
@@ -57,11 +55,12 @@ const richText: RichText = (
                         value: 'right',
                       },
                     ],
+                    type: 'radio',
                   },
                   {
                     name: 'enableLink',
-                    type: 'checkbox',
                     label: 'Enable Link',
+                    type: 'checkbox',
                   },
                   link({
                     appearances: false,
@@ -78,6 +77,8 @@ const richText: RichText = (
           }),
         ],
       }),
+      required: true,
+      type: 'richText',
     },
     overrides || {},
   )

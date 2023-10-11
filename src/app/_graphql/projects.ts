@@ -1,4 +1,4 @@
-import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK, CONTENT_MEDIA } from './blocks'
+import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, CONTENT_MEDIA, MEDIA_BLOCK } from './blocks'
 import { MEDIA } from './media'
 import { META } from './meta'
 

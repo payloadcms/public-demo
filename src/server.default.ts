@@ -21,7 +21,6 @@ app.get('/', (_, res) => {
 
 const start = async (): Promise<void> => {
   await payload.init({
-    secret: process.env.PAYLOAD_SECRET || '',
     express: app,
     onInit: async () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
@@ -31,6 +30,7 @@ const start = async (): Promise<void> => {
       // for production sites with real data
       await seed()
     },
+    secret: process.env.PAYLOAD_SECRET || '',
   })
 
   // Seed database with startup data

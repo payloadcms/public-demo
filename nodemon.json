@@ -1,7 +1,5 @@
 {
-  "ext": "ts",
   "exec": "ts-node src/server.ts",
-  "ignore" : [
-    "src/app"
-  ]
+  "ext": "ts",
+  "ignore": ["src/app"]
 }

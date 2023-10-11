@@ -1,20 +1,14 @@
 import type { Post } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const post2: Partial<Post> = {
-  title: 'Global Gaze: Beyond the Headlines',
-  slug: 'global-gaze',
   _status: 'published',
-  meta: {
-    title: 'Global Gaze: Beyond the Headlines',
-    description:
-      'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
-    image: '{{IMAGE-1}}',
-  },
   authors: ['{{AUTHOR}}'],
+  enablePremiumContent: true,
   hero: {
-    type: 'lowImpact',
     links: null,
+    media: null,
     richText: convertSlateToLexical([
       {
         children: [
@@ -25,12 +19,13 @@ export const post2: Partial<Post> = {
         type: 'h1',
       },
     ]) as any,
-    media: null,
+    type: 'lowImpact',
   },
   layout: [
     {
-      blockType: 'contentMedia',
       blockName: 'The Power of Resilience',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-2}}',
       mediaPosition: 'right',
       richText: convertSlateToLexical([
         {
@@ -56,13 +51,16 @@ export const post2: Partial<Post> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-2}}',
     },
     {
       blockType: 'content',
       columns: [
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -72,26 +70,28 @@ export const post2: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
       ],
     },
   ],
-  enablePremiumContent: true,
+  meta: {
+    description:
+      'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
+    image: '{{IMAGE-1}}',
+    title: 'Global Gaze: Beyond the Headlines',
+  },
   premiumContent: [
     {
-      blockType: 'content',
       blockName: 'Hidden Treasures',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -109,34 +109,31 @@ export const post2: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'full',
         },
       ],
     },
     {
-      position: 'default',
-      media: '{{IMAGE-3}}',
-      blockType: 'mediaBlock',
       blockName: 'Feature Image',
+      blockType: 'mediaBlock',
+      media: '{{IMAGE-3}}',
+      position: 'default',
     },
     {
       blockType: 'content',
       columns: [
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
                 {
-                  text: 'This is premium content.',
                   bold: true,
+                  text: 'This is premium content.',
                 },
                 {
                   text: ' It is only available to authenticated users. This content can be anything from additional video, text, and content, to download links and more. These are simply layout building blocks configured in the CMS.',
@@ -144,17 +141,12 @@ export const post2: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
       ],
     },
   ],
   relatedPosts: [], // this is populated by the seed script
+  slug: 'global-gaze',
+  title: 'Global Gaze: Beyond the Headlines',
 }

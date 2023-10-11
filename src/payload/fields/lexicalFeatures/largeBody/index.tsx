@@ -1,27 +1,21 @@
+import type { FeatureProvider } from '@payloadcms/richtext-lexical'
+
 import { $setBlocksType } from '@lexical/selection'
 import { $findMatchingParent } from '@lexical/utils'
 import {
-  FeatureProvider,
   FormatSectionWithEntries,
-  getSelectedNode,
   SlashMenuOption,
+  getSelectedNode,
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { LargeBodyIcon } from './Icon'
-import { $createLargeBodyNode, $isLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
-
 import './index.scss'
+import { $createLargeBodyNode, $isLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
 
 export const LargeBodyFeature = (): FeatureProvider => {
   return {
     feature: ({ resolvedFeatures, unsanitizedEditorConfig }) => ({
-      nodes: [
-        {
-          node: LargeBodyNode,
-          type: LargeBodyNode.getType(),
-        },
-      ],
       floatingSelectToolbar: {
         sections: [
           FormatSectionWithEntries([
@@ -51,6 +45,13 @@ export const LargeBodyFeature = (): FeatureProvider => {
           ]),
         ],
       },
+      nodes: [
+        {
+          node: LargeBodyNode,
+          type: LargeBodyNode.getType(),
+        },
+      ],
+      props: null,
       slashMenu: {
         options: [
           {
@@ -70,7 +71,6 @@ export const LargeBodyFeature = (): FeatureProvider => {
           },
         ],
       },
-      props: null,
     }),
     key: 'largeBody',
   }

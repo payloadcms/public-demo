@@ -1,20 +1,14 @@
 import type { Post } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const post3: Partial<Post> = {
-  title: 'Dollar and Sense: The Financial Forecast',
-  slug: 'dollar-sense',
   _status: 'published',
-  meta: {
-    title: 'Dollar and Sense: The Financial Forecast',
-    description:
-      "Money isn't just currency; it's a language. Dive deep into its nuances, where strategy meets intuition in the vast sea of finance.",
-    image: '{{IMAGE-1}}',
-  },
   authors: ['{{AUTHOR}}'],
+  enablePremiumContent: true,
   hero: {
-    type: 'lowImpact',
     links: null,
+    media: null,
     richText: convertSlateToLexical([
       {
         children: [
@@ -25,15 +19,14 @@ export const post3: Partial<Post> = {
         type: 'h1',
       },
     ]) as any,
-    media: null,
+    type: 'lowImpact',
   },
   layout: [
     {
-      blockType: 'content',
       blockName: 'Overview',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -44,12 +37,14 @@ export const post3: Partial<Post> = {
               type: 'h3',
             },
           ]) as any,
+          size: 'full',
         },
       ],
     },
     {
-      blockType: 'contentMedia',
       blockName: 'Stock Market Dynamics: Bulls, Bears, and the Uncertain Middle',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-2}}',
       mediaPosition: 'right',
       richText: convertSlateToLexical([
         {
@@ -75,13 +70,16 @@ export const post3: Partial<Post> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-2}}',
     },
     {
       blockType: 'content',
       columns: [
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -91,37 +89,39 @@ export const post3: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
       ],
     },
   ],
-  enablePremiumContent: true,
+  meta: {
+    description:
+      "Money isn't just currency; it's a language. Dive deep into its nuances, where strategy meets intuition in the vast sea of finance.",
+    image: '{{IMAGE-1}}',
+    title: 'Dollar and Sense: The Financial Forecast',
+  },
   premiumContent: [
     {
-      position: 'default',
-      media: '{{IMAGE-3}}',
-      blockType: 'mediaBlock',
       blockName: 'Feature Image',
+      blockType: 'mediaBlock',
+      media: '{{IMAGE-3}}',
+      position: 'default',
     },
     {
       blockType: 'content',
       columns: [
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
                 {
-                  text: 'This is premium content.',
                   bold: true,
+                  text: 'This is premium content.',
                 },
                 {
                   text: ' It is only available to authenticated users. This content can be anything from additional video, text, and content, to download links and more. These are simply layout building blocks configured in the CMS.',
@@ -129,17 +129,12 @@ export const post3: Partial<Post> = {
               ],
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
       ],
     },
   ],
   relatedPosts: [], // this is populated by the seed script
+  slug: 'dollar-sense',
+  title: 'Dollar and Sense: The Financial Forecast',
 }

@@ -1,9 +1,11 @@
-import React from 'react'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import React from 'react'
 
-import { Post } from '../../../../payload/payload-types'
+import type { Post } from '../../../../payload/payload-types'
+
 import { fetchComments } from '../../../_api/fetchComments'
 import { fetchDoc } from '../../../_api/fetchDoc'
 import { fetchDocs } from '../../../_api/fetchDocs'
@@ -22,8 +24,8 @@ export default async function Post({ params: { slug } }) {
   try {
     post = await fetchDoc<Post>({
       collection: 'posts',
-      slug,
       draft: isDraftMode,
+      slug,
     })
   } catch (error) {
     console.error(error) // eslint-disable-line no-console
@@ -37,7 +39,7 @@ export default async function Post({ params: { slug } }) {
     doc: post?.id,
   })
 
-  return <PostClient post={post} comments={comments} />
+  return <PostClient comments={comments} post={post} />
 }
 
 export async function generateStaticParams() {
@@ -57,8 +59,8 @@ export async function generateMetadata({ params: { slug } }): Promise<Metadata> 
   try {
     post = await fetchDoc<Post>({
       collection: 'posts',
-      slug,
       draft: isDraftMode,
+      slug,
     })
   } catch (error) {}
 

@@ -1,9 +1,11 @@
-import React from 'react'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import React from 'react'
 
-import { Project } from '../../../../payload/payload-types'
+import type { Project } from '../../../../payload/payload-types'
+
 import { fetchDoc } from '../../../_api/fetchDoc'
 import { fetchDocs } from '../../../_api/fetchDocs'
 import { generateMeta } from '../../../_utilities/generateMeta'
@@ -21,8 +23,8 @@ export default async function Project({ params: { slug } }) {
   try {
     project = await fetchDoc<Project>({
       collection: 'projects',
-      slug,
       draft: isDraftMode,
+      slug,
     })
   } catch (error) {
     console.error(error) // eslint-disable-line no-console
@@ -54,8 +56,8 @@ export async function generateMetadata({ params: { slug } }): Promise<Metadata> 
   try {
     project = await fetchDoc<Project>({
       collection: 'projects',
-      slug,
       draft: isDraftMode,
+      slug,
     })
   } catch (error) {}
 

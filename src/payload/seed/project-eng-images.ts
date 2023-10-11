@@ -1,11 +1,10 @@
 import type { Media } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const projectEng: Media = {
-  alt: 'Engineering',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Engineering',
   caption: convertSlateToLexical([
     {
       children: [
@@ -13,29 +12,29 @@ export const projectEng: Media = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@thisisengineering',
-          newTab: true,
           children: [
             {
               text: 'ThisisEngineering RAEng',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@thisisengineering',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/SyRlD4s_amw',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/SyRlD4s_amw',
         },
         {
           text: '.',
@@ -43,13 +42,13 @@ export const projectEng: Media = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectEng2 = {
-  alt: 'Engineering',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Engineering',
   caption: convertSlateToLexical([
     {
       children: [
@@ -57,29 +56,29 @@ export const projectEng2 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@thisisengineering',
-          newTab: true,
           children: [
             {
               text: 'ThisisEngineering RAEng',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@thisisengineering',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/hoivM01c-vg',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/hoivM01c-vg',
         },
         {
           text: '.',
@@ -87,13 +86,13 @@ export const projectEng2 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectEng3 = {
-  alt: 'Software Development',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Software Development',
   caption: convertSlateToLexical([
     {
       children: [
@@ -101,29 +100,29 @@ export const projectEng3 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@vishnumaiea',
-          newTab: true,
           children: [
             {
               text: 'Vishnu Mohanan',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@vishnumaiea',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/pfR18JNEMv8',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/pfR18JNEMv8',
         },
         {
           text: '.',
@@ -131,13 +130,13 @@ export const projectEng3 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectEng4 = {
-  alt: 'Engineering',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Engineering',
   caption: convertSlateToLexical([
     {
       children: [
@@ -145,29 +144,29 @@ export const projectEng4 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@thisisengineering',
-          newTab: true,
           children: [
             {
               text: 'ThisisEngineering RAEng',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@thisisengineering',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/nyAzMQ6Ejgs',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/nyAzMQ6Ejgs',
         },
         {
           text: '.',
@@ -175,4 +174,6 @@ export const projectEng4 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }

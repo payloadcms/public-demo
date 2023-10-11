@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import Link from 'next/link'
+import React, { Fragment } from 'react'
 
 import { fetchComments } from '../../_api/fetchComments'
 import { Button } from '../../_components/Button'
@@ -12,7 +13,6 @@ import { formatDateTime } from '../../_utilities/formatDateTime'
 import { getMeUser } from '../../_utilities/getMeUser'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import AccountForm from './AccountForm'
-
 import classes from './index.module.scss'
 
 export default async function Account() {
@@ -32,35 +32,35 @@ export default async function Account() {
         <RenderParams className={classes.params} />
       </Gutter>
       <LowImpactHero
-        type="lowImpact"
         media={null}
         richText={[
           {
-            type: 'h1',
             children: [
               {
                 text: 'Account',
               },
             ],
+            type: 'h1',
           },
           {
-            type: 'paragraph',
             children: [
               {
                 text: 'This is your account dashboard. Here you can update your account information, view your comment history, and more. To manage all users, ',
               },
               {
-                type: 'link',
-                url: '/admin/collections/users',
                 children: [
                   {
                     text: 'login to the admin dashboard.',
                   },
                 ],
+                type: 'link',
+                url: '/admin/collections/users',
               },
             ],
+            type: 'paragraph',
           },
         ]}
+        type="lowImpact"
       />
       <Gutter className={classes.account}>
         <AccountForm />
@@ -74,7 +74,7 @@ export default async function Account() {
         {comments?.length === 0 && <p>You have not made any comments yet.</p>}
         {comments.length > 0 &&
           comments?.map((com, index) => {
-            const { doc, comment, createdAt } = com
+            const { comment, createdAt, doc } = com
 
             if (!comment) return null
 
@@ -98,17 +98,17 @@ export default async function Account() {
             )
           })}
         <HR />
-        <Button href="/logout" appearance="secondary" label="Log out" />
+        <Button appearance="secondary" href="/logout" label="Log out" />
       </Gutter>
     </Fragment>
   )
 }
 
 export const metadata: Metadata = {
-  title: 'Account',
   description: 'Create an account or log in to your existing account.',
   openGraph: mergeOpenGraph({
     title: 'Account',
     url: '/account',
   }),
+  title: 'Account',
 }

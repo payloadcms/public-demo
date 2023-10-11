@@ -13,20 +13,20 @@ import type {
 } from 'lexical'
 
 interface SlateNode {
+  [key: string]: any
   children?: SlateNode[]
   type?: string // doesn't always have type, e.g. for paragraphs
-  [key: string]: any
 }
 
 export function convertSlateToLexical(slateData: SlateNode[]): SerializedEditorState {
   return {
     root: {
-      type: 'root',
-      format: '',
-      indent: 0,
-      version: 1,
       children: convertSlateNodesToLexical(slateData, true, 'root'),
       direction: 'ltr',
+      format: '',
+      indent: 0,
+      type: 'root',
+      version: 1,
     },
   }
 }
@@ -37,7 +37,7 @@ function convertSlateNodesToLexical(
   parentNode: string,
 ): SerializedLexicalNode[] {
   return (
-    slateNodes.map(node => {
+    slateNodes.map((node) => {
       if (!('type' in node)) {
         if (canContainParagraphs) {
           // This is a paragraph node. They do not have a type property in Slate
@@ -101,13 +101,13 @@ function convertParagraphNode(node: SlateNode, parentNode: string): SerializedPa
 
 function convertHeadingNode(node: SlateNode, parentNode: string): SerializedHeadingNode {
   return {
+    children: convertSlateNodesToLexical(node.children || [], false, 'heading'),
     direction: 'ltr',
     format: node.textAlign || '',
     indent: 0,
+    tag: node.type as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', // Slate puts the tag (h1 / h2 / ...) inside of node.type
     type: 'heading',
     version: 1,
-    tag: node.type as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', // Slate puts the tag (h1 / h2 / ...) inside of node.type
-    children: convertSlateNodesToLexical(node.children || [], false, 'heading'),
   }
 }
 
@@ -115,28 +115,28 @@ function convertLinkNode(node: SlateNode, parentNode: string): SerializedLinkNod
   return {
     children: convertSlateNodesToLexical(node.children || [], false, 'link'),
     direction: 'ltr',
+    fields: {
+      doc: node.doc || undefined,
+      linkType: node.linkType || 'custom',
+      newTab: node.newTab || false,
+      url: node.url || undefined,
+    },
     format: '',
     indent: 0,
     type: 'link',
     version: 1,
-    fields: {
-      url: node.url || undefined,
-      newTab: node.newTab || false,
-      linkType: node.linkType || 'custom',
-      doc: node.doc || undefined,
-    },
   }
 }
 
 function convertRelationshipNode(node: SlateNode, parentNode: string): SerializedRelationshipNode {
   return {
     format: '',
+    relationTo: node.relationTo,
     type: 'relationship',
-    version: 1,
     value: {
       id: node?.value?.id || '',
     },
-    relationTo: node.relationTo,
+    version: 1,
   }
 }
 
@@ -146,38 +146,38 @@ function convertULNode(node: SlateNode, parentNode: string): SerializedListNode 
     direction: 'ltr',
     format: '',
     indent: 0,
-    type: 'list',
-    version: 1,
     listType: 'bullet',
     start: 1,
     tag: 'ul',
+    type: 'list',
+    version: 1,
   }
 }
 
 function convertLINode(node: SlateNode, parentNode: string): SerializedListItemNode {
   return {
+    checked: undefined,
     children: convertSlateNodesToLexical(node.children || [], false, 'listitem'),
     direction: 'ltr',
     format: '',
     indent: 0,
     type: 'listitem',
-    version: 1,
     value: 1,
-    checked: undefined,
+    version: 1,
   }
 }
 
 function convertUploadNode(node: SlateNode, parentNode: string): SerializedUploadNode {
   return {
-    format: '',
-    type: 'upload',
-    version: 1,
-    relationTo: node.relationTo,
-    value: {
-      id: node.value?.id || '',
-    },
     fields: {
       ...node.fields,
     },
+    format: '',
+    relationTo: node.relationTo,
+    type: 'upload',
+    value: {
+      id: node.value?.id || '',
+    },
+    version: 1,
   }
 }

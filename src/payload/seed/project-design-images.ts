@@ -1,11 +1,10 @@
 import type { Media } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const projectDesign: Media = {
-  alt: 'UI / UX Design',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'UI / UX Design',
   caption: convertSlateToLexical([
     {
       children: [
@@ -13,29 +12,29 @@ export const projectDesign: Media = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@danielkorpai',
-          newTab: true,
           children: [
             {
               text: 'Daniel Korpai',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@danielkorpai',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/bOKIptPzdPk',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/bOKIptPzdPk',
         },
         {
           text: '.',
@@ -43,13 +42,13 @@ export const projectDesign: Media = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectDesign2 = {
-  alt: 'UI / UX Design',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'UI / UX Design',
   caption: convertSlateToLexical([
     {
       children: [
@@ -57,29 +56,29 @@ export const projectDesign2 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@fazurrehman',
-          newTab: true,
           children: [
             {
               text: 'Faizur Rehman',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@fazurrehman',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/dJpupM4LiS4',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/dJpupM4LiS4',
         },
         {
           text: '.',
@@ -87,13 +86,13 @@ export const projectDesign2 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectDesign3 = {
-  alt: 'UI / UX Design',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'UI / UX Design',
   caption: convertSlateToLexical([
     {
       children: [
@@ -101,29 +100,29 @@ export const projectDesign3 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@balazsketyi',
-          newTab: true,
           children: [
             {
               text: 'Balázs Kétyi',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@balazsketyi',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/LPWl2pEVGKc',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/LPWl2pEVGKc',
         },
         {
           text: '.',
@@ -131,4 +130,6 @@ export const projectDesign3 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }

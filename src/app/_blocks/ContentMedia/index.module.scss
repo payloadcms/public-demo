@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  gap: calc(var(--base)* 6);
+  gap: calc(var(--base) * 6);
   align-items: center;
 }
 
@@ -13,7 +13,6 @@
 .media {
   max-width: 35%;
 }
-
 
 .caption {
   color: var(--theme-elevation-500);

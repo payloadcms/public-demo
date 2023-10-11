@@ -1,4 +1,5 @@
 import type { FeatureProvider } from '@payloadcms/richtext-lexical'
+
 import {
   BlockQuoteFeature,
   BoldTextFeature,

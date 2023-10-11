@@ -1,17 +1,10 @@
 import type { Project } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 export const project2: Partial<Project> = {
-  title: 'Reviving efficiency with Spider Software',
-  slug: 'software',
   _status: 'published',
-  publishedDate: '2023-09-30T23:00:00.000Z',
-  meta: {
-    title: 'Reviving efficiency with Spider Software',
-    description:
-      'Discover how our latest software release boosted efficiency, reduced road blocks and drove remarkable growth in the tech industry.',
-    image: '{{IMAGE-1}}',
-  },
   hero: {
+    media: '{{IMAGE-1}}',
     richText: convertSlateToLexical([
       {
         children: [
@@ -22,15 +15,13 @@ export const project2: Partial<Project> = {
         type: 'p',
       },
     ]) as any,
-    media: '{{IMAGE-1}}',
   },
   layout: [
     {
-      blockType: 'content',
       blockName: 'Overview',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -41,9 +32,14 @@ export const project2: Partial<Project> = {
               type: 'h6',
             },
           ]) as any,
+          size: 'full',
         },
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -54,17 +50,17 @@ export const project2: Partial<Project> = {
               type: 'h3',
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
         {
-          size: 'oneThird',
+          enableLink: true,
+          link: {
+            appearance: 'primary',
+            label: 'View on GitHub',
+            reference: null,
+            type: 'custom',
+            url: 'https://www.payloadcms.com',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -91,23 +87,14 @@ export const project2: Partial<Project> = {
               type: 'h6',
             },
           ]) as any,
-          enableLink: true,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            type: 'custom',
-            appearance: 'primary',
-            url: 'payloadcms.com',
-            label: 'View on GitHub',
-          },
+          size: 'oneThird',
         },
       ],
     },
     {
-      blockType: 'contentMedia',
       blockName: 'Challenges',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-3}}',
       mediaPosition: 'left',
       richText: convertSlateToLexical([
         {
@@ -134,11 +121,11 @@ export const project2: Partial<Project> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-3}}',
     },
     {
-      blockType: 'contentMedia',
       blockName: 'Solution',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-4}}',
       mediaPosition: 'right',
       richText: convertSlateToLexical([
         {
@@ -165,14 +152,12 @@ export const project2: Partial<Project> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-4}}',
     },
     {
-      blockType: 'content',
       blockName: 'Testimonial',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -191,20 +176,20 @@ export const project2: Partial<Project> = {
               type: 'h5',
             },
           ]) as any,
+          size: 'full',
         },
       ],
     },
     {
-      blockType: 'mediaBlock',
       blockName: 'Outro Image',
+      blockType: 'mediaBlock',
       media: '{{IMAGE-2}}',
     },
     {
-      blockType: 'content',
       blockName: 'Reflection',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -229,9 +214,19 @@ export const project2: Partial<Project> = {
               ],
             },
           ]) as any,
+          size: 'full',
         },
       ],
     },
   ],
+  meta: {
+    description:
+      'Discover how our latest software release boosted efficiency, reduced road blocks and drove remarkable growth in the tech industry.',
+    image: '{{IMAGE-1}}',
+    title: 'Reviving efficiency with Spider Software',
+  },
+  publishedDate: '2023-09-30T23:00:00.000Z',
   relatedProjects: [], // this is populated by the seed script
+  slug: 'software',
+  title: 'Reviving efficiency with Spider Software',
 }

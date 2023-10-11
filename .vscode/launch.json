@@ -10,6 +10,6 @@
       "name": "Run Dev",
       "request": "launch",
       "type": "node-terminal"
-    },
+    }
   ]
 }

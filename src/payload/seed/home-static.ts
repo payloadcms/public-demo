@@ -1,25 +1,15 @@
 import type { Page } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const staticHome: Page = {
   id: '',
-  title: 'Home',
-  slug: 'home',
   createdAt: '',
-  updatedAt: '',
-  meta: {
-    title: 'Payload CMS | Public Demo',
-    description: 'An open-source website demo built with Payload and Next.js.',
-  },
   hero: {
-    type: 'lowImpact',
     links: null,
+    media: '',
     richText: {
       root: {
-        type: 'root',
-        format: '',
-        indent: 0,
-        version: 1,
         children: [
           {
             children: [
@@ -38,9 +28,9 @@ export const staticHome: Page = {
                 direction: 'ltr',
                 format: '',
                 indent: 0,
+                tag: 'h1',
                 type: 'heading',
                 version: 1,
-                tag: 'h1',
               },
               {
                 detail: 0,
@@ -91,16 +81,16 @@ export const staticHome: Page = {
                   },
                 ],
                 direction: 'ltr',
-                format: '',
-                indent: 0,
-                type: 'link',
-                version: 1,
                 fields: {
                   doc: null,
                   linkType: 'custom',
                   newTab: true,
                   url: 'https://github.com/payloadcms/public-demo',
                 },
+                format: '',
+                indent: 0,
+                type: 'link',
+                version: 1,
               },
               {
                 detail: 0,
@@ -120,12 +110,29 @@ export const staticHome: Page = {
           },
         ],
         direction: 'ltr',
+        format: '',
+        indent: 0,
+        type: 'root',
+        version: 1,
       },
     } as any,
-    media: '',
+    type: 'lowImpact',
   },
   layout: [
     {
+      blockName: 'CTA',
+      blockType: 'cta',
+      links: [
+        {
+          link: {
+            appearance: 'primary',
+            label: 'Go to dashboard',
+            reference: null,
+            type: 'custom',
+            url: '/admin',
+          },
+        },
+      ],
       richText: convertSlateToLexical([
         {
           children: [
@@ -141,14 +148,14 @@ export const staticHome: Page = {
               text: 'Your database is currently empty. To seed your database, ',
             },
             {
-              type: 'link',
-              linkType: 'custom',
-              url: '/admin',
               children: [
                 {
                   text: 'log in to the admin dashboard',
                 },
               ],
+              linkType: 'custom',
+              type: 'link',
+              url: '/admin',
             },
             {
               text: " and start managing this site's content.",
@@ -156,19 +163,13 @@ export const staticHome: Page = {
           ],
         },
       ]) as any,
-      links: [
-        {
-          link: {
-            type: 'custom',
-            url: '/admin',
-            label: 'Go to dashboard',
-            appearance: 'primary',
-            reference: null,
-          },
-        },
-      ],
-      blockName: 'CTA',
-      blockType: 'cta',
     },
   ],
+  meta: {
+    description: 'An open-source website demo built with Payload and Next.js.',
+    title: 'Payload CMS | Public Demo',
+  },
+  slug: 'home',
+  title: 'Home',
+  updatedAt: '',
 }

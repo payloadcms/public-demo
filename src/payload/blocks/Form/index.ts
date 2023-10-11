@@ -3,20 +3,12 @@ import type { Block } from 'payload/types'
 import richText from '../../fields/richText'
 
 export const FormBlock: Block = {
-  slug: 'formBlock',
-  labels: {
-    singular: 'Form Block',
-    plural: 'Form Blocks',
-  },
-  graphQL: {
-    singularName: 'FormBlock',
-  },
   fields: [
     {
       name: 'form',
-      type: 'relationship',
       relationTo: 'forms',
       required: true,
+      type: 'relationship',
     },
     {
       name: 'enableIntro',
@@ -25,10 +17,18 @@ export const FormBlock: Block = {
     },
     richText({
       name: 'introContent',
-      label: 'Intro Content',
       admin: {
         condition: (_, { enableIntro }) => Boolean(enableIntro),
       },
+      label: 'Intro Content',
     }),
   ],
+  graphQL: {
+    singularName: 'FormBlock',
+  },
+  labels: {
+    plural: 'Form Blocks',
+    singular: 'Form Block',
+  },
+  slug: 'formBlock',
 }

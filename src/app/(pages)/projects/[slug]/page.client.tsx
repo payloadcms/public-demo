@@ -1,16 +1,17 @@
 'use client'
-import React from 'react'
 import { useLivePreview } from '@payloadcms/live-preview-react'
+import React from 'react'
 
-import { Project } from '../../../../payload/payload-types'
+import type { Project } from '../../../../payload/payload-types'
+
 import { Blocks } from '../../../_components/Blocks'
 import { ProjectHero } from '../../../_heros/ProjectHero'
 
 export const ProjectClient: React.FC<{ project: Project }> = ({ project: initialProject }) => {
   const { data } = useLivePreview<Project>({
+    depth: 1,
     initialData: initialProject,
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
-    depth: 1,
   })
 
   return (
@@ -20,40 +21,40 @@ export const ProjectClient: React.FC<{ project: Project }> = ({ project: initial
         blocks={[
           ...(data.layout as any),
           {
-            blockType: 'relatedPosts',
             blockName: 'Related Projects',
-            relationTo: 'projects',
+            blockType: 'relatedPosts',
+            docs: data.relatedProjects,
             introContent: [
               {
-                type: 'h4',
                 children: [
                   {
                     text: 'Related projects',
                   },
                 ],
+                type: 'h4',
               },
               {
-                type: 'p',
                 children: [
                   {
                     text: 'The projects displayed here are individually selected for this page. Admins can select any number of related projects to display here and the layout will adjust accordingly. Alternatively, you could swap this out for the "Archive" block to automatically populate projects by category complete with pagination. To manage related projects, ',
                   },
                   {
-                    type: 'link',
-                    url: `/admin/collections/projects/${data.id}`,
                     children: [
                       {
                         text: 'navigate to the admin dashboard',
                       },
                     ],
+                    type: 'link',
+                    url: `/admin/collections/projects/${data.id}`,
                   },
                   {
                     text: '.',
                   },
                 ],
+                type: 'p',
               },
             ],
-            docs: data.relatedProjects,
+            relationTo: 'projects',
           },
         ]}
       />

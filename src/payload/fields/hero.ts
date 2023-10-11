@@ -1,10 +1,11 @@
+import type { Field } from 'payload/types'
+
 import {
   HeadingFeature,
-  lexicalEditor,
   LinkFeature,
   ParagraphFeature,
+  lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import type { Field } from 'payload/types'
 
 import { LabelFeature } from './lexicalFeatures/label'
 import { LargeBodyFeature } from './lexicalFeatures/largeBody'
@@ -13,15 +14,11 @@ import richText from './richText'
 
 export const hero: Field = {
   name: 'hero',
-  label: false,
-  type: 'group',
   fields: [
     {
-      type: 'select',
       name: 'type',
-      label: 'Type',
-      required: true,
       defaultValue: 'lowImpact',
+      label: 'Type',
       options: [
         {
           label: 'None',
@@ -40,6 +37,8 @@ export const hero: Field = {
           value: 'lowImpact',
         },
       ],
+      required: true,
+      type: 'select',
     },
     richText({
       editor: lexicalEditor({
@@ -60,12 +59,14 @@ export const hero: Field = {
     }),
     {
       name: 'media',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
+      relationTo: 'media',
+      required: true,
+      type: 'upload',
     },
   ],
+  label: false,
+  type: 'group',
 }

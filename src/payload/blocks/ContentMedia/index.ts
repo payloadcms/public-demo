@@ -4,12 +4,10 @@ import { invertBackground } from '../../fields/invertBackground'
 import richText from '../../fields/richText'
 
 export const ContentMedia: Block = {
-  slug: 'contentMedia',
   fields: [
     invertBackground,
     {
       name: 'mediaPosition',
-      type: 'radio',
       options: [
         {
           label: 'Left',
@@ -20,13 +18,15 @@ export const ContentMedia: Block = {
           value: 'right',
         },
       ],
+      type: 'radio',
     },
     richText(),
     {
       name: 'media',
-      type: 'upload',
       relationTo: 'media',
       required: true,
+      type: 'upload',
     },
   ],
+  slug: 'contentMedia',
 }

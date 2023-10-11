@@ -5,76 +5,76 @@ import { adminsOrPublished } from '../../access/adminsOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock'
 import { CallToAction } from '../../blocks/CallToAction'
 import { Content } from '../../blocks/Content'
+import { ContentMedia } from '../../blocks/ContentMedia'
 import { MediaBlock } from '../../blocks/MediaBlock'
 import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { populatePublishedDate } from '../../hooks/populatePublishedDate'
 import { revalidatePage } from './hooks/revalidatePage'
-import { ContentMedia } from '../../blocks/ContentMedia'
 
 export const Pages: CollectionConfig = {
-  slug: 'pages',
+  access: {
+    create: admins,
+    delete: admins,
+    read: adminsOrPublished,
+    update: admins,
+  },
   admin: {
-    useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data }) =>
         `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${data.slug !== 'home' ? data.slug : ''}`,
     },
-    preview: doc => {
+    preview: (doc) => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
         `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${doc.slug !== 'home' ? doc.slug : ''}`,
       )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
     },
-  },
-  hooks: {
-    beforeChange: [populatePublishedDate],
-    afterChange: [revalidatePage],
-    afterRead: [populateArchiveBlock],
-  },
-  versions: {
-    drafts: true,
-  },
-  access: {
-    read: adminsOrPublished,
-    update: admins,
-    create: admins,
-    delete: admins,
+    useAsTitle: 'title',
   },
   fields: [
     {
       name: 'title',
-      type: 'text',
       required: true,
+      type: 'text',
     },
     {
       name: 'publishedDate',
-      type: 'date',
       admin: {
         position: 'sidebar',
       },
+      type: 'date',
     },
     {
-      type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
           fields: [hero],
+          label: 'Hero',
         },
         {
-          label: 'Content',
           fields: [
             {
               name: 'layout',
-              type: 'blocks',
-              required: true,
               blocks: [CallToAction, Content, ContentMedia, MediaBlock, Archive],
+              required: true,
+              type: 'blocks',
             },
           ],
+          label: 'Content',
         },
       ],
+      type: 'tabs',
     },
     slugField(),
   ],
+  hooks: {
+    afterChange: [revalidatePage],
+    afterRead: [populateArchiveBlock],
+    beforeChange: [populatePublishedDate],
+  },
+  slug: 'pages',
+  versions: {
+    drafts: true,
+  },
 }

@@ -13,7 +13,12 @@ type Query {
   Projects(draft: Boolean, where: Project_where, limit: Int, page: Int, sort: String): Projects
   docAccessProject(id: String!): projectsDocAccess
   versionProject(id: String): ProjectVersion
-  versionsProjects(where: versionsProject_where, limit: Int, page: Int, sort: String): versionsProjects
+  versionsProjects(
+    where: versionsProject_where
+    limit: Int
+    page: Int
+    sort: String
+  ): versionsProjects
   Media(id: String!, draft: Boolean): Media
   allMedia(draft: Boolean, where: Media_where, limit: Int, page: Int, sort: String): allMedia
   docAccessMedia(id: String!): mediaDocAccess
@@ -29,12 +34,23 @@ type Query {
   Comments(draft: Boolean, where: Comment_where, limit: Int, page: Int, sort: String): Comments
   docAccessComment(id: String!): commentsDocAccess
   versionComment(id: String): CommentVersion
-  versionsComments(where: versionsComment_where, limit: Int, page: Int, sort: String): versionsComments
+  versionsComments(
+    where: versionsComment_where
+    limit: Int
+    page: Int
+    sort: String
+  ): versionsComments
   Redirect(id: String!, draft: Boolean): Redirect
   Redirects(draft: Boolean, where: Redirect_where, limit: Int, page: Int, sort: String): Redirects
   docAccessRedirect(id: String!): redirectsDocAccess
   PayloadPreference(id: String!, draft: Boolean): PayloadPreference
-  PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
+  PayloadPreferences(
+    draft: Boolean
+    where: PayloadPreference_where
+    limit: Int
+    page: Int
+    sort: String
+  ): PayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
   Settings(draft: Boolean): Settings
   docAccessSettings: settingsDocAccess
@@ -657,7 +673,8 @@ enum User_roles {
 """
 A field whose value conforms to the standard internet email address format as specified in HTML Spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address.
 """
-scalar EmailAddress @specifiedBy(url: "https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address")
+scalar EmailAddress
+  @specifiedBy(url: "https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address")
 
 type Post_PopulatedAuthors {
   id: String
@@ -13972,14 +13989,29 @@ type Mutation {
   deletePost(id: String!): Post
   restoreVersionPost(id: String): Post
   createProject(data: mutationProjectInput!, draft: Boolean): Project
-  updateProject(id: String!, autosave: Boolean, data: mutationProjectUpdateInput!, draft: Boolean): Project
+  updateProject(
+    id: String!
+    autosave: Boolean
+    data: mutationProjectUpdateInput!
+    draft: Boolean
+  ): Project
   deleteProject(id: String!): Project
   restoreVersionProject(id: String): Project
   createMedia(data: mutationMediaInput!, draft: Boolean): Media
-  updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean): Media
+  updateMedia(
+    id: String!
+    autosave: Boolean
+    data: mutationMediaUpdateInput!
+    draft: Boolean
+  ): Media
   deleteMedia(id: String!): Media
   createCategory(data: mutationCategoryInput!, draft: Boolean): Category
-  updateCategory(id: String!, autosave: Boolean, data: mutationCategoryUpdateInput!, draft: Boolean): Category
+  updateCategory(
+    id: String!
+    autosave: Boolean
+    data: mutationCategoryUpdateInput!
+    draft: Boolean
+  ): Category
   deleteCategory(id: String!): Category
   createUser(data: mutationUserInput!, draft: Boolean): User
   updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean): User
@@ -13992,14 +14024,29 @@ type Mutation {
   resetPasswordUser(password: String, token: String): usersResetPassword
   verifyEmailUser(token: String): Boolean
   createComment(data: mutationCommentInput!, draft: Boolean): Comment
-  updateComment(id: String!, autosave: Boolean, data: mutationCommentUpdateInput!, draft: Boolean): Comment
+  updateComment(
+    id: String!
+    autosave: Boolean
+    data: mutationCommentUpdateInput!
+    draft: Boolean
+  ): Comment
   deleteComment(id: String!): Comment
   restoreVersionComment(id: String): Comment
   createRedirect(data: mutationRedirectInput!, draft: Boolean): Redirect
-  updateRedirect(id: String!, autosave: Boolean, data: mutationRedirectUpdateInput!, draft: Boolean): Redirect
+  updateRedirect(
+    id: String!
+    autosave: Boolean
+    data: mutationRedirectUpdateInput!
+    draft: Boolean
+  ): Redirect
   deleteRedirect(id: String!): Redirect
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
-  updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
+  updatePayloadPreference(
+    id: String!
+    autosave: Boolean
+    data: mutationPayloadPreferenceUpdateInput!
+    draft: Boolean
+  ): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
   updateSettings(data: mutationSettingsInput!, draft: Boolean): Settings
   updateHeader(data: mutationHeaderInput!, draft: Boolean): Header

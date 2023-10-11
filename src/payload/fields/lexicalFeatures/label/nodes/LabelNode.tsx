@@ -7,20 +7,19 @@
  *
  */
 
+import type { DOMExportOutput, LexicalEditor, ParagraphNode } from 'lexical'
+
 import { addClassNamesToElement } from '@lexical/utils'
 import {
   $applyNodeReplacement,
   $createParagraphNode,
-  DOMExportOutput,
   type EditorConfig,
   ElementNode,
-  isHTMLElement,
-  LexicalEditor,
   type LexicalNode,
   type NodeKey,
-  ParagraphNode,
   type RangeSelection,
   type SerializedElementNode,
+  isHTMLElement,
 } from 'lexical'
 
 export type SerializedLabelNode = SerializedElementNode
@@ -41,6 +40,14 @@ export class LabelNode extends ElementNode {
     return 'label'
   }
 
+  static importJSON(serializedNode: SerializedLabelNode): LabelNode {
+    const node = $createLabelNode()
+    node.setFormat(serializedNode.format)
+    node.setIndent(serializedNode.indent)
+    node.setDirection(serializedNode.direction)
+    return node
+  }
+
   canBeEmpty(): true {
     return true
   }
@@ -52,14 +59,18 @@ export class LabelNode extends ElementNode {
   canInsertTextBefore(): true {
     return true
   }
+  collapseAtStart(): true {
+    const paragraph = $createParagraphNode()
+    const children = this.getChildren()
+    children.forEach((child) => paragraph.append(child))
+    this.replace(paragraph)
+    return true
+  }
 
   createDOM(config: EditorConfig): HTMLElement {
     const element = document.createElement('span')
     addClassNamesToElement(element, 'label')
     return element
-  }
-  updateDOM(prevNode: LabelNode, dom: HTMLElement): boolean {
-    return false
   }
 
   exportDOM(editor: LexicalEditor): DOMExportOutput {
@@ -82,26 +93,12 @@ export class LabelNode extends ElementNode {
     }
   }
 
-  static importJSON(serializedNode: SerializedLabelNode): LabelNode {
-    const node = $createLabelNode()
-    node.setFormat(serializedNode.format)
-    node.setIndent(serializedNode.indent)
-    node.setDirection(serializedNode.direction)
-    return node
-  }
-
   exportJSON(): SerializedElementNode {
     return {
       ...super.exportJSON(),
       type: this.getType(),
     }
   }
-
-  isInline(): false {
-    return false
-  }
-
-  // Mutation
 
   insertNewAfter(_: RangeSelection, restoreSelection?: boolean): ParagraphNode {
     const newBlock = $createParagraphNode()
@@ -111,12 +108,14 @@ export class LabelNode extends ElementNode {
     return newBlock
   }
 
-  collapseAtStart(): true {
-    const paragraph = $createParagraphNode()
-    const children = this.getChildren()
-    children.forEach(child => paragraph.append(child))
-    this.replace(paragraph)
-    return true
+  // Mutation
+
+  isInline(): false {
+    return false
+  }
+
+  updateDOM(prevNode: LabelNode, dom: HTMLElement): boolean {
+    return false
   }
 }
 

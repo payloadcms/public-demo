@@ -1,27 +1,21 @@
+import type { FeatureProvider } from '@payloadcms/richtext-lexical'
+
 import { $setBlocksType } from '@lexical/selection'
 import { $findMatchingParent } from '@lexical/utils'
 import {
-  FeatureProvider,
   FormatSectionWithEntries,
-  getSelectedNode,
   SlashMenuOption,
+  getSelectedNode,
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { LabelIcon } from './Icon'
-import { $createLabelNode, $isLabelNode, LabelNode } from './nodes/LabelNode'
-
 import './index.scss'
+import { $createLabelNode, $isLabelNode, LabelNode } from './nodes/LabelNode'
 
 export const LabelFeature = (): FeatureProvider => {
   return {
     feature: () => ({
-      nodes: [
-        {
-          node: LabelNode,
-          type: LabelNode.getType(),
-        },
-      ],
       floatingSelectToolbar: {
         sections: [
           FormatSectionWithEntries([
@@ -51,6 +45,13 @@ export const LabelFeature = (): FeatureProvider => {
           ]),
         ],
       },
+      nodes: [
+        {
+          node: LabelNode,
+          type: LabelNode.getType(),
+        },
+      ],
+      props: null,
       slashMenu: {
         options: [
           {
@@ -70,7 +71,6 @@ export const LabelFeature = (): FeatureProvider => {
           },
         ],
       },
-      props: null,
     }),
     key: 'label',
   }

@@ -5,10 +5,10 @@ import React from 'react'
 export const LargeBodyIcon = () => (
   <svg
     className="icon"
-    width="25"
     height="25"
-    xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 25 25"
+    width="25"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
       d="M6.61695 9.94917L3.16602 19.25H4.65415L5.37256 17.2102H9.41361L10.1448 19.25H11.7356L8.23337 9.94917H6.61695ZM5.80874 15.9787L7.37384 11.5399L8.96461 15.9787H5.80874Z"

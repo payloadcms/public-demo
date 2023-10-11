@@ -1,11 +1,10 @@
 import type { Media } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const postNews2: Media = {
-  alt: 'News',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'News',
   caption: convertSlateToLexical([
     {
       children: [
@@ -13,29 +12,29 @@ export const postNews2: Media = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@bogomi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
-          newTab: true,
           children: [
             {
               text: 'Bogomil Mihaylov',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@bogomi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/ekHSHvgr27k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/ekHSHvgr27k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
         {
           text: '.',
@@ -43,13 +42,13 @@ export const postNews2: Media = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const postNewsDest: Media = {
-  alt: 'Hidden Destination',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Hidden Destination',
   caption: convertSlateToLexical([
     {
       children: [
@@ -57,29 +56,29 @@ export const postNewsDest: Media = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@jamie_davies?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
-          newTab: true,
           children: [
             {
               text: 'Jamie Davies',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@jamie_davies?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/_sdfPvaJkWU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/_sdfPvaJkWU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
         {
           text: '.',
@@ -87,13 +86,13 @@ export const postNewsDest: Media = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const postNewsHope: Media = {
-  alt: 'Recovery and Hope',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Recovery and Hope',
   caption: convertSlateToLexical([
     {
       children: [
@@ -101,29 +100,29 @@ export const postNewsHope: Media = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@heytowner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
-          newTab: true,
           children: [
             {
               text: 'John Towner',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@heytowner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/3Kv48NS4WUU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/3Kv48NS4WUU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
         {
           text: '.',
@@ -131,4 +130,6 @@ export const postNewsHope: Media = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }

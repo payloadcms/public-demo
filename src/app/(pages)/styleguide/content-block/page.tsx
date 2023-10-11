@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import Link from 'next/link'
+import React, { Fragment } from 'react'
 
 import { ContentBlock } from '../../../_blocks/Content'
 import { Gutter } from '../../../_components/Gutter'
@@ -23,7 +24,6 @@ export default async function ContentBlockPage() {
           blockType="content"
           columns={[
             {
-              size: 'full',
               richText: {
                 root: {
                   children: [
@@ -53,6 +53,7 @@ export default async function ContentBlockPage() {
                   version: 1,
                 },
               } as any,
+              size: 'full',
             },
           ]}
         />
@@ -62,10 +63,10 @@ export default async function ContentBlockPage() {
 }
 
 export const metadata: Metadata = {
-  title: 'Content Block',
   description: 'Styleguide for the Content Block',
   openGraph: mergeOpenGraph({
     title: 'Content Block',
     url: '/styleguide/content-block',
   }),
+  title: 'Content Block',
 }

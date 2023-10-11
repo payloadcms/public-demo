@@ -1,11 +1,10 @@
 import type { Media } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 
 export const projectSoftware: Media = {
-  alt: 'Software Development',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Software Development',
   caption: convertSlateToLexical([
     {
       children: [
@@ -13,29 +12,29 @@ export const projectSoftware: Media = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@afgprogrammer',
-          newTab: true,
           children: [
             {
               text: 'Mohammad Rahmani',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@afgprogrammer',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/N5bT5RctFZ8',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/N5bT5RctFZ8',
         },
         {
           text: '.',
@@ -43,13 +42,13 @@ export const projectSoftware: Media = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectSoftware2 = {
-  alt: 'Software Development',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Software Development',
   caption: convertSlateToLexical([
     {
       children: [
@@ -57,29 +56,29 @@ export const projectSoftware2 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@umby',
-          newTab: true,
           children: [
             {
               text: 'Umberto',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@umby',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/FewHpO4VC9Y',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/FewHpO4VC9Y',
         },
         {
           text: '.',
@@ -87,13 +86,13 @@ export const projectSoftware2 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectSoftware3 = {
-  alt: 'Software Development',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Software Development',
   caption: convertSlateToLexical([
     {
       children: [
@@ -101,29 +100,29 @@ export const projectSoftware3 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@maximalfocus',
-          newTab: true,
           children: [
             {
               text: 'Maximalfocus',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@maximalfocus',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/VT4rx775FT4',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/VT4rx775FT4',
         },
         {
           text: '.',
@@ -131,13 +130,13 @@ export const projectSoftware3 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }
 
 export const projectSoftware4 = {
-  alt: 'Software Development',
   id: '',
-  createdAt: '',
-  updatedAt: '',
+  alt: 'Software Development',
   caption: convertSlateToLexical([
     {
       children: [
@@ -145,29 +144,29 @@ export const projectSoftware4 = {
           text: 'Photo by ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/@adigold1',
-          newTab: true,
           children: [
             {
               text: 'Adi Goldstein',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/@adigold1',
         },
         {
           text: ' on ',
         },
         {
-          type: 'link',
-          linkType: 'custom',
-          url: 'https://unsplash.com/photos/EUsVwEOsblE',
-          newTab: true,
           children: [
             {
               text: 'Unsplash',
             },
           ],
+          linkType: 'custom',
+          newTab: true,
+          type: 'link',
+          url: 'https://unsplash.com/photos/EUsVwEOsblE',
         },
         {
           text: '.',
@@ -175,4 +174,6 @@ export const projectSoftware4 = {
       ],
     },
   ]) as any,
+  createdAt: '',
+  updatedAt: '',
 }

@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { Fragment } from 'react'
-import { SerializedListItemNode, SerializedListNode } from '@lexical/list'
-import { SerializedHeadingNode, SerializedQuoteNode } from '@lexical/rich-text'
-import { LinkFields, SerializedLinkNode } from '@payloadcms/richtext-lexical'
+import type { SerializedListItemNode, SerializedListNode } from '@lexical/list'
+import type { SerializedHeadingNode, SerializedQuoteNode } from '@lexical/rich-text'
+import type { LinkFields, SerializedLinkNode } from '@payloadcms/richtext-lexical'
+import type { SerializedElementNode, SerializedLexicalNode, SerializedTextNode } from 'lexical'
+
 import escapeHTML from 'escape-html'
-import { SerializedElementNode, SerializedLexicalNode, SerializedTextNode } from 'lexical'
+import React, { Fragment } from 'react'
 
 import {
   IS_BOLD,
@@ -27,7 +28,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
         if (_node.type === 'text') {
           const node = _node as SerializedTextNode
           let text = (
-            <span key={index} dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />
+            <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} key={index} />
           )
           if (node.format & IS_BOLD) {
             text = <strong key={index}>{text}</strong>
@@ -37,14 +38,14 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           if (node.format & IS_STRIKETHROUGH) {
             text = (
-              <span key={index} className="line-through">
+              <span className="line-through" key={index}>
                 {text}
               </span>
             )
           }
           if (node.format & IS_UNDERLINE) {
             text = (
-              <span key={index} className="underline">
+              <span className="underline" key={index}>
                 {text}
               </span>
             )
@@ -108,10 +109,10 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case 'list': {
             const node = _node as SerializedListNode
 
-            type List = Extract<keyof JSX.IntrinsicElements, 'ul' | 'ol'>
+            type List = Extract<keyof JSX.IntrinsicElements, 'ol' | 'ul'>
             const Tag = node?.tag as List
             return (
-              <Tag key={index} className={node?.listType}>
+              <Tag className={node?.listType} key={index}>
                 {serializedChildren}
               </Tag>
             )
@@ -122,16 +123,16 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             if (node?.checked != null) {
               return (
                 <li
-                  key={index}
+                  aria-checked={node.checked ? 'true' : 'false'}
                   className={`component--list-item-checkbox ${
                     node.checked
                       ? 'component--list-item-checkbox-checked'
                       : 'component--list-item-checked-unchecked'
                   }`}
-                  value={node?.value}
+                  key={index}
                   role="checkbox"
-                  aria-checked={node.checked ? 'true' : 'false'}
                   tabIndex={-1}
+                  value={node?.value}
                 >
                   {serializedChildren}
                 </li>
@@ -159,10 +160,10 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
               return (
                 <a
-                  key={index}
                   href={fields.url}
-                  target={fields.newTab ? 'target="_blank"' : undefined}
+                  key={index}
                   rel={rel}
+                  target={fields.newTab ? 'target="_blank"' : undefined}
                 >
                   {serializedChildren}
                 </a>

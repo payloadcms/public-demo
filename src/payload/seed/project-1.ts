@@ -1,17 +1,10 @@
 import type { Project } from '../payload-types'
+
 import { convertSlateToLexical } from '../utilities/lexical/slateToLexical'
 export const project1: Partial<Project> = {
-  title: 'Elevating the Digital Presence of a Global Brand',
-  slug: 'elevated-design',
   _status: 'published',
-  publishedDate: '2023-09-30T23:00:00.000Z',
-  meta: {
-    title: 'Elevating the Digital Presence of a Global Brand',
-    description:
-      'This project showcases our design expertise and commitment to helping our clients thrive in the digital realm.',
-    image: '{{IMAGE-SPHERE}}',
-  },
   hero: {
+    media: '{{IMAGE-SPHERE}}',
     richText: convertSlateToLexical([
       {
         children: [
@@ -22,15 +15,13 @@ export const project1: Partial<Project> = {
         type: 'p',
       },
     ]) as any,
-    media: '{{IMAGE-SPHERE}}',
   },
   layout: [
     {
-      blockType: 'content',
       blockName: 'Overview',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -41,9 +32,14 @@ export const project1: Partial<Project> = {
               type: 'h6',
             },
           ]) as any,
+          size: 'full',
         },
         {
-          size: 'twoThirds',
+          link: {
+            label: '',
+            reference: null,
+            url: '',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -54,17 +50,17 @@ export const project1: Partial<Project> = {
               type: 'h3',
             },
           ]) as any,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            url: '',
-            label: '',
-          },
+          size: 'twoThirds',
         },
         {
-          size: 'oneThird',
+          enableLink: true,
+          link: {
+            appearance: 'primary',
+            label: 'Visit Site',
+            reference: null,
+            type: 'custom',
+            url: 'https://www.payloadcms.com',
+          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -91,23 +87,14 @@ export const project1: Partial<Project> = {
               type: 'h6',
             },
           ]) as any,
-          enableLink: true,
-          link: {
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
-            type: 'custom',
-            appearance: 'primary',
-            url: 'payloadcms.com',
-            label: 'Visit Site',
-          },
+          size: 'oneThird',
         },
       ],
     },
     {
-      blockType: 'contentMedia',
       blockName: 'User Experience',
+      blockType: 'contentMedia',
+      media: '{{IMAGE-2}}',
       mediaPosition: 'left',
       richText: convertSlateToLexical([
         {
@@ -134,11 +121,11 @@ export const project1: Partial<Project> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE-2}}',
     },
     {
-      blockType: 'contentMedia',
       blockName: 'SEO',
+      blockType: 'contentMedia',
+      media: '{{IMAGE}}',
       mediaPosition: 'right',
       richText: convertSlateToLexical([
         {
@@ -165,20 +152,18 @@ export const project1: Partial<Project> = {
           ],
         },
       ]) as any,
-      media: '{{IMAGE}}',
     },
     {
-      position: 'default',
-      media: '{{IMAGE-3}}',
-      blockType: 'mediaBlock',
       blockName: 'Feature Image',
+      blockType: 'mediaBlock',
+      media: '{{IMAGE-3}}',
+      position: 'default',
     },
     {
-      blockType: 'content',
       blockName: 'Conclusion',
+      blockType: 'content',
       columns: [
         {
-          size: 'full',
           richText: convertSlateToLexical([
             {
               children: [
@@ -196,9 +181,19 @@ export const project1: Partial<Project> = {
               ],
             },
           ]) as any,
+          size: 'full',
         },
       ],
     },
   ],
+  meta: {
+    description:
+      'This project showcases our design expertise and commitment to helping our clients thrive in the digital realm.',
+    image: '{{IMAGE-SPHERE}}',
+    title: 'Elevating the Digital Presence of a Global Brand',
+  },
+  publishedDate: '2023-09-30T23:00:00.000Z',
   relatedProjects: [], // this is populated by the seed script
+  slug: 'elevated-design',
+  title: 'Elevating the Digital Presence of a Global Brand',
 }

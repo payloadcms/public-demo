@@ -11,8 +11,8 @@ const BeforeLogin: React.FC = () => {
         The code for this demo is open source and can be found{' '}
         <a
           href="https://github.com/payloadcms/public-demo"
-          target="_blank"
           rel="noopener noreferrer"
+          target="_blank"
         >
           here
         </a>
