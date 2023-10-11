@@ -36,9 +36,9 @@ const start = async (): Promise<void> => {
   // Seed database with startup data
   resetScheduledJob.start()
 
-  app.listen(PORT, async () => {
+  app.listen(PORT, () => {
     payload.logger.info(`App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
   })
 }
 
-start()
+void start()

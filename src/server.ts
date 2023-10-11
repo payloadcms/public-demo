@@ -46,16 +46,21 @@ const start = async (): Promise<void> => {
 
   app.use((req, res) => nextHandler(req, res))
 
-  nextApp.prepare().then(() => {
-    payload.logger.info('Starting Next.js...')
+  nextApp
+    .prepare()
+    .then(() => {
+      payload.logger.info('Starting Next.js...')
 
-    // Seed database with startup data
-    resetScheduledJob.start()
+      // Seed database with startup data
+      resetScheduledJob.start()
 
-    app.listen(PORT, async () => {
-      payload.logger.info(`Next.js App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
+      app.listen(PORT, () => {
+        payload.logger.info(`Next.js App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
+      })
     })
-  })
+    .catch((err) => {
+      payload.logger.error({ err }, 'Error starting Next.js')
+    })
 }
 
-start()
+void start()
