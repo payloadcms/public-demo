@@ -8,7 +8,7 @@ import { Gutter } from '../../../_components/Gutter'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 
-export default async function CallToActionPage() {
+export default function CallToActionPage() {
   return (
     <Fragment>
       <Gutter>

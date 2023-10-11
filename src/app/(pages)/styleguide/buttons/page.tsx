@@ -3,13 +3,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import { CallToActionBlock } from '../../../_blocks/CallToAction'
 import { Button } from '../../../_components/Button'
 import { Gutter } from '../../../_components/Gutter'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 
-export default async function ButtonsPage() {
+export default function ButtonsPage() {
   return (
     <Fragment>
       <Gutter>

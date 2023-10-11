@@ -62,11 +62,11 @@ function convertSlateNodesToLexical(
         case 'relationship':
           return convertRelationshipNode(node, parentNode)
         case 'ul':
-          convertULNode(node, parentNode)
+          return convertULNode(node, parentNode)
         case 'li':
-          convertLINode(node, parentNode)
+          return convertLINode(node, parentNode)
         case 'upload':
-          convertUploadNode(node, parentNode)
+          return convertUploadNode(node, parentNode)
         default:
           // eslint-disable-next-line no-console
           console.warn('slateToLexical > No converter found for node type: ' + node.type)

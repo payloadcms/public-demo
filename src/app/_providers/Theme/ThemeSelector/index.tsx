@@ -6,7 +6,6 @@ import type { Theme } from './types'
 
 import { useTheme } from '..'
 import { Chevron } from '../../../_components/Chevron'
-import { getImplicitPreference } from '../shared'
 import classes from './index.module.scss'
 import { themeLocalStorageKey } from './types'
 

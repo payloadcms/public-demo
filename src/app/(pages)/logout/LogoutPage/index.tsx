@@ -26,7 +26,7 @@ export const LogoutPage: React.FC<{
       }
     }
 
-    performLogout()
+    void performLogout()
   }, [logout])
 
   const hasPostsPage = typeof postsPage === 'object' && postsPage?.slug

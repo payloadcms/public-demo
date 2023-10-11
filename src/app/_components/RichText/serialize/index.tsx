@@ -139,6 +139,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                       : 'component--list-item-checked-unchecked'
                   }`}
                   key={index}
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
                   role="checkbox"
                   tabIndex={-1}
                   value={node?.value}

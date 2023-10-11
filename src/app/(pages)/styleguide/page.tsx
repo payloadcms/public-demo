@@ -7,7 +7,7 @@ import { Gutter } from '../../_components/Gutter'
 import { VerticalPadding } from '../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 
-export default async function Typography() {
+export default function Typography() {
   return (
     <Gutter>
       <VerticalPadding bottom="large" top="none">

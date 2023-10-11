@@ -8,7 +8,7 @@ import { Message } from '../../../_components/Message'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 
-export default async function MessageComponentPage() {
+export default function MessageComponentPage() {
   return (
     <Fragment>
       <Gutter>

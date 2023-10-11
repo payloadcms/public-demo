@@ -28,7 +28,9 @@ export const Pages: CollectionConfig = {
     },
     preview: (doc) => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${doc.slug !== 'home' ? doc.slug : ''}`,
+        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${
+          doc.slug !== 'home' ? (doc.slug as string) : ''
+        }`,
       )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
     },
     useAsTitle: 'title',

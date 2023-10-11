@@ -8,7 +8,7 @@ import { revalidate } from '../../../utilities/revalidate'
 // Don't scope to `operation` in order to purge static demo pages
 export const revalidatePage: AfterChangeHook = ({ doc, req: { payload } }) => {
   if (doc._status === 'published') {
-    revalidate({ collection: 'pages', payload, slug: doc.slug })
+    void revalidate({ collection: 'pages', payload, slug: doc.slug })
   }
 
   return doc

@@ -70,7 +70,7 @@ export const PremiumContent: React.FC<{
       }
     }
 
-    getPaywallContent()
+    void getPaywallContent()
 
     isRequesting.current = false
   }, [user, postSlug])

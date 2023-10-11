@@ -59,7 +59,9 @@ export async function generateMetadata({ params: { slug } }): Promise<Metadata> 
       draft: isDraftMode,
       slug,
     })
-  } catch (error) {}
+  } catch (error) {
+    /* empty */
+  }
 
   return generateMeta({ doc: project })
 }

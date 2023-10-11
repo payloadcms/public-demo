@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import React from 'react'
 
 import type { Props } from './Component'
 

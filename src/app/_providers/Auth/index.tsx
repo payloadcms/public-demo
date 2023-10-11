@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
 
-    fetchMe()
+    void fetchMe()
   }, [])
 
   const forgotPassword = useCallback<ForgotPassword>(async (args) => {

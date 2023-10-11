@@ -37,5 +37,8 @@ module.exports = {
   root: true,
   rules: {
     '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/require-await': 'warn',
+    'class-methods-use-this': 'off',
+    'no-unsafe-optional-chaining': 'warn',
   },
 }

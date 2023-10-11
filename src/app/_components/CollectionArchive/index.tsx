@@ -144,7 +144,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
         }
       }
 
-      makeRequest()
+      void makeRequest()
     }
 
     return () => {

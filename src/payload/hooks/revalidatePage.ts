@@ -29,7 +29,7 @@ export const revalidatePage: AfterChangeHook = ({ doc, req }) => {
     }
   }
 
-  revalidate()
+  void revalidate()
 
   return doc
 }

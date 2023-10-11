@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Banner, Check } from 'payload/components'
 import React from 'react'
 
