@@ -36,7 +36,7 @@ export async function seed(): Promise<void> {
 
     payload.logger.info(`— Clearing media...`)
 
-    const mediaDir = path.resolve(__dirname, '../../media')
+    const mediaDir = path.resolve(__dirname, '../../../media')
     if (fs.existsSync(mediaDir)) {
       fs.rmdirSync(mediaDir, { recursive: true })
     }
@@ -72,9 +72,9 @@ export async function reset(): Promise<void> {
   try {
     payload.logger.info(`Resetting database...`)
 
-    const mediaDir = path.resolve(__dirname, '../../media')
+    const mediaDir = path.resolve(__dirname, '../../../media')
     if (fs.existsSync(mediaDir)) {
-      fs.rmSync(path.resolve(__dirname, '../../media'), { recursive: true })
+      fs.rmSync(path.resolve(__dirname, '../../../media'), { recursive: true })
     }
 
     await Promise.all([
