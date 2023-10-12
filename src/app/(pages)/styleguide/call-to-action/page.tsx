@@ -27,7 +27,7 @@ export default function CallToActionPage() {
               link: {
                 appearance: 'primary',
                 label: 'Lorem ipsum dolor sit amet',
-                reference: null,
+                reference: undefined,
                 type: 'custom',
                 url: '#',
               },
@@ -61,7 +61,7 @@ export default function CallToActionPage() {
               link: {
                 appearance: 'primary',
                 label: 'Lorem ipsum dolor sit amet',
-                reference: null,
+                reference: undefined,
                 type: 'custom',
                 url: '#',
               },

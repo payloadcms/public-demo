@@ -35,11 +35,6 @@ export const project3: Partial<Project> = {
           size: 'full',
         },
         {
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [

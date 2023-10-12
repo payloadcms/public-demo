@@ -75,11 +75,6 @@ export const post3: Partial<Post> = {
       blockType: 'content',
       columns: [
         {
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -111,11 +106,6 @@ export const post3: Partial<Post> = {
       blockType: 'content',
       columns: [
         {
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [

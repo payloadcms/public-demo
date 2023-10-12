@@ -127,7 +127,7 @@ export const staticHome: Page = {
           link: {
             appearance: 'primary',
             label: 'Go to dashboard',
-            reference: null,
+            reference: undefined,
             type: 'custom',
             url: '/admin',
           },

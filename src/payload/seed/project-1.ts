@@ -35,11 +35,6 @@ export const project1: Partial<Project> = {
           size: 'full',
         },
         {
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -57,7 +52,7 @@ export const project1: Partial<Project> = {
           link: {
             appearance: 'primary',
             label: 'Visit Site',
-            reference: null,
+            reference: undefined,
             type: 'custom',
             url: 'https://www.payloadcms.com',
           },

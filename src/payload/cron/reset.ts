@@ -548,10 +548,7 @@ async function seedData(): Promise<void> {
         {
           link: {
             label: 'Account',
-            reference: {
-              relationTo: 'pages',
-              value: '',
-            },
+            reference: undefined,
             type: 'custom',
             url: '/account',
           },

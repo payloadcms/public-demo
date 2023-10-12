@@ -174,11 +174,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -213,11 +208,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -266,11 +256,6 @@ export const home: Partial<Page> = {
 
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -292,11 +277,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -331,11 +311,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -370,11 +345,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -396,11 +366,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -422,11 +387,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
@@ -461,11 +421,6 @@ export const home: Partial<Page> = {
         },
         {
           enableLink: false,
-          link: {
-            label: '',
-            reference: null,
-            url: '',
-          },
           richText: convertSlateToLexical([
             {
               children: [
