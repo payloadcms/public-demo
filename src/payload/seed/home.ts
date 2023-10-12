@@ -82,7 +82,7 @@ export const home: Partial<Page> = {
                   doc: null,
                   linkType: 'custom',
                   newTab: false,
-                  url: 'https://',
+                  url: '/admin',
                 },
                 format: '',
                 indent: 0,
@@ -609,6 +609,7 @@ export const home: Partial<Page> = {
     image: '{{IMAGE_1}}',
     title: 'Payload CMS | Public Demo',
   },
+  publishedDate: '2023-09-30T23:00:00.000Z',
   slug: 'home',
   title: 'Home',
 }

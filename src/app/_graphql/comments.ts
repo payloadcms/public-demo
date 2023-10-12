@@ -4,6 +4,7 @@ _status
 doc {
   id
   slug
+  title
 }
 populatedUser {
   id

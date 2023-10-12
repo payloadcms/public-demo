@@ -542,5 +542,24 @@ async function seedData(): Promise<void> {
     slug: 'header',
   })
 
+  await payload.updateGlobal({
+    data: {
+      navItems: [
+        {
+          link: {
+            label: 'Account',
+            reference: {
+              relationTo: 'pages',
+              value: '',
+            },
+            type: 'custom',
+            url: '/account',
+          },
+        },
+      ],
+    },
+    slug: 'footer',
+  })
+
   payload.logger.info('Seeded database successfully!')
 }
