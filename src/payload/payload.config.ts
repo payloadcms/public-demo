@@ -71,7 +71,7 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   rateLimit: {
-    max: 2400, // limit each IP per windowMs
+    max: 10000, // limit each IP per windowMs
     trustProxy: true,
     window: 2 * 60 * 1000, // 2 minutes
   },
