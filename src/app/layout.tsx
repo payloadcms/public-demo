@@ -21,10 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <AdminBar />
-          {/* @ts-expect-error */}
           <Header />
           {children}
-          {/* @ts-expect-error */}
           <Footer />
         </Providers>
       </body>

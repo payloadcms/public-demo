@@ -6,16 +6,24 @@ This demo utilizes the official [Payload Website Template](https://github.com/pa
 
 Core features:
 
-- [Pre-configured Payload Config](#how-it-works)
-- [Authentication](#users-authentication)
-- [Access Control](#access-control)
-- [Premium Content](#premium-content)
-- [Comments](#comments)
-- [Layout Builder](#layout-builder)
-- [Draft Preview](#draft-preview)
-- [Redirects](#redirects)
-- [SEO](#seo)
-- [Website](#website)
+- [Payload Public Demo](#payload-public-demo)
+  - [Quick Start](#quick-start)
+    - [Clone](#clone)
+        - [Local installation steps:](#local-installation-steps)
+  - [How it works](#how-it-works)
+    - [Collections](#collections)
+    - [Globals](#globals)
+  - [Access control](#access-control)
+  - [Premium Content](#premium-content)
+  - [Comments](#comments)
+  - [Layout Builder](#layout-builder)
+  - [Draft Preview](#draft-preview)
+  - [SEO](#seo)
+  - [Redirects](#redirects)
+  - [Website](#website)
+    - [Cache](#cache)
+    - [Eject](#eject)
+  - [Questions](#questions)
 
 ## Quick Start
 
@@ -41,7 +49,7 @@ git clone git@github.com:payloadcms/public-demo.git
 
 **Navigate to folder and install dependencies**
 
-Type `cd ./public-demo` and then `pnpm install` to add all required dependencies.
+Type `cd ./public-demo` and then `yarn install` to add all required dependencies.
 
 **Duplicate the example `.env` file and fill in your own values**
 
@@ -51,7 +59,7 @@ Typically, the only line that you'll need to change within your new `.env` for l
 
 **Fire up the development server**
 
-Finally, type `pnpm dev` to start up the server and see it in action!
+Finally, type `yarn dev` to start up the server and see it in action!
 
 ## How it works
 
