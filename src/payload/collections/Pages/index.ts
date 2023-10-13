@@ -22,10 +22,10 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data }) =>
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${data.slug !== 'home' ? data.slug : ''}`,
-    },
+    // livePreview: {
+    //   url: ({ data }) =>
+    //     `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${data.slug !== 'home' ? data.slug : ''}`,
+    // },
     preview: (doc) => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
         `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${

@@ -1,5 +1,5 @@
 'use client'
-import { useLivePreview } from '@payloadcms/live-preview-react'
+// import { useLivePreview } from '@payloadcms/live-preview-react'
 import React from 'react'
 
 import type { Comment, Post } from '../../../../payload/payload-types'
@@ -12,24 +12,26 @@ export const PostClient: React.FC<{ comments: Comment[]; post: Post }> = ({
   comments,
   post: initialPost,
 }) => {
-  const { data } = useLivePreview<Post>({
-    depth: 1,
-    initialData: initialPost,
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
-  })
+  // const { data } = useLivePreview<Post>({
+  //   depth: 1,
+  //   initialData: initialPost,
+  //   serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  // })
 
   return (
     <React.Fragment>
-      <PostHero post={data} />
-      <Blocks blocks={data.layout} />
-      {data.enablePremiumContent && <PremiumContent disableTopPadding postSlug={data.slug} />}
+      <PostHero post={initialPost} />
+      <Blocks blocks={initialPost.layout} />
+      {initialPost.enablePremiumContent && (
+        <PremiumContent disableTopPadding postSlug={initialPost.slug} />
+      )}
       <Blocks
         blocks={[
           {
             blockName: 'Comments',
             blockType: 'comments',
             comments,
-            doc: data,
+            doc: initialPost,
             introContent: [
               {
                 children: [
@@ -65,7 +67,7 @@ export const PostClient: React.FC<{ comments: Comment[]; post: Post }> = ({
           {
             blockName: 'Related Posts',
             blockType: 'relatedPosts',
-            docs: data.relatedPosts,
+            docs: initialPost.relatedPosts,
             introContent: [
               {
                 children: [
@@ -87,7 +89,7 @@ export const PostClient: React.FC<{ comments: Comment[]; post: Post }> = ({
                       },
                     ],
                     type: 'link',
-                    url: `/admin/collections/posts/${data.id}`,
+                    url: `/admin/collections/posts/${initialPost.id}`,
                   },
                   {
                     text: '.',
