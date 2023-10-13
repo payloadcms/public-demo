@@ -47,7 +47,7 @@
     "@payloadcms/plugin-form-builder": "^1.0.15",
     "@payloadcms/plugin-nested-docs": "^1.0.6",
     "@payloadcms/plugin-redirects": "^1.0.0",
-    "@payloadcms/plugin-seo": "1.0.14-canary.0",
+    "@payloadcms/plugin-seo": "^1.0.15",
     "@payloadcms/richtext-lexical": "0.1.6",
     "cross-env": "^7.0.3",
     "dotenv": "16.3.1",
