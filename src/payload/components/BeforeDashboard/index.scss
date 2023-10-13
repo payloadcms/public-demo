@@ -1,0 +1,17 @@
+@import '~payload/scss';
+
+.before-dashboard {
+  .banner {
+    color: var(--color-base-800);
+
+    svg {
+      background-color: var(--color-base-800);
+      border-radius: 100px;
+      margin-right: base(0.5);
+
+      path {
+        stroke: var(--color-base-0);
+      }
+    }
+  }
+}

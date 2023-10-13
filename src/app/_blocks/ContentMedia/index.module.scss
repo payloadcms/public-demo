@@ -1,0 +1,31 @@
+@import '../../_css/common';
+
+.contentMediaBlock {
+  position: relative;
+  display: flex;
+  width: 100%;
+  gap: calc(var(--base) * 6);
+  align-items: center;
+
+  @include large-break {
+    gap: calc(var(--base) * 3);
+  }
+
+  @include mid-break {
+    flex-direction: column;
+  }
+}
+
+.invert {
+  flex-direction: row-reverse;
+
+  @include mid-break {
+    flex-direction: column-reverse;
+  }
+}
+
+.caption {
+  color: var(--theme-elevation-500);
+  margin-top: var(--base);
+  height: 0;
+}
