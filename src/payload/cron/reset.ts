@@ -26,7 +26,7 @@ import {
 } from '../seed/project-software-images'
 import { projectsPage } from '../seed/projects-page'
 
-const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments']
+const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments', 'users']
 const globals = ['header', 'settings', 'footer']
 
 export async function seed(): Promise<void> {
