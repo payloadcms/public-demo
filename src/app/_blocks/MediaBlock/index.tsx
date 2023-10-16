@@ -24,12 +24,12 @@ export const MediaBlock: React.FC<Props> = (props) => {
     <div className={classes.mediaBlock}>
       {position === 'fullscreen' && (
         <div className={classes.fullscreen}>
-          <Media resource={media} src={staticImage} />
+          <Media priority resource={media} src={staticImage} />
         </div>
       )}
       {position === 'default' && (
         <Gutter>
-          <Media resource={media} src={staticImage} />
+          <Media priority resource={media} src={staticImage} />
         </Gutter>
       )}
       {caption && (
