@@ -1,5 +1,4 @@
 import fs from 'fs'
-import { MongoClient } from 'mongodb'
 import path from 'path'
 import payload from 'payload'
 
@@ -59,7 +58,6 @@ export async function seed(): Promise<void> {
       ), // eslint-disable-line function-paren-newline
     ])
 
-    await dropDB()
     await seedData()
     payload.logger.info(`Seed Complete.`)
   } catch (error: unknown) {
@@ -92,19 +90,12 @@ export async function reset(): Promise<void> {
       ), // eslint-disable-line function-paren-newline
     ])
 
-    await dropDB()
     await seedData()
     payload.logger.info(`Reset Complete.`)
   } catch (error: unknown) {
     console.error(error) // eslint-disable-line no-console
     payload.logger.error('Error resetting database.')
   }
-}
-
-async function dropDB(): Promise<void> {
-  const client = await MongoClient.connect(process.env.DATABASE_URI)
-  const db = client.db(new URL(process.env.DATABASE_URI).pathname.substring(1))
-  await db.dropDatabase()
 }
 
 async function seedData(): Promise<void> {
