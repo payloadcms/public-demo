@@ -24,6 +24,22 @@
   }
 }
 
+.content {
+  width: 50%;
+
+  @include mid-break {
+    width: unset;
+  }
+}
+
+.media {
+  width: 50%;
+
+  @include mid-break {
+    width: unset;
+  }
+}
+
 .caption {
   color: var(--theme-elevation-500);
   margin-top: var(--base);
