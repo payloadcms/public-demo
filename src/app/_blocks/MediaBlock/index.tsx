@@ -29,7 +29,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
       )}
       {position === 'default' && (
         <Gutter>
-          <Media priority resource={media} src={staticImage} />
+          <Media resource={media} src={staticImage} />
         </Gutter>
       )}
       {caption && (

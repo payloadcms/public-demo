@@ -55,7 +55,7 @@ export const ProjectHero: React.FC<{
           <div className={classes.mediaWrapper}>
             {!metaImage && <div className={classes.placeholder}>No image</div>}
             {metaImage && typeof metaImage !== 'string' && (
-              <Media fill imgClassName={classes.image} resource={metaImage} />
+              <Media fill imgClassName={classes.image} priority resource={metaImage} />
             )}
           </div>
           {metaImage && typeof metaImage !== 'string' && metaImage?.caption && (
