@@ -25,6 +25,7 @@ import {
   projectSoftware4,
 } from '../seed/project-software-images'
 import { projectsPage } from '../seed/projects-page'
+import { adminEmail, adminPassword } from './shared'
 
 const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments', 'users']
 const globals = ['header', 'settings', 'footer']
@@ -106,8 +107,8 @@ async function seedData(): Promise<void> {
       collection: 'users',
       data: {
         name: 'Demo Author',
-        email: 'demo@payloadcms.com',
-        password: 'demo',
+        email: adminEmail,
+        password: adminPassword,
         roles: ['admin'],
       },
     }),
