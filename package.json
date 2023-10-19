@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
-  "engines": {
-    "node": ">=16"
+  "engines" : {
+    "node" : ">=16 <21"
   },
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts nodemon",
