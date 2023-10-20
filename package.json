@@ -52,7 +52,7 @@
     "dotenv": "16.3.1",
     "express": "^4.17.1",
     "lexical": "^0.12.2",
-    "next": "13.5.4",
+    "next": "13.5.2",
     "node-cron": "^3.0.2",
     "payload": "^2.0.10",
     "payload-admin-bar": "^1.0.6",
