@@ -42,7 +42,12 @@ export const Card: React.FC<{
       <Link className={classes.mediaWrapper} href={href}>
         {!metaImage && <div className={classes.placeholder}>No image</div>}
         {metaImage && typeof metaImage !== 'string' && (
-          <Media fill imgClassName={classes.image} resource={metaImage} />
+          <Media
+            fill
+            imgClassName={classes.image}
+            resource={metaImage}
+            sizes="(max-width: 768px) 100vw, 20vw"
+          />
         )}
       </Link>
       <div className={classes.content}>

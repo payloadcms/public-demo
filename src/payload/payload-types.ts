@@ -217,7 +217,7 @@ export interface Post {
   title: string;
   categories?: string[] | Category[];
   publishedOn?: string;
-  authors?: string[] | User[];
+  authors: string[] | User[];
   populatedAuthors?: {
     id?: string;
     name?: string;
@@ -505,7 +505,7 @@ export interface User {
   hash?: string;
   loginAttempts?: number;
   lockUntil?: string;
-  password?: string;
+  password: string;
 }
 export interface Project {
   id: string;

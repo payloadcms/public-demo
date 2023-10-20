@@ -31,7 +31,7 @@ export const ContentMedia: React.FC<Props> = (props) => {
           <RichText content={richText} />
         </div>
         <div className={classes.media}>
-          <Media resource={media} src={staticImage} />
+          <Media resource={media} sizes="(max-width: 768px) 100vw, 30vw" src={staticImage} />
           {caption && <RichText className={classes.caption} content={caption} />}
         </div>
       </div>

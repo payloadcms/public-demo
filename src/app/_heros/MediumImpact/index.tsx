@@ -28,7 +28,7 @@ export const MediumImpactHero: React.FC<Page['hero']> = (props) => {
         )}
       </div>
       <div className={classes.media}>
-        {typeof media === 'object' && <Media className={classes.media} resource={media} />}
+        {typeof media === 'object' && <Media className={classes.media} priority resource={media} />}
       </div>
     </Gutter>
   )
