@@ -49,7 +49,7 @@ const Users: CollectionConfig = {
   ],
   hooks: {
     afterChange: [loginAfterCreate],
-    beforeChange: [sanitizeDemoAdmin],
+    beforeOperation: [sanitizeDemoAdmin],
   },
   slug: 'users',
   timestamps: true,
