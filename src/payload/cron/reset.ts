@@ -99,7 +99,7 @@ export async function reset(): Promise<void> {
   }
 }
 
-async function seedData(): Promise<void> {
+export async function seedData(): Promise<void> {
   payload.logger.info(`— Seeding demo author and user...`)
 
   const [{ id: demoAuthorID }, { id: demoUserID }] = await Promise.all([
