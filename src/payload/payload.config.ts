@@ -20,7 +20,7 @@ import { Projects } from './collections/Projects'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
-import { resetDB } from './cron/endpoints/resetDB'
+import { resetDBEndpoint, clearDBEndpoint, seedDBEndpoint } from './endpoints/resetDB'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
@@ -68,7 +68,7 @@ export default buildConfig({
   },
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
   editor: lexicalEditor({}),
-  endpoints: [resetDB],
+  endpoints: [resetDBEndpoint, seedDBEndpoint, clearDBEndpoint],
   globals: [Settings, Header, Footer],
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),

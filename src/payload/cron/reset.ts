@@ -34,42 +34,8 @@ export async function seed(): Promise<void> {
   try {
     payload.logger.info(`Seeding database...`)
 
-    payload.logger.info(`— Clearing media...`)
-
-    const mediaDir = path.resolve(__dirname, '../../../media')
-    if (fs.existsSync(mediaDir)) {
-      fs.rmdirSync(mediaDir, { recursive: true })
-    }
-
-    payload.logger.info(`— Clearing collections and globals...`)
-
-    // clear the database
-    await Promise.all([
-      ...collections.map(async (collection) => {
-        try {
-          await payload.delete({
-            collection: collection as 'media',
-            where: {},
-          });
-        } catch (error: unknown) {
-          console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
-          throw error;
-        }
-      }),
-      ...globals.map(async (global) => {
-        try {
-          await payload.updateGlobal({
-            data: {},
-            slug: global as 'header',
-          });
-        } catch (error: unknown) {
-          console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
-          throw error;
-        }
-      }),
-    ])
-
-    await seedData()
+    await clearDB()
+    await seedDB()
     payload.logger.info(`Seed Complete.`)
   } catch (error: unknown) {
     console.error(error) // eslint-disable-line no-console
@@ -81,37 +47,8 @@ export async function reset(): Promise<void> {
   try {
     payload.logger.info(`Resetting database...`)
 
-    const mediaDir = path.resolve(__dirname, '../../../media')
-    if (fs.existsSync(mediaDir)) {
-      fs.rmSync(path.resolve(__dirname, '../../../media'), { recursive: true })
-    }
-
-    await Promise.all([
-      ...collections.map(async (collection) => {
-        try {
-          await payload.delete({
-            collection: collection as 'media',
-            where: {},
-          });
-        } catch (error: unknown) {
-          console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
-          throw error;
-        }
-      }),
-      ...globals.map(async (global) => {
-        try {
-          await payload.updateGlobal({
-            data: {},
-            slug: global as 'header',
-          });
-        } catch (error: unknown) {
-          console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
-          throw error;
-        }
-      }),
-    ])
-
-    await seedData()
+    await clearDB()
+    await seedDB()
     payload.logger.info(`Reset Complete.`)
   } catch (error: unknown) {
     console.error(error) // eslint-disable-line no-console
@@ -119,7 +56,42 @@ export async function reset(): Promise<void> {
   }
 }
 
-export async function seedData(): Promise<void> {
+export const clearDB = async (): Promise<void> => {
+  payload.logger.info(`— Clearing media...`)
+
+  const mediaDir = path.resolve(__dirname, '../../../media')
+  if (fs.existsSync(mediaDir)) {
+    fs.rmSync(path.resolve(__dirname, '../../../media'), { recursive: true })
+  }
+
+  payload.logger.info(`— Clearing collections and globals...`)
+  await Promise.all([
+    ...collections.map(async (collection) => {
+      try {
+        await payload.delete({
+          collection: collection as 'media',
+          where: {},
+        });
+      } catch (error: unknown) {
+        console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
+        throw error;
+      }
+    }),
+    ...globals.map(async (global) => {
+      try {
+        await payload.updateGlobal({
+          data: {},
+          slug: global as 'header',
+        });
+      } catch (error: unknown) {
+        console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
+        throw error;
+      }
+    }),
+  ])
+}
+
+export async function seedDB(): Promise<void> {
   payload.logger.info(`— Seeding demo author and user...`)
 
   const [{ id: demoAuthorID }, { id: demoUserID }] = await Promise.all([
