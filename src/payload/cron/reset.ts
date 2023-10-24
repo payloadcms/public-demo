@@ -45,18 +45,28 @@ export async function seed(): Promise<void> {
 
     // clear the database
     await Promise.all([
-      ...collections.map(async (collection) =>
-        payload.delete({
-          collection: collection as 'media',
-          where: {},
-        }),
-      ), // eslint-disable-line function-paren-newline
-      ...globals.map(async (global) =>
-        payload.updateGlobal({
-          data: {},
-          slug: global as 'header',
-        }),
-      ), // eslint-disable-line function-paren-newline
+      ...collections.map(async (collection) => {
+        try {
+          await payload.delete({
+            collection: collection as 'media',
+            where: {},
+          });
+        } catch (error: unknown) {
+          console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
+          throw error;
+        }
+      }),
+      ...globals.map(async (global) => {
+        try {
+          await payload.updateGlobal({
+            data: {},
+            slug: global as 'header',
+          });
+        } catch (error: unknown) {
+          console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
+          throw error;
+        }
+      }),
     ])
 
     await seedData()
@@ -77,18 +87,28 @@ export async function reset(): Promise<void> {
     }
 
     await Promise.all([
-      ...collections.map(async (collection) =>
-        payload.delete({
-          collection: collection as 'media',
-          where: {},
-        }),
-      ), // eslint-disable-line function-paren-newline
-      ...globals.map(async (global) =>
-        payload.updateGlobal({
-          data: {},
-          slug: global as 'header',
-        }),
-      ), // eslint-disable-line function-paren-newline
+      ...collections.map(async (collection) => {
+        try {
+          await payload.delete({
+            collection: collection as 'media',
+            where: {},
+          });
+        } catch (error: unknown) {
+          console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
+          throw error;
+        }
+      }),
+      ...globals.map(async (global) => {
+        try {
+          await payload.updateGlobal({
+            data: {},
+            slug: global as 'header',
+          });
+        } catch (error: unknown) {
+          console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
+          throw error;
+        }
+      }),
     ])
 
     await seedData()

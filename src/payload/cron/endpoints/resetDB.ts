@@ -1,7 +1,5 @@
 import type { Endpoint } from 'payload/config'
 
-import payload from 'payload'
-
 import { seedData } from '../reset'
 
 const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments', 'users']
@@ -22,19 +20,29 @@ export const resetDB: Omit<Endpoint, 'root'> = {
 
     try {
       await Promise.all([
-        ...collections.map(async (collection) =>
-          payload.delete({
-            collection: collection as 'media',
-            where: {},
-          }),
-        ),
-        ...globals.map(async (global) =>
-          payload.updateGlobal({
-            data: {},
-            slug: global as 'header',
-          }),
-        ),
-      ])
+        ...collections.map(async (collection) => {
+          try {
+            await req.payload.delete({
+              collection: collection as 'media',
+              where: {},
+            });
+          } catch (error: unknown) {
+            console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
+            throw error;
+          }
+        }),
+        ...globals.map(async (global) => {
+          try {
+            await req.payload.updateGlobal({
+              data: {},
+              slug: global as 'header',
+            });
+          } catch (error: unknown) {
+            console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
+            throw error;
+          }
+        }),
+      ]);
 
       await seedData()
 
