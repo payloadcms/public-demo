@@ -6,3 +6,4 @@ node_modules
 .env
 .next
 .vercel
+tsconfig.tsbuildinfo
