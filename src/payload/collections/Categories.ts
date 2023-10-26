@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload/types'
 
 const Categories: CollectionConfig = {
   access: {
+    delete: () => false,
     read: () => true,
   },
   admin: {
