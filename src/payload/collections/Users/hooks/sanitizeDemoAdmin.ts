@@ -10,9 +10,7 @@ export const sanitizeDemoAdmin: BeforeOperationHook = ({ args, operation }) => {
       'password' in args.data &&
       args.req.user.email === adminEmail
     ) {
-      args.data.email = adminEmail
       args.data.password = adminPassword
-      args.data.passwordConfirm = adminPassword
     }
   }
 
