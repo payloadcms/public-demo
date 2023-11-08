@@ -20,13 +20,13 @@ import { Projects } from './collections/Projects'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
-import { resetDBEndpoint, clearDBEndpoint, seedDBEndpoint } from './endpoints/resetDB'
+import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/resetDB'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Website'
+  return 'Payload Demo'
 }
 
 const m = path.resolve(__dirname, './emptyModuleMock.js')
