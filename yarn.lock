@@ -1622,10 +1622,10 @@
     webpack-dev-middleware "6.0.1"
     webpack-hot-middleware "^2.25.3"
 
-"@payloadcms/db-mongodb@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@payloadcms/db-mongodb/-/db-mongodb-1.0.5.tgz#febfe41b5703776668b02bf7582b234ab311863d"
-  integrity sha512-Gdq0LyyQwjt+kdDhQ8oAMgbp0M4l4/1eQh+//e4BPL6vmJEMx2HNLnKot5EIWDkeSFuU7P45t7phWwe7mq4u7g==
+"@payloadcms/db-mongodb@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@payloadcms/db-mongodb/-/db-mongodb-1.0.6.tgz#8cc6a4a5f356e5393aa16cb355b2e76faa12f0d0"
+  integrity sha512-9rcXNygPBbOkTcf6vMpv1ZaCmKx+BWVm6z5lflHZsi/udPGF7aL+3m7kCTD9N2qi4rDewfdxbifime2benKWYw==
   dependencies:
     bson-objectid "2.0.4"
     deepmerge "4.3.1"
@@ -7160,10 +7160,10 @@ payload-admin-bar@^1.0.6:
   resolved "https://registry.yarnpkg.com/payload-admin-bar/-/payload-admin-bar-1.0.6.tgz#ca25e369a4f319c3d61ff3db4021c1c2fd9d0148"
   integrity sha512-hpQdOiPq4LpWTkbuAnvxDf5wQ2ysMp9kQt+X2U+FfvBwD1U6qoxJfmUymG1OjLlaZzCZ93FlOdTl4u4Z0/m/SA==
 
-payload@^2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/payload/-/payload-2.0.14.tgz#a5f2431ce1293a0764ceb34afeed5b490f93f0df"
-  integrity sha512-pXQcX9T2dtR9h5enHqIn/kt384eNPe0nZVBS/wUnYW1LXW/5f74Esi2CsNZHV6TTyAElw9EheRRiESJ37WwHTQ==
+payload@^2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/payload/-/payload-2.0.15.tgz#7e0a4528bf3b9cf0e0317e77f47e7a71580be1bb"
+  integrity sha512-P+FEMr79y5FQJ6NJm7KhQZqmEvU3BXkGZT7Kbj5MCeCpbP0TlboAMWThdzr9jaGgHK2Y5uGRMCzeW0880mnKZg==
   dependencies:
     "@date-io/date-fns" "2.16.0"
     "@dnd-kit/core" "6.0.8"
