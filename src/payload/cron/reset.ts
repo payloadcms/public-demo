@@ -1,4 +1,5 @@
 import fs from 'fs'
+import chunk from 'lodash.chunk'
 import path from 'path'
 import payload from 'payload'
 
@@ -65,57 +66,104 @@ export const clearDB = async (): Promise<void> => {
   }
 
   payload.logger.info(`— Clearing collections and globals...`)
-  await Promise.all([
-    ...collections.map(async (collection) => {
-      try {
-        await payload.delete({
-          collection: collection as 'media',
-          where: {},
-        });
-      } catch (error: unknown) {
-        console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
-        throw error;
-      }
-    }),
-    ...globals.map(async (global) => {
-      try {
-        await payload.updateGlobal({
-          data: {},
-          slug: global as 'header',
-        });
-      } catch (error: unknown) {
-        console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
-        throw error;
-      }
-    }),
-  ])
+  for (const collection of collections) {
+    try {
+      await payload.delete({
+        collection: collection as 'media',
+        where: {},
+      })
+    } catch (error: unknown) {
+      console.error(`Error deleting collection ${collection}:`, error) // eslint-disable-line no-console
+      throw error
+    }
+  }
+
+  for (const global of globals) {
+    try {
+      await payload.updateGlobal({
+        data: {},
+        slug: global as 'header',
+      })
+    } catch (error: unknown) {
+      console.error(`Error updating global ${global}:`, error) // eslint-disable-line no-console
+      throw error
+    }
+  }
 }
 
 export async function seedDB(): Promise<void> {
   payload.logger.info(`— Seeding demo author and user...`)
 
-  const [{ id: demoAuthorID }, { id: demoUserID }] = await Promise.all([
-    await payload.create({
-      collection: 'users',
-      data: {
-        name: 'Demo Author',
-        email: adminEmail,
-        password: adminPassword,
-        roles: ['admin'],
-      },
-    }),
-    await payload.create({
-      collection: 'users',
-      data: {
-        name: 'Demo User',
-        email: 'demo-user@payloadcms.com',
-        password: 'password',
-        roles: ['user'],
-      },
-    }),
-  ])
+  const demoAuthorRoles: ('admin' | 'user')[] = ['admin']
+  const demoUserRoles: ('admin' | 'user')[] = ['user']
+
+  const demoAuthor = {
+    collection: 'users' as const,
+    data: {
+      name: 'Demo Author',
+      email: adminEmail,
+      password: adminPassword,
+      roles: demoAuthorRoles,
+    },
+  }
+
+  const demoUser = {
+    collection: 'users' as const,
+    data: {
+      name: 'Demo User',
+      email: 'demo-user@payloadcms.com',
+      password: 'password',
+      roles: demoUserRoles,
+    },
+  }
+
+  const demoAuthorID = (await payload.create(demoAuthor)).id
+  const demoUserID = (await payload.create(demoUser)).id
 
   payload.logger.info(`— Seeding media...`)
+
+  const mediaData = [
+    { data: image1, filePath: path.resolve(__dirname, 'image-1.jpg') },
+    { data: image2, filePath: path.resolve(__dirname, 'image-2.jpg') },
+    { data: imageSpheres, filePath: path.resolve(__dirname, 'image-spheres.jpg') },
+    { data: postTech1, filePath: path.resolve(__dirname, 'post-tech-1.jpg') },
+    { data: postTechAi, filePath: path.resolve(__dirname, 'post-ai-1.jpg') },
+    { data: postTechIot, filePath: path.resolve(__dirname, 'post-iot-1.jpg') },
+    { data: postTechQuant, filePath: path.resolve(__dirname, 'post-quant-1.jpg') },
+    { data: postNews2, filePath: path.resolve(__dirname, 'post-news-2.jpg') },
+    { data: postNewsHope, filePath: path.resolve(__dirname, 'post-hope-2.jpg') },
+    { data: postNewsDest, filePath: path.resolve(__dirname, 'post-destination-2.jpg') },
+    { data: postFinance3, filePath: path.resolve(__dirname, 'post-finance-3.jpg') },
+    { data: postFinanceStocks, filePath: path.resolve(__dirname, 'post-stocks-3.jpg') },
+    { data: postFinanceBuildings, filePath: path.resolve(__dirname, 'post-buildings-3.jpg') },
+    { data: projectDesign, filePath: path.resolve(__dirname, 'project-design.jpg') },
+    { data: projectDesign2, filePath: path.resolve(__dirname, 'project-design-2.jpg') },
+    { data: projectDesign3, filePath: path.resolve(__dirname, 'project-design-3.jpg') },
+    { data: projectSoftware, filePath: path.resolve(__dirname, 'project-software-1.jpg') },
+    { data: projectSoftware2, filePath: path.resolve(__dirname, 'project-software-2.jpg') },
+    { data: projectSoftware3, filePath: path.resolve(__dirname, 'project-software-3.jpg') },
+    { data: projectSoftware4, filePath: path.resolve(__dirname, 'project-software-4.jpg') },
+    { data: projectEng, filePath: path.resolve(__dirname, 'project-eng-1.jpg') },
+    { data: projectEng2, filePath: path.resolve(__dirname, 'project-eng-2.jpg') },
+    { data: projectEng3, filePath: path.resolve(__dirname, 'project-eng-3.jpg') },
+    { data: projectEng4, filePath: path.resolve(__dirname, 'project-eng-4.jpg') },
+  ]
+
+  const batchSize = 4
+  const batches = chunk(mediaData, batchSize)
+
+  const results = []
+
+  for (const batch of batches) {
+    for (const payloadItem of batch) {
+      const result = await payload.create({
+        collection: 'media',
+        data: payloadItem.data,
+        filePath: payloadItem.filePath,
+      })
+      results.push(result)
+    }
+  }
 
   const [
     image1Doc,
@@ -142,176 +190,39 @@ export async function seedDB(): Promise<void> {
     projectEng2Doc,
     projectEng3Doc,
     projectEng4Doc,
-  ] = await Promise.all([
-    await payload.create({
-      collection: 'media',
-      data: image1,
-      filePath: path.resolve(__dirname, 'image-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: image2,
-      filePath: path.resolve(__dirname, 'image-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: imageSpheres,
-      filePath: path.resolve(__dirname, 'image-spheres.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postTech1,
-      filePath: path.resolve(__dirname, 'post-tech-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postTechAi,
-      filePath: path.resolve(__dirname, 'post-ai-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postTechIot,
-      filePath: path.resolve(__dirname, 'post-iot-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postTechQuant,
-      filePath: path.resolve(__dirname, 'post-quant-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postNews2,
-      filePath: path.resolve(__dirname, 'post-news-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postNewsHope,
-      filePath: path.resolve(__dirname, 'post-hope-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postNewsDest,
-      filePath: path.resolve(__dirname, 'post-destination-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postFinance3,
-      filePath: path.resolve(__dirname, 'post-finance-3.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postFinanceStocks,
-      filePath: path.resolve(__dirname, 'post-stocks-3.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: postFinanceBuildings,
-      filePath: path.resolve(__dirname, 'post-buildings-3.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectDesign,
-      filePath: path.resolve(__dirname, 'project-design.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectDesign2,
-      filePath: path.resolve(__dirname, 'project-design-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectDesign3,
-      filePath: path.resolve(__dirname, 'project-design-3.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectSoftware,
-      filePath: path.resolve(__dirname, 'project-software-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectSoftware2,
-      filePath: path.resolve(__dirname, 'project-software-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectSoftware3,
-      filePath: path.resolve(__dirname, 'project-software-3.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectSoftware4,
-      filePath: path.resolve(__dirname, 'project-software-4.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectEng,
-      filePath: path.resolve(__dirname, 'project-eng-1.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectEng2,
-      filePath: path.resolve(__dirname, 'project-eng-2.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectEng3,
-      filePath: path.resolve(__dirname, 'project-eng-3.jpg'),
-    }),
-    await payload.create({
-      collection: 'media',
-      data: projectEng4,
-      filePath: path.resolve(__dirname, 'project-eng-4.jpg'),
-    }),
-  ])
+  ] = results
 
   payload.logger.info(`— Seeding categories...`)
 
-  const [
-    technologyCategory,
-    newsCategory,
-    financeCategory,
-    designCat,
-    softwareCat,
-    engineeringCat,
-  ] = await Promise.all([
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Technology',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'News',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Finance',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Design',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Software',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Engineering',
-      },
-    }),
-  ])
+  const technologyCategory = await payload.create({
+    collection: 'categories',
+    data: { title: 'Technology' },
+  })
+
+  const newsCategory = await payload.create({
+    collection: 'categories',
+    data: { title: 'News' },
+  })
+
+  const financeCategory = await payload.create({
+    collection: 'categories',
+    data: { title: 'Finance' },
+  })
+
+  const designCat = await payload.create({
+    collection: 'categories',
+    data: { title: 'Design' },
+  })
+
+  const softwareCat = await payload.create({
+    collection: 'categories',
+    data: { title: 'Software' },
+  })
+
+  const engineeringCat = await payload.create({
+    collection: 'categories',
+    data: { title: 'Engineering' },
+  })
 
   payload.logger.info(`— Seeding posts...`)
 
@@ -355,46 +266,43 @@ export async function seedDB(): Promise<void> {
 
   // update each post with related posts
 
-  await Promise.all([
-    await payload.update({
-      id: post1Doc.id,
-      collection: 'posts',
-      data: {
-        relatedPosts: [post2Doc.id, post3Doc.id],
-      },
-    }),
-    await payload.update({
-      id: post2Doc.id,
-      collection: 'posts',
-      data: {
-        relatedPosts: [post1Doc.id, post3Doc.id],
-      },
-    }),
-    await payload.update({
-      id: post3Doc.id,
-      collection: 'posts',
-      data: {
-        relatedPosts: [post1Doc.id, post2Doc.id],
-      },
-    }),
-  ])
+  await payload.update({
+    id: post1Doc.id,
+    collection: 'posts',
+    data: {
+      relatedPosts: [post2Doc.id, post3Doc.id],
+    },
+  })
+
+  await payload.update({
+    id: post2Doc.id,
+    collection: 'posts',
+    data: {
+      relatedPosts: [post1Doc.id, post3Doc.id],
+    },
+  })
+
+  await payload.update({
+    id: post3Doc.id,
+    collection: 'posts',
+    data: {
+      relatedPosts: [post1Doc.id, post2Doc.id],
+    },
+  })
 
   payload.logger.info(`— Seeding comments...`)
 
-  await Promise.all(
-    posts.map(
-      async (post) =>
-        await payload.create({
-          collection: 'comments',
-          data: {
-            _status: 'published',
-            comment: `This is a comment on post: ${post.title}. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
-            doc: post.id,
-            user: demoUserID,
-          },
-        }),
-    ),
-  )
+  for (const post of posts) {
+    await payload.create({
+      collection: 'comments',
+      data: {
+        _status: 'published',
+        comment: `This is a comment on post: ${post.title}. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
+        doc: post.id,
+        user: demoUserID,
+      },
+    })
+  }
 
   payload.logger.info(`— Seeding projects...`)
 
@@ -435,29 +343,29 @@ export async function seedDB(): Promise<void> {
 
   // update each project with related projects
 
-  await Promise.all([
-    await payload.update({
-      id: project1Doc.id,
-      collection: 'projects',
-      data: {
-        relatedProjects: [project2Doc.id, project3Doc.id],
-      },
-    }),
-    await payload.update({
-      id: project2Doc.id,
-      collection: 'projects',
-      data: {
-        relatedProjects: [project1Doc.id, project3Doc.id],
-      },
-    }),
-    await payload.update({
-      id: project3Doc.id,
-      collection: 'projects',
-      data: {
-        relatedProjects: [project1Doc.id, project2Doc.id],
-      },
-    }),
-  ])
+  await payload.update({
+    id: project1Doc.id,
+    collection: 'projects',
+    data: {
+      relatedProjects: [project2Doc.id, project3Doc.id],
+    },
+  })
+
+  await payload.update({
+    id: project2Doc.id,
+    collection: 'projects',
+    data: {
+      relatedProjects: [project1Doc.id, project3Doc.id],
+    },
+  })
+
+  await payload.update({
+    id: project3Doc.id,
+    collection: 'projects',
+    data: {
+      relatedProjects: [project1Doc.id, project2Doc.id],
+    },
+  })
 
   payload.logger.info(`— Seeding posts page...`)
 
