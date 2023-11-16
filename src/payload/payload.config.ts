@@ -26,7 +26,7 @@ import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Website'
+  return 'Payload Public Demo'
 }
 
 const m = path.resolve(__dirname, './emptyModuleMock.js')
@@ -61,7 +61,7 @@ export default buildConfig({
         alias: {
           ...config.resolve?.alias,
           express: m,
-          fs: m,
+          [path.resolve(__dirname, './cron/reset')]: m,
         },
       },
     }),

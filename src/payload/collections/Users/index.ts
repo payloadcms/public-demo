@@ -1,12 +1,13 @@
 import type { CollectionConfig } from 'payload/types'
+
 import { email as validateEmail } from 'payload/dist/fields/validations'
 
 import { admins } from '../../access/admins'
+import { adminEmail } from '../../cron/shared'
 import { checkRole } from './checkRole'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
 import { loginAfterCreate } from './hooks/loginAfterCreate'
 import { sanitizeDemoAdmin } from './hooks/sanitizeDemoAdmin'
-import { adminEmail } from '../../cron/shared'
 
 const Users: CollectionConfig = {
   access: {
@@ -34,7 +35,7 @@ const Users: CollectionConfig = {
         }
         // call the payload default email validation
         return validateEmail(value, args)
-      }
+      },
     },
     {
       name: 'roles',

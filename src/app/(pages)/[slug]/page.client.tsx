@@ -23,7 +23,9 @@ export const PageClient: React.FC<{
       <Blocks
         blocks={initialPage.layout}
         disableTopPadding={
-          !initialPage.hero || initialPage.hero?.type === 'none' || initialPage.hero?.type === 'lowImpact'
+          !initialPage.hero ||
+          initialPage.hero?.type === 'none' ||
+          initialPage.hero?.type === 'lowImpact'
         }
       />
     </React.Fragment>
