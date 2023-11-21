@@ -21,6 +21,9 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src"
   },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "dependencies": {
     "@lexical/clipboard": "0.12.2",
     "@lexical/code": "0.12.2",
