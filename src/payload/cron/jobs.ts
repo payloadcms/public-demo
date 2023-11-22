@@ -9,11 +9,13 @@ const timezone = 'America/Detroit'
 const hitResetEndpoint = async () => {
   try {
     payload.logger.info(`Reset Demo DB key detected.`)
-    await fetch(
-      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/resetDB?key=${process.env.PAYLOAD_DEMO_RESET_KEY}`,
-      { method: 'POST' },
+    const req = await fetch(
+      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/reset-db?key=${process.env.PAYLOAD_DEMO_RESET_KEY}`,
     )
-    payload.logger.info(`Database reset successfully at ${new Date().toLocaleString()}`)
+
+    if (req.ok) {
+      payload.logger.info(`Database reset successfully at ${new Date().toLocaleString()}`)
+    }
   } catch (error) {
     payload.logger.error({
       error,
