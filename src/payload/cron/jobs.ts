@@ -1,25 +1,38 @@
 import cron from 'node-cron'
+import payload from 'payload'
 
 import { reset } from './reset'
 
-const cronOptions: cron.ScheduleOptions = {
-  scheduled: false,
-  timezone: 'America/Detroit',
-}
+const cronInterval = '0 * * * *' // every hour
+const timezone = 'America/Detroit'
 
-const resetDB = async () => {
+const hitResetEndpoint = async () => {
   try {
-    if (process.env.PAYLOAD_DEMO_RESET_KEY !== undefined) {
-      await fetch(
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/resetDB?key=${process.env.PAYLOAD_DEMO_RESET_KEY}`,
-        { method: 'POST' },
-      )
-    } else {
-      reset
-    }
+    payload.logger.info(`Reset Demo DB key detected.`)
+    await fetch(
+      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/resetDB?key=${process.env.PAYLOAD_DEMO_RESET_KEY}`,
+      { method: 'POST' },
+    )
+    payload.logger.info(`Database reset successfully at ${new Date().toLocaleString()}`)
   } catch (error) {
-    console.log(`Error occurred during scheduled database reset: ${error}`)
+    payload.logger.error({
+      error,
+      msg: 'Failed to reset database with endpoint.',
+    })
   }
 }
 
-export const resetScheduledJob = cron.schedule('0 * * * *', resetDB, cronOptions)
+const resetDB = async () => {
+  if (process.env.PAYLOAD_DEMO_RESET_KEY !== undefined) {
+    await hitResetEndpoint()
+  } else {
+    await reset()
+  }
+}
+
+const cronOptions: cron.ScheduleOptions = {
+  scheduled: false,
+  timezone: timezone,
+}
+
+export const resetScheduledJob = cron.schedule(cronInterval, resetDB, cronOptions)
