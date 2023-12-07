@@ -9,34 +9,33 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
-import { LargeBodyIcon } from './Icon'
-import './index.scss'
-import { $createLargeBodyNode, $isLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
+import { $createLabelNode, $isLabelNode, LabelNode } from './nodes/LabelNode'
 
-export const LargeBodyFeature = (): FeatureProvider => {
+export const LabelFeature = (): FeatureProvider => {
   return {
-    feature: ({ resolvedFeatures, unsanitizedEditorConfig }) => ({
+    feature: () => ({
       floatingSelectToolbar: {
         sections: [
           FormatSectionWithEntries([
             {
-              ChildComponent: LargeBodyIcon,
-              isActive: ({ editor, selection }) => {
+              ChildComponent: () =>
+                import('./Icon').then((module) => module.LabelIcon),
+              isActive: ({ selection }) => {
                 if ($isRangeSelection(selection)) {
                   const selectedNode = getSelectedNode(selection)
-                  const largeBodyParent = $findMatchingParent(selectedNode, $isLargeBodyNode)
-                  return largeBodyParent != null
+                  const labelParent = $findMatchingParent(selectedNode, $isLabelNode)
+                  return labelParent != null
                 }
                 return false
               },
-              key: 'largeBody',
-              label: `Large Body`,
+              key: 'label',
+              label: `Label`,
               onClick: ({ editor }) => {
                 //setHeading(editor, headingSize)
                 editor.update(() => {
                   const selection = $getSelection()
                   if ($isRangeSelection(selection)) {
-                    $setBlocksType(selection, () => $createLargeBodyNode())
+                    $setBlocksType(selection, () => $createLabelNode())
                   }
                 })
               },
@@ -47,8 +46,8 @@ export const LargeBodyFeature = (): FeatureProvider => {
       },
       nodes: [
         {
-          node: LargeBodyNode,
-          type: LargeBodyNode.getType(),
+          node: LabelNode,
+          type: LabelNode.getType(),
         },
       ],
       props: null,
@@ -56,22 +55,24 @@ export const LargeBodyFeature = (): FeatureProvider => {
         options: [
           {
             options: [
-              new SlashMenuOption(`Large Body`, {
-                Icon: LargeBodyIcon,
-                keywords: ['largeBody'],
-                onSelect: ({ editor }) => {
+              new SlashMenuOption(`Label`, {
+                Icon: () =>
+                  import('./Icon').then((module) => module.LabelIcon),
+                keywords: ['label'],
+                onSelect: () => {
                   const selection = $getSelection()
                   if ($isRangeSelection(selection)) {
-                    $setBlocksType(selection, () => $createLargeBodyNode())
+                    $setBlocksType(selection, () => $createLabelNode())
                   }
                 },
               }),
             ],
-            title: 'Basic',
+            key: 'Basic',
+            displayName: 'Basic',
           },
         ],
       },
     }),
-    key: 'largeBody',
+    key: 'label',
   }
 }
