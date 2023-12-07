@@ -10,6 +10,7 @@ import {
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { $createLargeBodyNode, $isLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
+import './index.scss'
 
 export const LargeBodyFeature = (): FeatureProvider => {
   return {
