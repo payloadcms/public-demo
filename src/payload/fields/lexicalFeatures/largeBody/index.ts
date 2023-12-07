@@ -9,18 +9,18 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
-import { LargeBodyIcon } from './Icon'
-import './index.scss'
 import { $createLargeBodyNode, $isLargeBodyNode, LargeBodyNode } from './nodes/LargeBodyNode'
+import './index.scss'
 
 export const LargeBodyFeature = (): FeatureProvider => {
   return {
-    feature: ({ resolvedFeatures, unsanitizedEditorConfig }) => ({
+    feature: () => ({
       floatingSelectToolbar: {
         sections: [
           FormatSectionWithEntries([
             {
-              ChildComponent: LargeBodyIcon,
+              ChildComponent: () =>
+                import('./Icon').then((module) => module.LargeBodyIcon),
               isActive: ({ editor, selection }) => {
                 if ($isRangeSelection(selection)) {
                   const selectedNode = getSelectedNode(selection)
@@ -57,7 +57,8 @@ export const LargeBodyFeature = (): FeatureProvider => {
           {
             options: [
               new SlashMenuOption(`Large Body`, {
-                Icon: LargeBodyIcon,
+                Icon: () =>
+                  import('./Icon').then((module) => module.LargeBodyIcon),
                 keywords: ['largeBody'],
                 onSelect: ({ editor }) => {
                   const selection = $getSelection()
@@ -67,7 +68,8 @@ export const LargeBodyFeature = (): FeatureProvider => {
                 },
               }),
             ],
-            title: 'Basic',
+            key: 'Basic',
+            displayName: 'Basic',
           },
         ],
       },

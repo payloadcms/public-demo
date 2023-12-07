@@ -9,9 +9,8 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
-import { LabelIcon } from './Icon'
-import './index.scss'
 import { $createLabelNode, $isLabelNode, LabelNode } from './nodes/LabelNode'
+import './index.scss'
 
 export const LabelFeature = (): FeatureProvider => {
   return {
@@ -20,7 +19,8 @@ export const LabelFeature = (): FeatureProvider => {
         sections: [
           FormatSectionWithEntries([
             {
-              ChildComponent: LabelIcon,
+              ChildComponent: () =>
+                import('./Icon').then((module) => module.LabelIcon),
               isActive: ({ selection }) => {
                 if ($isRangeSelection(selection)) {
                   const selectedNode = getSelectedNode(selection)
@@ -57,7 +57,8 @@ export const LabelFeature = (): FeatureProvider => {
           {
             options: [
               new SlashMenuOption(`Label`, {
-                Icon: LabelIcon,
+                Icon: () =>
+                  import('./Icon').then((module) => module.LabelIcon),
                 keywords: ['label'],
                 onSelect: () => {
                   const selection = $getSelection()
@@ -67,7 +68,8 @@ export const LabelFeature = (): FeatureProvider => {
                 },
               }),
             ],
-            title: 'Basic',
+            key: 'Basic',
+            displayName: 'Basic',
           },
         ],
       },
