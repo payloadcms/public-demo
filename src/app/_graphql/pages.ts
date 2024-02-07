@@ -18,6 +18,7 @@ export const PAGE = `
     Pages(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
       docs {
         id
+        slug
         title
         hero {
           type
