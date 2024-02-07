@@ -13,12 +13,7 @@ type Query {
   Projects(draft: Boolean, where: Project_where, limit: Int, page: Int, sort: String): Projects
   docAccessProject(id: String!): projectsDocAccess
   versionProject(id: String): ProjectVersion
-  versionsProjects(
-    where: versionsProject_where
-    limit: Int
-    page: Int
-    sort: String
-  ): versionsProjects
+  versionsProjects(where: versionsProject_where, limit: Int, page: Int, sort: String): versionsProjects
   Media(id: String!, draft: Boolean): Media
   allMedia(draft: Boolean, where: Media_where, limit: Int, page: Int, sort: String): allMedia
   docAccessMedia(id: String!): mediaDocAccess
@@ -34,23 +29,12 @@ type Query {
   Comments(draft: Boolean, where: Comment_where, limit: Int, page: Int, sort: String): Comments
   docAccessComment(id: String!): commentsDocAccess
   versionComment(id: String): CommentVersion
-  versionsComments(
-    where: versionsComment_where
-    limit: Int
-    page: Int
-    sort: String
-  ): versionsComments
+  versionsComments(where: versionsComment_where, limit: Int, page: Int, sort: String): versionsComments
   Redirect(id: String!, draft: Boolean): Redirect
   Redirects(draft: Boolean, where: Redirect_where, limit: Int, page: Int, sort: String): Redirects
   docAccessRedirect(id: String!): redirectsDocAccess
   PayloadPreference(id: String!, draft: Boolean): PayloadPreference
-  PayloadPreferences(
-    draft: Boolean
-    where: PayloadPreference_where
-    limit: Int
-    page: Int
-    sort: String
-  ): PayloadPreferences
+  PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
   Settings(draft: Boolean): Settings
   docAccessSettings: settingsDocAccess
@@ -290,6 +274,8 @@ input Page_Hero_Media_where_and {
   width: Page_Hero_Media_width_operator
   height: Page_Hero_Media_height_operator
   id: Page_Hero_Media_id_operator
+  AND: [Page_Hero_Media_where_and]
+  OR: [Page_Hero_Media_where_or]
 }
 
 input Page_Hero_Media_where_or {
@@ -304,9 +290,11 @@ input Page_Hero_Media_where_or {
   width: Page_Hero_Media_width_operator
   height: Page_Hero_Media_height_operator
   id: Page_Hero_Media_id_operator
+  AND: [Page_Hero_Media_where_and]
+  OR: [Page_Hero_Media_where_or]
 }
 
-union Page_Layout = Cta | Content | MediaBlock | Archive
+union Page_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
 
 type Cta {
   invertBackground: Boolean
@@ -404,6 +392,183 @@ enum Content_Columns_Link_appearance {
   default
   primary
   secondary
+}
+
+type ContentMedia {
+  invertBackground: Boolean
+  mediaPosition: ContentMedia_mediaPosition
+  richText(depth: Int): JSON
+  media(where: ContentMedia_Media_where): Media
+  id: String
+  blockName: String
+  blockType: String
+}
+
+enum ContentMedia_mediaPosition {
+  left
+  right
+}
+
+input ContentMedia_Media_where {
+  alt: ContentMedia_Media_alt_operator
+  caption: ContentMedia_Media_caption_operator
+  updatedAt: ContentMedia_Media_updatedAt_operator
+  createdAt: ContentMedia_Media_createdAt_operator
+  url: ContentMedia_Media_url_operator
+  filename: ContentMedia_Media_filename_operator
+  mimeType: ContentMedia_Media_mimeType_operator
+  filesize: ContentMedia_Media_filesize_operator
+  width: ContentMedia_Media_width_operator
+  height: ContentMedia_Media_height_operator
+  id: ContentMedia_Media_id_operator
+  AND: [ContentMedia_Media_where_and]
+  OR: [ContentMedia_Media_where_or]
+}
+
+input ContentMedia_Media_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input ContentMedia_Media_caption_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+  exists: Boolean
+}
+
+input ContentMedia_Media_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input ContentMedia_Media_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input ContentMedia_Media_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input ContentMedia_Media_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input ContentMedia_Media_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input ContentMedia_Media_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input ContentMedia_Media_where_and {
+  alt: ContentMedia_Media_alt_operator
+  caption: ContentMedia_Media_caption_operator
+  updatedAt: ContentMedia_Media_updatedAt_operator
+  createdAt: ContentMedia_Media_createdAt_operator
+  url: ContentMedia_Media_url_operator
+  filename: ContentMedia_Media_filename_operator
+  mimeType: ContentMedia_Media_mimeType_operator
+  filesize: ContentMedia_Media_filesize_operator
+  width: ContentMedia_Media_width_operator
+  height: ContentMedia_Media_height_operator
+  id: ContentMedia_Media_id_operator
+  AND: [ContentMedia_Media_where_and]
+  OR: [ContentMedia_Media_where_or]
+}
+
+input ContentMedia_Media_where_or {
+  alt: ContentMedia_Media_alt_operator
+  caption: ContentMedia_Media_caption_operator
+  updatedAt: ContentMedia_Media_updatedAt_operator
+  createdAt: ContentMedia_Media_createdAt_operator
+  url: ContentMedia_Media_url_operator
+  filename: ContentMedia_Media_filename_operator
+  mimeType: ContentMedia_Media_mimeType_operator
+  filesize: ContentMedia_Media_filesize_operator
+  width: ContentMedia_Media_width_operator
+  height: ContentMedia_Media_height_operator
+  id: ContentMedia_Media_id_operator
+  AND: [ContentMedia_Media_where_and]
+  OR: [ContentMedia_Media_where_or]
 }
 
 type MediaBlock {
@@ -562,6 +727,8 @@ input MediaBlock_Media_where_and {
   width: MediaBlock_Media_width_operator
   height: MediaBlock_Media_height_operator
   id: MediaBlock_Media_id_operator
+  AND: [MediaBlock_Media_where_and]
+  OR: [MediaBlock_Media_where_or]
 }
 
 input MediaBlock_Media_where_or {
@@ -576,6 +743,8 @@ input MediaBlock_Media_where_or {
   width: MediaBlock_Media_width_operator
   height: MediaBlock_Media_height_operator
   id: MediaBlock_Media_id_operator
+  AND: [MediaBlock_Media_where_and]
+  OR: [MediaBlock_Media_where_or]
 }
 
 type Archive {
@@ -634,7 +803,7 @@ type Post {
   id: String
   title: String
   categories: [Category!]
-  publishedOn: DateTime
+  publishedDate: DateTime
   authors: [User!]
   populatedAuthors: [Post_PopulatedAuthors!]
   hero: Post_Hero
@@ -673,8 +842,7 @@ enum User_roles {
 """
 A field whose value conforms to the standard internet email address format as specified in HTML Spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address.
 """
-scalar EmailAddress
-  @specifiedBy(url: "https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address")
+scalar EmailAddress @specifiedBy(url: "https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address")
 
 type Post_PopulatedAuthors {
   id: String
@@ -873,6 +1041,8 @@ input Post_Hero_Media_where_and {
   width: Post_Hero_Media_width_operator
   height: Post_Hero_Media_height_operator
   id: Post_Hero_Media_id_operator
+  AND: [Post_Hero_Media_where_and]
+  OR: [Post_Hero_Media_where_or]
 }
 
 input Post_Hero_Media_where_or {
@@ -887,9 +1057,11 @@ input Post_Hero_Media_where_or {
   width: Post_Hero_Media_width_operator
   height: Post_Hero_Media_height_operator
   id: Post_Hero_Media_id_operator
+  AND: [Post_Hero_Media_where_and]
+  OR: [Post_Hero_Media_where_or]
 }
 
-union Post_Layout = Cta | Content | MediaBlock | Archive
+union Post_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
 
 union Post_PremiumContent = Cta | Content | MediaBlock | Archive
 
@@ -1041,6 +1213,8 @@ input Post_Meta_Image_where_and {
   width: Post_Meta_Image_width_operator
   height: Post_Meta_Image_height_operator
   id: Post_Meta_Image_id_operator
+  AND: [Post_Meta_Image_where_and]
+  OR: [Post_Meta_Image_where_or]
 }
 
 input Post_Meta_Image_where_or {
@@ -1055,6 +1229,8 @@ input Post_Meta_Image_where_or {
   width: Post_Meta_Image_width_operator
   height: Post_Meta_Image_height_operator
   id: Post_Meta_Image_id_operator
+  AND: [Post_Meta_Image_where_and]
+  OR: [Post_Meta_Image_where_or]
 }
 
 enum Post__status {
@@ -1224,6 +1400,8 @@ input Project_Hero_Media_where_and {
   width: Project_Hero_Media_width_operator
   height: Project_Hero_Media_height_operator
   id: Project_Hero_Media_id_operator
+  AND: [Project_Hero_Media_where_and]
+  OR: [Project_Hero_Media_where_or]
 }
 
 input Project_Hero_Media_where_or {
@@ -1238,182 +1416,11 @@ input Project_Hero_Media_where_or {
   width: Project_Hero_Media_width_operator
   height: Project_Hero_Media_height_operator
   id: Project_Hero_Media_id_operator
+  AND: [Project_Hero_Media_where_and]
+  OR: [Project_Hero_Media_where_or]
 }
 
 union Project_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
-
-type ContentMedia {
-  invertBackground: Boolean
-  mediaPosition: ContentMedia_mediaPosition
-  richText(depth: Int): JSON
-  media(where: ContentMedia_Media_where): Media
-  id: String
-  blockName: String
-  blockType: String
-}
-
-enum ContentMedia_mediaPosition {
-  left
-  right
-}
-
-input ContentMedia_Media_where {
-  alt: ContentMedia_Media_alt_operator
-  caption: ContentMedia_Media_caption_operator
-  updatedAt: ContentMedia_Media_updatedAt_operator
-  createdAt: ContentMedia_Media_createdAt_operator
-  url: ContentMedia_Media_url_operator
-  filename: ContentMedia_Media_filename_operator
-  mimeType: ContentMedia_Media_mimeType_operator
-  filesize: ContentMedia_Media_filesize_operator
-  width: ContentMedia_Media_width_operator
-  height: ContentMedia_Media_height_operator
-  id: ContentMedia_Media_id_operator
-  AND: [ContentMedia_Media_where_and]
-  OR: [ContentMedia_Media_where_or]
-}
-
-input ContentMedia_Media_alt_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input ContentMedia_Media_caption_operator {
-  equals: JSON
-  not_equals: JSON
-  like: JSON
-  contains: JSON
-  exists: Boolean
-}
-
-input ContentMedia_Media_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input ContentMedia_Media_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input ContentMedia_Media_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ContentMedia_Media_filename_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ContentMedia_Media_mimeType_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ContentMedia_Media_filesize_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input ContentMedia_Media_width_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input ContentMedia_Media_height_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input ContentMedia_Media_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ContentMedia_Media_where_and {
-  alt: ContentMedia_Media_alt_operator
-  caption: ContentMedia_Media_caption_operator
-  updatedAt: ContentMedia_Media_updatedAt_operator
-  createdAt: ContentMedia_Media_createdAt_operator
-  url: ContentMedia_Media_url_operator
-  filename: ContentMedia_Media_filename_operator
-  mimeType: ContentMedia_Media_mimeType_operator
-  filesize: ContentMedia_Media_filesize_operator
-  width: ContentMedia_Media_width_operator
-  height: ContentMedia_Media_height_operator
-  id: ContentMedia_Media_id_operator
-}
-
-input ContentMedia_Media_where_or {
-  alt: ContentMedia_Media_alt_operator
-  caption: ContentMedia_Media_caption_operator
-  updatedAt: ContentMedia_Media_updatedAt_operator
-  createdAt: ContentMedia_Media_createdAt_operator
-  url: ContentMedia_Media_url_operator
-  filename: ContentMedia_Media_filename_operator
-  mimeType: ContentMedia_Media_mimeType_operator
-  filesize: ContentMedia_Media_filesize_operator
-  width: ContentMedia_Media_width_operator
-  height: ContentMedia_Media_height_operator
-  id: ContentMedia_Media_id_operator
-}
 
 type Project_Meta {
   title: String
@@ -1563,6 +1570,8 @@ input Project_Meta_Image_where_and {
   width: Project_Meta_Image_width_operator
   height: Project_Meta_Image_height_operator
   id: Project_Meta_Image_id_operator
+  AND: [Project_Meta_Image_where_and]
+  OR: [Project_Meta_Image_where_or]
 }
 
 input Project_Meta_Image_where_or {
@@ -1577,6 +1586,8 @@ input Project_Meta_Image_where_or {
   width: Project_Meta_Image_width_operator
   height: Project_Meta_Image_height_operator
   id: Project_Meta_Image_id_operator
+  AND: [Project_Meta_Image_where_and]
+  OR: [Project_Meta_Image_where_or]
 }
 
 enum Project__status {
@@ -1744,6 +1755,8 @@ input Page_Meta_Image_where_and {
   width: Page_Meta_Image_width_operator
   height: Page_Meta_Image_height_operator
   id: Page_Meta_Image_id_operator
+  AND: [Page_Meta_Image_where_and]
+  OR: [Page_Meta_Image_where_or]
 }
 
 input Page_Meta_Image_where_or {
@@ -1758,6 +1771,8 @@ input Page_Meta_Image_where_or {
   width: Page_Meta_Image_width_operator
   height: Page_Meta_Image_height_operator
   id: Page_Meta_Image_id_operator
+  AND: [Page_Meta_Image_where_and]
+  OR: [Page_Meta_Image_where_or]
 }
 
 enum Page__status {
@@ -2030,6 +2045,8 @@ input Page_where_and {
   createdAt: Page_createdAt_operator
   _status: Page__status_operator
   id: Page_id_operator
+  AND: [Page_where_and]
+  OR: [Page_where_or]
 }
 
 input Page_where_or {
@@ -2053,6 +2070,8 @@ input Page_where_or {
   createdAt: Page_createdAt_operator
   _status: Page__status_operator
   id: Page_id_operator
+  AND: [Page_where_and]
+  OR: [Page_where_or]
 }
 
 type pagesDocAccess {
@@ -2950,6 +2969,8 @@ input PageVersion_Version_Hero_Media_where_and {
   width: PageVersion_Version_Hero_Media_width_operator
   height: PageVersion_Version_Hero_Media_height_operator
   id: PageVersion_Version_Hero_Media_id_operator
+  AND: [PageVersion_Version_Hero_Media_where_and]
+  OR: [PageVersion_Version_Hero_Media_where_or]
 }
 
 input PageVersion_Version_Hero_Media_where_or {
@@ -2964,9 +2985,11 @@ input PageVersion_Version_Hero_Media_where_or {
   width: PageVersion_Version_Hero_Media_width_operator
   height: PageVersion_Version_Hero_Media_height_operator
   id: PageVersion_Version_Hero_Media_id_operator
+  AND: [PageVersion_Version_Hero_Media_where_and]
+  OR: [PageVersion_Version_Hero_Media_where_or]
 }
 
-union PageVersion_Version_Layout = Cta | Content | MediaBlock | Archive
+union PageVersion_Version_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
 
 type PageVersion_Version_Meta {
   title: String
@@ -3116,6 +3139,8 @@ input PageVersion_Version_Meta_Image_where_and {
   width: PageVersion_Version_Meta_Image_width_operator
   height: PageVersion_Version_Meta_Image_height_operator
   id: PageVersion_Version_Meta_Image_id_operator
+  AND: [PageVersion_Version_Meta_Image_where_and]
+  OR: [PageVersion_Version_Meta_Image_where_or]
 }
 
 input PageVersion_Version_Meta_Image_where_or {
@@ -3130,6 +3155,8 @@ input PageVersion_Version_Meta_Image_where_or {
   width: PageVersion_Version_Meta_Image_width_operator
   height: PageVersion_Version_Meta_Image_height_operator
   id: PageVersion_Version_Meta_Image_id_operator
+  AND: [PageVersion_Version_Meta_Image_where_and]
+  OR: [PageVersion_Version_Meta_Image_where_or]
 }
 
 enum PageVersion_Version__status {
@@ -3447,6 +3474,8 @@ input versionsPage_where_and {
   updatedAt: versionsPage_updatedAt_operator
   latest: versionsPage_latest_operator
   id: versionsPage_id_operator
+  AND: [versionsPage_where_and]
+  OR: [versionsPage_where_or]
 }
 
 input versionsPage_where_or {
@@ -3474,6 +3503,8 @@ input versionsPage_where_or {
   updatedAt: versionsPage_updatedAt_operator
   latest: versionsPage_latest_operator
   id: versionsPage_id_operator
+  AND: [versionsPage_where_and]
+  OR: [versionsPage_where_or]
 }
 
 type Posts {
@@ -3493,7 +3524,7 @@ type Posts {
 input Post_where {
   title: Post_title_operator
   categories: Post_categories_operator
-  publishedOn: Post_publishedOn_operator
+  publishedDate: Post_publishedDate_operator
   authors: Post_authors_operator
   populatedAuthors__id: Post_populatedAuthors__id_operator
   populatedAuthors__name: Post_populatedAuthors__name_operator
@@ -3540,7 +3571,7 @@ input Post_categories_operator {
   exists: Boolean
 }
 
-input Post_publishedOn_operator {
+input Post_publishedDate_operator {
   equals: DateTime
   not_equals: DateTime
   greater_than_equal: DateTime
@@ -3557,7 +3588,6 @@ input Post_authors_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
-  exists: Boolean
 }
 
 input Post_populatedAuthors__id_operator {
@@ -3784,7 +3814,7 @@ input Post_id_operator {
 input Post_where_and {
   title: Post_title_operator
   categories: Post_categories_operator
-  publishedOn: Post_publishedOn_operator
+  publishedDate: Post_publishedDate_operator
   authors: Post_authors_operator
   populatedAuthors__id: Post_populatedAuthors__id_operator
   populatedAuthors__name: Post_populatedAuthors__name_operator
@@ -3808,12 +3838,14 @@ input Post_where_and {
   createdAt: Post_createdAt_operator
   _status: Post__status_operator
   id: Post_id_operator
+  AND: [Post_where_and]
+  OR: [Post_where_or]
 }
 
 input Post_where_or {
   title: Post_title_operator
   categories: Post_categories_operator
-  publishedOn: Post_publishedOn_operator
+  publishedDate: Post_publishedDate_operator
   authors: Post_authors_operator
   populatedAuthors__id: Post_populatedAuthors__id_operator
   populatedAuthors__name: Post_populatedAuthors__name_operator
@@ -3837,6 +3869,8 @@ input Post_where_or {
   createdAt: Post_createdAt_operator
   _status: Post__status_operator
   id: Post_id_operator
+  AND: [Post_where_and]
+  OR: [Post_where_or]
 }
 
 type postsDocAccess {
@@ -3851,7 +3885,7 @@ type postsDocAccess {
 type PostsDocAccessFields {
   title: PostsDocAccessFields_title
   categories: PostsDocAccessFields_categories
-  publishedOn: PostsDocAccessFields_publishedOn
+  publishedDate: PostsDocAccessFields_publishedDate
   authors: PostsDocAccessFields_authors
   populatedAuthors: PostsDocAccessFields_populatedAuthors
   hero: PostsDocAccessFields_hero
@@ -3912,26 +3946,26 @@ type PostsDocAccessFields_categories_Delete {
   permission: Boolean!
 }
 
-type PostsDocAccessFields_publishedOn {
-  create: PostsDocAccessFields_publishedOn_Create
-  read: PostsDocAccessFields_publishedOn_Read
-  update: PostsDocAccessFields_publishedOn_Update
-  delete: PostsDocAccessFields_publishedOn_Delete
+type PostsDocAccessFields_publishedDate {
+  create: PostsDocAccessFields_publishedDate_Create
+  read: PostsDocAccessFields_publishedDate_Read
+  update: PostsDocAccessFields_publishedDate_Update
+  delete: PostsDocAccessFields_publishedDate_Delete
 }
 
-type PostsDocAccessFields_publishedOn_Create {
+type PostsDocAccessFields_publishedDate_Create {
   permission: Boolean!
 }
 
-type PostsDocAccessFields_publishedOn_Read {
+type PostsDocAccessFields_publishedDate_Read {
   permission: Boolean!
 }
 
-type PostsDocAccessFields_publishedOn_Update {
+type PostsDocAccessFields_publishedDate_Update {
   permission: Boolean!
 }
 
-type PostsDocAccessFields_publishedOn_Delete {
+type PostsDocAccessFields_publishedDate_Delete {
   permission: Boolean!
 }
 
@@ -4724,7 +4758,7 @@ type PostVersion {
 type PostVersion_Version {
   title: String
   categories: [Category!]
-  publishedOn: DateTime
+  publishedDate: DateTime
   authors: [User!]
   populatedAuthors: [PostVersion_Version_PopulatedAuthors!]
   hero: PostVersion_Version_Hero
@@ -4936,6 +4970,8 @@ input PostVersion_Version_Hero_Media_where_and {
   width: PostVersion_Version_Hero_Media_width_operator
   height: PostVersion_Version_Hero_Media_height_operator
   id: PostVersion_Version_Hero_Media_id_operator
+  AND: [PostVersion_Version_Hero_Media_where_and]
+  OR: [PostVersion_Version_Hero_Media_where_or]
 }
 
 input PostVersion_Version_Hero_Media_where_or {
@@ -4950,9 +4986,11 @@ input PostVersion_Version_Hero_Media_where_or {
   width: PostVersion_Version_Hero_Media_width_operator
   height: PostVersion_Version_Hero_Media_height_operator
   id: PostVersion_Version_Hero_Media_id_operator
+  AND: [PostVersion_Version_Hero_Media_where_and]
+  OR: [PostVersion_Version_Hero_Media_where_or]
 }
 
-union PostVersion_Version_Layout = Cta | Content | MediaBlock | Archive
+union PostVersion_Version_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
 
 union PostVersion_Version_PremiumContent = Cta | Content | MediaBlock | Archive
 
@@ -5104,6 +5142,8 @@ input PostVersion_Version_Meta_Image_where_and {
   width: PostVersion_Version_Meta_Image_width_operator
   height: PostVersion_Version_Meta_Image_height_operator
   id: PostVersion_Version_Meta_Image_id_operator
+  AND: [PostVersion_Version_Meta_Image_where_and]
+  OR: [PostVersion_Version_Meta_Image_where_or]
 }
 
 input PostVersion_Version_Meta_Image_where_or {
@@ -5118,6 +5158,8 @@ input PostVersion_Version_Meta_Image_where_or {
   width: PostVersion_Version_Meta_Image_width_operator
   height: PostVersion_Version_Meta_Image_height_operator
   id: PostVersion_Version_Meta_Image_id_operator
+  AND: [PostVersion_Version_Meta_Image_where_and]
+  OR: [PostVersion_Version_Meta_Image_where_or]
 }
 
 enum PostVersion_Version__status {
@@ -5143,7 +5185,7 @@ input versionsPost_where {
   parent: versionsPost_parent_operator
   version__title: versionsPost_version__title_operator
   version__categories: versionsPost_version__categories_operator
-  version__publishedOn: versionsPost_version__publishedOn_operator
+  version__publishedDate: versionsPost_version__publishedDate_operator
   version__authors: versionsPost_version__authors_operator
   version__populatedAuthors__id: versionsPost_version__populatedAuthors__id_operator
   version__populatedAuthors__name: versionsPost_version__populatedAuthors__name_operator
@@ -5202,7 +5244,7 @@ input versionsPost_version__categories_operator {
   exists: Boolean
 }
 
-input versionsPost_version__publishedOn_operator {
+input versionsPost_version__publishedDate_operator {
   equals: DateTime
   not_equals: DateTime
   greater_than_equal: DateTime
@@ -5219,7 +5261,6 @@ input versionsPost_version__authors_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
-  exists: Boolean
 }
 
 input versionsPost_version__populatedAuthors__id_operator {
@@ -5475,7 +5516,7 @@ input versionsPost_where_and {
   parent: versionsPost_parent_operator
   version__title: versionsPost_version__title_operator
   version__categories: versionsPost_version__categories_operator
-  version__publishedOn: versionsPost_version__publishedOn_operator
+  version__publishedDate: versionsPost_version__publishedDate_operator
   version__authors: versionsPost_version__authors_operator
   version__populatedAuthors__id: versionsPost_version__populatedAuthors__id_operator
   version__populatedAuthors__name: versionsPost_version__populatedAuthors__name_operator
@@ -5502,13 +5543,15 @@ input versionsPost_where_and {
   updatedAt: versionsPost_updatedAt_operator
   latest: versionsPost_latest_operator
   id: versionsPost_id_operator
+  AND: [versionsPost_where_and]
+  OR: [versionsPost_where_or]
 }
 
 input versionsPost_where_or {
   parent: versionsPost_parent_operator
   version__title: versionsPost_version__title_operator
   version__categories: versionsPost_version__categories_operator
-  version__publishedOn: versionsPost_version__publishedOn_operator
+  version__publishedDate: versionsPost_version__publishedDate_operator
   version__authors: versionsPost_version__authors_operator
   version__populatedAuthors__id: versionsPost_version__populatedAuthors__id_operator
   version__populatedAuthors__name: versionsPost_version__populatedAuthors__name_operator
@@ -5535,6 +5578,8 @@ input versionsPost_where_or {
   updatedAt: versionsPost_updatedAt_operator
   latest: versionsPost_latest_operator
   id: versionsPost_id_operator
+  AND: [versionsPost_where_and]
+  OR: [versionsPost_where_or]
 }
 
 type Projects {
@@ -5720,6 +5765,8 @@ input Project_where_and {
   createdAt: Project_createdAt_operator
   _status: Project__status_operator
   id: Project_id_operator
+  AND: [Project_where_and]
+  OR: [Project_where_or]
 }
 
 input Project_where_or {
@@ -5737,6 +5784,8 @@ input Project_where_or {
   createdAt: Project_createdAt_operator
   _status: Project__status_operator
   id: Project_id_operator
+  AND: [Project_where_and]
+  OR: [Project_where_or]
 }
 
 type projectsDocAccess {
@@ -6386,6 +6435,8 @@ input ProjectVersion_Version_Hero_Media_where_and {
   width: ProjectVersion_Version_Hero_Media_width_operator
   height: ProjectVersion_Version_Hero_Media_height_operator
   id: ProjectVersion_Version_Hero_Media_id_operator
+  AND: [ProjectVersion_Version_Hero_Media_where_and]
+  OR: [ProjectVersion_Version_Hero_Media_where_or]
 }
 
 input ProjectVersion_Version_Hero_Media_where_or {
@@ -6400,6 +6451,8 @@ input ProjectVersion_Version_Hero_Media_where_or {
   width: ProjectVersion_Version_Hero_Media_width_operator
   height: ProjectVersion_Version_Hero_Media_height_operator
   id: ProjectVersion_Version_Hero_Media_id_operator
+  AND: [ProjectVersion_Version_Hero_Media_where_and]
+  OR: [ProjectVersion_Version_Hero_Media_where_or]
 }
 
 union ProjectVersion_Version_Layout = Cta | Content | ContentMedia | MediaBlock | Archive
@@ -6552,6 +6605,8 @@ input ProjectVersion_Version_Meta_Image_where_and {
   width: ProjectVersion_Version_Meta_Image_width_operator
   height: ProjectVersion_Version_Meta_Image_height_operator
   id: ProjectVersion_Version_Meta_Image_id_operator
+  AND: [ProjectVersion_Version_Meta_Image_where_and]
+  OR: [ProjectVersion_Version_Meta_Image_where_or]
 }
 
 input ProjectVersion_Version_Meta_Image_where_or {
@@ -6566,6 +6621,8 @@ input ProjectVersion_Version_Meta_Image_where_or {
   width: ProjectVersion_Version_Meta_Image_width_operator
   height: ProjectVersion_Version_Meta_Image_height_operator
   id: ProjectVersion_Version_Meta_Image_id_operator
+  AND: [ProjectVersion_Version_Meta_Image_where_and]
+  OR: [ProjectVersion_Version_Meta_Image_where_or]
 }
 
 enum ProjectVersion_Version__status {
@@ -6801,6 +6858,8 @@ input versionsProject_where_and {
   updatedAt: versionsProject_updatedAt_operator
   latest: versionsProject_latest_operator
   id: versionsProject_id_operator
+  AND: [versionsProject_where_and]
+  OR: [versionsProject_where_or]
 }
 
 input versionsProject_where_or {
@@ -6822,6 +6881,8 @@ input versionsProject_where_or {
   updatedAt: versionsProject_updatedAt_operator
   latest: versionsProject_latest_operator
   id: versionsProject_id_operator
+  AND: [versionsProject_where_and]
+  OR: [versionsProject_where_or]
 }
 
 type allMedia {
@@ -6980,6 +7041,8 @@ input Media_where_and {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
+  AND: [Media_where_and]
+  OR: [Media_where_or]
 }
 
 input Media_where_or {
@@ -6994,6 +7057,8 @@ input Media_where_or {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
+  AND: [Media_where_and]
+  OR: [Media_where_or]
 }
 
 type mediaDocAccess {
@@ -7400,6 +7465,8 @@ input Category_where_and {
   updatedAt: Category_updatedAt_operator
   createdAt: Category_createdAt_operator
   id: Category_id_operator
+  AND: [Category_where_and]
+  OR: [Category_where_or]
 }
 
 input Category_where_or {
@@ -7412,6 +7479,8 @@ input Category_where_or {
   updatedAt: Category_updatedAt_operator
   createdAt: Category_createdAt_operator
   id: Category_id_operator
+  AND: [Category_where_and]
+  OR: [Category_where_or]
 }
 
 type categoriesDocAccess {
@@ -7765,6 +7834,8 @@ input User_where_and {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  AND: [User_where_and]
+  OR: [User_where_or]
 }
 
 input User_where_or {
@@ -7774,6 +7845,8 @@ input User_where_or {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  AND: [User_where_and]
+  OR: [User_where_or]
 }
 
 type usersDocAccess {
@@ -8118,6 +8191,8 @@ input Comment_where_and {
   createdAt: Comment_createdAt_operator
   _status: Comment__status_operator
   id: Comment_id_operator
+  AND: [Comment_where_and]
+  OR: [Comment_where_or]
 }
 
 input Comment_where_or {
@@ -8130,6 +8205,8 @@ input Comment_where_or {
   createdAt: Comment_createdAt_operator
   _status: Comment__status_operator
   id: Comment_id_operator
+  AND: [Comment_where_and]
+  OR: [Comment_where_or]
 }
 
 type commentsDocAccess {
@@ -8596,6 +8673,8 @@ input versionsComment_where_and {
   updatedAt: versionsComment_updatedAt_operator
   latest: versionsComment_latest_operator
   id: versionsComment_id_operator
+  AND: [versionsComment_where_and]
+  OR: [versionsComment_where_or]
 }
 
 input versionsComment_where_or {
@@ -8612,6 +8691,8 @@ input versionsComment_where_or {
   updatedAt: versionsComment_updatedAt_operator
   latest: versionsComment_latest_operator
   id: versionsComment_id_operator
+  AND: [versionsComment_where_and]
+  OR: [versionsComment_where_or]
 }
 
 type Redirect {
@@ -8755,6 +8836,8 @@ input Redirect_where_and {
   updatedAt: Redirect_updatedAt_operator
   createdAt: Redirect_createdAt_operator
   id: Redirect_id_operator
+  AND: [Redirect_where_and]
+  OR: [Redirect_where_or]
 }
 
 input Redirect_where_or {
@@ -8765,6 +8848,8 @@ input Redirect_where_or {
   updatedAt: Redirect_updatedAt_operator
   createdAt: Redirect_createdAt_operator
   id: Redirect_id_operator
+  AND: [Redirect_where_and]
+  OR: [Redirect_where_or]
 }
 
 type redirectsDocAccess {
@@ -9085,6 +9170,8 @@ input PayloadPreference_where_and {
   updatedAt: PayloadPreference_updatedAt_operator
   createdAt: PayloadPreference_createdAt_operator
   id: PayloadPreference_id_operator
+  AND: [PayloadPreference_where_and]
+  OR: [PayloadPreference_where_or]
 }
 
 input PayloadPreference_where_or {
@@ -9094,6 +9181,8 @@ input PayloadPreference_where_or {
   updatedAt: PayloadPreference_updatedAt_operator
   createdAt: PayloadPreference_createdAt_operator
   id: PayloadPreference_id_operator
+  AND: [PayloadPreference_where_and]
+  OR: [PayloadPreference_where_or]
 }
 
 type payload_preferencesDocAccess {
@@ -10678,7 +10767,7 @@ type postsAccess {
 type PostsFields {
   title: PostsFields_title
   categories: PostsFields_categories
-  publishedOn: PostsFields_publishedOn
+  publishedDate: PostsFields_publishedDate
   authors: PostsFields_authors
   populatedAuthors: PostsFields_populatedAuthors
   hero: PostsFields_hero
@@ -10739,26 +10828,26 @@ type PostsFields_categories_Delete {
   permission: Boolean!
 }
 
-type PostsFields_publishedOn {
-  create: PostsFields_publishedOn_Create
-  read: PostsFields_publishedOn_Read
-  update: PostsFields_publishedOn_Update
-  delete: PostsFields_publishedOn_Delete
+type PostsFields_publishedDate {
+  create: PostsFields_publishedDate_Create
+  read: PostsFields_publishedDate_Read
+  update: PostsFields_publishedDate_Update
+  delete: PostsFields_publishedDate_Delete
 }
 
-type PostsFields_publishedOn_Create {
+type PostsFields_publishedDate_Create {
   permission: Boolean!
 }
 
-type PostsFields_publishedOn_Read {
+type PostsFields_publishedDate_Read {
   permission: Boolean!
 }
 
-type PostsFields_publishedOn_Update {
+type PostsFields_publishedDate_Update {
   permission: Boolean!
 }
 
-type PostsFields_publishedOn_Delete {
+type PostsFields_publishedDate_Delete {
   permission: Boolean!
 }
 
@@ -13989,29 +14078,14 @@ type Mutation {
   deletePost(id: String!): Post
   restoreVersionPost(id: String): Post
   createProject(data: mutationProjectInput!, draft: Boolean): Project
-  updateProject(
-    id: String!
-    autosave: Boolean
-    data: mutationProjectUpdateInput!
-    draft: Boolean
-  ): Project
+  updateProject(id: String!, autosave: Boolean, data: mutationProjectUpdateInput!, draft: Boolean): Project
   deleteProject(id: String!): Project
   restoreVersionProject(id: String): Project
   createMedia(data: mutationMediaInput!, draft: Boolean): Media
-  updateMedia(
-    id: String!
-    autosave: Boolean
-    data: mutationMediaUpdateInput!
-    draft: Boolean
-  ): Media
+  updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean): Media
   deleteMedia(id: String!): Media
   createCategory(data: mutationCategoryInput!, draft: Boolean): Category
-  updateCategory(
-    id: String!
-    autosave: Boolean
-    data: mutationCategoryUpdateInput!
-    draft: Boolean
-  ): Category
+  updateCategory(id: String!, autosave: Boolean, data: mutationCategoryUpdateInput!, draft: Boolean): Category
   deleteCategory(id: String!): Category
   createUser(data: mutationUserInput!, draft: Boolean): User
   updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean): User
@@ -14024,29 +14098,14 @@ type Mutation {
   resetPasswordUser(password: String, token: String): usersResetPassword
   verifyEmailUser(token: String): Boolean
   createComment(data: mutationCommentInput!, draft: Boolean): Comment
-  updateComment(
-    id: String!
-    autosave: Boolean
-    data: mutationCommentUpdateInput!
-    draft: Boolean
-  ): Comment
+  updateComment(id: String!, autosave: Boolean, data: mutationCommentUpdateInput!, draft: Boolean): Comment
   deleteComment(id: String!): Comment
   restoreVersionComment(id: String): Comment
   createRedirect(data: mutationRedirectInput!, draft: Boolean): Redirect
-  updateRedirect(
-    id: String!
-    autosave: Boolean
-    data: mutationRedirectUpdateInput!
-    draft: Boolean
-  ): Redirect
+  updateRedirect(id: String!, autosave: Boolean, data: mutationRedirectUpdateInput!, draft: Boolean): Redirect
   deleteRedirect(id: String!): Redirect
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
-  updatePayloadPreference(
-    id: String!
-    autosave: Boolean
-    data: mutationPayloadPreferenceUpdateInput!
-    draft: Boolean
-  ): PayloadPreference
+  updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
   updateSettings(data: mutationSettingsInput!, draft: Boolean): Settings
   updateHeader(data: mutationHeaderInput!, draft: Boolean): Header
@@ -14188,7 +14247,7 @@ enum PageUpdate__status_MutationInput {
 input mutationPostInput {
   title: String!
   categories: [String]
-  publishedOn: String
+  publishedDate: String
   authors: [String]
   populatedAuthors: [mutationPost_PopulatedAuthorsInput]
   hero: mutationPost_HeroInput!
@@ -14265,7 +14324,7 @@ enum Post__status_MutationInput {
 input mutationPostUpdateInput {
   title: String
   categories: [String]
-  publishedOn: String
+  publishedDate: String
   authors: [String]
   populatedAuthors: [mutationPostUpdate_PopulatedAuthorsInput]
   hero: mutationPostUpdate_HeroInput!
