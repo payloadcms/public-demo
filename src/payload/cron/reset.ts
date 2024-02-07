@@ -71,10 +71,10 @@ export const clearDB = async (): Promise<void> => {
         await payload.delete({
           collection: collection as 'media',
           where: {},
-        });
+        })
       } catch (error: unknown) {
-        console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
-        throw error;
+        console.error(`Error deleting collection ${collection}:`, error) // eslint-disable-line no-console
+        throw error
       }
     }),
     ...globals.map(async (global) => {
@@ -82,10 +82,10 @@ export const clearDB = async (): Promise<void> => {
         await payload.updateGlobal({
           data: {},
           slug: global as 'header',
-        });
+        })
       } catch (error: unknown) {
-        console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
-        throw error;
+        console.error(`Error updating global ${global}:`, error) // eslint-disable-line no-console
+        throw error
       }
     }),
   ])
@@ -316,7 +316,7 @@ export async function seedDB(): Promise<void> {
   payload.logger.info(`— Seeding posts...`)
 
   // Do not create posts with `Promise.all` because we want the posts to be created in order
-  // This way we can sort them by `createdAt` or `publishedOn` and they will be in the expected order
+  // This way we can sort them by `createdAt` or `publishedDate` and they will be in the expected order
   const post1Doc = await payload.create({
     collection: 'posts',
     data: JSON.parse(
@@ -399,7 +399,7 @@ export async function seedDB(): Promise<void> {
   payload.logger.info(`— Seeding projects...`)
 
   // Do not create posts with `Promise.all` because we want the posts to be created in order
-  // This way we can sort them by `createdAt` or `publishedOn` and they will be in the expected order
+  // This way we can sort them by `createdAt` or `publishedDate` and they will be in the expected order
   const project1Doc = await payload.create({
     collection: 'projects',
     data: JSON.parse(

@@ -17,7 +17,7 @@ export const PostHero: React.FC<{
     categories,
     meta: { description, image: metaImage } = {},
     populatedAuthors,
-    publishedOn,
+    publishedDate,
     title,
   } = post
 
@@ -65,10 +65,10 @@ export const PostHero: React.FC<{
                 })}
               </Fragment>
             )}
-            {publishedOn && (
+            {publishedDate && (
               <Fragment>
                 {' on '}
-                {formatDateTime(publishedOn)}
+                {formatDateTime(publishedDate)}
               </Fragment>
             )}
           </p>

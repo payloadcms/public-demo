@@ -49,7 +49,7 @@ export const Posts: CollectionConfig = {
       type: 'relationship',
     },
     {
-      name: 'publishedOn',
+      name: 'publishedDate',
       admin: {
         date: {
           pickerAppearance: 'dayAndTime',
