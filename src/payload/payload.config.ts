@@ -43,16 +43,16 @@ export default buildConfig({
       beforeDashboard: [BeforeDashboard],
       beforeLogin: [BeforeLogin],
     },
-    // livePreview: {
-    //   breakpoints: [
-    //     {
-    //       name: 'mobile',
-    //       height: 667,
-    //       label: 'Mobile',
-    //       width: 375,
-    //     },
-    //   ],
-    // },
+    livePreview: {
+      breakpoints: [
+        {
+          name: 'mobile',
+          height: 667,
+          label: 'Mobile',
+          width: 375,
+        },
+      ],
+    },
     user: Users.slug,
     webpack: (config) => ({
       ...config,
@@ -67,6 +67,8 @@ export default buildConfig({
     }),
   },
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
+  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
+  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   editor: lexicalEditor({}),
   endpoints: [resetDBEndpoint, seedDBEndpoint, clearDBEndpoint],
   globals: [Settings, Header, Footer],
@@ -82,8 +84,6 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
-  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
-  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   // database-adapter-config-start
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
