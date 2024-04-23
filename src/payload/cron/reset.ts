@@ -27,7 +27,16 @@ import {
 import { projectsPage } from '../seed/projects-page'
 import { adminEmail, adminPassword } from './shared'
 
-const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments', 'users']
+const collections = [
+  'categories',
+  'media',
+  'pages',
+  'posts',
+  'projects',
+  'comments',
+  'users',
+  'redirects',
+]
 const globals = ['header', 'settings', 'footer']
 
 export async function seed(): Promise<void> {
@@ -71,10 +80,10 @@ export const clearDB = async (): Promise<void> => {
         await payload.delete({
           collection: collection as 'media',
           where: {},
-        });
+        })
       } catch (error: unknown) {
-        console.error(`Error deleting collection ${collection}:`, error); // eslint-disable-line no-console
-        throw error;
+        console.error(`Error deleting collection ${collection}:`, error) // eslint-disable-line no-console
+        throw error
       }
     }),
     ...globals.map(async (global) => {
@@ -82,10 +91,10 @@ export const clearDB = async (): Promise<void> => {
         await payload.updateGlobal({
           data: {},
           slug: global as 'header',
-        });
+        })
       } catch (error: unknown) {
-        console.error(`Error updating global ${global}:`, error); // eslint-disable-line no-console
-        throw error;
+        console.error(`Error updating global ${global}:`, error) // eslint-disable-line no-console
+        throw error
       }
     }),
   ])
