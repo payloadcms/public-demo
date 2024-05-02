@@ -73,6 +73,7 @@ export default buildConfig({
   endpoints: [resetDBEndpoint, seedDBEndpoint, clearDBEndpoint],
   globals: [Settings, Header, Footer],
   graphQL: {
+    disablePlaygroundInProduction: false,
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   rateLimit: {
