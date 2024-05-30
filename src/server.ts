@@ -20,9 +20,9 @@ const start = async (): Promise<void> => {
   await payload.init({
     express: app,
     onInit: async () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+      payload.logger.info(`Payload Admin URL here2: ${payload.getAdminURL()}`)
 
-      await seed()
+      // await seed()
     },
     secret: process.env.PAYLOAD_SECRET || '',
   })
@@ -52,10 +52,10 @@ const start = async (): Promise<void> => {
       payload.logger.info('Starting Next.js...')
 
       // Seed database with startup data
-      resetScheduledJob.start()
+      // resetScheduledJob.start()
 
       app.listen(PORT, () => {
-        payload.logger.info(`Next.js App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
+        payload.logger.info(`Next.js App URL here3: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
       })
     })
     .catch((err) => {

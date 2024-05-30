@@ -11,7 +11,7 @@ export const Media: CollectionConfig = {
     update: () => false,
   },
   admin: {
-    description: 'Creating, updating, and deleting media is disabled for this demo.',
+    description: 'Creating, updating, and deleting media is disabled for this demo.', // TODO
   },
   fields: [
     {

@@ -6,6 +6,7 @@ import React from 'react'
 import type { Header as HeaderType } from '../../../../payload/payload-types'
 
 import { useAuth } from '../../../_providers/Auth'
+import { ThemeSelector } from '../../../_providers/Theme/ThemeSelector'
 import { CMSLink } from '../../Link'
 import classes from './index.module.scss'
 
@@ -24,6 +25,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         .filter(Boolean)
         .join(' ')}
     >
+      <ThemeSelector />
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
