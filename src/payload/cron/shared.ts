@@ -1,2 +1,2 @@
-export const adminEmail = 'demo@payloadcms.com'
-export const adminPassword = 'demo'
+export const adminEmail = 'admin@czsoft.com'
+export const adminPassword = 'P@ssw0rd'

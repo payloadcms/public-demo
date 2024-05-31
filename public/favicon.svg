@@ -1,15 +1,5 @@
-<svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    path {
-      fill: #0F0F0F;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      path {
-        fill: white;
-      }
-    }
-  </style>
-	<path d="M120.59 8.5824L231.788 75.6142V202.829L148.039 251.418V124.203L36.7866 57.2249L120.59 8.5824Z" />
-	<path d="M112.123 244.353V145.073L28.2114 193.769L112.123 244.353Z" />
+<svg width="319" height="319" viewBox="0 0 319 319" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="116.1" cy="117.182" rx="116.1" ry="117.182" transform="matrix(-0.142641 -0.989775 0.990782 -0.135465 59.6753 290.004)" fill="white"/>
+<path d="M159.145 231.374C51.1222 233.711 56.5048 97.1491 154.829 94.7209" stroke="#353535" stroke-width="70"/>
+<path d="M164.582 71.8515L235.936 106.726L143.617 164.082L225.946 207.418" stroke="#353535" stroke-width="24"/>
 </svg>

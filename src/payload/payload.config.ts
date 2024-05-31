@@ -3,7 +3,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-imp
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 
 import { payloadCloud } from '@payloadcms/plugin-cloud'
-// import formBuilder from '@payloadcms/plugin-form-builder'
+import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
@@ -34,9 +34,9 @@ const m = path.resolve(__dirname, './emptyModuleMock.js')
 export default buildConfig({
   admin: {
     autoLogin: {
-      email: 'demo@payloadcms.com',
-      password: 'demo',
-      prefillOnly: true,
+      email: 'admin@czsoft.com',
+      password: 'P@ssw0rd',
+      prefillOnly: false,
     },
     bundler: webpackBundler(), // bundler-config
     components: {
@@ -91,7 +91,20 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   plugins: [
-    // formBuilder({}),
+    // formBuilder({
+    //   fields: {
+    //     checkbox: true,
+    //     country: true,
+    //     email: true,
+    //     message: true,
+    //     number: true,
+    //     payment: false,
+    //     select: true,
+    //     state: true,
+    //     text: true,
+    //     textarea: true,
+    //   },
+    // }),
     redirects({
       collections: ['pages', 'posts'],
     }),

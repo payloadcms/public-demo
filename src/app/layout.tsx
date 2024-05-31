@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Providers>
-          <AdminBar />
+          {/* <AdminBar /> */}
           <Header />
           {children}
           <Footer />
