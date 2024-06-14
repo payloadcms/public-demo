@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import type { Post, Project } from '../../../payload/payload-types'
+import type { Category, Post, Project } from '../../../payload/payload-types'
 
 import { Media } from '../Media'
 import classes from './index.module.scss'
@@ -56,7 +56,7 @@ export const Card: React.FC<{
             {showCategories && hasCategories && (
               <div>
                 {categories?.map((category, index) => {
-                  const { title: titleFromCategory } = category
+                  const { title: titleFromCategory } = category as Category
 
                   const categoryTitle = titleFromCategory || 'Untitled category'
 

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import type { Project } from '../../../payload/payload-types'
+import type { Category, Project } from '../../../payload/payload-types'
 
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
@@ -23,7 +23,7 @@ export const ProjectHero: React.FC<{
               {publishedDate && formatDateTime(publishedDate)}
               &nbsp; &mdash; &nbsp;
               {categories?.map((category, index) => {
-                const { title: categoryTitle } = category
+                const { title: categoryTitle } = category as Category
 
                 const titleToUse = categoryTitle || 'Untitled category'
 

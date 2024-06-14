@@ -3,7 +3,7 @@
 import qs from 'qs'
 import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 
-import type { Post, Project } from '../../../payload/payload-types'
+import type { Category, Post, Project } from '../../../payload/payload-types'
 import type { ArchiveBlockProps } from '../../_blocks/ArchiveBlock/types'
 
 import { Card } from '../Card'
@@ -53,7 +53,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
   } = props
 
   const [results, setResults] = useState<Result>({
-    docs: populatedDocs?.map((doc) => doc.value) || selectedDocs?.map((doc) => doc.value) || [],
+    docs: populatedDocs?.map((doc) => doc.value) || selectedDocs?.map((doc) => doc.value) as any || [],
     hasNextPage: false,
     hasPrevPage: false,
     nextPage: 1,
@@ -85,7 +85,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
   }, [isLoading, scrollToRef, results])
 
   useEffect(() => {
-    let timer: NodeJS.Timeout = null
+    let timer = null
 
     if (populateBy === 'collection') {
       // hydrate the block with fresh content after first render
@@ -110,7 +110,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
                     in:
                       typeof catsFromProps === 'string'
                         ? [catsFromProps]
-                        : catsFromProps.map((cat) => cat.id).join(','),
+                        : catsFromProps.map((cat: Category) => cat.id).join(','),
                   },
                 }
               : {}),

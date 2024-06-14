@@ -7,6 +7,7 @@ import { CallToActionBlock } from '../../../_blocks/CallToAction'
 import { Gutter } from '../../../_components/Gutter'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
+import { convertSlateToLexical } from '../../../../payload/utilities/lexical/slateToLexical'
 
 export default function CallToActionPage() {
   return (
@@ -33,7 +34,7 @@ export default function CallToActionPage() {
               },
             },
           ]}
-          richText={[
+          richText={convertSlateToLexical([
             {
               children: [
                 {
@@ -49,7 +50,7 @@ export default function CallToActionPage() {
                 },
               ],
             },
-          ]}
+          ]) as any}
         />
         <br />
         <br />
@@ -67,7 +68,7 @@ export default function CallToActionPage() {
               },
             },
           ]}
-          richText={[
+          richText={convertSlateToLexical([
             {
               children: [
                 {
@@ -83,7 +84,7 @@ export default function CallToActionPage() {
                 },
               ],
             },
-          ]}
+          ]) as any}
         />
       </VerticalPadding>
     </Fragment>

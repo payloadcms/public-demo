@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import type { Post } from '../../../payload/payload-types'
+import type { Category, Post } from '../../../payload/payload-types'
 
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
@@ -28,7 +28,7 @@ export const PostHero: React.FC<{
           <div className={classes.leader}>
             <div className={classes.categories}>
               {categories?.map((category, index) => {
-                const { title: categoryTitle } = category
+                const { title: categoryTitle } = category as Category
 
                 const titleToUse = categoryTitle || 'Untitled category'
 
