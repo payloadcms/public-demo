@@ -61,5 +61,5 @@ export async function generateMetadata({ params: { slug } }): Promise<Metadata> 
     /* empty */
   }
 
-  return generateMeta({ doc: project })
+  return generateMeta({ doc: project, type: 'project' })
 }
