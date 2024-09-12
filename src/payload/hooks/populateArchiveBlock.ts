@@ -2,6 +2,8 @@ import type { AfterReadHook } from 'payload/dist/collections/config/types'
 
 import type { Page, Post } from '../payload-types'
 
+const cache = {}
+
 export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload } }) => {
   // pre-populate the archive block if `populateBy` is `collection`
   // then hydrate it on your front-end
@@ -14,6 +16,17 @@ export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload 
             relationTo: 'pages' | 'posts'
             value: string
           }>
+        }
+
+        const cacheKey = `${archiveBlock.relationTo}-${
+          archiveBlock.limit
+        }-${archiveBlock.categories.join(',')}`
+        if (cache[cacheKey]) {
+          return {
+            ...block,
+            populatedDocs: cache[cacheKey],
+            populatedDocsTotal: cache[cacheKey].length,
+          }
         }
 
         if (archiveBlock.populateBy === 'collection') {
@@ -37,13 +50,15 @@ export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload 
             },
           })
 
+          cache[cacheKey] = res.docs.map((thisDoc: Post) => ({
+            relationTo: archiveBlock.relationTo,
+            value: thisDoc.id,
+          }))
+
           return {
             ...block,
-            populatedDocs: res.docs.map((thisDoc: Post) => ({
-              relationTo: archiveBlock.relationTo,
-              value: thisDoc.id,
-            })),
-            populatedDocsTotal: res.totalDocs,
+            populatedDocs: cache[cacheKey],
+            populatedDocsTotal: cache[cacheKey].length,
           }
         }
       }
