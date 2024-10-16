@@ -26,6 +26,16 @@ services:
     logging:
       driver: none
 
+# Uncomment the following to use postgres
+# postgres:
+#   restart: always
+#   image: postgres:latest
+#   volumes:
+#     - pgdata:/var/lib/postgresql/data
+#   ports:
+#     - '5432:5432'
+      
 volumes:
   data:
   node_modules:
+  # pgdata:
