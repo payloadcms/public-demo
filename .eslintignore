@@ -8,4 +8,4 @@
 **/dist/**
 **/node_modules
 **/temp
-**/payload-types.ts
+payload-types.ts

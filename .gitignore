@@ -7,3 +7,4 @@ node_modules
 .next
 .vercel
 tsconfig.tsbuildinfo
+.env.local
